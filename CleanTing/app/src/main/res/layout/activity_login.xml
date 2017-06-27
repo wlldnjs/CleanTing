@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="sopt.client.cleanting.Main.Login.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60sp"
+        android:gravity="center">
+        <ImageView
+            android:src="@drawable/logo"
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="93sp"
+        android:layout_marginRight="93sp"
+        android:layout_marginTop="12sp"
+        android:gravity="center">
+        <ImageView
+            android:layout_marginLeft="30sp"
+            android:id="@+id/Login_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/or"
+            android:gravity="center" />
+        <ImageView
+            android:id="@+id/Signup_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/signup" />
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="12sp">-->
+    <!--<TextView-->
+    <!--android:id="@+id/Login_tv"-->
+    <!--android:layout_width="0sp"-->
+    <!--android:layout_height="25sp"-->
+    <!--android:layout_weight="0.45"-->
+    <!--android:gravity="right"-->
+    <!--android:text="Log in"-->
+    <!--android:textSize="20sp" />-->
+    <!--<TextView-->
+    <!--android:layout_width="0sp"-->
+    <!--android:layout_height="25sp"-->
+    <!--android:layout_weight="0.1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="or"-->
+    <!--android:textSize="15sp" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/Signup_tv"-->
+    <!--android:layout_width="0sp"-->
+    <!--android:layout_height="25sp"-->
+    <!--android:layout_weight="0.45"-->
+    <!--android:text="Sign up"-->
+    <!--android:textSize="20sp" />-->
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50sp"
+        android:layout_marginRight="50sp"
+        android:layout_marginTop="62sp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edit_id"
+            android:textSize="12sp"
+            android:paddingLeft="15sp"
+            android:hint="Username"
+            android:drawableLeft="@drawable/usericon"
+            android:drawablePadding="10sp"
+            android:singleLine="true"
+            android:maxLength="50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/passwordicon"
+            android:drawablePadding="10sp"
+            android:hint="Password"
+            android:singleLine="true"
+            android:maxLength="50"
+            android:inputType="textPassword"
+            android:padding="15sp"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginRight="60sp"
+        android:layout_marginLeft="60sp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:gravity="right"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/Findpassword_tv"
+            android:textSize="12sp"
+            android:text="Find Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/login_yellow"
+            android:id="@+id/Login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Keep me log in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>

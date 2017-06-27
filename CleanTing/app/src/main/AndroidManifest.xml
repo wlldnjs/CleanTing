@@ -3,6 +3,7 @@
     package="sopt.client.cleanting">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".Application.ApplicationController"
         android:allowBackup="true"
@@ -12,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Main.MainActivity">
+        </activity>
+        <activity android:name=".Main.Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
