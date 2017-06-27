@@ -13,9 +13,6 @@ import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
-/**
- * Created by 김지원 on 2017-06-25.
- */
 
 public class AlarmFragment extends Fragment {
     NetworkService service;
