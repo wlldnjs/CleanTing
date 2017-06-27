@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import sopt.client.cleanting.Main.SignUp.SignUpActivity;
+import sopt.client.cleanting.Main.Login.LoginActivity;
 import sopt.client.cleanting.R;
 
 public class SplashActivity extends AppCompatActivity {
@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(getBaseContext(),SignUpActivity.class);
+                Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
