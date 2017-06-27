@@ -63,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 //유효성검사
                 if(edit_name.length()==0){
-                    Toast.makeText(getApplicationContext(), "이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "아이디를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_name.requestFocus();
                     return;
                 }
@@ -83,8 +83,8 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-                if(!Pattern.matches("^[가-힣]*$",name)){
-                    Toast.makeText(getApplicationContext(), "이름을 한글로 입력해주세요.", Toast.LENGTH_SHORT).show();
+                if(!Pattern.matches("^[a-zA-Z0-9]*$$",name)){
+                    Toast.makeText(getApplicationContext(), "아이디를 영문과 숫자로만 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_name.requestFocus();
                     return;
                 }

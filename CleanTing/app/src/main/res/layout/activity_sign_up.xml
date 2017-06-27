@@ -64,10 +64,31 @@
             android:layout_below="@+id/name"
             android:layout_width="300dp"
             android:layout_height="wrap_content" />
+<RelativeLayout
+    android:layout_below="@+id/edit_password"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"></RelativeLayout>
+
 
         <TextView
             android:textColor="@android:color/black"
             android:layout_below="@+id/edit_name"
+            android:id="@+id/password"
+            android:text="PassWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:hint="비밀번호 4~20자리로 입력하세요"
+            android:id="@+id/edit_password"
+            android:inputType="textPassword"
+            android:layout_below="@+id/password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/edit_password"
             android:id="@+id/phonenumber"
             android:text="Phone Number"
             android:layout_width="wrap_content"
@@ -101,30 +122,14 @@
             android:src="@drawable/confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/password"
+            android:id="@+id/button_confirm"
+            android:layout_alignBottom="@+id/edit_citenumber"
             android:layout_alignRight="@+id/edit_citenumber"
-            android:layout_alignEnd="@+id/edit_citenumber"
-            android:id="@+id/button_confirm" />
+            android:layout_alignEnd="@+id/edit_citenumber" />
 
         <TextView
             android:textColor="@android:color/black"
             android:layout_below="@+id/edit_citenumber"
-            android:id="@+id/password"
-            android:text="PassWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:hint="비밀번호 4~20자리로 입력하세요"
-            android:id="@+id/edit_password"
-            android:inputType="textPassword"
-            android:layout_below="@+id/password"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:textColor="@android:color/black"
-            android:layout_below="@+id/edit_password"
             android:id="@+id/address"
             android:text="Address"
             android:layout_width="wrap_content"

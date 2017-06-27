@@ -85,10 +85,6 @@ public class AlarmFragment extends Fragment {
 
 
 
-
-
-
-
         // 앞서 정의해 놓은 ExpandableListView와 그 CustomAdapter를 선언 및 연결한 후
         // ExpandableListView에 대한 OnClickListener 등을 선언
         expandableListView = (ExpandableListView) expandableListView.findViewById(R.id.expandablelist);
