@@ -11,7 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import sopt.client.cleanting.Main.MainActivity;
+import sopt.client.cleanting.Main.SignUp.SignUpActivity;
 import sopt.client.cleanting.R;
+
+import static android.R.color.black;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,7 +41,9 @@ public class LoginActivity extends AppCompatActivity {
         Signup_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"회원가입으로 넘어가기",Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(intent);
             }
         });
 

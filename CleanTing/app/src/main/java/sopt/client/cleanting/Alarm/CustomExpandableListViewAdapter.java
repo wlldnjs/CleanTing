@@ -1,6 +1,7 @@
 package sopt.client.cleanting.Alarm;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
     private ChildListViewHolder mChildListViewHolder;
     private HashMap<String, ArrayList<ChildListData>> mChildHashMap;
     private ImageView resources;
+    private Drawable drawable;
 
     // CustomExpandableListViewAdapter 생성자
     public CustomExpandableListViewAdapter(AlarmFragment context, ArrayList<String> parentList, HashMap<String, ArrayList<ChildListData>> childHashMap){
@@ -31,6 +33,7 @@ public class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
         this.mParentList = parentList;
         this.mChildHashMap = childHashMap;
     }
+
 
 
     @Override
@@ -48,11 +51,23 @@ public class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
         return groupPosition;
     }
 
+
+
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {//ParentList의 View
+
+
+
         if(convertView==null){
             LayoutInflater groupInflater =(LayoutInflater)this.mFragment.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView=groupInflater.inflate(R.layout.parent_listview,parent,false);
+            if(isExpanded){
+                //열려있을때의 이미지 삽입
+            }
+            else
+            {
+                //닫혀있을때의 이미지 삽입
+            }
         }
         //ParentList의 Layout연결 후, 해당 layout 내 TextView를 연결
         TextView parentText = (TextView)convertView.findViewById(R.id.parenttext);
