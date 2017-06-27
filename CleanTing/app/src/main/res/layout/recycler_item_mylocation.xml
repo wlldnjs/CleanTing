@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/logo"/>
+
+    <ImageView
+        android:id="@+id/my_location_img"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"/>
+
+    <LinearLayout
+        android:layout_width="160dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/my_location_day"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="bottom"
+            android:text="2017년 6월 5일 (월)"/>
+        <TextView
+            android:id="@+id/my_location_time"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="top|center_horizontal"
+            android:text="13:00~19:00"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/my_location_member"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/logo"/>
+</LinearLayout>

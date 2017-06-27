@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     AlarmFragment alarmFragment;
     MypageFragment mypageFragment;
     int previousBtn = 1;
-    int selectBtn = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         makeTingFragment = new MakeTingFragment();
         alarmFragment = new AlarmFragment();
         mypageFragment = new MypageFragment();
+
+        myRequestFragment.setContext(getApplicationContext());
+        makeTingFragment.setContext(getApplicationContext());
+        alarmFragment.setContext(getApplicationContext());
+        mypageFragment.setContext(getApplicationContext());
 
         myRequestBtn.setOnClickListener(this);
         makeTingBtn.setOnClickListener(this);
