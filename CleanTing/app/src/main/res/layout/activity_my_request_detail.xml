@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="sopt.client.cleanting.MyRequest.MyRequestDetailActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="나의 신청현황"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/my_request_detail_img"
+                android:layout_width="125dp"
+                android:layout_height="140dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="15dp"/>
+            <TextView
+                android:id="@+id/my_request_detail_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="안성현 클리너"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:layout_toRightOf="@+id/my_request_detail_img"
+                android:layout_marginLeft="20dp"
+                android:layout_alignTop="@+id/my_request_detail_img"/>
+            <ImageView
+                android:id="@+id/my_request_detail_rating"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/my_request_detail_name"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/my_request_detail_img"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:id="@+id/my_request_detail_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20명"
+
+                android:layout_alignBottom="@id/my_request_detail_rating"
+                android:layout_toRightOf="@+id/my_request_detail_rating"
+                android:layout_marginLeft="5dp"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
