@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,8 @@ public class AlarmFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         service = ApplicationController.getInstance().getNetworkService();
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_alarm,container,false);
+        Display newDisplay = getActivity().getWindowManager().getDefaultDisplay();
+        int width = newDisplay.getWidth();
 
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.fragment_alarm); // activity_main.xml을 MainActivity에 연결
@@ -90,6 +93,7 @@ public class AlarmFragment extends Fragment {
         expandableListView = (ExpandableListView) expandableListView.findViewById(R.id.expandablelist);
         mCustomExpListViewAdapter = new CustomExpandableListViewAdapter(this, parentList, childList);
         expandableListView.setAdapter(mCustomExpListViewAdapter);
+        expandableListView.setIndicatorBounds(width-50, width);
 
 
         int groupCount = (int) mCustomExpListViewAdapter.getGroupCount();
