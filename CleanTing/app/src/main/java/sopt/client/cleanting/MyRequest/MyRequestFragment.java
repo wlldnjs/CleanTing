@@ -56,8 +56,10 @@ public class MyRequestFragment extends Fragment{
         itemData.add(new MyRequestData("2017년 6월 7일 (월)","15:00~19:00"));
         itemData.add(new MyRequestData("2017년 6월 8일 (월)","16:00~19:00"));
         itemData.add(new MyRequestData("2017년 6월 9일 (월)","17:00~19:00"));
+
         myRequestAdapter = new MyRequestAdapter(itemData,clickListener,context);
         recyclerMyLocation.setAdapter(myRequestAdapter);
+
         return layout;
     }
 

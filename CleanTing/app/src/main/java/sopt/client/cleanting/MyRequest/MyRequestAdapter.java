@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -47,7 +48,14 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof MyLocationViewHolderHeader){
-            // 헤더 기능 추가는 여기서
+            MyLocationViewHolderHeader myLocationViewHolderHeader = (MyLocationViewHolderHeader)holder;
+            myLocationViewHolderHeader.myLocationBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "정렬방식 선택", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         } else if(holder instanceof MyLocationViewHolder){
             MyRequestData currentItem = itemDatas.get(position-1);
             MyLocationViewHolder myLocationViewHolder = (MyLocationViewHolder)holder;
@@ -65,8 +73,8 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public int getItemViewType(int position) {
         if(position == 0){
             return TYPE_HEADER;
-        } else{
-            return TYPE_ITME;
         }
+        return TYPE_ITME;
+
     }
 }
