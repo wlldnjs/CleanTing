@@ -14,8 +14,6 @@ import sopt.client.cleanting.Main.MainActivity;
 import sopt.client.cleanting.Main.SignUp.SignUpActivity;
 import sopt.client.cleanting.R;
 
-import static android.R.color.black;
-
 public class LoginActivity extends AppCompatActivity {
 
     ImageView Signup_img;

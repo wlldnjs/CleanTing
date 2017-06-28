@@ -9,7 +9,7 @@
     tools:context="sopt.client.cleanting.Main.SplashActivity">
 
     <ImageView
-        android:src="@drawable/splash"
+        android:src="@drawable/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

@@ -19,7 +19,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     ImageView before,button_cite,button_confirm,button_address;
     ImageView submit;
-    EditText edit_name,edit_phonenumber,edit_citenumber,edit_password,edit_address;
+    EditText edit_name,edit_phonenumber,edit_citenumber,edit_password,edit_address,edit_id;
     TextView agreement,information,approval,to_login;
 
     @Override
@@ -39,6 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         edit_citenumber=(EditText)findViewById(R.id.edit_citenumber);
         edit_password=(EditText)findViewById(R.id.edit_password);
         edit_address=(EditText)findViewById(R.id.edit_address);
+        edit_id=(EditText)findViewById(R.id.edit_id);
 
         agreement=(TextView)findViewById(R.id.agreement);
         information=(TextView)findViewById(R.id.information);
@@ -52,21 +53,26 @@ public class SignUpActivity extends AppCompatActivity {
 
             //진영
 
-                String name,phonenumber,password,address;
+                String name,phonenumber,password,address,id;
                 String information;
                 name=edit_name.getText().toString();
                 phonenumber=edit_phonenumber.getText().toString();
                 password=edit_password.getText().toString();
                 address=edit_address.getText().toString();
+                id=edit_id.getText().toString();
 
                 information=name+" "+phonenumber+" "+password+" "+address;
 
                 //유효성검사
                 if(edit_name.length()==0){
-                    Toast.makeText(getApplicationContext(), "아이디를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "이름 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_name.requestFocus();
                     return;
                 }
+                if(edit_id.length()==0){
+                    Toast.makeText(getApplicationContext(),"아이디를 입력해주세요.",Toast.LENGTH_SHORT).show();
+                }
+
                 if(edit_phonenumber.length()==0){
                     Toast.makeText(getApplicationContext(),"핸드폰 번호를 입력해주세요.",Toast.LENGTH_SHORT).show();
                     edit_phonenumber.requestFocus();
@@ -82,8 +88,11 @@ public class SignUpActivity extends AppCompatActivity {
                     edit_address.requestFocus();
                     return;
                 }
+                if(!Pattern.matches("^[가-힣]*$",name)){
+                    Toast.makeText(getApplicationContext(),"이름을 한글로 입력해주세요.",Toast.LENGTH_SHORT).show();
+                }
 
-                if(!Pattern.matches("^[a-zA-Z0-9]*$$",name)){
+                if(!Pattern.matches("^[a-zA-Z0-9]*$$",id)){
                     Toast.makeText(getApplicationContext(), "아이디를 영문과 숫자로만 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_name.requestFocus();
                     return;
@@ -123,6 +132,13 @@ public class SignUpActivity extends AppCompatActivity {
             finish();
         }
     });
-
+        to_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }
