@@ -1,6 +1,11 @@
 package sopt.client.cleanting.MyRequest;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +25,7 @@ import sopt.client.cleanting.ViewHolder.MyLocationViewHolderHeader;
 public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITME = 1;
+    ViewPager viewPager;
 
     ArrayList<MyRequestData> itemDatas;
     View.OnClickListener clickListener;
@@ -35,6 +41,7 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if(viewType == TYPE_HEADER){
             View v = LayoutInflater.from(context).inflate(R.layout.recycler_item_mylocation_header,parent,false);
+
             v.setOnClickListener(clickListener);
             return new MyLocationViewHolderHeader(v);
         } else if(viewType == TYPE_ITME){
@@ -55,6 +62,9 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     Toast.makeText(context, "정렬방식 선택", Toast.LENGTH_SHORT).show();
                 }
             });
+            myLocationViewHolderHeader.viewPager.setAdapter(new pagerAdapter ((()context).getSupportFragmentManager()));
+//            viewPager.setOffscreenPageLimit(1);
+            viewPager.setCurrentItem(0);
 
         } else if(holder instanceof MyLocationViewHolder){
             MyRequestData currentItem = itemDatas.get(position-1);
@@ -75,6 +85,31 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             return TYPE_HEADER;
         }
         return TYPE_ITME;
+    }
+
+    private class pagerAdapter extends FragmentStatePagerAdapter {
+        public pagerAdapter(FragmentManager fm) {
+            super(fm);
+
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            switch (position){
+                case 0:
+                    return new MyRequestDetailFragment();
+                case 1:
+                    return new MyRequestDetailFragment();
+                case 2:
+                    return new MyRequestDetailFragment();
+            }
+            return null;
+        }
+        @Override
+        public int getCount() {
+            return 3;
+        }
 
     }
+
 }

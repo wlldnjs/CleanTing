@@ -42,7 +42,6 @@ public class MyRequestFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         service = ApplicationController.getInstance().getNetworkService();
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_myrequest,container,false);
-
         recyclerMyLocation = (RecyclerView)layout.findViewById(R.id.recycler_my_location);
         recyclerMyLocation.setHasFixedSize(true);
 
