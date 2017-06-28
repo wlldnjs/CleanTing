@@ -140,5 +140,21 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        agreement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),AgreementActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        information.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),InformationActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

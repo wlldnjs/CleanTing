@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <ImageView
             android:layout_marginLeft="20dp"
             android:src="@drawable/asset"
@@ -27,21 +26,11 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/layout3"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:layout_below="@+id/layout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:src="@drawable/submit"
-            android:id="@+id/submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
 
-
+<ScrollView
+    android:id="@+id/scroll"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_marginLeft="40dp"
         android:id="@+id/layout2"
@@ -99,7 +88,22 @@
 
         <TextView
             android:textColor="@android:color/black"
+            android:text="Confrim PassWord"
             android:layout_below="@+id/edit_password"
+            android:id="@+id/confirm_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:hint="비밀번호를 다시 확인해주세요."
+            android:layout_below="@+id/confirm_password"
+            android:id="@+id/edit_confirm_password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/edit_confirm_password"
             android:id="@+id/phonenumber"
             android:text="Phone Number"
             android:layout_width="wrap_content"
@@ -197,6 +201,9 @@
 
 
     </RelativeLayout>
+</ScrollView>
+
+
 
     <RelativeLayout
         android:id="@+id/layout4"
@@ -216,4 +223,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout3"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:layout_below="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/submit"
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
 </RelativeLayout>
