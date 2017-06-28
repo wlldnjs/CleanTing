@@ -2,7 +2,6 @@ package sopt.client.cleanting.MyRequest;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -26,15 +25,16 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITME = 1;
     ViewPager viewPager;
-
+    FragmentManager fm;
     ArrayList<MyRequestData> itemDatas;
     View.OnClickListener clickListener;
     Context context;
 
-    public MyRequestAdapter(ArrayList<MyRequestData> itemDatas, View.OnClickListener clickListener, Context context){
+    public MyRequestAdapter(ArrayList<MyRequestData> itemDatas, View.OnClickListener clickListener, Context context, FragmentManager fm){
         this.itemDatas = itemDatas;
         this.clickListener = clickListener;
         this.context = context;
+        this.fm = fm;
     }
 
     @Override
@@ -62,9 +62,9 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     Toast.makeText(context, "정렬방식 선택", Toast.LENGTH_SHORT).show();
                 }
             });
-            myLocationViewHolderHeader.viewPager.setAdapter(new pagerAdapter ((()context).getSupportFragmentManager()));
+            myLocationViewHolderHeader.viewPager.setAdapter(new pagerAdapter (fm));
 //            viewPager.setOffscreenPageLimit(1);
-            viewPager.setCurrentItem(0);
+            myLocationViewHolderHeader.viewPager.setCurrentItem(0);
 
         } else if(holder instanceof MyLocationViewHolder){
             MyRequestData currentItem = itemDatas.get(position-1);

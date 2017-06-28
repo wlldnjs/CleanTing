@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -32,7 +33,6 @@ public class MyRequestFragment extends Fragment{
 
     public MyRequestFragment() {
     }
-
     public void setContext(Context context){
         this.context = context;
     }
@@ -55,10 +55,10 @@ public class MyRequestFragment extends Fragment{
         itemData.add(new MyRequestData("2017년 6월 7일 (월)","15:00~19:00"));
         itemData.add(new MyRequestData("2017년 6월 8일 (월)","16:00~19:00"));
         itemData.add(new MyRequestData("2017년 6월 9일 (월)","17:00~19:00"));
-
-        myRequestAdapter = new MyRequestAdapter(itemData,clickListener,context);
+        FragmentManager fm = getFragmentManager();
+        myRequestAdapter = new MyRequestAdapter(itemData,clickListener,context, fm);
         recyclerMyLocation.setAdapter(myRequestAdapter);
-
+        recyclerMyLocation.scrollToPosition(0);
         return layout;
     }
 
