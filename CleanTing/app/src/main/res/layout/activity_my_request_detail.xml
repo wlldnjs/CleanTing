@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
     android:orientation="vertical"
     tools:context="sopt.client.cleanting.MyRequest.MyRequestDetailActivity">
 
@@ -26,7 +28,9 @@
                 android:layout_width="125dp"
                 android:layout_height="140dp"
                 android:layout_centerVertical="true"
-                android:layout_margin="15dp"/>
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"/>
             <TextView
                 android:id="@+id/my_request_detail_name"
                 android:layout_width="wrap_content"
@@ -35,7 +39,7 @@
                 android:textColor="#000000"
                 android:textSize="17sp"
                 android:layout_toRightOf="@+id/my_request_detail_img"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="15dp"
                 android:layout_alignTop="@+id/my_request_detail_img"/>
             <ImageView
                 android:id="@+id/my_request_detail_rating"
@@ -44,18 +48,229 @@
                 android:layout_below="@id/my_request_detail_name"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/my_request_detail_img"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="15dp"/>
 
             <TextView
                 android:id="@+id/my_request_detail_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20명"
-
                 android:layout_alignBottom="@id/my_request_detail_rating"
                 android:layout_toRightOf="@+id/my_request_detail_rating"
                 android:layout_marginLeft="5dp"
                 />
+
+            <TextView
+                android:id="@+id/my_request_detail_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="활동 : 39건"
+                android:layout_below="@+id/my_request_detail_rating"
+                android:layout_toRightOf="@+id/my_request_detail_img"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"/>
+            <TextView
+                android:id="@+id/my_request_detail_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="리뷰 : 21회"
+                android:layout_below="@+id/my_request_detail_activity"
+                android:layout_toRightOf="@+id/my_request_detail_img"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="2dp"/>
+            <TextView
+                android:id="@+id/my_request_detail_career"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="경력 : 6 개월"
+                android:layout_below="@+id/my_request_detail_review"
+                android:layout_toRightOf="@+id/my_request_detail_img"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="2dp"
+                />
+            <TextView
+                android:id="@+id/my_request_detail_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="나이 : 50대"
+                android:layout_below="@+id/my_request_detail_career"
+                android:layout_toRightOf="@+id/my_request_detail_img"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="2dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ok2"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/my_request_detail_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ok"
+            />
+        <TextView
+            android:id="@+id/my_request_detail_member_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1명/3명 "
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="신청정보"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:textSize="17sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="신청날짜"/>
+
+        <TextView
+            android:id="@+id/my_request_detail_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="right"
+            android:text="2017-06-05"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="청소시간"/>
+
+        <TextView
+            android:id="@+id/my_request_detail_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="right"
+            android:text="13:00 - 19:00"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="주의사항"/>
+
+        <TextView
+            android:id="@+id/my_request_detail_warning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:gravity="right"
+            android:text="책상 위 서류 건들지 말아 주세요"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="추가 요청"/>
+
+        <TextView
+            android:id="@+id/my_request_detail_add_request"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="right"
+            android:text="세탁 1회 추가"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        />
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="총금액"/>
+
+        <TextView
+            android:id="@+id/my_request_detail_total_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="right"
+            android:text="1인 15,000 원"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+            <ImageView
+                android:id="@+id/my_request_detail_edit_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ok"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+            <ImageView
+                android:id="@+id/my_request_detail_cancel_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ok2"
+                android:layout_centerInParent="true"/>
         </RelativeLayout>
     </LinearLayout>
 
