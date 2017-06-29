@@ -1,9 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="sopt.client.cleanting.Mypage.RatingActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="평가하기"
+            android:textSize="27sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.2dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="23sp"
+            android:alpha="0.5"
+            android:background="#000000" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="20sp"
+            android:text="담당 클리너"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
+        <LinearLayout
+            android:paddingLeft="15dp"
+            android:gravity=""
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center"
+                android:textSize="18dp"
+                android:id="@+id/Rate_cleanername"
+                android:text="안성현 클리너"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+            <TextView
+                android:gravity="center"
+                android:textSize="13dp"
+                android:id="@+id/Rate_cleannumber"
+                android:text="활동 : "
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:layout_width="wrap_content"/>
+            <TextView
+                android:gravity="center"
+                android:textSize="13dp"
+                android:id="@+id/Rate_reviewnumber"
+                android:text="리뷰 : "
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+            <TextView
+                android:gravity="center"
+                android:id="@+id/Rate_career"
+                android:text="경력 : "
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+            <TextView
+                android:gravity="center"
+                android:id="@+id/Rate_age"
+                android:text="나이 : "
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.2dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="23sp"
+            android:alpha="0.5"
+            android:background="#000000" />
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="20dp"
+                android:text="별점주기"
+                android:textSize="21sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RatingBar
+                android:id="@+id/rating_bar"
+                android:theme="@style/RatingBar"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:rating="0.0"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:soundEffectsEnabled="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingLeft="8dp"
+            android:text="신청정보"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_marginTop="15dp"
+            android:background="@drawable/comment_background"
+            android:id="@+id/inputCommentEdit"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:maxLength="140"
+            android:gravity="start"
+            android:hint="여기를 눌러 글을 작성할 수 있습니다\n(140자 제한)"
+            android:padding="20dp"
+            android:textSize="14dp" />
+    </LinearLayout>
+    
+    <ImageView
+        android:layout_marginTop="12dp"
+        android:src="@drawable/login_button"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

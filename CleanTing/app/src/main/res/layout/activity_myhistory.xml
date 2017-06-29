@@ -27,16 +27,14 @@
             android:layout_marginTop="23sp"
             android:alpha="0.5"
             android:background="#000000" />
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_marginLeft="30sp"
-            android:layout_marginRight="30sp"
-            android:layout_marginTop="20sp"
-            android:id="@+id/HistoryRecyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </android.support.v7.widget.RecyclerView>
-
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        android:id="@+id/HistoryRecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
