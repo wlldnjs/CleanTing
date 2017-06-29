@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,8 +20,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     ImageView before,button_cite,button_confirm,button_address;
     ImageView submit;
-    EditText edit_name,edit_phonenumber,edit_citenumber,edit_password,edit_address,edit_id;
-    TextView agreement,information,approval,to_login;
+    EditText edit_name,edit_phonenumber,edit_citenumber,edit_password,edit_address,edit_id,edit_confirm_password;
+    TextView agreement,information,approval;
+    ImageView to_login;
+    CheckBox checkbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +43,14 @@ public class SignUpActivity extends AppCompatActivity {
         edit_password=(EditText)findViewById(R.id.edit_password);
         edit_address=(EditText)findViewById(R.id.edit_address);
         edit_id=(EditText)findViewById(R.id.edit_id);
+        edit_confirm_password=(EditText)findViewById(R.id.edit_confirm_password);
 
         agreement=(TextView)findViewById(R.id.agreement);
         information=(TextView)findViewById(R.id.information);
         approval=(TextView)findViewById(R.id.approval);
-        to_login=(TextView)findViewById(R.id.to_login);
+        to_login=(ImageView)findViewById(R.id.to_login);
+
+        checkbox=(CheckBox)findViewById(R.id.checkbox);
 
         submit.setOnClickListener(new View.OnClickListener() {
 
@@ -53,13 +59,14 @@ public class SignUpActivity extends AppCompatActivity {
 
             //진영
 
-                String name,phonenumber,password,address,id;
+                String name,phonenumber,password,confirm_password,address,id;
                 String information;
                 name=edit_name.getText().toString();
                 phonenumber=edit_phonenumber.getText().toString();
                 password=edit_password.getText().toString();
                 address=edit_address.getText().toString();
                 id=edit_id.getText().toString();
+                confirm_password=edit_confirm_password.getText().toString();
 
                 information=name+" "+phonenumber+" "+password+" "+address;
 
@@ -71,6 +78,8 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 if(edit_id.length()==0){
                     Toast.makeText(getApplicationContext(),"아이디를 입력해주세요.",Toast.LENGTH_SHORT).show();
+                    edit_id.requestFocus();
+                    return;
                 }
 
                 if(edit_phonenumber.length()==0){
@@ -82,6 +91,10 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"비밀번호를 4~20자리로 입력해주세요.",Toast.LENGTH_SHORT).show();
                     edit_password.requestFocus();
                     return;
+                }
+                if(edit_citenumber.length()==0){
+                    Toast.makeText(getApplicationContext(), "인증번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+
                 }
                 if(edit_address.length()==0){
                     Toast.makeText(getApplicationContext(),"주소를 입력해주세요.",Toast.LENGTH_SHORT).show();
@@ -102,12 +115,29 @@ public class SignUpActivity extends AppCompatActivity {
                     edit_password.requestFocus();
                     return;
                 }
+                if(  checkbox.isChecked()==false){
+                    Toast.makeText(getApplicationContext(),"위 약관에 동의해주세요",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(password!=confirm_password){
+                    Toast.makeText(getApplicationContext(),"비밀번호를 다시 확인해주세요",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
 
                 else{
                     //여기 이제 인텐트값 넘기는걸로 바꿔야함
                     Toast.makeText(getApplicationContext(),
                             information, Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(getBaseContext(),LoginActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
+
+
+
 
 
             }
@@ -123,15 +153,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
-    submit.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
 
-            Intent intent=new Intent(getBaseContext(),LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    });
         to_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,5 +178,6 @@ public class SignUpActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

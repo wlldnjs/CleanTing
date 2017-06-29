@@ -1,240 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_sign_up"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context="sopt.client.cleanting.Main.SignUp.SignUpActivity">
-    <RelativeLayout
-        android:id="@+id/layout1"
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+        android:orientation="horizontal"
+        android:id="@+id/layout_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <ImageView
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/asset"
+            android:src="@drawable/back"
             android:id="@+id/before"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-        <ImageView
-            android:src="@drawable/signup"
-            android:layout_centerHorizontal="true"
-            android:text="Sign Up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </RelativeLayout>
-
-
-<ScrollView
-    android:id="@+id/scroll"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_marginLeft="40dp"
-        android:id="@+id/layout2"
-        android:layout_marginTop="41dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <TextView
-            android:textColor="@android:color/black"
-            android:id="@+id/name"
-            android:text="Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:hint="이름을 입력하세요"
-            android:id="@+id/edit_name"
-            android:layout_below="@+id/name"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_below="@+id/edit_name"
-            android:textColor="@android:color/black"
-            android:id="@+id/id"
-            android:text="ID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/edit_id"
-            android:hint="아이디를 입력하세요."
-            android:layout_below="@+id/id"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content" />
-
-
-        <TextView
-            android:textColor="@android:color/black"
-            android:layout_below="@+id/edit_id"
-            android:id="@+id/password"
-            android:text="PassWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:hint="비밀번호 4~20자리로 입력하세요"
-            android:id="@+id/edit_password"
-            android:inputType="textPassword"
-            android:layout_below="@+id/password"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:textColor="@android:color/black"
-            android:text="Confrim PassWord"
-            android:layout_below="@+id/edit_password"
-            android:id="@+id/confirm_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:hint="비밀번호를 다시 확인해주세요."
-            android:layout_below="@+id/confirm_password"
-            android:id="@+id/edit_confirm_password"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:textColor="@android:color/black"
-            android:layout_below="@+id/edit_confirm_password"
-            android:id="@+id/phonenumber"
-            android:text="Phone Number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:hint="'-'없이 핸드폰 번호 입력"
-            android:id="@+id/edit_phonenumber"
-            android:layout_below="@+id/phonenumber"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:src="@drawable/cite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/edit_citenumber"
-            android:layout_alignRight="@+id/edit_phonenumber"
-            android:layout_alignEnd="@+id/edit_phonenumber"
-            android:id="@+id/button_cite" />
-
-        <EditText
-            android:hint="인증번호"
-            android:id="@+id/edit_citenumber"
-            android:layout_below="@+id/edit_phonenumber"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content" />
-
-
-        <ImageView
-            android:src="@drawable/confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_confirm"
-            android:layout_alignBottom="@+id/edit_citenumber"
-            android:layout_alignRight="@+id/edit_citenumber"
-            android:layout_alignEnd="@+id/edit_citenumber" />
-
-        <TextView
-            android:textColor="@android:color/black"
-            android:layout_below="@+id/edit_citenumber"
-            android:id="@+id/address"
-            android:text="Address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:src="@drawable/address"
-            android:id="@+id/button_address"
-            android:layout_below="@+id/address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:hint="세부주소"
-            android:id="@+id/edit_address"
-            android:layout_below="@+id/button_address"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content" />
-
-
-        <LinearLayout
-            android:id="@+id/linear"
-            android:layout_below="@id/edit_address"
-            android:orientation="horizontal"
+        <RelativeLayout
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:textColor="@android:color/black"
-                android:id="@+id/agreement"
-                android:text="이용약관 |"
+                android:text="Sign up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_weight="7"
+        android:id="@+id/scroll"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="25dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <TextView
-                android:textColor="@android:color/black"
-                android:id="@+id/information"
-                android:text=" 개인정보보호정책|"
+                android:id="@+id/name"
+                android:textSize="15dp"
+                android:text="Username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edit_name"
+                android:textSize="11dp"
+                android:hint="이름을 입력하세요"
+                android:layout_width="310dp"
+                android:layout_height="35dp" />
             <TextView
-                android:textColor="@android:color/black"
-                android:id="@+id/approval"
-                android:text=" 개인정보 제3차 제공동의"
+                android:id="@+id/id"
+                android:layout_marginTop="25dp"
+                android:text="ID"
+                android:textSize="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edit_id"
+                android:hint="아이디를 입력하세요"
+                android:textSize="11dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="310dp"
+                android:layout_height="35dp" />
+            <TextView
+                android:text="PassWord"
+                android:textSize="15dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:hint="비밀번호 4~20자리로 입력하세요"
+                android:textSize="11dp"
+                android:inputType="textPassword"
+                android:layout_marginTop="15dp"
+                android:id="@+id/edit_password"
+                android:layout_width="310dp"
+                android:layout_height="35dp" />
+            <TextView
+                android:id="@+id/confirm_password"
+                android:textSize="15dp"
+                android:text="Confirm Password"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:textSize="11dp"
+                android:layout_marginTop="15dp"
+                android:inputType="textPassword"
+                android:hint="비밀번호를 다시 확인해주세요"
+                android:id="@+id/edit_confirm_password"
+                android:layout_width="310dp"
+                android:layout_height="35dp" />
+            <TextView
+                android:id="@+id/phonenumber"
+                android:text="Phone Number"
+                android:textSize="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/layout_phonenumber"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edit_phonenumber"
+                    android:textSize="11dp"
+                    android:hint="'-'없이 핸드폰번호 입력"
+                    android:layout_width="220dp"
+                    android:layout_height="35dp" />
+                <ImageView
+                    android:id="@+id/button_cite"
+                    android:src="@drawable/confirm_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/layout_citenumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:textSize="11dp"
+                    android:hint="인증번호"
+                    android:id="@+id/edit_citenumber"
+                    android:layout_width="220dp"
+                    android:layout_height="35dp" />
+                <ImageView
+                    android:id="@+id/button_confirm"
+                    android:src="@drawable/check_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/address"
+                android:text="Address"
+                android:textSize="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/button_address"
+                android:src="@drawable/search_adress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edit_address"
+                android:textSize="11dp"
+                android:hint="세부주소"
+                android:layout_width="310dp"
+                android:layout_height="35dp" />
+            <LinearLayout
+
+                android:id="@+id/layout_agreement"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="11dp"
+                    android:id="@+id/agreement"
+                    android:text="이용약관 |"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="11dp"
+                    android:id="@+id/information"
+                    android:text=" 개인정보보호정책 |"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="11dp"
+                    android:id="@+id/approval"
+                    android:text=" 개인정보 제3자 제공동의"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <CheckBox
+                android:layout_marginTop="10dp"
+                android:text="위 약관 및 정책을 모두 확인 후 동의합니다."
+                android:textSize="15dp"
+                android:id="@+id/checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+    </ScrollView>
 
-        <CheckBox
-            android:textColor="@android:color/black"
-            android:layout_below="@+id/linear"
-            android:id="@+id/checkbox"
-            android:text="위 약관 및 정책을 모두 확인후 동의합니다."
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_weight="1"
+        android:layout_marginTop="38dp"
+        android:id="@+id/submit"
+        android:src="@drawable/check_big1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-
-    </RelativeLayout>
-</ScrollView>
-
-
-
-    <RelativeLayout
-        android:id="@+id/layout4"
-        android:layout_below="@+id/layout3"
+    <LinearLayout
+        android:layout_weight="1"
+        android:id="@+id/layout_goto_login"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:textSize="11dp"
             android:text="이미 클린팅 회원인가요?"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/to_login"
-            android:layout_marginRight="30dp"
-            android:layout_alignParentRight="true"
-            android:text="로그인하러 가기"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/layout3"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:layout_below="@+id/scroll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/submit"
-            android:id="@+id/submit"
+            android:layout_weight="1"
+            android:id="@+id/to_login"
+            android:src="@drawable/go_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-    </RelativeLayout>
+    </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

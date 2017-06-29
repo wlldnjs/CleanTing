@@ -13,18 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Main.MainActivity">
+
+        </activity>
+        <activity android:name=".Main.Login.LoginActivity" />
+        <activity android:name=".Main.SignUp.SignUpActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main.Login.LoginActivity" />
-        <activity android:name=".Main.SignUp.SignUpActivity" />
         <activity android:name=".Main.SplashActivity" />
         <activity android:name=".MyRequest.MyRequestDetailActivity" />
         <activity android:name=".MyRequest.MyRequestRecruit" />
-        <activity android:name=".Main.SignUp.AgreetmentActivity" />
         <activity android:name=".Main.SignUp.AgreementActivity" />
         <activity android:name=".Main.SignUp.InformationActivity"></activity>
     </application>
