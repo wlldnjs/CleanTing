@@ -2,9 +2,184 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_marginTop="30sp"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginBottom="30sp"
+            android:textColor="#ff9f3f"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="마이 페이지"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <View
+            android:alpha="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="1.2dp"
+            android:layout_centerInParent="true"
+            android:background="#000000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="4번"
-        android:textSize="30sp"/>
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        android:layout_marginTop="5sp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4sp"
+            android:layout_marginTop="12sp"
+            android:text="문의 하기"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4sp"
+                android:layout_marginTop="12sp"
+                android:layout_weight="0.7"
+                android:text="버전 정보"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                android:layout_weight="0.3"
+                android:gravity="right"
+                android:paddingRight="15sp"
+                android:text="v 10"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/leave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4sp"
+            android:layout_marginTop="12sp"
+            android:text="탈퇴 하기"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4sp"
+            android:layout_marginTop="12sp"
+            android:text="계좌 관리"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4sp"
+                android:layout_marginTop="12sp"
+                android:text="알림 설정"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <Switch
+                android:id="@+id/alarm_switch"
+                android:switchMinWidth="28dp"
+                android:layout_centerInParent="true"
+                android:track="@drawable/switch_track_selector"
+                android:thumb="@drawable/switch_thumb_selector"
+                android:layout_marginTop="12sp"
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:text=""
+                android:textOn=""
+                android:textOff=""
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4sp"
+            android:layout_marginTop="12sp"
+            android:text="오픈소스 라이선스"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/myhistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4sp"
+            android:layout_marginTop="12sp"
+            android:text="나의 이용내역"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:alpha="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="1.2dp"
+            android:layout_centerInParent="true"
+            android:background="#000000"/>
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_marginTop="12sp"
+            android:layout_marginLeft="4sp"
+            android:text="클리너 등록"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textStyle="bold"
+            android:layout_marginLeft="4sp"
+            android:text="클리너 관리"
+            android:layout_marginTop="12sp"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/Logout_btn"
+            android:background="#Ff9324"
+            android:text="로그아웃"
+            android:layout_width="190sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
 </LinearLayout>

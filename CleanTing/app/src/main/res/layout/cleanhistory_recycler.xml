@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sopt.client.cleanting.Mypage.LeaveActivity">
+
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/H_cleanername"
+            android:textSize="15sp"
+            android:text="클리너 이름"
+            android:layout_weight="0.6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginRight="15dp"
+            android:src="@drawable/back"
+            android:layout_weight="0.4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/H_cleandate"
+            android:text="123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/H_cleantime"
+            android:layout_marginTop="5dp"
+            android:text="123"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.2dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="12dp"
+        android:alpha="0.5"
+        android:background="#000000" />
+
+</LinearLayout>

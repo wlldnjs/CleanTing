@@ -27,7 +27,10 @@
         <activity android:name=".MyRequest.MyRequestDetailActivity" />
         <activity android:name=".MyRequest.MyRequestRecruit" />
         <activity android:name=".Main.SignUp.AgreementActivity" />
-        <activity android:name=".Main.SignUp.InformationActivity"></activity>
+        <activity android:name=".Main.SignUp.InformationActivity" />
+        <activity android:name=".Mypage.LeaveActivity" />
+        <activity android:name=".Mypage.MyhistoryActivity" />
+        <activity android:name=".Mypage.RatingActivity"></activity>
     </application>
 
 </manifest>
