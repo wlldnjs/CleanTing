@@ -31,6 +31,7 @@
         <activity android:name=".Mypage.LeaveActivity" />
         <activity android:name=".Mypage.MyhistoryActivity" />
         <activity android:name=".Mypage.RatingActivity"></activity>
+        <activity android:name=".MakeTing.MakeTingActivity"/>
     </application>
 
 </manifest>
