@@ -1,6 +1,7 @@
 package sopt.client.cleanting.Mypage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import sopt.client.cleanting.Application.ApplicationController;
@@ -25,6 +27,8 @@ public class MypageFragment extends Fragment{
     Context context;
     Button Logout_btn;
     Switch alarm_switch;
+    TextView leave_tv;
+    TextView myhistory;
 
     public MypageFragment() {
     }
@@ -41,6 +45,35 @@ public class MypageFragment extends Fragment{
 
         Logout_btn = (Button)layout.findViewById(R.id.Logout_btn);
         alarm_switch = (Switch)layout.findViewById(R.id.alarm_switch);
+        leave_tv = (TextView)layout.findViewById(R.id.leave);
+        myhistory = (TextView) layout.findViewById(R.id.myhistory);
+
+        myhistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),MyhistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        leave_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),LeaveActivity.class);
+                startActivity(intent);
+            }
+        });
+//        leave_tv.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if(event.getAction()==MotionEvent.ACTION_DOWN){
+//                    if(leave_tv.getClass()==v.getClass()){
+//                        leave_tv.setTextColor(Color.WHITE);
+//                    }
+//                }
+//                return false;
+//            }
+//        });
 
         Logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
