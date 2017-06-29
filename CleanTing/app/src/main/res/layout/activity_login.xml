@@ -75,35 +75,74 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50sp"
-        android:layout_marginRight="50sp"
-        android:layout_marginTop="62sp"
+        android:layout_marginLeft="48sp"
+        android:layout_marginRight="48sp"
+        android:layout_marginTop="39dp"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_id"
-            android:textSize="12sp"
-            android:paddingLeft="15sp"
-            android:hint="Username"
-            android:drawableLeft="@drawable/usericon"
-            android:drawablePadding="10sp"
-            android:singleLine="true"
-            android:maxLength="50"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/edit_password"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/passwordicon"
-            android:drawablePadding="10sp"
-            android:hint="Password"
-            android:singleLine="true"
-            android:maxLength="50"
-            android:inputType="textPassword"
-            android:padding="15sp"
-            android:textSize="12sp" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/usericon" />
+
+            <EditText
+                android:layout_gravity="center"
+                android:background="@null"
+                android:id="@+id/edit_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:maxLength="50"
+                android:paddingLeft="15sp"
+                android:singleLine="true"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.2dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5sp"
+            android:alpha="0.5"
+            android:background="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/passwordicon" />
+
+            <EditText
+                android:id="@+id/edit_password"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:maxLength="50"
+                android:paddingLeft="15sp"
+                android:singleLine="true"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.2dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5sp"
+            android:alpha="0.5"
+            android:background="#000000" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -113,22 +152,21 @@
         android:layout_width="match_parent"
         android:gravity="right"
         android:layout_height="wrap_content">
-        <TextView
+        <ImageView
+            android:src="@drawable/find_password"
             android:id="@+id/Findpassword_tv"
-            android:textSize="12sp"
-            android:text="Find Password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="80dp"
+            android:layout_height="30dp" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="40sp"
+        android:layout_marginTop="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/login_yellow"
+            android:src="@drawable/login_button"
             android:id="@+id/Login_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -138,12 +176,33 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:text="Keep me log in"
+        <ImageView
+            android:src="@drawable/keep_me"
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+        <CheckBox
+            android:background="@drawable/checkbox"
+            android:id="@+id/checkbox"
+            android:textColor="#ffffff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <CheckBox
-            android:id="@+id/checkbox"
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <ImageView
+            android:layout_marginTop="52dp"
+            android:layout_gravity="center"
+            android:src="@drawable/kakao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:src="@drawable/facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

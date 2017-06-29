@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import sopt.client.cleanting.Main.MainActivity;
@@ -17,7 +16,7 @@ import sopt.client.cleanting.R;
 public class LoginActivity extends AppCompatActivity {
 
     ImageView Signup_img;
-    TextView Findpassword_tv;
+    ImageView Findpassword_img;
     ImageView Login_btn;
     EditText edit_id;
     EditText edit_password;
@@ -32,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         Login_btn = (ImageView)findViewById(R.id.Login_btn);
         edit_id = (EditText)findViewById(R.id.edit_id);
         edit_password = (EditText)findViewById(R.id.edit_password);
-        Findpassword_tv = (TextView)findViewById(R.id.Findpassword_tv);
+        Findpassword_img = (ImageView) findViewById(R.id.Findpassword_tv);
         checkBox = (CheckBox)findViewById(R.id.checkbox) ;
 
 
