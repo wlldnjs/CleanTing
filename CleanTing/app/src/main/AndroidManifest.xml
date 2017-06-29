@@ -27,7 +27,8 @@
         <activity android:name=".Main.SignUp.AgreementActivity" />
         <activity android:name=".Main.SignUp.InformationActivity" />
         <activity android:name=".Mypage.LeaveActivity" />
-        <activity android:name=".Mypage.MyhistoryActivity"></activity>
+        <activity android:name=".Mypage.MyhistoryActivity" />
+        <activity android:name=".Mypage.RatingActivity"></activity>
     </application>
 
 </manifest>
