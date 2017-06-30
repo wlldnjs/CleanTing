@@ -5,11 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.messaging.FirebaseMessaging;
-
 import sopt.client.cleanting.Alarm.AlarmFragment;
-import sopt.client.cleanting.MakeTing.MakeTingFragment;
+import sopt.client.cleanting.Community.CommunityFragment;
 import sopt.client.cleanting.MyRequest.MyRequestFragment;
 import sopt.client.cleanting.Mypage.MypageFragment;
 import sopt.client.cleanting.R;
@@ -17,7 +14,7 @@ import sopt.client.cleanting.R;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     ImageView myRequestBtn, makeTingBtn, alarmBtn, mypageBtn;
     MyRequestFragment myRequestFragment;
-    MakeTingFragment makeTingFragment;
+    CommunityFragment communityFragment;
     AlarmFragment alarmFragment;
     MypageFragment mypageFragment;
     int previousBtn = 1;
@@ -33,12 +30,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mypageBtn = (ImageView)findViewById(R.id.mypage_btn);
 
         myRequestFragment = new MyRequestFragment();
-        makeTingFragment = new MakeTingFragment();
+        communityFragment = new CommunityFragment();
         alarmFragment = new AlarmFragment();
         mypageFragment = new MypageFragment();
 
         myRequestFragment.setContext(getApplicationContext());
-        makeTingFragment.setContext(getApplicationContext());
+        communityFragment.setContext(getApplicationContext());
         alarmFragment.setContext(getApplicationContext());
         mypageFragment.setContext(getApplicationContext());
 
@@ -49,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, myRequestFragment).commit();
 
-        FirebaseMessaging.getInstance().subscribeToTopic("cleanting");
-        FirebaseInstanceId.getInstance().getToken();
+//        FirebaseMessaging.getInstance().subscribeToTopic("cleanting");
+//        FirebaseInstanceId.getInstance().getToken();
     }
 
     @Override
@@ -64,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.make_ting_btn:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, makeTingFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, communityFragment).commit();
                 previousBtnImgSet();
                 previousBtn = 2;
                 makeTingBtn.setImageResource(R.drawable.group3);

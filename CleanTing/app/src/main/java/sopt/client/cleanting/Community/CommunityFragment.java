@@ -1,4 +1,4 @@
-package sopt.client.cleanting.MakeTing;
+package sopt.client.cleanting.Community;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,14 +14,14 @@ import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 /**
- * Created by 김지원 on 2017-06-25.
+ * Created by 김지원 on 2017-06-30.
  */
 
-public class MakeTingFragment extends Fragment {
+public class CommunityFragment extends Fragment {
     NetworkService service;
     Context context;
 
-    public MakeTingFragment() {
+    public CommunityFragment() {
     }
 
     public void setContext(Context context){
