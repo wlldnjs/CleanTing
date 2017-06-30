@@ -16,9 +16,11 @@ import sopt.client.cleanting.R;
 public class BulletinListRecylerAdapter extends RecyclerView.Adapter<BulletinViewHolder>  {
 
     ArrayList<Bulletin> bulletinArrayList;
+    private final View.OnClickListener clickListener;
 
-    public BulletinListRecylerAdapter(ArrayList<Bulletin> itemdatas)
+    public BulletinListRecylerAdapter(ArrayList<Bulletin> itemdatas,View.OnClickListener clickListener)
     {
+        this.clickListener = clickListener;
         this.bulletinArrayList = itemdatas;
     }
 
@@ -27,6 +29,7 @@ public class BulletinListRecylerAdapter extends RecyclerView.Adapter<BulletinVie
     public BulletinViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bulletin_list,parent, false);
         BulletinViewHolder viewHolder = new BulletinViewHolder(view);             //커스텀 뷰홀더 객체 생성
+        view.setOnClickListener(clickListener);
         return viewHolder;
     }
 

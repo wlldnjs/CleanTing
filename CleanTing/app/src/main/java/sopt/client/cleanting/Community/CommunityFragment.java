@@ -1,6 +1,7 @@
 package sopt.client.cleanting.Community;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -31,10 +33,15 @@ public class CommunityFragment extends Fragment {
     LinearLayout frameLinear;
     LinearLayout btn_remove;
 
+    TextView search_tv;
+    TextView filter_tv;
+    ImageView Floatimg;
+
     private RecyclerView BrecyclerView;
     private ArrayList<Bulletin> bulletinArrayList;
     private BulletinListRecylerAdapter BrecyclerAdapter;
     private LinearLayoutManager layoutManager;
+
 
     public CommunityFragment() {
     }
@@ -77,7 +84,7 @@ public class CommunityFragment extends Fragment {
         bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
         bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
 
-        BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList);
+        BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent);
         BrecyclerView.setAdapter(BrecyclerAdapter);
 
         btn_remove = (LinearLayout)layout.findViewById(R.id.btn_remove);
@@ -89,6 +96,40 @@ public class CommunityFragment extends Fragment {
             }
         });
 
+        search_tv = (TextView)layout.findViewById(R.id.B_search);
+        search_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),CommunitySearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        filter_tv = (TextView)layout.findViewById(R.id.B_filter);
+        filter_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),CommunityFilterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Floatimg = (ImageView)layout.findViewById(R.id.floatimg);
+        Floatimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),CommunityWriteActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return layout;
     }
+    public View.OnClickListener clickEvent = new View.OnClickListener() {
+        public void onClick(View v) {
+            final int itemPosition = BrecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
+            Intent intent = new Intent(getContext(),CommunityBulletinDetailActivity.class);
+            startActivity(intent);
+        }
+    };
 }

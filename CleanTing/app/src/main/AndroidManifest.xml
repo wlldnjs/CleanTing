@@ -12,12 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Main.MainActivity" >
+        <activity android:name=".Main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Main.Login.LoginActivity" />
-        <activity android:name=".Main.SignUp.SignUpActivity">
-        </activity>
+        <activity android:name=".Main.SignUp.SignUpActivity" />
         <activity android:name=".Main.SplashActivity" />
         <activity android:name=".MyRequest.MyRequestDetailActivity" />
         <activity android:name=".MyRequest.MyRequestRecruit" />
@@ -26,28 +29,25 @@
         <activity android:name=".Mypage.LeaveActivity" />
         <activity android:name=".Mypage.MyhistoryActivity" />
         <activity android:name=".Mypage.RatingActivity" />
-        <activity android:name=".MakeTing.MakeTingActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MakeTing.MakeTingActivity" />
         <activity android:name=".Main.Login.FindAccountActivity" />
-        <activity android:name=".MyRequest.ChangeMyRequestDetail"></activity>
-        <service
-            android:name=".Firebase.FcmListenerService">
+        <activity android:name=".MyRequest.ChangeMyRequestDetail" />
+
+        <service android:name=".Firebase.FcmListenerService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-        <service
-            android:name=".Firebase.InstanceIDListenerService">
+        <service android:name=".Firebase.InstanceIDListenerService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".Community.CommunitySearchActivity" />
+        <activity android:name=".Community.CommunityFilterActivity" />
+        <activity android:name=".Community.CommunityWriteActivity" />
+        <activity android:name=".Community.CommunityBulletinDetailActivity"></activity>
     </application>
 
 </manifest>

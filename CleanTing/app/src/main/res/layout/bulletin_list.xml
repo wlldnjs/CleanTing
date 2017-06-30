@@ -17,9 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
            <TextView
+               android:textStyle="bold"
                android:text="휴지 공동 구매 하실분"
                android:id="@+id/Bulletin_title"
-               android:textSize="20sp"
+               android:textSize="25sp"
                android:layout_weight="0.7"
                android:layout_width="0dp"
                android:layout_height="wrap_content" />
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/reply_img"
-                android:src="@drawable/logo"
+                android:src="@drawable/comment_icon"
                 android:layout_width="30dp"
                 android:layout_height="30dp" />
             <TextView
