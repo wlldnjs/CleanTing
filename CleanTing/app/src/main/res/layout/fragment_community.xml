@@ -1,10 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2번"
-        android:textSize="30sp"/>
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/btn_remove"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_marginTop="18dp"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_centerVertical="true"
+                            android:text="신림동 게시판"
+                            android:textSize="25sp"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <ImageView
+                            android:layout_marginRight="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="center"
+                            android:id="@+id/more_btn"
+                            android:src="@drawable/logo"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.2dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="18sp"
+                        android:alpha="0.5"
+                        android:background="#000000" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_marginLeft="40sp"
+                        android:layout_marginRight="40sp"
+                        android:id="@+id/BulletinRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </android.support.v7.widget.RecyclerView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="invisible"
+                    android:id="@+id/frameLinear"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:text="검색"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp" />
+                    <Button
+                        android:text="내 글 모아보기"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/logo"
+            android:id="@+id/floatimg"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+    </RelativeLayout>
+
+</FrameLayout>

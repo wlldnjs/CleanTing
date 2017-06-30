@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+           <TextView
+               android:text="휴지 공동 구매 하실분"
+               android:id="@+id/Bulletin_title"
+               android:textSize="20sp"
+               android:layout_weight="0.7"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content" />
+            <TextView
+                android:text="2015 5 01 12:00"
+                android:id="@+id/Bulletin_date"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:id="@+id/Bulletin_content"
+            android:text="Bc마트에서 휴지 30개~~~~~"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/reply_img"
+                android:src="@drawable/logo"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:id="@+id/Bulletin_reply"
+                android:layout_centerVertical="true"
+                android:text="45"
+                android:gravity="center"
+                android:layout_toRightOf="@+id/reply_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_marginTop="15sp"
+        android:alpha="0.5"
+        android:layout_width="match_parent"
+        android:layout_height="1.2dp"
+        android:layout_centerInParent="true"
+        android:background="#000000"/>
+
+</LinearLayout>
