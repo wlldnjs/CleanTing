@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sopt.client.cleanting.Main.Login.FindAccountActivity">
+    <TextView
+        android:text="아이디찾기"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edit_phonenumber"
+            android:hint="핸드폰 번호"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/button_request_citenumber"
+            android:src="@drawable/request_citenumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edit_citenumber"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/button_find"
+            android:src="@drawable/button_find"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:textSize="15dp"
+        android:text="새 비밀번호"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/new_edit_phonenumber"
+            android:hint="핸드폰 번호"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/new_button_citenumber"
+            android:src="@drawable/request_citenumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/new_edit_citenumber"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/new_button_find"
+            android:src="@drawable/button_find"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <EditText
+        android:id="@+id/new_password"
+        android:hint="새 비밀번호를 입력하세요"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/edit_confirm_password"
+        android:text="새 비밀번호 확인"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/button_new_password"
+        android:src="@drawable/new_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

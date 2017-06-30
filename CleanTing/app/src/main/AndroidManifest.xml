@@ -12,11 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Main.MainActivity">
-
-        </activity>
+        <activity android:name=".Main.MainActivity" />
         <activity android:name=".Main.Login.LoginActivity" />
-        <activity android:name=".Main.SignUp.SignUpActivity" >
+        <activity android:name=".Main.SignUp.SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,8 +28,10 @@
         <activity android:name=".Main.SignUp.InformationActivity" />
         <activity android:name=".Mypage.LeaveActivity" />
         <activity android:name=".Mypage.MyhistoryActivity" />
-        <activity android:name=".Mypage.RatingActivity"></activity>
-        <activity android:name=".MakeTing.MakeTingActivity"/>
+        <activity android:name=".Mypage.RatingActivity" />
+        <activity android:name=".MakeTing.MakeTingActivity" />
+        <activity android:name=".Main.Login.FindAccountActivity" />
+        <activity android:name=".MyRequest.ChangeMyRequestDetail"></activity>
     </application>
 
 </manifest>
