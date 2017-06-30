@@ -65,7 +65,7 @@
                 android:id="@+id/my_request_detail_member1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ok"/>
+                android:src="@drawable/community_icon_g"/>
         </LinearLayout>
     </LinearLayout>
 

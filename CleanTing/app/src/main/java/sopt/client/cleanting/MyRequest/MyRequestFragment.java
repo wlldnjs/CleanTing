@@ -67,7 +67,7 @@ public class MyRequestFragment extends Fragment{
         public void onClick(View view) {
             final int temp_position = recyclerMyLocation.getChildPosition(view);
             if(temp_position == 0){
-                Toast.makeText(context, "헤더입니다.", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "헤더입니다.", Toast.LENGTH_SHORT).show();
             } else {
 //                String temp = myRequestAdapter.itemDatas.get(temp_position-1).writer;
                 Toast.makeText(context, temp_position + "번 댓글", Toast.LENGTH_SHORT).show();

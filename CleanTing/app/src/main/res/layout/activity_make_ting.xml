@@ -197,21 +197,21 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:src="@drawable/group5"
+                    android:src="@drawable/community_icon_g"
                     android:padding="20dp"
                     />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:src="@drawable/group5"
+                    android:src="@drawable/community_icon_g"
                     android:padding="20dp"
                     />
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:src="@drawable/group5"
+                    android:src="@drawable/community_icon_g"
                     android:padding="20dp"
                     />
             </LinearLayout>
@@ -361,7 +361,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/address"
+                        android:src="@drawable/community_icon_g"
                         android:layout_marginTop="65dp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -392,7 +392,7 @@
                 android:id="@+id/make_ting_request_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/login_yellow"
+                android:src="@drawable/community_icon_g"
                 />
         </LinearLayout>
     </ScrollView>

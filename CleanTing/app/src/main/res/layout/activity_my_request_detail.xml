@@ -101,7 +101,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ok2"
+                android:background="@drawable/community_icon_g"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"/>
         </RelativeLayout>
@@ -114,7 +114,7 @@
             android:id="@+id/my_request_detail_member"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ok"
+            android:src="@drawable/community_icon_g"
             />
         <TextView
             android:id="@+id/my_request_detail_member_count"
@@ -258,7 +258,7 @@
                 android:id="@+id/my_request_detail_edit_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ok"
+                android:src="@drawable/community_icon_g"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
         <RelativeLayout
@@ -269,7 +269,7 @@
                 android:id="@+id/my_request_detail_cancel_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ok2"
+                android:src="@drawable/community_icon_g"
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
     </LinearLayout>

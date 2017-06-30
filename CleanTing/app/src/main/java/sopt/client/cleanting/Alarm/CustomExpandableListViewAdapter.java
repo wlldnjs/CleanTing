@@ -112,7 +112,7 @@ public class CustomExpandableListViewAdapter extends BaseExpandableListAdapter {
         }
 /***********************************여기고쳐야댐!!!!!!*********************************/
         mChildListViewHolder.mChildListViewText.setText(getGroup(childPosition));
-        mChildListViewHolder.mChildListViewIcon.getResources().getDrawable(R.drawable.tingyellow);
+        mChildListViewHolder.mChildListViewIcon.getResources().getDrawable(R.drawable.circle_yellow);
         return convertView;
 
     }

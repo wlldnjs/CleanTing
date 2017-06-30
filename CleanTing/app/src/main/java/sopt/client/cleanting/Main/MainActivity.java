@@ -57,28 +57,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, myRequestFragment).commit();
                 previousBtnImgSet();
                 previousBtn = 1;
-                myRequestBtn.setImageResource(R.drawable.group1);
+                myRequestBtn.setImageResource(R.drawable.home_icon_y);
                 break;
 
             case R.id.make_ting_btn:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, communityFragment).commit();
                 previousBtnImgSet();
                 previousBtn = 2;
-                makeTingBtn.setImageResource(R.drawable.group3);
+                makeTingBtn.setImageResource(R.drawable.community_icon_y);
                 break;
 
             case R.id.alarm_btn:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, alarmFragment).commit();
                 previousBtnImgSet();
                 previousBtn = 3;
-                alarmBtn.setImageResource(R.drawable.group5);
+                alarmBtn.setImageResource(R.drawable.notice_icon_y);
                 break;
 
             case R.id.mypage_btn:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, mypageFragment).commit();
                 previousBtnImgSet();
                 previousBtn = 4;
-                mypageBtn.setImageResource(R.drawable.group7);
+                mypageBtn.setImageResource(R.drawable.mypage_icon_y);
                 break;
         }
     }
@@ -86,19 +86,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void previousBtnImgSet(){
         switch (previousBtn){
             case 1:
-                myRequestBtn.setImageResource(R.drawable.group2);
+                myRequestBtn.setImageResource(R.drawable.home_icon_g);
                 break;
 
             case 2:
-                makeTingBtn.setImageResource(R.drawable.group4);
+                makeTingBtn.setImageResource(R.drawable.community_icon_g);
                 break;
 
             case 3:
-                alarmBtn.setImageResource(R.drawable.group6);
+                alarmBtn.setImageResource(R.drawable.notice_icon_g);
                 break;
 
             case 4:
-                mypageBtn.setImageResource(R.drawable.group8);
+                mypageBtn.setImageResource(R.drawable.mypage_icon_g);
                 break;
         }
     }

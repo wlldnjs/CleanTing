@@ -88,7 +88,7 @@
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@drawable/usericon" />
+                android:src="@drawable/notice_icon_g" />
 
             <EditText
                 android:layout_gravity="center"
@@ -120,7 +120,7 @@
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@drawable/passwordicon" />
+                android:src="@drawable/notice_icon_g" />
 
             <EditText
                 android:id="@+id/edit_password"
