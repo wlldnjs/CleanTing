@@ -54,7 +54,7 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:text="모집현황"
-                        android:textColor="#333333"
+                        android:textColor="#88333333"
                         android:textSize="17sp" />
 
                     <LinearLayout
@@ -68,19 +68,19 @@
                             android:id="@+id/change_my_request_detail_man1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/man" />
+                            android:src="@drawable/man_o" />
 
                         <ImageView
                             android:id="@+id/change_my_request_detail_man2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/man" />
+                            android:src="@drawable/man_o" />
 
                         <ImageView
                             android:id="@+id/change_my_request_detail_man3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/man" />
+                            android:src="@drawable/man_o" />
 
                         <TextView
                             android:id="@+id/change_my_request_detail_man_count"
@@ -88,7 +88,7 @@
                             android:layout_height="match_parent"
                             android:gravity="bottom"
                             android:text="1명/3명"
-                            android:textColor="#b3b3b3"
+                            android:textColor="#88b3b3b3"
                             android:textSize="11sp" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -102,7 +102,7 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
                 android:layout_marginTop="13dp"
-                android:background="#808080"></LinearLayout>
+                android:background="#88808080"></LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/layout3"
@@ -121,7 +121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="담당클리너"
-                        android:textColor="#333333"
+                        android:textColor="#88333333"
                         android:textSize="17sp" />
 
                     <LinearLayout
@@ -139,7 +139,7 @@
                                 android:layout_width="120dp"
                                 android:layout_height="120dp"
                                 android:layout_marginTop="28dp"
-                                android:src="@drawable/rectangle_gray_box" />
+                                android:src="@drawable/rectangle_gray_box_o" />
 
                             <TextView
                                 android:id="@+id/change_my_request_detail_cleaner_name"
@@ -149,7 +149,7 @@
                                 android:layout_marginTop="14dp"
                                 android:gravity="center"
                                 android:text="안성현 클리너"
-                                android:textColor="#333333" />
+                                android:textColor="#88333333" />
                         </LinearLayout>
 
 
@@ -169,31 +169,31 @@
                                     android:id="@+id/change_my_request_detail_star1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/star" />
+                                    android:src="@drawable/star_o" />
 
                                 <ImageView
                                     android:id="@+id/change_my_request_detail_star2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/star" />
+                                    android:src="@drawable/star_o" />
 
                                 <ImageView
                                     android:id="@+id/change_my_request_detail_star3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/star" />
+                                    android:src="@drawable/star_o" />
 
                                 <ImageView
                                     android:id="@+id/change_my_request_detail_star4"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/star" />
+                                    android:src="@drawable/star_o" />
 
                                 <ImageView
                                     android:id="@+id/change_my_request_detail_star5"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/star" />
+                                    android:src="@drawable/star_o" />
 
                                 <TextView
                                     android:id="@+id/change_my_request_detail_star_count"
@@ -201,7 +201,7 @@
                                     android:layout_height="match_parent"
                                     android:gravity="bottom"
                                     android:text="20명"
-                                    android:textColor="#b3b3b3"
+                                    android:textColor="#88b3b3b3"
                                     android:textSize="11sp" />
                             </LinearLayout>
 
@@ -211,7 +211,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:text="활동: 39건"
-                                android:textColor="#333333" />
+                                android:textColor="#88333333" />
 
                             <TextView
                                 android:id="@+id/change_my_request_detail_review"
@@ -219,7 +219,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="9dp"
                                 android:text="리뷰 21회"
-                                android:textColor="#333333" />
+                                android:textColor="#88333333" />
 
                             <TextView
                                 android:id="@+id/change_my_request_detail_career"
@@ -227,7 +227,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="9dp"
                                 android:text="경력: 6개월"
-                                android:textColor="#333333" />
+                                android:textColor="#88333333" />
 
                             <TextView
                                 android:id="@+id/change_my_request_detail_age"
@@ -235,7 +235,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="9dp"
                                 android:text="나이: 50대"
-                                android:textColor="#333333" />
+                                android:textColor="#88333333" />
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -248,7 +248,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
                                     android:layout_marginTop="10dp"
-                                    android:src="@drawable/call" />
+                                    android:src="@drawable/caal_o" />
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -263,7 +263,7 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
                 android:layout_marginTop="15dp"
-                android:background="#808080"></LinearLayout>
+                android:background="#88808080"></LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layout4"
@@ -279,7 +279,7 @@
                     android:layout_marginBottom="28dp"
                     android:layout_marginLeft="5dp"
                     android:text="신청정보"
-                    android:textColor="#333333"
+                    android:textColor="#88333333"
                     android:textSize="17sp" />
 
                 <LinearLayout
@@ -296,7 +296,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:text="신청날짜"
-                            android:textColor="#333333"
+                            android:textColor="#88333333"
                             android:textSize="15dp" />
 
                         <TextView
@@ -306,7 +306,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="5dp"
                             android:text="2017-06-05"
-                            android:textColor="#333333"
+                            android:textColor="#88333333"
                             android:textSize="15dp" />
                     </RelativeLayout>
 
@@ -320,7 +320,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:text="청소시간"
-                            android:textColor="#333333"
+                            android:textColor="#88333333"
                             android:textSize="15dp" />
 
                         <TextView
@@ -330,7 +330,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="5dp"
                             android:text="13:00-19:00"
-                            android:textColor="#333333"
+                            android:textColor="#88333333"
                             android:textSize="15dp" />
 
                     </RelativeLayout>
@@ -344,7 +344,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="27dp"
-                android:background="#808080" />
+                android:background="#88808080" />
 
             <RelativeLayout
                 android:id="@+id/layout6"
