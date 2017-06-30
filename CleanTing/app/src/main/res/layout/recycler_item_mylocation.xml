@@ -1,40 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:layout_margin="15dp">
-    <ImageView
-        android:layout_width="10dp"
-        android:layout_height="match_parent"
-        android:src="@drawable/logo"/>
-
+    android:layout_height="88dp"
+    >
     <ImageView
         android:id="@+id/my_location_img"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_margin="5dp"/>
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/picture_no"/>
 
     <LinearLayout
-        android:layout_width="160dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp">
         <TextView
             android:id="@+id/my_location_day"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:gravity="bottom"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:textSize="13dp"
+            android:textColor="#333333"
             android:text="2017년 6월 5일 (월)"/>
         <TextView
             android:id="@+id/my_location_time"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:gravity="top|center_horizontal"
             android:text="13:00~19:00"
-            android:layout_marginTop="5dp"/>
+            android:textColor="#333333"
+            android:layout_marginTop="6dp"
+            android:textSize="13dp"/>
     </LinearLayout>
-    <ImageView
-        android:id="@+id/my_location_member"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/logo"/>
+        android:gravity="center"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/man"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/man"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/man"/>
+    </LinearLayout>
+
 </LinearLayout>

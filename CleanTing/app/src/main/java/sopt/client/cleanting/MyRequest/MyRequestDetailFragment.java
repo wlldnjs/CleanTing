@@ -42,7 +42,6 @@ public class MyRequestDetailFragment extends Fragment {
         date = (TextView)layout.findViewById(R.id.my_request_detail_date1);
         time = (TextView)layout.findViewById(R.id.my_request_detail_time1);
         member = (ImageView)layout.findViewById(R.id.my_request_detail_member1);
-        rating = (ImageView)layout.findViewById(R.id.my_request_detail_rating1);
 
         return layout;
     }

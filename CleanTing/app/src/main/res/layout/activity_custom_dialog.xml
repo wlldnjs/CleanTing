@@ -6,12 +6,12 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_width="350dip"
-        android:layout_height="230dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:orientation="vertical" >
         <TextView
-            android:background="#FFFF66"
+            android:background="#f2d457"
             android:id="@+id/txt_title"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
@@ -36,17 +36,18 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal" >
-                <Button
+                <ImageView
                     android:id="@+id/btn_left"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="취소" />
-                <Button
+                    android:src="@drawable/cancel_popup" />
+                <ImageView
                     android:layout_marginLeft="25dp"
                     android:id="@+id/btn_right"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="확인" />
+                    android:src="@drawable/ok_popup"
+                    />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

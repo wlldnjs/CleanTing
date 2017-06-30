@@ -20,7 +20,6 @@ public class MyLocationViewHolder extends RecyclerView.ViewHolder{
         myLocationDay = (TextView)itemView.findViewById(R.id.my_location_day);
         myLocationTime = (TextView)itemView.findViewById(R.id.my_location_time);
         myLocationImg = (ImageView)itemView.findViewById(R.id.my_location_img);
-        myLocationMember = (ImageView)itemView.findViewById(R.id.my_location_member);
 
     }
 }

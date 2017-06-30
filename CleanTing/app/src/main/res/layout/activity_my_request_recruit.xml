@@ -7,422 +7,452 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="sopt.client.cleanting.MyRequest.MyRequestRecruit">
-<RelativeLayout
-    android:id="@+id/layout1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:layout_marginTop="20dp"
-        android:id="@+id/button_back"
-        android:src="@drawable/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/community_icon_g" />
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+
+            android:text="나의 신청현황"
+            android:textColor="#333333"
+            android:textSize="20sp" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="9">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"><RelativeLayout
-            android:id="@+id/layout2"
-            android:layout_below="@+id/layout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <RelativeLayout
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textSize="20dp"
-                    android:text="모집현황"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout1">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="32dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:text="모집현황"
+                        android:textColor="#333333"
+                        android:textSize="17sp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/my_request_recruit_man1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/man" />
+
+                        <ImageView
+                            android:id="@+id/my_request_recruit_man2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/man" />
+
+                        <ImageView
+                            android:id="@+id/my_request_recruit_man3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/man" />
+
+                        <TextView
+                            android:id="@+id/my_request_recruit_man_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom"
+                            android:text="1명/3명"
+                            android:textColor="#b3b3b3"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/linearLayout"
+                android:layout_marginBottom="13dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="13dp"
+                android:background="#808080"></LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp">
+
                 <LinearLayout
-                    android:layout_alignParentRight="true"
-                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="담당클리너"
+                        android:textColor="#333333"
+                        android:textSize="17sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/my_request_recruit_cleaner_img"
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:layout_marginTop="28dp"
+                                android:src="@drawable/rectangle_gray_box" />
+
+                            <TextView
+                                android:id="@+id/my_request_recruit_cleaner_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="14dp"
+                                android:layout_marginTop="14dp"
+                                android:gravity="center"
+                                android:text="안성현 클리너"
+                                android:textColor="#333333" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="28dp"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/my_request_recruit_star1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/star" />
+
+                                <ImageView
+                                    android:id="@+id/my_request_recruit_star2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/star" />
+
+                                <ImageView
+                                    android:id="@+id/my_request_recruit_star3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/star" />
+
+                                <ImageView
+                                    android:id="@+id/my_request_recruit_star4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/star" />
+
+                                <ImageView
+                                    android:id="@+id/my_request_recruit_star5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/star" />
+
+                                <TextView
+                                    android:id="@+id/my_request_recruit_star_count"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="bottom"
+                                    android:text="20명"
+                                    android:textColor="#b3b3b3"
+                                    android:textSize="11sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/my_request_recruit_activity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="활동: 39건"
+                                android:textColor="#333333" />
+
+                            <TextView
+                                android:id="@+id/my_request_recruit_review"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="9dp"
+                                android:text="리뷰 21회"
+                                android:textColor="#333333" />
+
+                            <TextView
+                                android:id="@+id/my_request_recruit_career"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="9dp"
+                                android:text="경력: 6개월"
+                                android:textColor="#333333" />
+
+                            <TextView
+                                android:id="@+id/my_request_recruit_age"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="9dp"
+                                android:text="나이: 50대"
+                                android:textColor="#333333" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="15dp"
+                android:background="#808080"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout">
-                    <ImageView
-                        android:src="@drawable/community_icon_g"
-                        android:id="@+id/person1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <ImageView
-                        android:src="@drawable/community_icon_g"
-                        android:id="@+id/person2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <ImageView
-                        android:src="@drawable/community_icon_g"
-                        android:id="@+id/person3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/text_people"
-                        android:text="1명/3명"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
+                    android:layout_marginBottom="28dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="신청정보"
+                    android:textColor="#333333"
+                    android:textSize="17sp" />
 
-                <ImageView
-                    android:id="@+id/star4"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="신청날짜"
+                            android:textColor="#333333"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/my_request_recruit_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="5dp"
+                            android:text="2017-06-05"
+                            android:textColor="#333333"
+                            android:textSize="15dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="청소시간"
+                            android:textColor="#333333"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/my_request_recruit_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="5dp"
+                            android:text="13:00-19:00"
+                            android:textColor="#333333"
+                            android:textSize="15dp" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="27dp"
+                android:background="#808080" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout5"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="추가요청"
+                    android:textColor="#333333"
+                    android:textSize="17dp"
+                    android:layout_marginLeft="5dp"/>
+
+                <TextView
+                    android:id="@+id/my_request_recruit_moreview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_toLeftOf="@+id/linearLayout"
-                    android:layout_toStartOf="@+id/linearLayout"
-                    android:src="@drawable/star" />
-            </RelativeLayout>
-        </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="10dp"
-                android:id="@+id/layout3"
-                android:layout_below="@+id/layout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:text="담당클리너"
-                        android:textSize="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:id="@+id/cleaner_picture"
-                            android:src="@drawable/community_icon_g"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp" />
-                        <LinearLayout
-                            android:layout_marginLeft="20dp"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:text="안성현 클리너"
-                                android:id="@+id/cleaner_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <ImageView
-                                    android:id="@+id/star1"
-                                    android:src="@drawable/star"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                                <ImageView
-                                    android:id="@+id/star2"
-                                    android:src="@drawable/star"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                                <ImageView
-                                    android:id="@+id/star3"
-                                    android:src="@drawable/star"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <ImageView
-                                    android:id="@+id/star5"
-                                    android:src="@drawable/star"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                                <TextView
-                                    android:id="@+id/star_people"
-                                    android:text="20명"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-                            <TextView
-                                android:id="@+id/act"
-                                android:text="활동: 39건"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                            <TextView
-                                android:id="@+id/review"
-                                android:text="리뷰 21회"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                            <TextView
-                                android:id="@+id/career"
-                                android:text="경력: 6개월"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                            <RelativeLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:id="@+id/age"
-                                    android:text="나이: 50대"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                                <TextView
-                                    android:layout_alignParentRight="true"
-                                    android:id="@+id/more_view"
-                                    android:text=">더보기"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </RelativeLayout>
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:id="@+id/layout4"
-                android:layout_below="@+id/layout3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:textSize="20dp"
-                            android:text="청소날짜"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/clean_date"
-                            android:layout_alignParentRight="true"
-                            android:textSize="15dp"
-                            android:text="2017-06-05"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:textSize="20dp"
-                            android:text="청소시간"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/clean_time"
-                            android:layout_alignParentRight="true"
-                            android:textSize="15dp"
-                            android:text="13:00-19:00"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:textSize="20dp"
-                            android:text="주의사항"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/clean_warning"
-                            android:layout_alignParentRight="true"
-                            android:textSize="15dp"
-                            android:text="책상위 서류 건들지 말아주세요."
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </RelativeLayout>
-                </LinearLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:id="@+id/layout5"
-                android:layout_below="@+id/layout4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:background="#000000"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/layout6"
-                android:layout_below="@+id/layout5"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textSize="20dp"
-                    android:text="추가요청"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:id="@+id/moreview_clean"
-                    android:text=">기본 청소 보러가기"
                     android:layout_alignParentRight="true"
+                    android:text="> 기본 청소 보러가기"
+                    android:layout_marginRight="5dp"
+                    android:textColor="#333333"
+                    android:textSize="13dp" />
+            </RelativeLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp">
+                <ImageView
+                    android:id="@+id/my_request_recruit_condi"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/conditioner_gray"/>
+                <ImageView
+                    android:id="@+id/my_request_recruit_window"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/window_gray"/>
+                <ImageView
+                    android:id="@+id/my_request_recruit_ref"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/refrigerator_gray"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="38dp"
+                android:layout_marginRight="38dp"
+                android:layout_marginTop="31dp"
+                android:orientation="vertical">
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
+                    android:layout_height="wrap_content"
+                    android:text="주의사항"
+                    android:textColor="#333333"
+                    android:textSize="17dp"/>
 
-            <RelativeLayout
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="20dp"
-                android:id="@+id/layout7"
-                android:layout_below="@+id/layout6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
                 <LinearLayout
-                    android:id="@+id/layout_request"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="13dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_weight="1"
-                            android:src="@drawable/community_icon_g"
-                            android:id="@+id/addrequest1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/text_addrequest1"
-                            android:layout_gravity="center"
-                            android:layout_alignBottom="@+id/addrequest1"
-                            android:text="에어컨 청소"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_weight="1"
-                            android:src="@drawable/community_icon_g"
-                            android:id="@+id/addrequest2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/text_addrequest2"
-                            android:layout_gravity="center"
-                            android:layout_alignBottom="@+id/addrequest1"
-                            android:text="창틀 청소"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_weight="1"
-                            android:src="@drawable/community_icon_g"
-                            android:id="@+id/addrequest3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/text_addrequest3"
-                            android:layout_gravity="center"
-                            android:layout_alignBottom="@+id/addrequest1"
-                            android:text="냉장고 정리"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
+                    android:layout_height="70dp"
+                    android:background="@drawable/rectangle_gray_box">
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <EditText
+                            android:id="@+id/my_request_recruit_warning"
+                            android:layout_margin="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:hint="주의사항을 적어 주세요"
+                            android:background="@null"/>
+                    </ScrollView>
                 </LinearLayout>
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_below="@+id/layout_request"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textSize="20dp"
-                        android:text="주의사항"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <ImageView
-                        android:src="@drawable/community_icon_g"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+            </LinearLayout>
 
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginTop="20dp"
-                android:layout_below="@+id/layout7"
-                android:id="@+id/layout8"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:background="#000000"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:id="@+id/layout9"
-                android:layout_below="@+id/layout8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textSize="20dp"
-                        android:text="총 금액"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:layout_alignParentRight="true"
-                        android:text="1인 15,000원"
-                        android:id="@+id/totalprice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </RelativeLayout>
-            </RelativeLayout></LinearLayout>
+                android:layout_height="1dp"
+                android:background="#808080"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginTop="31dp"
+                android:layout_marginBottom="6dp"></LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginBottom="40dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:text="총 금액"
+                    android:textColor="#333333"
+                    android:textSize="17dp"/>
+                <TextView
+                    android:id="@+id/my_request_recruit_total"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:text="15,000원"
+                    android:gravity="right"
+                    android:textColor="#333333"
+                    android:textSize="17dp"/>
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/my_request_recruit_join"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/participate_button"
+                android:layout_marginBottom="40dp"/>
+        </LinearLayout>
     </ScrollView>
-
-
-    <ImageView
-        android:src="@drawable/community_icon_g"
-        android:layout_below="@+id/layout9"
-        android:id="@+id/button_participate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
 </LinearLayout>
