@@ -13,11 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Main.Login.LoginActivity" />
         <activity android:name=".Main.SignUp.SignUpActivity" />
@@ -29,7 +24,13 @@
         <activity android:name=".Mypage.LeaveActivity" />
         <activity android:name=".Mypage.MyhistoryActivity" />
         <activity android:name=".Mypage.RatingActivity" />
-        <activity android:name=".MakeTing.MakeTingActivity" />
+        <activity android:name=".MakeTing.MakeTingActivity" android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Main.Login.FindAccountActivity" />
         <activity android:name=".MyRequest.ChangeMyRequestDetail" />
 

@@ -3,6 +3,7 @@ package sopt.client.cleanting.MakeTing;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,11 +25,13 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     LinearLayout selectDate2, selectTime2, selectRequest2, selectWorning2, selectCleaner2;
     TextView date, timeStart, timeEnd, request, warning, cleaner, amount;
     EditText warningEdit;
-    ImageView requestBtn;
+    ImageView requestBtn, condiBtn, windowBtn, refBtn;
     ListView listView1, listView2;
     ArrayList<String> timeData;
     ArrayAdapter arrayAdapter;
     CalendarView calendarView;
+    ScrollView warningScroll;
+    boolean selectCond ,selectWindow, selectRef = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         warning = (TextView)findViewById(R.id.warning_text);
         cleaner= (TextView)findViewById(R.id.cleaner_text);
         amount = (TextView)findViewById(R.id.total_text);
+
+        warningScroll = (ScrollView)findViewById(R.id.warning_scroll);
 
         calendarView = (CalendarView)findViewById(R.id.calendarview);
         warningEdit = (EditText)findViewById(R.id.warning_edit);
@@ -84,10 +90,88 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         selectWorning1.setOnClickListener(this);
         selectCleaner1.setOnClickListener(this);
 
+        condiBtn = (ImageView)findViewById(R.id.make_ting_condi) ;
+        windowBtn = (ImageView)findViewById(R.id.make_ting_window);
+        refBtn = (ImageView)findViewById(R.id.make_ting_ref);
+
+        condiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectCond == false){
+                    condiBtn.setImageResource(R.drawable.conditioner_yellow);
+                    selectCond = true;
+                    if (selectWindow){
+                        windowBtn.setImageResource(R.drawable.window_gray);
+                        selectWindow = false;
+                    } else if(selectRef) {
+                        refBtn.setImageResource(R.drawable.refrigerator_gray);
+                        selectRef = false;
+                    }
+                    request.setText("에어컨 필터청소");
+                } else if(selectCond){
+                    condiBtn.setImageResource(R.drawable.conditioner_gray);
+                    selectCond = false;
+                    request.setText("추가사항 없음");
+                }
+            }
+        });
+
+        windowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectWindow == false){
+                    windowBtn.setImageResource(R.drawable.window_yellow);
+                    selectWindow = true;
+                    if (selectCond){
+                        condiBtn.setImageResource(R.drawable.conditioner_gray);
+                        selectCond = false;
+                    } else if(selectRef) {
+                        refBtn.setImageResource(R.drawable.refrigerator_gray);
+                        selectRef = false;
+                    }
+                    request.setText("창틀 청소");
+                } else if(selectWindow){
+                    windowBtn.setImageResource(R.drawable.window_gray);
+                    selectWindow = false;
+                    request.setText("추가사항 없음");
+                }
+            }
+        });
+
+        refBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectRef == false){
+                    refBtn.setImageResource(R.drawable.refrigerator_yellow);
+                    selectRef = true;
+                    if (selectCond){
+                        condiBtn.setImageResource(R.drawable.conditioner_gray);
+                        selectCond = false;
+                    } else if(selectWindow) {
+                        windowBtn.setImageResource(R.drawable.window_gray);
+                        selectWindow = false;
+                    }
+                    request.setText("냉장고 정리");
+                } else if(selectRef){
+                    refBtn.setImageResource(R.drawable.refrigerator_gray);
+                    selectRef = false;
+                    request.setText("추가사항 없음");
+                }
+            }
+        });
+
+
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 timeStart.setText(""+parent.getItemAtPosition(position));
+            }
+        });
+        listView1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                listView1.requestDisallowInterceptTouchEvent(true);
+                return false;
             }
         });
         listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -96,14 +180,31 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 timeEnd.setText(""+parent.getItemAtPosition(position));
             }
         });
+        listView2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                listView2.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                date.setText(""+month+"월 " +dayOfMonth+"일");
+                date.setText(""+(month+1)+"월 " +dayOfMonth+"일");
             }
         });
+
+        warningScroll.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                warningScroll.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+
     }
+
 
     @Override
     public void onClick(View v) {
@@ -134,6 +235,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                     selectWorning2.setVisibility(View.VISIBLE);
                 } else {
                     selectWorning2.setVisibility(View.GONE);
+                    warning.setText(warningEdit.getText().toString());
                 }
                 break;
             case R.id.select_cleaner_layout1:
