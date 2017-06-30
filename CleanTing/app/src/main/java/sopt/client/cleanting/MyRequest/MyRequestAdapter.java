@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     ArrayList<MyRequestData> itemDatas;
     View.OnClickListener clickListener;
     Context context;
+    float viewPagerMove1, viewPagerMove2;
 
     public MyRequestAdapter(ArrayList<MyRequestData> itemDatas, View.OnClickListener clickListener, Context context, FragmentManager fm){
         this.itemDatas = itemDatas;
@@ -55,7 +57,7 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof MyLocationViewHolderHeader){
-            MyLocationViewHolderHeader myLocationViewHolderHeader = (MyLocationViewHolderHeader)holder;
+            final MyLocationViewHolderHeader myLocationViewHolderHeader = (MyLocationViewHolderHeader)holder;
             myLocationViewHolderHeader.myLocationBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -63,8 +65,22 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 }
             });
             myLocationViewHolderHeader.viewPager.setAdapter(new pagerAdapter (fm));
-//            viewPager.setOffscreenPageLimit(1);
             myLocationViewHolderHeader.viewPager.setCurrentItem(0);
+            myLocationViewHolderHeader.viewPager.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if(event.getAction() == MotionEvent.ACTION_DOWN){
+                        viewPagerMove1 = event.getX();
+                    } else if(event.getAction() == MotionEvent.ACTION_UP){
+                        viewPagerMove2 = event.getY();
+                        if(Math.abs(viewPagerMove1)-Math.abs(viewPagerMove2) < 20){
+                            myLocationViewHolderHeader.viewPager.requestDisallowInterceptTouchEvent(true);
+                            Toast.makeText(context, "아이템클릭", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    return false;
+                }
+            });
 
         } else if(holder instanceof MyLocationViewHolder){
             MyRequestData currentItem = itemDatas.get(position-1);
