@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import sopt.client.cleanting.Alarm.AlarmFragment;
 import sopt.client.cleanting.MakeTing.MakeTingFragment;
 import sopt.client.cleanting.MyRequest.MyRequestFragment;
@@ -45,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mypageBtn.setOnClickListener(this);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, myRequestFragment).commit();
+
+        FirebaseMessaging.getInstance().subscribeToTopic("cleanting");
+        FirebaseInstanceId.getInstance().getToken();
     }
 
     @Override
