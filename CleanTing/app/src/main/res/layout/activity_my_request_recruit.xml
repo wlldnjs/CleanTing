@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
 
-            android:text="나의 신청현황"
+            android:text="내 지역 모집현황"
             android:textColor="#333333"
             android:textSize="20sp" />
     </LinearLayout>

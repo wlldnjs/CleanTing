@@ -50,11 +50,11 @@ public class MyRequestFragment extends Fragment{
         recyclerMyLocation.setLayoutManager(layoutManager);
 
         itemData = new ArrayList<MyRequestData>();
-        itemData.add(new MyRequestData("2017년 6월 5일 (월)","13:00~19:00"));
-        itemData.add(new MyRequestData("2017년 6월 6일 (월)","14:00~19:00"));
-        itemData.add(new MyRequestData("2017년 6월 7일 (월)","15:00~19:00"));
-        itemData.add(new MyRequestData("2017년 6월 8일 (월)","16:00~19:00"));
-        itemData.add(new MyRequestData("2017년 6월 9일 (월)","17:00~19:00"));
+        itemData.add(new MyRequestData("2017년 6월 5일 (월)","13:00~19:00","2"));
+        itemData.add(new MyRequestData("2017년 6월 6일 (화)","14:00~19:00","3"));
+        itemData.add(new MyRequestData("2017년 6월 7일 (수)","15:00~19:00","1"));
+        itemData.add(new MyRequestData("2017년 6월 8일 (목)","16:00~19:00","3"));
+        itemData.add(new MyRequestData("2017년 6월 9일 (금)","17:00~19:00","2"));
         FragmentManager fm = getFragmentManager();
         myRequestAdapter = new MyRequestAdapter(itemData,clickListener,context, fm);
         recyclerMyLocation.setAdapter(myRequestAdapter);

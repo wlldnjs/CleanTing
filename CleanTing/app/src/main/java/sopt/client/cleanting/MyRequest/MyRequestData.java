@@ -5,12 +5,14 @@ package sopt.client.cleanting.MyRequest;
  */
 
 public class MyRequestData {
-    String day, time;
+    String day, time, member;
 //    String img, member;
 
-    public MyRequestData(String day, String time) {
+    public MyRequestData(String day, String time, String member) {
         this.day = day;
         this.time = time;
+        this.member = member;
+
 //        this.img = img;
 //        this.member = member;
     }

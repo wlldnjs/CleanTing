@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -55,7 +56,7 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if(holder instanceof MyLocationViewHolderHeader){
             final MyLocationViewHolderHeader myLocationViewHolderHeader = (MyLocationViewHolderHeader)holder;
             myLocationViewHolderHeader.myLocationBtn.setOnClickListener(new View.OnClickListener() {
@@ -71,9 +72,11 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 public boolean onTouch(View v, MotionEvent event) {
                     if(event.getAction() == MotionEvent.ACTION_DOWN){
                         viewPagerMove1 = event.getX();
+                        Log.d("다운 x",""+viewPagerMove1);
                     } else if(event.getAction() == MotionEvent.ACTION_UP){
-                        viewPagerMove2 = event.getY();
-                        if(Math.abs(viewPagerMove1)-Math.abs(viewPagerMove2) < 20){
+                        viewPagerMove2 = event.getX();
+                        Log.d("업 x",""+viewPagerMove2);
+                        if(Math.abs(viewPagerMove1) - Math.abs(viewPagerMove2) < 20 && Math.abs(viewPagerMove1) - Math.abs(viewPagerMove2) > -20){
                             myLocationViewHolderHeader.viewPager.requestDisallowInterceptTouchEvent(true);
                             Toast.makeText(context, "아이템클릭", Toast.LENGTH_SHORT).show();
                         }
@@ -87,6 +90,12 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             MyLocationViewHolder myLocationViewHolder = (MyLocationViewHolder)holder;
             myLocationViewHolder.myLocationDay.setText(currentItem.day);
             myLocationViewHolder.myLocationTime.setText(currentItem.time);
+            if(currentItem.member.equals("1")){
+                myLocationViewHolder.myLocationMember3.setImageResource(R.drawable.man_line);
+                myLocationViewHolder.myLocationMember2.setImageResource(R.drawable.man_line);
+            } else if(currentItem.member.equals("2")){
+                myLocationViewHolder.myLocationMember3.setImageResource(R.drawable.man_line);
+            }
         }
     }
 
@@ -117,7 +126,9 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 case 1:
                     return new MyRequestDetailFragment();
                 case 2:
-                    return new MyRequestDetailFragment();
+                    MyRequestDetailFragmentEmpty empty = new MyRequestDetailFragmentEmpty();
+                    empty.setContext(context);
+                    return empty;
             }
             return null;
         }
