@@ -1,7 +1,10 @@
 package sopt.client.cleanting.MyRequest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,12 +17,14 @@ public class MyRequestRecruit extends AppCompatActivity {
     TextView manCount, starCount, name,  act, review, career, age, date, time, total;
     EditText warningEdit;
     MyRequestData datas;
+    int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_request_recruit);
         datas = (MyRequestData)getIntent().getSerializableExtra("datas");
+        position = getIntent().getIntExtra("position",0);
 
         man1 = (ImageView)findViewById(R.id.my_request_recruit_man1);
         man2 = (ImageView)findViewById(R.id.my_request_recruit_man2);
@@ -58,5 +63,18 @@ public class MyRequestRecruit extends AppCompatActivity {
             man3.setImageResource(R.drawable.man_line);
             manCount.setText("1명/3명");
         }
+
+        commitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("받은 포지션 값", ""+position);
+                Intent intent = new Intent();
+                intent.putExtra("position",position);
+                setResult(RESULT_OK,intent);
+//                startActivityForResult(intent,RESULT_OK);
+                finish();
+            }
+        });
     }
+
 }

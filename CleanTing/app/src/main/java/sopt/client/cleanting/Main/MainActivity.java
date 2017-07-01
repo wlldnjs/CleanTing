@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import sopt.client.cleanting.Alarm.AlarmFragment;
 import sopt.client.cleanting.Community.CommunityFragment;
 import sopt.client.cleanting.MyRequest.MyRequestFragment;
 import sopt.client.cleanting.Mypage.MypageFragment;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     AlarmFragment alarmFragment;
     MypageFragment mypageFragment;
     int previousBtn = 1;
+    public static int REQUEST_JOIN = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

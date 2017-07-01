@@ -1,0 +1,9 @@
+diff a/CleanTing/app/src/main/java/sopt/client/cleanting/Main/MainActivity.java b/CleanTing/app/src/main/java/sopt/client/cleanting/Main/MainActivity.java	(rejected hunks)
+@@ -5,7 +5,6 @@
+ import android.view.View;
+ import android.widget.ImageView;
+ 
+-import sopt.client.cleanting.Alarm.AlarmFragment;
+ import sopt.client.cleanting.Community.CommunityFragment;
+ import sopt.client.cleanting.MyRequest.MyRequestFragment;
+ import sopt.client.cleanting.Mypage.MypageFragment;

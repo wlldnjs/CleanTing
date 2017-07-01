@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
+
+import static sopt.client.cleanting.Main.MainActivity.REQUEST_JOIN;
 
 /**
  * Created by 김지원 on 2017-06-25.
@@ -51,10 +54,10 @@ public class MyRequestFragment extends Fragment{
         recyclerMyLocation.setLayoutManager(layoutManager);
 
         itemData = new ArrayList<MyRequestData>();
-        itemData.add(new MyRequestData("2017년 6월 5일 (월)","13:00~19:00","2"));
-        itemData.add(new MyRequestData("2017년 6월 6일 (화)","14:00~19:00","3"));
+        itemData.add(new MyRequestData("2017년 6월 5일 (월)","13:00~19:00","1"));
+        itemData.add(new MyRequestData("2017년 6월 6일 (화)","14:00~19:00","1"));
         itemData.add(new MyRequestData("2017년 6월 7일 (수)","15:00~19:00","1"));
-        itemData.add(new MyRequestData("2017년 6월 8일 (목)","16:00~19:00","3"));
+        itemData.add(new MyRequestData("2017년 6월 8일 (목)","16:00~19:00","1"));
         itemData.add(new MyRequestData("2017년 6월 9일 (금)","17:00~19:00","2"));
         FragmentManager fm = getFragmentManager();
         myRequestAdapter = new MyRequestAdapter(itemData,clickListener,context, fm);
@@ -75,8 +78,28 @@ public class MyRequestFragment extends Fragment{
                 MyRequestData datas = itemData.get(temp_position-1);
                 Intent intent = new Intent(context, MyRequestRecruit.class);
                 intent.putExtra("datas", datas);
-                startActivity(intent);
+                intent.putExtra("position", temp_position-1);
+                startActivityForResult(intent,REQUEST_JOIN);
             }
         }
     };
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_JOIN){
+            Toast.makeText(context, "참여 완료", Toast.LENGTH_SHORT).show();
+            int position = getActivity().getIntent().getIntExtra("position",0);
+            Log.d("포지션 값",""+position);
+            MyRequestData getData = itemData.get(position);
+            int memeber = Integer.parseInt(getData.member);
+            Log.d("변경 전 멤버 수",""+memeber);
+            memeber++;
+            Log.d("변경 후 멤버 수",""+memeber);
+            getData.member = String.valueOf(memeber);
+            Log.d("세팅된 멤버 수",""+getData.member);
+            itemData.set(position,getData);
+            myRequestAdapter.notifyDataSetChanged();
+        }
+    }
 }

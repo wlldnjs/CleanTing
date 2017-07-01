@@ -86,6 +86,7 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             });
 
         } else if(holder instanceof MyLocationViewHolder){
+
             MyRequestData currentItem = itemDatas.get(position-1);
             MyLocationViewHolder myLocationViewHolder = (MyLocationViewHolder)holder;
             myLocationViewHolder.myLocationDay.setText(currentItem.day);
