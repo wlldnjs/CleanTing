@@ -31,11 +31,11 @@ public class CommunityFilterActivity extends AppCompatActivity {
         CFrecyclerView.setLayoutManager(layoutManager2);
 
         bulletinArrayList = new ArrayList<Bulletin>();                         //사용자 정의 데이터를 갖는 arraylist
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
+        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
+        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
+        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
+        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
         bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
         bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
         bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));

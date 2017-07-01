@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import sopt.client.cleanting.R;
@@ -18,8 +18,8 @@ public class CustomDialog extends Dialog
 {
     private TextView mTitleView;
     private TextView mContentView;
-    private Button mLeftButton;
-    private Button mRightButton;
+    private ImageView mLeftButton;
+    private ImageView mRightButton;
     private String mTitle;
     private String mContent;
 
@@ -40,8 +40,8 @@ public class CustomDialog extends Dialog
 
         mTitleView = (TextView) findViewById(R.id.txt_title);
         mContentView = (TextView) findViewById(R.id.txt_content);
-        mLeftButton = (Button) findViewById(R.id.btn_left);
-        mRightButton = (Button) findViewById(R.id.btn_right);
+        mLeftButton = (ImageView) findViewById(R.id.btn_left);
+        mRightButton = (ImageView) findViewById(R.id.btn_right);
 
         // 제목과 내용을 생성자에서 셋팅한다.
         mTitleView.setText(mTitle);

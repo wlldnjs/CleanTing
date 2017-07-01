@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft=  "35dp"
         android:layout_marginRight="35dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -20,7 +20,8 @@
                android:textStyle="bold"
                android:text="휴지 공동 구매 하실분"
                android:id="@+id/Bulletin_title"
-               android:textSize="25sp"
+               android:textSize="17sp"
+               android:textColor="#333333"
                android:layout_weight="0.7"
                android:layout_width="0dp"
                android:layout_height="wrap_content" />
@@ -34,7 +35,9 @@
         </LinearLayout>
 
         <TextView
-            android:layout_marginTop="15dp"
+            android:textSize="15sp"
+            android:textColor="#333333"
+            android:layout_marginTop="26dp"
             android:id="@+id/Bulletin_content"
             android:text="Bc마트에서 휴지 30개~~~~~"
             android:layout_width="match_parent"
@@ -61,7 +64,7 @@
 
     </LinearLayout>
     <View
-        android:layout_marginTop="15sp"
+        android:layout_marginTop="13sp"
         android:alpha="0.5"
         android:layout_width="match_parent"
         android:layout_height="1.2dp"

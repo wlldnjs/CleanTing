@@ -75,8 +75,8 @@ public class CommunityFragment extends Fragment {
         BrecyclerView.setLayoutManager(layoutManager);                           //리사이클러뷰에 레이아웃매니저를 달아준다
 
         bulletinArrayList = new ArrayList<Bulletin>();                         //사용자 정의 데이터를 갖는 arraylist
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+        bulletinArrayList.add(new Bulletin("휴지 공동 구매 하실분", "2015.5.5 14:00","BC 마트에 휴지를 엄청 싸게 ~~~~","12"));
+        bulletinArrayList.add(new Bulletin("콜라 공동 구매 하실분", "날짜","사러가자","12"));
         bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
         bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
         bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));

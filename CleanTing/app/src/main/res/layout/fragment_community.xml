@@ -18,7 +18,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RelativeLayout
-                        android:layout_marginTop="45dp"
+                        android:layout_marginTop="25dp"
                         android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -49,8 +49,6 @@
                         android:background="#000000" />
 
                     <android.support.v7.widget.RecyclerView
-                        android:layout_marginLeft="40sp"
-                        android:layout_marginRight="40sp"
                         android:id="@+id/BulletinRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -75,6 +73,12 @@
                         android:textSize="18dp"
                         android:layout_width="180dp"
                         android:layout_height="50dp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.8dp"
+                        android:layout_centerInParent="true"
+                        android:alpha="0.1"
+                        android:background="#333333" />
                     <TextView
                         android:id="@+id/B_filter"
                         android:textSize="18dp"
@@ -87,14 +91,14 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="45dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginBottom="25dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:src="@drawable/write_icon"
             android:id="@+id/floatimg"
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
+            android:layout_width="66dp"
+            android:layout_height="66dp" />
     </RelativeLayout>
 
 </FrameLayout>

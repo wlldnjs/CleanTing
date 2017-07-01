@@ -8,8 +8,7 @@
     tools:context="sopt.client.cleanting.Community.CommunityFilterActivity">
 
     <LinearLayout
-        android:layout_marginTop="40dp"
-        android:gravity=""
+        android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -18,6 +17,7 @@
             android:layout_gravity="center"
             android:text="내 글 모아보기"
             android:textSize="25sp"
+            android:textColor="#333333"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:layout_width="wrap_content"
@@ -32,8 +32,6 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_marginLeft="40sp"
-        android:layout_marginRight="40sp"
         android:id="@+id/CommunityFilterRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
