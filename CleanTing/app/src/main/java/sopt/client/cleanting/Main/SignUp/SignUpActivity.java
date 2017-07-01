@@ -22,7 +22,7 @@ public class SignUpActivity extends AppCompatActivity {
     ImageView submit;
     EditText edit_name,edit_phonenumber,edit_citenumber,edit_password,edit_address,edit_id,edit_confirm_password;
     TextView agreement,information,approval;
-    ImageView to_login;
+    TextView to_login;
     CheckBox checkbox;
 
     @Override
@@ -48,7 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
         agreement=(TextView)findViewById(R.id.agreement);
         information=(TextView)findViewById(R.id.information);
         approval=(TextView)findViewById(R.id.approval);
-        to_login=(ImageView)findViewById(R.id.to_login);
+        to_login=(TextView) findViewById(R.id.to_login);
 
         checkbox=(CheckBox)findViewById(R.id.checkbox);
 
