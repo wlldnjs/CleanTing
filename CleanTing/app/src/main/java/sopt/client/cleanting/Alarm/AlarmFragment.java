@@ -9,10 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
@@ -22,14 +24,11 @@ import sopt.client.cleanting.R;
 public class AlarmFragment extends Fragment {
     NetworkService service;
     Context context;
-    public ExpandableListView expandableListView; // ExpandableListView 변수 선언
-    public CustomExpandableListViewAdapter mCustomExpListViewAdapter; // 위 ExpandableListView를 받을 CustomAdapter(2번 class에 해당)를 선언
-    public ArrayList<String> parentList; // ExpandableListView의 Parent 항목이 될 List 변수 선언
-    public ArrayList<ChildListData> fruit; // ExpandableListView의 Child 항목이 될 List를 각각 선언
-    public ArrayList<ChildListData> vegetables;
-    public ArrayList<ChildListData> etc;
-    public HashMap<String, ArrayList<ChildListData>> childList; // 위 ParentList와 ChildList를 연결할 HashMap 변수 선언
-
+    private ExpandableListView listView;
+    private ExpandableListAdapter listAdapter;
+    private List<String> listDataHeader;
+    private HashMap<String,List<String>> listHashMap;
+    private ImageView group_bar;
     public AlarmFragment() {
     }
 
@@ -43,81 +42,74 @@ public class AlarmFragment extends Fragment {
         service = ApplicationController.getInstance().getNetworkService();
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_alarm,container,false);
         Display newDisplay = getActivity().getWindowManager().getDefaultDisplay();
-        int width = newDisplay.getWidth();  //Indicator위치변경용!!!
+        int width = newDisplay.getWidth();  //Indicator위치변경용!!
+
 
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_alarm); // activity_main.xml을 MainActivity에 연결
+        listView=(ExpandableListView) layout.findViewById(R.id.expandablelist);
+        initData();
+        listAdapter=new ExpandableListAdapter(this,listDataHeader,listHashMap);
+        listView.setAdapter(listAdapter);
+        listView.setIndicatorBounds(width-50, width);
+        listView.expandGroup(0);//첫번째 goupA 열어놓고 시작
 
-        // ExpandableListView의 ParentList에 해당할 항목을 입력
-        parentList = new ArrayList<String>();
-        parentList.add("GROUP A");
-        parentList.add("GROUP B");
-        parentList.add("GROUP C");
-
-
-        // 앞서 ParentList에 연결할 ChildList 항목을 선언 및 입력
-        ChildListData apple = new ChildListData(getResources().getDrawable(R.mipmap.ic_launcher));
-        ChildListData pair = new ChildListData(getResources().getDrawable(R.mipmap.ic_launcher));
-        ChildListData persimmon = new ChildListData(getResources().getDrawable(R.mipmap.ic_launcher));
-        fruit = new ArrayList<ChildListData>();
-        fruit.add(apple);
-        fruit.add(pair);
-        fruit.add(persimmon);
-
-        ChildListData onion = new ChildListData(getResources().getDrawable(R.mipmap.ic_launcher));
-        ChildListData cabbage = new ChildListData(getResources().getDrawable(R.mipmap.ic_launcher));
-        ChildListData potato = new ChildListData(getResources().getDrawable(R.mipmap.ic_launcher));
-        vegetables = new ArrayList<ChildListData>();
-        vegetables.add(onion);
-        vegetables.add(cabbage);
-        vegetables.add(potato);
-
-        ChildListData snack  = new ChildListData(getResources().getDrawable(R.mipmap.ic_launcher));
-        ChildListData beer = new ChildListData(getResources().getDrawable(R.mipmap.ic_launcher));
-        ChildListData soju = new ChildListData(getResources().getDrawable(R.mipmap.ic_launcher));
-        etc = new ArrayList<ChildListData>();
-        etc.add(snack);
-        etc.add(beer);
-        etc.add(soju);
-
-        // 위에서 선언한 ParentList와 ChildList를 HashMap을 통해
-        childList = new HashMap<String, ArrayList<ChildListData>>();
-        childList.put(parentList.get(0), fruit);
-        childList.put(parentList.get(1), vegetables);
-        childList.put(parentList.get(2), etc);
+        group_bar=(ImageView)getActivity().findViewById(R.id.group_bar);
 
 
 
-        // 앞서 정의해 놓은 ExpandableListView와 그 CustomAdapter를 선언 및 연결한 후
-        // ExpandableListView에 대한 OnClickListener 등을 선언
-        expandableListView = (ExpandableListView)layout.findViewById(R.id.expandablelist);
-        mCustomExpListViewAdapter = new CustomExpandableListViewAdapter(this, parentList, childList);
-        expandableListView.setAdapter(mCustomExpListViewAdapter);
-        expandableListView.setIndicatorBounds(width-50, width);
-
-
-        int groupCount = (int) mCustomExpListViewAdapter.getGroupCount();
-        expandableListView.expandGroup(0);
-
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            @Override
-            public void onGroupExpand(int groupPosition) {
-            }
-        });
-        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-            }
-        });
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                return false;
-            }
-        });
-
-
+        //열릴때 parentList이미지 바뀌는거! 일단 임의로 아무이미지나 넣어놓음
+//        for(int i=0;i<listView.getCount();i++){
+//            if(listView.expandGroup(i)==true){
+//                group_bar.setImageResource(R.drawable.edit);
+//            }
+//            else{
+//               group_bar.setImageResource(R.drawable.line);
+//           }
+//        }
 
         return layout;
     }
-}
+
+
+    private void initData() {
+
+        listDataHeader = new ArrayList<>();
+        listHashMap = new HashMap<>();
+
+        listDataHeader.add("GroupA");
+        listDataHeader.add("GroupB");
+        listDataHeader.add("GroupC");
+        listDataHeader.add("GroupD");
+
+        List<String> groupA=new ArrayList<>();
+        groupA.add("안녕");
+
+        List<String> groupB= new ArrayList<>();
+        groupB.add("내이름은");
+        groupB.add("김진영이야");
+        groupB.add("만나서");
+        groupB.add("반가워");
+
+        List<String> groupC=new ArrayList<>();
+        groupC.add("너의");
+        groupC.add("이름은");
+        groupC.add("뭐니");
+
+        List<String> groupD=new ArrayList<>();
+        groupD.add("앞으로");
+        groupD.add("친하게");
+        groupD.add("지내자");
+
+        listHashMap.put(listDataHeader.get(0),groupA);
+        listHashMap.put(listDataHeader.get(1),groupB);
+        listHashMap.put(listDataHeader.get(2),groupC);
+        listHashMap.put(listDataHeader.get(3),groupD);
+
+    }
+
+
+
+
+    }
+
+
