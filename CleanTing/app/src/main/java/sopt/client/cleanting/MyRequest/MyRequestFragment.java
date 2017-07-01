@@ -1,6 +1,7 @@
 package sopt.client.cleanting.MyRequest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -70,7 +71,11 @@ public class MyRequestFragment extends Fragment{
 //                Toast.makeText(context, "헤더입니다.", Toast.LENGTH_SHORT).show();
             } else {
 //                String temp = myRequestAdapter.itemDatas.get(temp_position-1).writer;
-                Toast.makeText(context, temp_position + "번 댓글", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, itemData.get(temp_position-1).day +"," +itemData.get(temp_position-1).time , Toast.LENGTH_SHORT).show();
+                MyRequestData datas = itemData.get(temp_position-1);
+                Intent intent = new Intent(context, MyRequestRecruit.class);
+                intent.putExtra("datas", datas);
+                startActivity(intent);
             }
         }
     };

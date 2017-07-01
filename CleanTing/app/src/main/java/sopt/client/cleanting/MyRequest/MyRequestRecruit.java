@@ -13,11 +13,13 @@ public class MyRequestRecruit extends AppCompatActivity {
             cond, window, ref, commitBtn;
     TextView manCount, starCount, name,  act, review, career, age, date, time, total;
     EditText warningEdit;
+    MyRequestData datas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_request_recruit);
+        datas = (MyRequestData)getIntent().getSerializableExtra("datas");
 
         man1 = (ImageView)findViewById(R.id.my_request_recruit_man1);
         man2 = (ImageView)findViewById(R.id.my_request_recruit_man2);
@@ -45,5 +47,16 @@ public class MyRequestRecruit extends AppCompatActivity {
         total = (TextView)findViewById(R.id.my_request_recruit_total);
 
         warningEdit = (EditText)findViewById(R.id.my_request_recruit_warning);
+
+        date.setText(datas.day);
+        time.setText(datas.time);
+        if(datas.member.equals("2")){
+            man3.setImageResource(R.drawable.man_line);
+            manCount.setText("2명/3명");
+        } else if(datas.member.equals("1")){
+            man2.setImageResource(R.drawable.man_line);
+            man3.setImageResource(R.drawable.man_line);
+            manCount.setText("1명/3명");
+        }
     }
 }
