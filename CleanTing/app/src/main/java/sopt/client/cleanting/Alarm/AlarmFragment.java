@@ -19,11 +19,13 @@ import sopt.client.cleanting.R;
 
 public class AlarmFragment extends Fragment {
     private static final String[]  LIST_MENU ={"List1","List2","List3"} ;
+
     NetworkService service;
     Context context;
-    ListView listview;
+    ListView listview1,listview2,listview3;
     RelativeLayout groupA,groupB,groupC;
     LinearLayout groupA_item,groupB_item,groupC_item;
+    ArrayAdapter<String> Adapter;
     static int flag_a=0;
     static int flag_b,flag_c=1;
     public AlarmFragment() {
@@ -40,13 +42,20 @@ public class AlarmFragment extends Fragment {
 
 
         super.onCreate(savedInstanceState);
-        listview=(ListView)getActivity().findViewById(R.id.listview);
+        listview1=(ListView)getActivity().findViewById(R.id.listview1);
+        listview2=(ListView)getActivity().findViewById(R.id.listview2);
+        listview3=(ListView)getActivity().findViewById(R.id.listview3);
+
         service = ApplicationController.getInstance().getNetworkService();
 
 
-        ArrayAdapter Adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,LIST_MENU);
-        ListView listview = (ListView)layout.findViewById(R.id.listview);
-        listview.setAdapter(Adapter);
+      Adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,LIST_MENU);
+        ListView listview1 = (ListView)layout.findViewById(R.id.listview1);
+        listview1.setAdapter(Adapter);
+        ListView listview2 = (ListView)layout.findViewById(R.id.listview2);
+        listview2.setAdapter(Adapter);
+        ListView listview3 = (ListView)layout.findViewById(R.id.listview3);
+        listview3.setAdapter(Adapter);
 
         groupA = (RelativeLayout)layout.findViewById(R.id.groupA);
         groupB = (RelativeLayout)layout.findViewById(R.id.groupB);
