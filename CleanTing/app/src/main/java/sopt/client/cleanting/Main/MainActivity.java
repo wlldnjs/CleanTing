@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-import sopt.client.cleanting.Alarm.AlarmFragment;
 import sopt.client.cleanting.Community.CommunityFragment;
 import sopt.client.cleanting.MyRequest.MyRequestFragment;
 import sopt.client.cleanting.Mypage.MypageFragment;
