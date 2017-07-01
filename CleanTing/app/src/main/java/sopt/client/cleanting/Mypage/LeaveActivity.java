@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import sopt.client.cleanting.Main.Login.LoginActivity;
@@ -12,7 +12,7 @@ import sopt.client.cleanting.R;
 
 public class LeaveActivity extends AppCompatActivity {
 
-    Button leave_btn;
+    ImageView leave_btn;
     private CustomDialog mCustomDialog;
 
     @Override
@@ -20,7 +20,7 @@ public class LeaveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leave);
 
-        leave_btn = (Button) findViewById(R.id.leave_btn);
+        leave_btn = (ImageView)findViewById(R.id.leave_btn);
 
     }
 

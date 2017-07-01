@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -25,7 +25,7 @@ import sopt.client.cleanting.R;
 public class MypageFragment extends Fragment{
     NetworkService service;
     Context context;
-    Button Logout_btn;
+    ImageView Logout_btn;
     Switch alarm_switch;
     TextView leave_tv;
     TextView myhistory;
@@ -43,7 +43,7 @@ public class MypageFragment extends Fragment{
         service = ApplicationController.getInstance().getNetworkService();
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_mypage,container,false);
 
-        Logout_btn = (Button)layout.findViewById(R.id.Logout_btn);
+        Logout_btn = (ImageView)layout.findViewById(R.id.Logout_btn);
         alarm_switch = (Switch)layout.findViewById(R.id.alarm_switch);
         leave_tv = (TextView)layout.findViewById(R.id.leave);
         myhistory = (TextView) layout.findViewById(R.id.myhistory);
