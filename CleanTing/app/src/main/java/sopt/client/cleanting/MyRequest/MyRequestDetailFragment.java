@@ -20,7 +20,9 @@ import sopt.client.cleanting.R;
 public class MyRequestDetailFragment extends Fragment {
     Context context;
     TextView cleaner, date, time;
-    ImageView rating, member;
+    ImageView member1, member2, member3;
+    LinearLayout layout;
+    String memberCount;
 
     public MyRequestDetailFragment() {
     }
@@ -37,12 +39,30 @@ public class MyRequestDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.viewpager_my_request_detail,container,false);
+        layout = (LinearLayout) inflater.inflate(R.layout.viewpager_my_request_detail,container,false);
         cleaner = (TextView)layout.findViewById(R.id.my_request_detail_cleaner);
         date = (TextView)layout.findViewById(R.id.my_request_detail_date1);
         time = (TextView)layout.findViewById(R.id.my_request_detail_time1);
-        member = (ImageView)layout.findViewById(R.id.my_request_detail_member1);
+        member1 = (ImageView)layout.findViewById(R.id.my_request_detail_member1);
+        member2 = (ImageView)layout.findViewById(R.id.my_request_detail_member2);
+        member3 = (ImageView)layout.findViewById(R.id.my_request_detail_member3);
+
+        cleaner.setText(getArguments().getString("cleaner_name"));
+        date.setText(getArguments().getString("date"));
+        time.setText(getArguments().getString("time"));
+        memberCount = getArguments().getString("member_count");
+        if(memberCount.equals("2")){
+            member1.setImageResource(R.drawable.man_line);
+        } else if(memberCount.equals("1")){
+            member1.setImageResource(R.drawable.man_line);
+            member2.setImageResource(R.drawable.man_line);
+        }
 
         return layout;
+    }
+
+    public void setData(String date1, String time1){
+        date.setText(date1);
+        time.setText(time1);
     }
 }

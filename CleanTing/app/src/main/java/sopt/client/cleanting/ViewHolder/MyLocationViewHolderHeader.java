@@ -13,7 +13,7 @@ import sopt.client.cleanting.R;
 
 public class MyLocationViewHolderHeader extends RecyclerView.ViewHolder{
     public TextView myLocationBtn;
-    public ViewPager viewPager;
+    public static ViewPager viewPager;
     public MyLocationViewHolderHeader(View itemView) {
         super(itemView);
         myLocationBtn = (TextView)itemView.findViewById(R.id.my_location_sort);

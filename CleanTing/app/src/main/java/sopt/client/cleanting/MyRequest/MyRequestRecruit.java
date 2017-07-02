@@ -3,7 +3,6 @@ package sopt.client.cleanting.MyRequest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -67,9 +66,12 @@ public class MyRequestRecruit extends AppCompatActivity {
         commitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("받은 포지션 값", ""+position);
+//                Log.d("받은 포지션 값", ""+position);
+//                Bundle putData = new Bundle();
+//                putData.putSerializable("position", position);
+//                intent.putExtra("position",putData);
                 Intent intent = new Intent();
-                intent.putExtra("position",position);
+//                intent.putExtra("postion", position);
                 setResult(RESULT_OK,intent);
 //                startActivityForResult(intent,RESULT_OK);
                 finish();
