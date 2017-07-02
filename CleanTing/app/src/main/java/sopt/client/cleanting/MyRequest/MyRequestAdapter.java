@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -68,9 +67,9 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     Toast.makeText(context, "정렬방식 선택", Toast.LENGTH_SHORT).show();
                 }
             });
-            myLocationViewHolderHeader.viewPager.setAdapter(new pagerAdapter (fm));
-            myLocationViewHolderHeader.viewPager.setCurrentItem(0);
-//            myLocationViewHolderHeader.viewPager.setOnTouchListener(new View.OnTouchListener() {
+            MyLocationViewHolderHeader.viewPager.setAdapter(new pagerAdapter (fm));
+            MyLocationViewHolderHeader.viewPager.setCurrentItem(0);
+//            MyLocationViewHolderHeader.viewPager.setOnTouchListener(new View.OnTouchListener() {
 //                @Override
 //                public boolean onTouch(View v, MotionEvent event) {
 //                    if(event.getAction() == MotionEvent.ACTION_DOWN){
@@ -140,31 +139,32 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             if(position == bundleList.size()){
                 MyRequestDetailFragmentEmpty empty = new MyRequestDetailFragmentEmpty();
                 empty.setContext(context);
-                 MyLocationViewHolderHeader.viewPager.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        MyLocationViewHolderHeader.viewPager.requestDisallowInterceptTouchEvent(false);
-                        return false;
-                    }
-                });
+//                 MyLocationViewHolderHeader.viewPager.setOnTouchListener(new View.OnTouchListener() {
+//                    @Override
+//                    public boolean onTouch(View v, MotionEvent event) {
+//                        MyLocationViewHolderHeader.viewPager.requestDisallowInterceptTouchEvent(false);
+//                        return false;
+//                    }
+//                });
                 return empty;
             }else {
-                MyLocationViewHolderHeader.viewPager.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        if(event.getAction() == MotionEvent.ACTION_DOWN){
-                            viewPagerMove1 = event.getX();
-                        } else if(event.getAction() == MotionEvent.ACTION_UP){
-                            viewPagerMove2 = event.getX();
-                            if(Math.abs(viewPagerMove1) - Math.abs(viewPagerMove2) < 20 && Math.abs(viewPagerMove1) - Math.abs(viewPagerMove2) > -20){
-                                MyLocationViewHolderHeader.viewPager.requestDisallowInterceptTouchEvent(true);
-                                Toast.makeText(context, "아이템클릭", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        return false;
-                    }
-                });
+//                MyLocationViewHolderHeader.viewPager.setOnTouchListener(new View.OnTouchListener() {
+//                    @Override
+//                    public boolean onTouch(View v, MotionEvent event) {
+//                        if(event.getAction() == MotionEvent.ACTION_DOWN){
+//                            viewPagerMove1 = event.getX();
+//                        } else if(event.getAction() == MotionEvent.ACTION_UP){
+//                            viewPagerMove2 = event.getX();
+//                            if(Math.abs(viewPagerMove1) - Math.abs(viewPagerMove2) < 20 && Math.abs(viewPagerMove1) - Math.abs(viewPagerMove2) > -20){
+//                                MyLocationViewHolderHeader.viewPager.requestDisallowInterceptTouchEvent(true);
+//                                Toast.makeText(context, "아이템클릭", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                        return false;
+//                    }
+//                });
                 MyRequestDetailFragment myRequestDetailFragment = new MyRequestDetailFragment();
+                myRequestDetailFragment.setContext(context);
                 myRequestDetailFragment.setArguments(bundleList.get(position));
                 return myRequestDetailFragment;
             }

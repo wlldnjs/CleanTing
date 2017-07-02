@@ -1,6 +1,7 @@
 package sopt.client.cleanting.MyRequest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -52,12 +53,18 @@ public class MyRequestDetailFragment extends Fragment {
         time.setText(getArguments().getString("time"));
         memberCount = getArguments().getString("member_count");
         if(memberCount.equals("2")){
-            member1.setImageResource(R.drawable.man_line);
+            member3.setImageResource(R.drawable.man_line);
         } else if(memberCount.equals("1")){
-            member1.setImageResource(R.drawable.man_line);
+            member3.setImageResource(R.drawable.man_line);
             member2.setImageResource(R.drawable.man_line);
         }
-
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MyRequestRecruit.class);
+                startActivity(intent);
+            }
+        });
         return layout;
     }
 
