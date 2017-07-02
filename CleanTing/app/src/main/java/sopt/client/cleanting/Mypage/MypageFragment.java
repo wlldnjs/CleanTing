@@ -23,13 +23,18 @@ import sopt.client.cleanting.R;
  */
 
 public class MypageFragment extends Fragment{
+
     NetworkService service;
+
     Context context;
     ImageView Logout_btn;
     Switch alarm_switch;
     TextView leave_tv;
     TextView myhistory;
     TextView changeinfo;
+    TextView adminaccount;
+
+    private CustomDialogAccount mCustomDialogAcount;
 
     public MypageFragment() {
     }
@@ -49,6 +54,17 @@ public class MypageFragment extends Fragment{
         leave_tv = (TextView)layout.findViewById(R.id.leave);
         myhistory = (TextView) layout.findViewById(R.id.myhistory);
         changeinfo = (TextView)layout.findViewById(R.id.changeinfo);
+        adminaccount = (TextView)layout.findViewById(R.id.adminaccount);
+
+        adminaccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCustomDialogAcount = new CustomDialogAccount(getContext(),
+                        registListener);
+                mCustomDialogAcount.show();
+            }
+        });
+
 
         myhistory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,4 +133,14 @@ public class MypageFragment extends Fragment{
 
         return layout;
     }
+
+    private View.OnClickListener registListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            Toast.makeText(getContext(),"정상적으로 등록.",
+                    Toast.LENGTH_SHORT).show();
+            mCustomDialogAcount.dismiss();
+        }
+    };
+
+
 }
