@@ -8,13 +8,13 @@ public class MakeTingResult {
     public String message;
 
     public class MakeTingResultData{
-        public String area;
-        public String year;
-        public String month;
+        public String userId;
         public String date;
-        public String time;
+        public String startTime;
+        public String endTime;
         public String price;
         public String cleanerId;
         public String request;
+        public String warning;
     }
 }

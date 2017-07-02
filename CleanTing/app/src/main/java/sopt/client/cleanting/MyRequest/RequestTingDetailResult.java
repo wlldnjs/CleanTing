@@ -12,14 +12,14 @@ public class RequestTingDetailResult {
 
     public class RequestTingDetailResultData{
         public String tingId;
-        public String area;
-        public String year;
-        public String month;
         public String date;
-        public String time;
-        public String price;
-        public String cleanerId;
-        public String request;
+        public String startTime;
+        public String endTime;
         public String cnt;
+        public String cleanerId;
+        public String userId;
+        public String price;
+        public String request;
+        public String warning;
     }
 }

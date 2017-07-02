@@ -9,6 +9,7 @@ public class MyRequestTingEditResult {
 
     public class MyRequestTingEditEditData{
         public String userId;
+        public String price;
         public String request;
     }
 }

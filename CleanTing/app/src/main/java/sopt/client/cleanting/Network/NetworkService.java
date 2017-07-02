@@ -12,6 +12,7 @@ import sopt.client.cleanting.Main.Login.FindIdResult;
 import sopt.client.cleanting.Main.Login.LoginResult;
 import sopt.client.cleanting.Main.SignUp.IdCheckResult;
 import sopt.client.cleanting.Main.SignUp.SignUpResult;
+import sopt.client.cleanting.MakeTing.EndTingResult;
 import sopt.client.cleanting.MakeTing.MakeTingLocationResult;
 import sopt.client.cleanting.MakeTing.MakeTingRequestResult;
 import sopt.client.cleanting.MakeTing.MakeTingResult;
@@ -50,27 +51,33 @@ public interface NetworkService {
     @DELETE("members/withdraw/{userId}")
     Call<WithdrawResult> getWithdrawResult(@Path("userId") String userId);
 
-    // 팅 생성하기
+    // 2-1 팅 생성하기
     @POST("ting")
     Call<MakeTingResult> getMakeTingResult(@Body MakeTingResult.MakeTingResultData makeTingResultData);
 
-    // 팅 신청하기
+    // 2-2 팅 신청하기
     @POST("ting/{tingId}")
     Call<MakeTingRequestResult> getMakeTingRequestResult(@Path("tId") String tId, @Body MakeTingRequestResult.MakeTingRequestResultData makeTingRequestResultData);
 
-    // 팅 조회(지역)
+    // 2-3 팅 조회(지역)
+    /**API 수정중*/
     @GET("ting/area/{userId}")
     Call<MakeTingLocationResult> getMakeTingLocationResult(@Path("userId") String userId, @Header("order") String order);
 
-    // 팅 상세정보 보기
-
-    // 팅 수정
+    // 2-4 팅 수정
     @PUT("ting/{tingId}")
-    Call<MyRequestTingEditResult> getMyRequestTingEditResult(@Path("tingId") String tingId);
+    Call<MyRequestTingEditResult> getMyRequestTingEditResult(@Path("tingId") String tingId, @Body MyRequestTingEditResult.MyRequestTingEditEditData myRequestTingEditEditData);
 
-    // 사용자 신청 팅 조회
+    // 2-5 사용자 신청 팅 조회
     @GET("ting/register/{userId}")
     Call<RequestTingDetailResult> getRequestTingDetailResult(@Path("userId") String userId);
 
-    // 팅 완료
+    // 2-6 팅 완료
+    @GET("ting/complete/{tingId}")
+    Call<EndTingResult> getCompleteResult(@Path("tingId") String tingId);
+
+    // 2-7 팅 취소하기
+    @DELETE("ting/{tingId}")
+    Call<EndTingResult> getCancelTingResult(@Path("tingId") String tingId, @Body EndTingResult.EndTingData endTingData);
+    
 }
