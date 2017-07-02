@@ -25,8 +25,8 @@
             android:id="@+id/rate_btn"
             android:layout_marginRight="15dp"
             android:src="@drawable/evaluation"
-            android:layout_width="80dp"
-            android:layout_height="25dp" />
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
     </RelativeLayout>
 
     <LinearLayout
