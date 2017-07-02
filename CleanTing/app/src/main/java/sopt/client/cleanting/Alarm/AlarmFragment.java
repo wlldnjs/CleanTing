@@ -24,7 +24,7 @@ public class AlarmFragment extends Fragment {
     ListView listview1,listview2,listview3;
     RelativeLayout groupA,groupB,groupC;
     LinearLayout groupA_item,groupB_item,groupC_item;
-    AlarmAdapter Adapter;
+    AlarmAdapter Adapter1,Adapter2,Adapter3;
     static int flag_a=0;
     static int flag_b,flag_c=1;
     public AlarmFragment() {
@@ -53,24 +53,26 @@ public class AlarmFragment extends Fragment {
         groupC_item=(LinearLayout)layout.findViewById(R.id.groupC_item);
 
 
-        Adapter = new AlarmAdapter();
+        Adapter1 = new AlarmAdapter();
+        Adapter2 = new AlarmAdapter();
+        Adapter3 = new AlarmAdapter();
 
         listview1 = (ListView)layout.findViewById(R.id.listview1);
-        listview1.setAdapter(Adapter);
-        Adapter.addItem("김진영님이 집을 나갔습니다.","11:00PM");
-        Adapter.addItem("김진영님이 다시 들어왔습니다.","12:35PM");
-        Adapter.addItem("김진영님이 가출했습니다.","13:35PM");
+        listview1.setAdapter(Adapter1);
+        Adapter1.addItem("김진영님이 집을 나갔습니다.","11:00PM");
+        Adapter1.addItem("김진영님이 다시 들어왔습니다.","12:35PM");
+        Adapter1.addItem("김진영님이 가출했습니다.","13:35PM");
 
         listview2=(ListView)layout.findViewById(R.id.listview2);
-        listview2.setAdapter(Adapter);
-        Adapter.addItem("잘있어라","13:50PM");
-        Adapter.addItem("세상아","15:50PM");
+        listview2.setAdapter(Adapter2);
+        Adapter2.addItem("잘있어라","13:50PM");
+        Adapter2.addItem("세상아","15:50PM");
 
         listview3=(ListView)layout.findViewById(R.id.listview3);
-        listview3.setAdapter(Adapter);
-        Adapter.addItem("나","11:00PM");
-        Adapter.addItem("휴가좀","16:23PM");
-        Adapter.addItem("다녀올게","09:00AM");
+        listview3.setAdapter(Adapter3);
+        Adapter3.addItem("나","11:00PM");
+        Adapter3.addItem("휴가좀","16:23PM");
+        Adapter3.addItem("다녀올게","09:00AM");
 
 
         ////////////////클릭하면 색깔바뀌게 하는 기능////////////////////////

@@ -7,10 +7,10 @@
 <RelativeLayout
     android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="35dp">
+    android:layout_height="60dp">
     <TextView
         android:id="@+id/item_text"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:text="ListItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -23,7 +23,7 @@
             android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
             android:text="11:21PM"
-            android:textSize="15dp"
+            android:textSize="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
