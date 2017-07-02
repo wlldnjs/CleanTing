@@ -8,6 +8,9 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import sopt.client.cleanting.Cleanner.AddCleanerReviewResult;
+import sopt.client.cleanting.Cleanner.SearchCleanerResult;
+import sopt.client.cleanting.Cleanner.SearchLocationCleanerResult;
 import sopt.client.cleanting.Community.BulletinAddPostResult;
 import sopt.client.cleanting.Community.BulletinCommentData;
 import sopt.client.cleanting.Community.FindAllBulletinResult;
@@ -110,4 +113,28 @@ public interface NetworkService {
     // 3-6 내가 작성한 게시글만 모아보기
     @GET("posts/member/{userId}")
     Call<SearchBulletinResult> getSearchMyBulletinResult(@Path("userId") String userId);
+
+    // 4-1 클리너 등록
+    /** 클리너용 앱이 아니기때문에 과감히 생략 */
+
+    // 4-2 클리너 검색
+    @GET("cleaner/search/{key}")
+    Call<SearchCleanerResult> getSearchCleanerResult(@Path("key") String key);
+
+    // 4-3 최근 이용 클리너(최신순)
+    /**API 수정중*/
+
+    // 4-4 지역별 클리너(별점순/이력순/후기순)
+    @POST("cleaner/{date}")
+    Call<SearchLocationCleanerResult> getSearchLocationCleanerResult(@Path("date") String date, @Body SearchLocationCleanerResult.SendSearchLocationCleanerData sendSearchLocationCleanerData);
+
+    // 4-5 클리너 상세정보 조회
+//    @GET("cleaner/detail/{cleanerId}")
+//    Call<SearchCleanerDetailResult> getSearchCleanerDetailResult(@Path("cleanerId") String cleanerId);
+    /**API 수정중*/
+
+    // 4-6 클리너 리뷰작성
+    @POST("cleaner/review/{cleanerId}")
+    Call<AddCleanerReviewResult> getAddCleanerReviewResult(@Path("cleanerId") String cleanerId, @Body AddCleanerReviewResult.AddCleanerReviewData addCleanerReviewData);
+
 }
