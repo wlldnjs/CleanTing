@@ -18,6 +18,7 @@
             android:id="@+id/ReplyContent"
             android:text="작성자 :"/>
         <TextView
+            android:textColor="#999999"
             android:id="@+id/ReplyDate"
             android:text="2017.05.01"
             android:layout_marginRight="35dp"
@@ -27,6 +28,7 @@
     </RelativeLayout>
 
     <TextView
+        android:textColor="#333333"
         android:layout_marginLeft="35dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

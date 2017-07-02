@@ -1,5 +1,6 @@
 package sopt.client.cleanting.Community;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -47,8 +48,8 @@ public class CommunityFilterActivity extends AppCompatActivity {
         public void onClick(View v) {
             final int itemPosition = CFrecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
 
-//            Intent intent = new Intent(getContext(),DetailCleanerActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(),CommunityBulletinDetailActivity.class);
+            startActivity(intent);
             Toast.makeText(getApplicationContext(),itemPosition + "번 리스트 클릭!!", Toast.LENGTH_SHORT).show();
         }
     };

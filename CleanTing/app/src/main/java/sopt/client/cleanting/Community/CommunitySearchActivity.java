@@ -1,12 +1,16 @@
 package sopt.client.cleanting.Community;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import sopt.client.cleanting.R;
 
@@ -17,14 +21,26 @@ public class CommunitySearchActivity extends AppCompatActivity {
     RecyclerView SearchRecyclerView;
     ImageView imgview;
 
+    private RecyclerView BrecyclerView;
+    private ArrayList<Bulletin> bulletinArrayList;
+    private BulletinListRecylerAdapter BrecyclerAdapter;
+    private LinearLayoutManager layoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_search);
 
-        SearchRecyclerView = (RecyclerView)findViewById(R.id.Search_bulletin_Recyclerview);
         searchimg = (ImageView)findViewById(R.id.Bulletin_search_img);
         imgview = (ImageView)findViewById(R.id.center_img);
+        search_edit = (EditText)findViewById(R.id.editText);
+
+        SearchRecyclerView = (RecyclerView)findViewById(R.id.Search_bulletin_Recyclerview);
+        SearchRecyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);             //리니어레이아웃의 형태이면 방향은 수직
+        SearchRecyclerView.setLayoutManager(layoutManager);
 
         searchimg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,8 +48,22 @@ public class CommunitySearchActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"검색하기",Toast.LENGTH_SHORT).show();
                 SearchRecyclerView.setVisibility(View.VISIBLE);
                 imgview.setVisibility(View.INVISIBLE);
+
+                String str = search_edit.getText().toString();
+                // 서버한테 보내기
+                // 받고
+
+//                BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent);
+//                SearchRecyclerView.setAdapter(BrecyclerAdapter);
             }
         });
 
     }
+    public View.OnClickListener clickEvent = new View.OnClickListener() {
+        public void onClick(View v) {
+            final int itemPosition = BrecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
+            Intent intent = new Intent(getApplicationContext(),CommunityBulletinDetailActivity.class);
+            startActivity(intent);
+        }
+    };
 }
