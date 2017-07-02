@@ -29,8 +29,9 @@
         <activity android:name=".Mypage.LeaveActivity" />
         <activity android:name=".Mypage.MyhistoryActivity" />
         <activity android:name=".Mypage.RatingActivity" />
-        <activity android:name=".MakeTing.MakeTingActivity" android:windowSoftInputMode="stateAlwaysHidden">
-        </activity>
+        <activity
+            android:name=".MakeTing.MakeTingActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity android:name=".Main.Login.FindAccountActivity" />
         <activity android:name=".MyRequest.ChangeMyRequestDetail" />
 
@@ -48,7 +49,8 @@
         <activity android:name=".Community.CommunitySearchActivity" />
         <activity android:name=".Community.CommunityFilterActivity" />
         <activity android:name=".Community.CommunityWriteActivity" />
-        <activity android:name=".Community.CommunityBulletinDetailActivity"></activity>
+        <activity android:name=".Community.CommunityBulletinDetailActivity" />
+        <activity android:name=".Mypage.ChangeInfoActivity"></activity>
     </application>
 
 </manifest>

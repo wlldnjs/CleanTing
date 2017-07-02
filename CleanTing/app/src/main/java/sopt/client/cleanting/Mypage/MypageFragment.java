@@ -29,6 +29,7 @@ public class MypageFragment extends Fragment{
     Switch alarm_switch;
     TextView leave_tv;
     TextView myhistory;
+    TextView changeinfo;
 
     public MypageFragment() {
     }
@@ -47,6 +48,7 @@ public class MypageFragment extends Fragment{
         alarm_switch = (Switch)layout.findViewById(R.id.alarm_switch);
         leave_tv = (TextView)layout.findViewById(R.id.leave);
         myhistory = (TextView) layout.findViewById(R.id.myhistory);
+        changeinfo = (TextView)layout.findViewById(R.id.changeinfo);
 
         myhistory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,15 @@ public class MypageFragment extends Fragment{
 //                return false;
 //            }
 //        });
+
+        changeinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),ChangeInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         Logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
