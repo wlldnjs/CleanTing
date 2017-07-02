@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/activity_custom_list_view"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="22dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/BulletinDetail_titile"
+                android:textColor="#333333"
+                android:text="휴지 공동 구매 하실분"
+                android:textSize="20sp"
+                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/BulletinDetail_date"
+                android:text="2015.12.24 14:00"
+                android:textSize="11sp"
+                android:textColor="#999999"
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/BulletinDetail_content"
+            android:text="BC마트에 휴지 30개 팔고\n 어쩌고 저쩌고 adlfjkasdflkjsadlfjksldfj\nsadlfkjasldkfj"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textSize="15sp"
+            android:textColor="#333333"
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp">
+            <ImageView
+                android:src="@drawable/comment_icon"
+                android:layout_centerVertical="true"
+                android:id="@+id/C_img"
+                android:layout_width="33dp"
+                android:layout_height="38dp" />
+            <TextView
+                android:id="@+id/C_comment"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:textSize="17sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/C_img"
+                android:text="댓글" />
+            <TextView
+                android:id="@+id/BulletinDetail_replynum"
+                android:text="25"
+                android:layout_marginLeft="5dp"
+                android:textSize="17sp"
+                android:layout_toRightOf="@+id/C_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="23sp"
+            android:alpha="0.15"
+            android:background="#333333" />
+    </LinearLayout>
+
+</RelativeLayout>
