@@ -31,7 +31,7 @@
         <activity android:name=".Mypage.RatingActivity" />
         <activity
             android:name=".MakeTing.MakeTingActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".Main.Login.FindAccountActivity" />
         <activity android:name=".MyRequest.ChangeMyRequestDetail" />
 
@@ -50,7 +50,9 @@
         <activity android:name=".Community.CommunityFilterActivity" />
         <activity android:name=".Community.CommunityWriteActivity" />
         <activity android:name=".Community.CommunityBulletinDetailActivity" />
-        <activity android:name=".Mypage.ChangeInfoActivity"></activity>
+        <activity android:name=".Mypage.ChangeInfoActivity" />
+        <activity android:name=".MakeTing.ChooseCleanerActivity" />
+        <activity android:name=".MakeTing.CleanerDetail.DetailCleanerActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package sopt.client.cleanting.MakeTing;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     CalendarView calendarView;
     ScrollView warningScroll;
     boolean selectCond ,selectWindow, selectRef = false;
+
+    ImageView directimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +96,16 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         condiBtn = (ImageView)findViewById(R.id.make_ting_condi) ;
         windowBtn = (ImageView)findViewById(R.id.make_ting_window);
         refBtn = (ImageView)findViewById(R.id.make_ting_ref);
+
+        directimg = (ImageView)findViewById(R.id.direct_img_btn);
+
+        directimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ChooseCleanerActivity.class);
+                startActivity(intent);
+            }
+        });
 
         condiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
