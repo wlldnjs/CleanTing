@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -25,7 +24,7 @@ public class AlarmFragment extends Fragment {
     ListView listview1,listview2,listview3;
     RelativeLayout groupA,groupB,groupC;
     LinearLayout groupA_item,groupB_item,groupC_item;
-    ArrayAdapter<String> Adapter;
+    AlarmAdapter Adapter;
     static int flag_a=0;
     static int flag_b,flag_c=1;
     public AlarmFragment() {
@@ -39,24 +38,12 @@ public class AlarmFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_alarm,container,false);
-
+        service = ApplicationController.getInstance().getNetworkService();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         super.onCreate(savedInstanceState);
-        listview1=(ListView)getActivity().findViewById(R.id.listview1);
-        listview2=(ListView)getActivity().findViewById(R.id.listview2);
-        listview3=(ListView)getActivity().findViewById(R.id.listview3);
 
-        service = ApplicationController.getInstance().getNetworkService();
-
-
-      Adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,LIST_MENU);
-        ListView listview1 = (ListView)layout.findViewById(R.id.listview1);
-        listview1.setAdapter(Adapter);
-        ListView listview2 = (ListView)layout.findViewById(R.id.listview2);
-        listview2.setAdapter(Adapter);
-        ListView listview3 = (ListView)layout.findViewById(R.id.listview3);
-        listview3.setAdapter(Adapter);
-
+        ///////////////////////Parent랑 Child선언////////////////////////////
         groupA = (RelativeLayout)layout.findViewById(R.id.groupA);
         groupB = (RelativeLayout)layout.findViewById(R.id.groupB);
         groupC = (RelativeLayout)layout.findViewById(R.id.groupC);
@@ -66,6 +53,27 @@ public class AlarmFragment extends Fragment {
         groupC_item=(LinearLayout)layout.findViewById(R.id.groupC_item);
 
 
+        Adapter = new AlarmAdapter();
+
+        listview1 = (ListView)layout.findViewById(R.id.listview1);
+        listview1.setAdapter(Adapter);
+        Adapter.addItem("김진영님이 집을 나갔습니다.","11:00PM");
+        Adapter.addItem("김진영님이 다시 들어왔습니다.","12:35PM");
+        Adapter.addItem("김진영님이 가출했습니다.","13:35PM");
+
+        listview2=(ListView)layout.findViewById(R.id.listview2);
+        listview2.setAdapter(Adapter);
+        Adapter.addItem("잘있어라","13:50PM");
+        Adapter.addItem("세상아","15:50PM");
+
+        listview3=(ListView)layout.findViewById(R.id.listview3);
+        listview3.setAdapter(Adapter);
+        Adapter.addItem("나","11:00PM");
+        Adapter.addItem("휴가좀","16:23PM");
+        Adapter.addItem("다녀올게","09:00AM");
+
+
+        ////////////////클릭하면 색깔바뀌게 하는 기능////////////////////////
 
         groupA.setOnClickListener(new View.OnClickListener() {
 
@@ -113,6 +121,7 @@ public class AlarmFragment extends Fragment {
                 }
             }
         });
+        ////////////////////////////////////////////////////////////////////
 
         return layout;
     }

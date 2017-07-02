@@ -26,8 +26,8 @@ public class ListItem {
     }
 
 
-    public ListItem(String str, String time) {
-        this.str = str;
-        this.time = time;
-    }
+//    public ListItem(String str, String time) {
+//        this.str = str;
+//        this.time = time;
+//    }
 }
