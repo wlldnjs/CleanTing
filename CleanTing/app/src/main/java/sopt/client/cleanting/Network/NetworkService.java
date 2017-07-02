@@ -8,6 +8,12 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import sopt.client.cleanting.Community.BulletinAddPostResult;
+import sopt.client.cleanting.Community.BulletinCommentData;
+import sopt.client.cleanting.Community.FindAllBulletinResult;
+import sopt.client.cleanting.Community.FindBulletinResult;
+import sopt.client.cleanting.Community.Reply.BulletinAddCommentResult;
+import sopt.client.cleanting.Community.SearchBulletinResult;
 import sopt.client.cleanting.Main.Login.FindIdResult;
 import sopt.client.cleanting.Main.Login.LoginResult;
 import sopt.client.cleanting.Main.SignUp.IdCheckResult;
@@ -77,7 +83,31 @@ public interface NetworkService {
     Call<EndTingResult> getCompleteResult(@Path("tingId") String tingId);
 
     // 2-7 팅 취소하기
+    /**API 수정중*/
     @DELETE("ting/{tingId}")
     Call<EndTingResult> getCancelTingResult(@Path("tingId") String tingId, @Body EndTingResult.EndTingData endTingData);
-    
+
+    // 3-1 전체 게시글 조회
+    @GET("posts")
+    Call<FindAllBulletinResult> getFindAllBulletinResult();
+
+    // 3-2 특정 게시글 조회
+    @GET("posts/{postId}")
+    Call<FindBulletinResult> getFindBulletinResult(@Path("postId") String postId);
+
+    // 3-3 게시글 작성
+    @POST("posts")
+    Call<BulletinAddPostResult> getBulletinAddPostResult(@Body BulletinAddPostResult.BulletinAddPostData bulletinAddPostData);
+
+    // 3-4 댓글 작성
+    @POST("posts/{postId}")
+    Call<BulletinAddCommentResult> getBulletinAddCommentResult(@Body BulletinCommentData bulletinCommentData);
+
+    // 3-5 게시판 검색
+    @GET("posts/search/{key}")
+    Call<SearchBulletinResult> getSearchBulletinResult(@Path("key") String key);
+
+    // 3-6 내가 작성한 게시글만 모아보기
+    @GET("posts/member/{userId}")
+    Call<SearchBulletinResult> getSearchMyBulletinResult(@Path("userId") String userId);
 }
