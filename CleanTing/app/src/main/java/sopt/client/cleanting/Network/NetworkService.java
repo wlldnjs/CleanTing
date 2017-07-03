@@ -117,7 +117,7 @@ public interface NetworkService {
 
     // 3-4 댓글 작성
     @POST("posts/{postId}")
-    Call<BulletinAddCommentResult> getBulletinAddCommentResult(@Body BulletinCommentData bulletinCommentData);
+    Call<BulletinAddCommentResult> getBulletinAddCommentResult(@Path("postId") String postId ,@Body BulletinCommentData bulletinCommentData);
 
     // 3-5 게시판 검색
     @GET("posts/search/{key}")

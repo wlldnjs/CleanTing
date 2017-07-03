@@ -15,10 +15,10 @@ import sopt.client.cleanting.R;
 
 public class BulletinListRecylerAdapter extends RecyclerView.Adapter<BulletinViewHolder>  {
 
-    ArrayList<Bulletin> bulletinArrayList;
+    ArrayList<FindAllBulletinData> bulletinArrayList;
     private final View.OnClickListener clickListener;
 
-    public BulletinListRecylerAdapter(ArrayList<Bulletin> itemdatas,View.OnClickListener clickListener)
+    public BulletinListRecylerAdapter(ArrayList<FindAllBulletinData> itemdatas,View.OnClickListener clickListener)
     {
         this.clickListener = clickListener;
         this.bulletinArrayList = itemdatas;
@@ -35,10 +35,10 @@ public class BulletinListRecylerAdapter extends RecyclerView.Adapter<BulletinVie
 
     @Override
     public void onBindViewHolder(BulletinViewHolder holder, int position) {
-        holder.BulletinTitle.setText(bulletinArrayList.get(position).B_title);
-        holder.BulletinDate.setText(bulletinArrayList.get(position).B_date);
-        holder.BullentinContent.setText(bulletinArrayList.get(position).B_content);
-        holder.Bullentinreply.setText(bulletinArrayList.get(position).B_reply);
+        holder.BulletinTitle.setText(bulletinArrayList.get(position).title);
+        holder.BulletinDate.setText(bulletinArrayList.get(position).date);
+        holder.BullentinContent.setText(bulletinArrayList.get(position).content);
+        holder.Bullentinreply.setText(bulletinArrayList.get(position).comment_cnt);
     }
 
     @Override

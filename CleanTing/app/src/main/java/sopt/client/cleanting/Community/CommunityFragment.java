@@ -14,9 +14,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
@@ -38,7 +42,7 @@ public class CommunityFragment extends Fragment {
     ImageView Floatimg;
 
     private RecyclerView BrecyclerView;
-    private ArrayList<Bulletin> bulletinArrayList;
+    private ArrayList<FindAllBulletinData> bulletinArrayList;
     private BulletinListRecylerAdapter BrecyclerAdapter;
     private LinearLayoutManager layoutManager;
 
@@ -74,18 +78,42 @@ public class CommunityFragment extends Fragment {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);             //리니어레이아웃의 형태이면 방향은 수직
         BrecyclerView.setLayoutManager(layoutManager);                           //리사이클러뷰에 레이아웃매니저를 달아준다
 
-        bulletinArrayList = new ArrayList<Bulletin>();                         //사용자 정의 데이터를 갖는 arraylist
-        bulletinArrayList.add(new Bulletin("휴지 공동 구매 하실분", "2015.5.5 14:00","BC 마트에 휴지를 엄청 싸게 ~~~~","12"));
-        bulletinArrayList.add(new Bulletin("콜라 공동 구매 하실분", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+        bulletinArrayList = new ArrayList<FindAllBulletinData>();                         //사용자 정의 데이터를 갖는 arraylist
 
-        BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent);
-        BrecyclerView.setAdapter(BrecyclerAdapter);
+        Call<FindAllBulletinResult> findAllBulletinResultCall = service.getFindAllBulletinResult();
+        findAllBulletinResultCall.enqueue(new Callback<FindAllBulletinResult>() {
+            @Override
+            public void onResponse(Call<FindAllBulletinResult> call, Response<FindAllBulletinResult> response) {
+                if (response.isSuccessful()){
+                    if(response.body().message.equals("전체게시글 조회에 성공하였습니다"))
+                    {
+                        bulletinArrayList = response.body().result;
+                        BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent);
+                        BrecyclerView.setAdapter(BrecyclerAdapter);
+                        Toast.makeText(getContext(),response.body().result.get(0).title, Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), response.body().message, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FindAllBulletinResult> call, Throwable t) {
+
+            }
+        });
+
+//        bulletinArrayList.add(new Bulletin("휴지 공동 구매 하실분", "2015.5.5 14:00","BC 마트에 휴지를 엄청 싸게 ~~~~","12"));
+//        bulletinArrayList.add(new Bulletin("콜라 공동 구매 하실분", "날짜","사러가자","12"));
+//        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+//        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+//        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+//        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+//        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+//        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+
+//        BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent);
+//        BrecyclerView.setAdapter(BrecyclerAdapter);
 
         btn_remove = (LinearLayout)layout.findViewById(R.id.btn_remove);
         btn_remove.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +156,32 @@ public class CommunityFragment extends Fragment {
     public View.OnClickListener clickEvent = new View.OnClickListener() {
         public void onClick(View v) {
             final int itemPosition = BrecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
+
+            Call<FindBulletinResult> findbulletinresult = service.getFindBulletinResult(bulletinArrayList.get(itemPosition).postId);
+            findbulletinresult.enqueue(new Callback<FindBulletinResult>() {
+                @Override
+                public void onResponse(Call<FindBulletinResult> call, Response<FindBulletinResult> response) {
+                    if(response.isSuccessful())
+                    {
+                        if(response.body().message.equals("게시물 상세조회에 성공하였습니다."))
+                        {
+                            FindBulletinData Data = new FindBulletinData();
+                            Data = response.body().result;
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
+                @Override
+                public void onFailure(Call<FindBulletinResult> call, Throwable t) {
+
+                }
+            });
+
             Intent intent = new Intent(getContext(),CommunityBulletinDetailActivity.class);
+
             startActivity(intent);
         }
     };

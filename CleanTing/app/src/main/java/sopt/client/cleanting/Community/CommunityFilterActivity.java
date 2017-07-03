@@ -24,25 +24,25 @@ public class CommunityFilterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_filter);
 
-        CFrecyclerView = (RecyclerView)findViewById(R.id.CommunityFilterRecyclerView);
-        CFrecyclerView.setHasFixedSize(true);
-
-        layoutManager2 = new LinearLayoutManager(this);
-        layoutManager2.setOrientation(LinearLayoutManager.VERTICAL);             //리니어레이아웃의 형태이면 방향은 수직
-        CFrecyclerView.setLayoutManager(layoutManager2);
-
-        bulletinArrayList = new ArrayList<Bulletin>();                         //사용자 정의 데이터를 갖는 arraylist
-        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
-        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
-        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
-        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
-        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
-
-        BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent2);
-        CFrecyclerView.setAdapter(BrecyclerAdapter);
+//        CFrecyclerView = (RecyclerView)findViewById(R.id.CommunityFilterRecyclerView);
+//        CFrecyclerView.setHasFixedSize(true);
+//
+//        layoutManager2 = new LinearLayoutManager(this);
+//        layoutManager2.setOrientation(LinearLayoutManager.VERTICAL);             //리니어레이아웃의 형태이면 방향은 수직
+//        CFrecyclerView.setLayoutManager(layoutManager2);
+//
+//        bulletinArrayList = new ArrayList<Bulletin>();                         //사용자 정의 데이터를 갖는 arraylist
+//        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
+//        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
+//        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
+//        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
+//        bulletinArrayList.add(new Bulletin("쌀 사러 갈 사람", "2015.05.10","저기 어디에 진짜로 싸게 판대 가자","12"));
+//        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+//        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+//        bulletinArrayList.add(new Bulletin("제목", "날짜","사러가자","12"));
+//
+//        BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent2);
+//        CFrecyclerView.setAdapter(BrecyclerAdapter);
     }
     public View.OnClickListener clickEvent2 = new View.OnClickListener() {
         public void onClick(View v) {

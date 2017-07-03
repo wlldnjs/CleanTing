@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 public class CommunitySearchActivity extends AppCompatActivity {
@@ -20,6 +24,7 @@ public class CommunitySearchActivity extends AppCompatActivity {
     EditText search_edit;
     RecyclerView SearchRecyclerView;
     ImageView imgview;
+    NetworkService service;
 
     private RecyclerView BrecyclerView;
     private ArrayList<Bulletin> bulletinArrayList;
@@ -51,6 +56,26 @@ public class CommunitySearchActivity extends AppCompatActivity {
 
                 String str = search_edit.getText().toString();
                 // 서버한테 보내기
+
+                Call<SearchBulletinResult> searchBulletinResultCall = service.getSearchBulletinResult(str);
+                searchBulletinResultCall.enqueue(new Callback<SearchBulletinResult>() {
+                    @Override
+                    public void onResponse(Call<SearchBulletinResult> call, Response<SearchBulletinResult> response) {
+                        if(response.isSuccessful())
+                        {
+                            if(response.body().message.equals("pwd update ok")){
+                                Toast.makeText(getApplicationContext(),"비밀번호 변경에 성공했습니다.", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<SearchBulletinResult> call, Throwable t) {
+
+                    }
+                });
+
                 // 받고
 
 //                BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent);
