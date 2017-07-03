@@ -66,7 +66,31 @@ public class SignUpActivity extends AppCompatActivity {
         doublecheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Call<IdCheckResult> checkResultCall = service.getIdCheckResult(edit_id.getText().toString());
+
+                checkResultCall.enqueue(new Callback<IdCheckResult>() {
+                    @Override
+                    public void onResponse(Call<IdCheckResult> call, Response<IdCheckResult> response) {
+                        if (response.isSuccessful()){
+                            if (response.body().message.equals("사용가능한 아이디 입니다.")){
+                                Toast.makeText(getApplicationContext(),
+                                        "사용 가능한 아이디입니다.", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),
+                                        response.body().message, Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<IdCheckResult> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(),
+                                "서버상태를 확인해주세요", Toast.LENGTH_LONG).show();
+                    }
+                });
+
             }
         });
 

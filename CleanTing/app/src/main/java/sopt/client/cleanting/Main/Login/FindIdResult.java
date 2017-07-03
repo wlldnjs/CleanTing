@@ -1,10 +1,10 @@
 package sopt.client.cleanting.Main.Login;
 
 /**
- * Created by 김지원 on 2017-07-03.
+ * Created by 진영 on 2017-07-04.
  */
 
 public class FindIdResult {
     public String message;
-    public FindData result;
+    public String result;
 }

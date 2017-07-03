@@ -14,9 +14,15 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import sopt.client.cleanting.Alarm.AlarmOnOffResult;
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
+
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 
 /**
  * Created by 김지원 on 2017-06-25.
@@ -117,9 +123,32 @@ public class MypageFragment extends Fragment{
         alarm_switch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Call<AlarmOnOffResult> alarmOnOffResultCall=service.getAlarmOnOffResult(loginUserDatas.userId);
+
                 if(alarm_switch.isChecked())
                 {
-                    Toast.makeText(getContext(),"알림이 켜집니다",Toast.LENGTH_SHORT).show();
+                    alarmOnOffResultCall.enqueue(new Callback<AlarmOnOffResult>() {
+                        @Override
+                        public void onResponse(Call<AlarmOnOffResult> call, Response<AlarmOnOffResult> response) {
+                            if(response.isSuccessful()){
+                                if(response.message().equals("alarm query ok")){
+
+                                    Toast.makeText(getContext(),"알림이 켜집니다",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            else{
+                                Toast.makeText(getContext(), response.body().message,Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<AlarmOnOffResult> call, Throwable t) {
+                            Toast.makeText(getContext(),
+                                    "서버상태를 확인해주세요", Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+
                 }
                 else
                 {

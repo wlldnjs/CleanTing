@@ -30,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
+            android:hint="인증번호"
             android:id="@+id/edit_citenumber"
             android:layout_width="310dp"
             android:layout_height="wrap_content" />
@@ -41,7 +42,7 @@
     </LinearLayout>
 
     <TextView
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:text="새 비밀번호"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -65,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
+            android:hint=""
             android:id="@+id/new_edit_citenumber"
             android:layout_width="310dp"
             android:layout_height="wrap_content" />
@@ -74,6 +76,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/recreate"
+            android:src="@drawable/jesuljung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
     <EditText
         android:id="@+id/new_password"
         android:hint="새 비밀번호를 입력하세요"

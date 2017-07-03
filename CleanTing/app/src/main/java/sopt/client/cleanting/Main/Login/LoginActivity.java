@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                     sendLoginData.userId=edit_id.getText().toString();
                     sendLoginData.pwd=edit_password.getText().toString();
 
-                    final Call<LoginResult> loginResultCall=service.getLoginResult(sendLoginData);
+                    Call<LoginResult> loginResultCall=service.getLoginResult(sendLoginData);
 
                     loginResultCall.enqueue(new Callback<LoginResult>() {
                         @Override
