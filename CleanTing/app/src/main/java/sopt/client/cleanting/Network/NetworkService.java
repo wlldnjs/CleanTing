@@ -105,7 +105,7 @@ public interface NetworkService {
     Call<EndTingResult> getCancelTingResult(@Path("tingId") String tingId, @Body EndTingData endTingData);
 
     // 3-1 전체 게시글 조회
-    @GET("posts")
+    @GET("posts/{locationNum}")
     Call<FindAllBulletinResult> getFindAllBulletinResult(@Query("locationNum") int locationNum);
 
     // 3-2 특정 게시글 조회
