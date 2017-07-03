@@ -33,6 +33,10 @@ public class CommunitySearchActivity extends AppCompatActivity {
     private BulletinSearchRecyclerAdapter BrecyclerAdapter;
     private LinearLayoutManager layoutManager;
 
+    FindBulletinData Data = new FindBulletinData();
+    BulletinPostData PostData = new BulletinPostData();
+    ArrayList<BulletinCommentData> bulletinCommentDatas = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,8 +94,37 @@ public class CommunitySearchActivity extends AppCompatActivity {
     public View.OnClickListener clickEvent = new View.OnClickListener() {
         public void onClick(View v) {
             final int itemPosition = SearchRecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
-            Intent intent = new Intent(getApplicationContext(),CommunityBulletinDetailActivity.class);
-            startActivity(intent);
+            Call<FindBulletinResult> findbulletinresult = service.getFindBulletinResult(bulletinArrayList.get(itemPosition).postId);
+            findbulletinresult.enqueue(new Callback<FindBulletinResult>() {
+                @Override
+                public void onResponse(Call<FindBulletinResult> call, Response<FindBulletinResult> response) {
+                    if(response.isSuccessful())
+                    {
+                        if(response.body().message.equals("게시물 상세조회에 성공하였습니다."))
+                        {
+                            Data = response.body().result;
+                            PostData = Data.post;
+                            bulletinCommentDatas = Data.comment;
+
+                            Intent intent = new Intent(getApplicationContext(),CommunityBulletinDetailActivity.class);
+                            intent.putExtra("post",PostData);
+                            intent.putExtra("comment",bulletinCommentDatas);
+                            startActivity(intent);
+//                            Toast.makeText(getContext(),"상세정보 성공 "+PostData.title,Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),"조회 실패", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                @Override
+                public void onFailure(Call<FindBulletinResult> call, Throwable t)
+                {
+                    Toast.makeText(getApplicationContext(),"통신 연결 실패", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
     };
 }
