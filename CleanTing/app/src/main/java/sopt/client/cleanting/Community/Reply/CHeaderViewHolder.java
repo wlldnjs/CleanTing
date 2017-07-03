@@ -23,5 +23,6 @@ public class CHeaderViewHolder extends RecyclerView.ViewHolder {
         BulletinDetailDate = (TextView)itemView.findViewById(R.id.BulletinDetail_date);
         BulletinDetailContent = (TextView)itemView.findViewById(R.id.BulletinDetail_content);
         BulletinDetailReplynum = (TextView)itemView.findViewById(R.id.BulletinDetail_replynum);
+
     }
 }

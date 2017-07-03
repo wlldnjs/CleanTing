@@ -22,14 +22,13 @@
                android:id="@+id/Bulletin_title"
                android:textSize="17sp"
                android:textColor="#333333"
-               android:layout_weight="0.7"
+               android:layout_weight="0.8"
                android:layout_width="0dp"
                android:layout_height="wrap_content" />
             <TextView
-                android:text="2015 5 01 12:00"
                 android:id="@+id/Bulletin_date"
                 android:layout_gravity="center"
-                android:layout_weight="0.3"
+                android:layout_weight="0.2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
         </LinearLayout>

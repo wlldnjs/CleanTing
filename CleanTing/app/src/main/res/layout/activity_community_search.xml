@@ -55,7 +55,7 @@
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
-            android:visibility="invisible"
+            android:visibility="visible"
             android:id="@+id/Search_bulletin_Recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

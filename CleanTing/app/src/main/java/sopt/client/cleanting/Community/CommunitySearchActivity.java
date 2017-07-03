@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
@@ -25,20 +27,22 @@ public class CommunitySearchActivity extends AppCompatActivity {
     RecyclerView SearchRecyclerView;
     ImageView imgview;
     NetworkService service;
+    LinearLayout linearLayout;
 
-    private RecyclerView BrecyclerView;
-    private ArrayList<Bulletin> bulletinArrayList;
-    private BulletinListRecylerAdapter BrecyclerAdapter;
+    private ArrayList<SearchBulletinData> bulletinArrayList;
+    private BulletinSearchRecyclerAdapter BrecyclerAdapter;
     private LinearLayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_search);
+        service = ApplicationController.getInstance().getNetworkService();
 
         searchimg = (ImageView)findViewById(R.id.Bulletin_search_img);
         imgview = (ImageView)findViewById(R.id.center_img);
         search_edit = (EditText)findViewById(R.id.editText);
+        linearLayout = (LinearLayout)findViewById(R.id.search_img_linear);
 
         SearchRecyclerView = (RecyclerView)findViewById(R.id.Search_bulletin_Recyclerview);
         SearchRecyclerView.setHasFixedSize(true);
@@ -52,41 +56,40 @@ public class CommunitySearchActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"검색하기",Toast.LENGTH_SHORT).show();
                 SearchRecyclerView.setVisibility(View.VISIBLE);
-                imgview.setVisibility(View.INVISIBLE);
+                linearLayout.setVisibility(View.GONE);
+//                imgview.setVisibility(View.GONE);
 
                 String str = search_edit.getText().toString();
                 // 서버한테 보내기
-
                 Call<SearchBulletinResult> searchBulletinResultCall = service.getSearchBulletinResult(str);
                 searchBulletinResultCall.enqueue(new Callback<SearchBulletinResult>() {
                     @Override
                     public void onResponse(Call<SearchBulletinResult> call, Response<SearchBulletinResult> response) {
                         if(response.isSuccessful())
                         {
-                            if(response.body().message.equals("pwd update ok")){
-                                Toast.makeText(getApplicationContext(),"비밀번호 변경에 성공했습니다.", Toast.LENGTH_SHORT).show();
-                                finish();
+                            if(response.body().message.equals("Succeed in searching a post")){
+                                Toast.makeText(getApplicationContext(),"검색 성공", Toast.LENGTH_SHORT).show();
+//                                bulletinArrayList = new ArrayList<SearchBulletinData>();
+                                bulletinArrayList = response.body().result;
+                                Toast.makeText(getApplicationContext(),bulletinArrayList.get(0).title,Toast.LENGTH_SHORT).show();
+
+                                BrecyclerAdapter = new BulletinSearchRecyclerAdapter(bulletinArrayList,clickEvent);
+                                SearchRecyclerView.setAdapter(BrecyclerAdapter);
+                                SearchRecyclerView.setVisibility(View.VISIBLE);
                             }
                         }
                     }
-
                     @Override
                     public void onFailure(Call<SearchBulletinResult> call, Throwable t) {
-
+                        Toast.makeText(getApplicationContext(),"통신 실패", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                // 받고
-
-//                BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent);
-//                SearchRecyclerView.setAdapter(BrecyclerAdapter);
             }
         });
-
     }
     public View.OnClickListener clickEvent = new View.OnClickListener() {
         public void onClick(View v) {
-            final int itemPosition = BrecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
+            final int itemPosition = SearchRecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
             Intent intent = new Intent(getApplicationContext(),CommunityBulletinDetailActivity.class);
             startActivity(intent);
         }

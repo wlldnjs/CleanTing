@@ -10,19 +10,17 @@ import java.util.ArrayList;
 import sopt.client.cleanting.R;
 
 /**
- * Created by glgld on 2017-06-30.
+ * Created by glgld on 2017-07-04.
  */
 
-public class BulletinListRecylerAdapter extends RecyclerView.Adapter<BulletinViewHolder>  {
+public class BulletinSearchRecyclerAdapter extends RecyclerView.Adapter<BulletinViewHolder> {
 
     ArrayList<SearchBulletinData> SearchbulletinArrayList;
-    ArrayList<FindAllBulletinData> bulletinArrayList;
     private final View.OnClickListener clickListener;
 
-    public BulletinListRecylerAdapter(ArrayList<FindAllBulletinData> itemdatas,View.OnClickListener clickListener)
-    {
+    public BulletinSearchRecyclerAdapter(ArrayList<SearchBulletinData> itemdatas,View.OnClickListener clickListener) {
         this.clickListener = clickListener;
-        this.bulletinArrayList = itemdatas;
+        this.SearchbulletinArrayList = itemdatas;
     }
 
     @Override
@@ -35,14 +33,14 @@ public class BulletinListRecylerAdapter extends RecyclerView.Adapter<BulletinVie
 
     @Override
     public void onBindViewHolder(BulletinViewHolder holder, int position) {
-        holder.BulletinTitle.setText(bulletinArrayList.get(position).title);
-        holder.BulletinDate.setText(bulletinArrayList.get(position).date);
-        holder.BullentinContent.setText(bulletinArrayList.get(position).content);
-        holder.Bullentinreply.setText(bulletinArrayList.get(position).comment_cnt);
+        holder.BulletinTitle.setText(SearchbulletinArrayList.get(position).title);
+        holder.BulletinDate.setText(SearchbulletinArrayList.get(position).date);
+        holder.BullentinContent.setText(SearchbulletinArrayList.get(position).content);
+        holder.Bullentinreply.setText(SearchbulletinArrayList.get(position).comment_cnt);
     }
 
     @Override
     public int getItemCount() {
-        return bulletinArrayList != null ? bulletinArrayList.size() : 0;
+        return SearchbulletinArrayList != null ? SearchbulletinArrayList.size() : 0;
     }
 }

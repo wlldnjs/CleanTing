@@ -1,5 +1,6 @@
 package sopt.client.cleanting.Community;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,13 +26,20 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
     private ArrayList<ReplyData> itemdata;
     private ReplyRecyclerViewAdapter replyRecyclerViewAdapter;
     private LinearLayoutManager layoutManager;
-
+    BulletinPostData postData;
+    ArrayList<BulletinCommentData> commentDatas;
     EditText inputReplyEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_bulletin_detail);
+
+        Intent intent = getIntent();
+        postData = new BulletinPostData();
+        postData = (BulletinPostData)intent.getSerializableExtra("post");
+        commentDatas = new ArrayList<>();
+        commentDatas = (ArrayList<BulletinCommentData>)intent.getSerializableExtra("comment");
 
         send = (ImageView)findViewById(R.id.sendimg);
         inputReplyEdit = (EditText)findViewById(R.id.inputReplyEdit);
@@ -43,17 +51,17 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        itemdata = new ArrayList<ReplyData>();
-        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
-        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
-        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
-        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
-        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
-        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
-        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
-        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
-        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
-        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
+//        itemdata = new ArrayList<ReplyData>();
+//        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
+//        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
+//        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
+//        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
+//        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
+//        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
+//        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
+//        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
+//        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
+//        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +74,7 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"댓글 등록",Toast.LENGTH_SHORT).show();
             }
         });
-        replyRecyclerViewAdapter = new ReplyRecyclerViewAdapter(itemdata,getApplicationContext());
+        replyRecyclerViewAdapter = new ReplyRecyclerViewAdapter(itemdata,getApplicationContext(),postData,commentDatas);
         recyclerView.setAdapter(replyRecyclerViewAdapter);
         replyRecyclerViewAdapter.notifyDataSetChanged();
 

@@ -46,6 +46,9 @@ public class CommunityFragment extends Fragment {
     private BulletinListRecylerAdapter BrecyclerAdapter;
     private LinearLayoutManager layoutManager;
 
+    FindBulletinData Data = new FindBulletinData();
+    BulletinPostData PostData = new BulletinPostData();
+    ArrayList<BulletinCommentData> bulletinCommentDatas = new ArrayList<>();
 
     public CommunityFragment() {
     }
@@ -90,7 +93,6 @@ public class CommunityFragment extends Fragment {
                         bulletinArrayList = response.body().result;
                         BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent);
                         BrecyclerView.setAdapter(BrecyclerAdapter);
-                        Toast.makeText(getContext(),response.body().result.get(0).title, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getContext(), response.body().message, Toast.LENGTH_SHORT).show();
@@ -165,24 +167,29 @@ public class CommunityFragment extends Fragment {
                     {
                         if(response.body().message.equals("게시물 상세조회에 성공하였습니다."))
                         {
-                            FindBulletinData Data = new FindBulletinData();
                             Data = response.body().result;
+                            PostData = Data.post;
+                            bulletinCommentDatas = Data.comment;
+
+                            Intent intent = new Intent(context,CommunityBulletinDetailActivity.class);
+                            intent.putExtra("post",PostData);
+                            intent.putExtra("comment",bulletinCommentDatas);
+                            startActivity(intent);
+//                            Toast.makeText(getContext(),"상세정보 성공 "+PostData.title,Toast.LENGTH_SHORT).show();
                         }
                     }
                     else
                     {
-
+                        Toast.makeText(getContext(),"조회 실패", Toast.LENGTH_SHORT).show();
                     }
                 }
                 @Override
-                public void onFailure(Call<FindBulletinResult> call, Throwable t) {
-
+                public void onFailure(Call<FindBulletinResult> call, Throwable t)
+                {
+                    Toast.makeText(getContext(),"통신 연결 실패", Toast.LENGTH_SHORT).show();
                 }
             });
 
-            Intent intent = new Intent(getContext(),CommunityBulletinDetailActivity.class);
-
-            startActivity(intent);
         }
     };
 }

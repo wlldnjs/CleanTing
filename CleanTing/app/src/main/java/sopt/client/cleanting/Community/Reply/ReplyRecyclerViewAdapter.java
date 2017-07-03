@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import sopt.client.cleanting.Community.BulletinCommentData;
+import sopt.client.cleanting.Community.BulletinPostData;
 import sopt.client.cleanting.R;
 
 /**
@@ -19,12 +21,21 @@ public class ReplyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
 
+    ArrayList<BulletinCommentData> commentDatas;
+    BulletinPostData bulletinPostData;
     ArrayList<ReplyData> itemdata;
     Context context;
 
-    public ReplyRecyclerViewAdapter(ArrayList<ReplyData> itemdata,Context context) {
+    public ReplyRecyclerViewAdapter(ArrayList<ReplyData> itemdata,Context context,BulletinPostData bulletinPostData,ArrayList<BulletinCommentData> commentDatas) {
         this.context = context;
         this.itemdata = itemdata;
+        this.bulletinPostData = bulletinPostData;
+        this.commentDatas = commentDatas;
+    }
+    public ReplyRecyclerViewAdapter(Context context,BulletinPostData bulletinPostData,ArrayList<BulletinCommentData> commentDatas) {
+        this.context = context;
+        this.bulletinPostData = bulletinPostData;
+        this.commentDatas = commentDatas;
     }
 
     @Override
@@ -54,18 +65,22 @@ public class ReplyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
 
         if(holder instanceof CHeaderViewHolder)
         {
-
+            CHeaderViewHolder headerViewHolder = (CHeaderViewHolder) holder;
+            headerViewHolder.BulletinDetailTitle.setText(bulletinPostData.title.toString());
+            headerViewHolder.BulletinDetailContent.setText(bulletinPostData.content.toString());
+            headerViewHolder.BulletinDetailDate.setText(bulletinPostData.date.toString());
+            headerViewHolder.BulletinDetailReplynum.setText(bulletinPostData.comment_cnt.toString());
         }
         else if(holder instanceof CBaseViewHolder)
         {
-            ReplyData currentitem = itemdata.get(position-1); // 포지션 재 정리
+            BulletinCommentData currentitem = commentDatas.get(position-1); // 포지션 재 정리
             CBaseViewHolder baseViewHolder = (CBaseViewHolder) holder;
-            baseViewHolder.ReplyContent.setText(currentitem.getContent());
-            baseViewHolder.ReplyDate.setText(currentitem.getWriter());
+            baseViewHolder.ReplyContent.setText(currentitem.content);
+            baseViewHolder.ReplyDate.setText(currentitem.date);
         }
     }
     @Override
     public int getItemCount() {
-        return itemdata.size() + 1 ;
+        return commentDatas.size() + 1 ;
     }
 }
