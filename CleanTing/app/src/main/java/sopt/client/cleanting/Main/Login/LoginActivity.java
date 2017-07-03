@@ -21,7 +21,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText edit_id;
     EditText edit_password;
     CheckBox checkBox;
-    public static String loginToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

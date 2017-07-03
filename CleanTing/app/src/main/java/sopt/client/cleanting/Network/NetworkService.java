@@ -8,9 +8,12 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import sopt.client.cleanting.Cleanner.AddCleanerReviewData;
 import sopt.client.cleanting.Cleanner.AddCleanerReviewResult;
 import sopt.client.cleanting.Cleanner.SearchCleanerResult;
 import sopt.client.cleanting.Cleanner.SearchLocationCleanerResult;
+import sopt.client.cleanting.Cleanner.SendSearchLocationCleanerData;
+import sopt.client.cleanting.Community.BulletinAddPostData;
 import sopt.client.cleanting.Community.BulletinAddPostResult;
 import sopt.client.cleanting.Community.BulletinCommentData;
 import sopt.client.cleanting.Community.FindAllBulletinResult;
@@ -19,12 +22,18 @@ import sopt.client.cleanting.Community.Reply.BulletinAddCommentResult;
 import sopt.client.cleanting.Community.SearchBulletinResult;
 import sopt.client.cleanting.Main.Login.FindIdResult;
 import sopt.client.cleanting.Main.Login.LoginResult;
+import sopt.client.cleanting.Main.Login.SendLoginData;
 import sopt.client.cleanting.Main.SignUp.IdCheckResult;
+import sopt.client.cleanting.Main.SignUp.SignUpData;
 import sopt.client.cleanting.Main.SignUp.SignUpResult;
+import sopt.client.cleanting.MakeTing.EndTingData;
 import sopt.client.cleanting.MakeTing.EndTingResult;
 import sopt.client.cleanting.MakeTing.MakeTingLocationResult;
 import sopt.client.cleanting.MakeTing.MakeTingRequestResult;
+import sopt.client.cleanting.MakeTing.MakeTingRequestResultData;
 import sopt.client.cleanting.MakeTing.MakeTingResult;
+import sopt.client.cleanting.MakeTing.MakeTingResultData;
+import sopt.client.cleanting.MyRequest.MyRequestTingEditEditData;
 import sopt.client.cleanting.MyRequest.MyRequestTingEditResult;
 import sopt.client.cleanting.MyRequest.RequestTingDetailResult;
 import sopt.client.cleanting.Mypage.ModifyPasswordResult;
@@ -38,7 +47,7 @@ public interface NetworkService {
     /**api 문서를 기반으로 숫자를 써주자*/
     // 1-1 회원가입
     @POST("members/signUp")
-    Call<SignUpResult> getSignUpResult(@Body SignUpResult.SignUpData signUpData);
+    Call<SignUpResult> getSignUpResult(@Body SignUpData signUpData);
 
     // 1-2 아이디 중복확인
     @GET("members/duplicate/{id}")
@@ -46,7 +55,7 @@ public interface NetworkService {
 
     // 1-3 로그인
     @POST("members")
-    Call<LoginResult> getLoginResult(@Body LoginResult.SendLoginData sendLoginData);
+    Call<LoginResult> getLoginResult(@Body SendLoginData sendLoginData);
 
     // 1-4 아이디 찾기
     @GET("members/id/{phone}")
@@ -62,11 +71,11 @@ public interface NetworkService {
 
     // 2-1 팅 생성하기
     @POST("ting")
-    Call<MakeTingResult> getMakeTingResult(@Body MakeTingResult.MakeTingResultData makeTingResultData);
+    Call<MakeTingResult> getMakeTingResult(@Body MakeTingResultData makeTingResultData);
 
     // 2-2 팅 신청하기
     @POST("ting/{tingId}")
-    Call<MakeTingRequestResult> getMakeTingRequestResult(@Path("tId") String tId, @Body MakeTingRequestResult.MakeTingRequestResultData makeTingRequestResultData);
+    Call<MakeTingRequestResult> getMakeTingRequestResult(@Path("tId") String tId, @Body MakeTingRequestResultData makeTingRequestResultData);
 
     // 2-3 팅 조회(지역)
     /**API 수정중*/
@@ -75,7 +84,7 @@ public interface NetworkService {
 
     // 2-4 팅 수정
     @PUT("ting/{tingId}")
-    Call<MyRequestTingEditResult> getMyRequestTingEditResult(@Path("tingId") String tingId, @Body MyRequestTingEditResult.MyRequestTingEditEditData myRequestTingEditEditData);
+    Call<MyRequestTingEditResult> getMyRequestTingEditResult(@Path("tingId") String tingId, @Body MyRequestTingEditEditData myRequestTingEditEditData);
 
     // 2-5 사용자 신청 팅 조회
     @GET("ting/register/{userId}")
@@ -88,7 +97,7 @@ public interface NetworkService {
     // 2-7 팅 취소하기
     /**API 수정중*/
     @DELETE("ting/{tingId}")
-    Call<EndTingResult> getCancelTingResult(@Path("tingId") String tingId, @Body EndTingResult.EndTingData endTingData);
+    Call<EndTingResult> getCancelTingResult(@Path("tingId") String tingId, @Body EndTingData endTingData);
 
     // 3-1 전체 게시글 조회
     @GET("posts")
@@ -100,7 +109,7 @@ public interface NetworkService {
 
     // 3-3 게시글 작성
     @POST("posts")
-    Call<BulletinAddPostResult> getBulletinAddPostResult(@Body BulletinAddPostResult.BulletinAddPostData bulletinAddPostData);
+    Call<BulletinAddPostResult> getBulletinAddPostResult(@Body BulletinAddPostData bulletinAddPostData);
 
     // 3-4 댓글 작성
     @POST("posts/{postId}")
@@ -126,7 +135,7 @@ public interface NetworkService {
 
     // 4-4 지역별 클리너(별점순/이력순/후기순)
     @POST("cleaner/{date}")
-    Call<SearchLocationCleanerResult> getSearchLocationCleanerResult(@Path("date") String date, @Body SearchLocationCleanerResult.SendSearchLocationCleanerData sendSearchLocationCleanerData);
+    Call<SearchLocationCleanerResult> getSearchLocationCleanerResult(@Path("date") String date, @Body SendSearchLocationCleanerData sendSearchLocationCleanerData);
 
     // 4-5 클리너 상세정보 조회
 //    @GET("cleaner/detail/{cleanerId}")
@@ -135,6 +144,6 @@ public interface NetworkService {
 
     // 4-6 클리너 리뷰작성
     @POST("cleaner/review/{cleanerId}")
-    Call<AddCleanerReviewResult> getAddCleanerReviewResult(@Path("cleanerId") String cleanerId, @Body AddCleanerReviewResult.AddCleanerReviewData addCleanerReviewData);
+    Call<AddCleanerReviewResult> getAddCleanerReviewResult(@Path("cleanerId") String cleanerId, @Body AddCleanerReviewData addCleanerReviewData);
 
 }

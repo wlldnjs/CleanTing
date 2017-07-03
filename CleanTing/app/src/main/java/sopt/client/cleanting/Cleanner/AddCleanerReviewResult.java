@@ -6,11 +6,4 @@ package sopt.client.cleanting.Cleanner;
 
 public class AddCleanerReviewResult {
     public String message;
-
-    public class AddCleanerReviewData{
-        public String userId;
-        public String rating;
-        public String content;
-
-    }
 }

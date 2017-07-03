@@ -6,15 +6,4 @@ package sopt.client.cleanting.MakeTing;
 
 public class MakeTingResult {
     public String message;
-
-    public class MakeTingResultData{
-        public String userId;
-        public String date;
-        public String startTime;
-        public String endTime;
-        public String price;
-        public String cleanerId;
-        public String request;
-        public String warning;
-    }
 }

@@ -9,15 +9,4 @@ import java.util.ArrayList;
 public class SearchBulletinResult {
     public String message;
     public ArrayList<SearchBulletinData> result;
-
-    public class SearchBulletinData{
-        public String postId;
-        public String userId;
-        public String title;
-        public String content;
-        public String view_number;
-        public String date;
-        public String time;
-        public String comment_cnt;
-    }
 }

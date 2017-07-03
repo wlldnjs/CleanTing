@@ -6,12 +6,4 @@ package sopt.client.cleanting.Main.SignUp;
 
 public class SignUpResult {
     public String message;
-
-    public class SignUpData{
-        public String userId;
-        public String name;
-        public String phone;
-        public String address;
-        public String pwd;
-    }
 }

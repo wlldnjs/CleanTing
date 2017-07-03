@@ -6,10 +6,4 @@ package sopt.client.cleanting.Community;
 
 public class BulletinAddPostResult {
     public String message;
-
-    public class BulletinAddPostData{
-        public String title;
-        public String content;
-        public String userId;
-    }
 }

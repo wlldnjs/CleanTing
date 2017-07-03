@@ -6,10 +6,4 @@ package sopt.client.cleanting.MyRequest;
 
 public class MyRequestTingEditResult {
     public String message;
-
-    public class MyRequestTingEditEditData{
-        public String userId;
-        public String price;
-        public String request;
-    }
 }

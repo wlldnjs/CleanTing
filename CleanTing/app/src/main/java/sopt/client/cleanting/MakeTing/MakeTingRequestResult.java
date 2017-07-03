@@ -6,11 +6,4 @@ package sopt.client.cleanting.MakeTing;
 
 public class MakeTingRequestResult {
     public String message;
-
-    public class MakeTingRequestResultData{
-        public String userId;
-        public String price;
-        public String request;
-        public String warning;
-    }
 }
