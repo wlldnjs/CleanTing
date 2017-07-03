@@ -95,7 +95,7 @@ public class CommunityFragment extends Fragment {
                         BrecyclerView.setAdapter(BrecyclerAdapter);
                     }
                 } else {
-                    Toast.makeText(getContext(), response.body().message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"통신 실패", Toast.LENGTH_SHORT).show();
                 }
             }
 
