@@ -5,5 +5,5 @@ package sopt.client.cleanting.Main.SignUp;
  */
 
 public class IdCheckResult {
-    String message;
+    public String message;
 }

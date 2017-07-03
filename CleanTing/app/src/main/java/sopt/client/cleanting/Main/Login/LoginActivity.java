@@ -9,8 +9,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.Main.LoginUserDatas;
 import sopt.client.cleanting.Main.MainActivity;
 import sopt.client.cleanting.Main.SignUp.SignUpActivity;
+import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -21,11 +27,14 @@ public class LoginActivity extends AppCompatActivity {
     EditText edit_id;
     EditText edit_password;
     CheckBox checkBox;
+    NetworkService service;
 
+    public static LoginUserDatas loginUserDatas = new LoginUserDatas();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        service= ApplicationController.getInstance().getNetworkService();
 
         Signup_img = (ImageView)findViewById(R.id.Signup_img);
         Login_btn = (ImageView)findViewById(R.id.Login_btn);
@@ -54,6 +63,44 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    SendLoginData sendLoginData=new SendLoginData();
+                    sendLoginData.userId=edit_id.getText().toString();
+                    sendLoginData.pwd=edit_password.getText().toString();
+
+                    final Call<LoginResult> loginResultCall=service.getLoginResult(sendLoginData);
+
+                    loginResultCall.enqueue(new Callback<LoginResult>() {
+                        @Override
+                        public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                            if(response.isSuccessful()){
+                                if(response.body().message.equals("ok")){
+                                    loginUserDatas.token =  response.body().token;
+                                    loginUserDatas.userId = response.body().userInfo.userId;
+                                    loginUserDatas.name= response.body().userInfo.name;
+                                    loginUserDatas.phone = response.body().userInfo.phone;
+                                    loginUserDatas.address = response.body().userInfo.address;
+//                                    loginUserDatas.lat=response.body().userInfo.lat;
+//                                    loginUserDatas.lng=response.body().userInfo.lng;
+
+                                    Intent intent = new Intent(getApplication(),MainActivity.class);
+                                    startActivity(intent);
+
+                                } else {
+                                    Toast.makeText(LoginActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginResult> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(),
+                                    "서버상태를 확인해주세요", Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+
                     String temp_id = edit_id.getText().toString();
                     String temp_password = edit_password.getText().toString();
                     Toast.makeText(getApplicationContext(),"id : "+temp_id + "\n"+ "pass : "+temp_password, Toast.LENGTH_SHORT).show();
@@ -67,8 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     edit_id.setText("");
                     edit_password.setText("");
-                    Intent intent = new Intent(getApplication(),MainActivity.class);
-                    startActivity(intent);
+
                 }
             }
         });

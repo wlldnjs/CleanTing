@@ -30,6 +30,7 @@ public class SignUpActivity extends AppCompatActivity {
     TextView to_login;
     CheckBox checkbox;
     NetworkService service;
+    ImageView doublecheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,16 @@ public class SignUpActivity extends AppCompatActivity {
         to_login=(TextView) findViewById(R.id.to_login);
 
         checkbox=(CheckBox)findViewById(R.id.checkbox);
+
+        doublecheck=(ImageView)findViewById(R.id.doublecheck);
+
+        //중복확인
+        doublecheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
 
@@ -148,7 +159,7 @@ public class SignUpActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<SignUpResult> call, Response<SignUpResult> response) {
                             if(response.isSuccessful()){
-                                if(response.message().equals("ok")){
+                                if(response.body().message.equals("ok")){
                                     Toast.makeText(getApplicationContext(),
                                             "회원가입에 성공했습니다", Toast.LENGTH_LONG).show();
                                     Intent intent=new Intent(getBaseContext(),LoginActivity.class);
@@ -156,7 +167,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     finish();
                                 } else {
                                     Toast.makeText(getApplicationContext(),
-                                            response.message(), Toast.LENGTH_LONG).show();
+                                            response.body().message, Toast.LENGTH_LONG).show();
                                 }
 
                             }

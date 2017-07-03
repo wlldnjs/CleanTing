@@ -5,4 +5,11 @@ package sopt.client.cleanting.Main;
  */
 
 public class LoginUserDatas {
+    public String token;
+    public String userId;
+    public String name;
+    public String phone;
+    public String address;
+    public String lat;
+    public String lng;
 }
