@@ -12,7 +12,12 @@ import android.widget.Toast;
 
 import java.util.regex.Pattern;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Main.Login.LoginActivity;
+import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -24,11 +29,13 @@ public class SignUpActivity extends AppCompatActivity {
     TextView agreement,information,approval;
     TextView to_login;
     CheckBox checkbox;
+    NetworkService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        service = ApplicationController.getInstance().getNetworkService();
 
         before=(ImageView)findViewById(R.id.before);
         button_cite=(ImageView) findViewById(R.id.button_cite);
@@ -128,12 +135,43 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                 else{
-                    //여기 이제 인텐트값 넘기는걸로 바꿔야함
-                    Toast.makeText(getApplicationContext(),
-                            information, Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(getBaseContext(),LoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                    SignUpData signUpData = new SignUpData();
+
+                    signUpData.userId = edit_id.getText().toString();
+                    signUpData.name = edit_name.getText().toString();
+                    signUpData.phone=edit_phonenumber.getText().toString();
+                    signUpData.address=edit_address.getText().toString();
+                    signUpData.pwd=edit_password.getText().toString();
+
+                    Call<SignUpResult> signUpResultCall = service.getSignUpResult(signUpData);
+                    signUpResultCall.enqueue(new Callback<SignUpResult>() {
+                        @Override
+                        public void onResponse(Call<SignUpResult> call, Response<SignUpResult> response) {
+                            if(response.isSuccessful()){
+                                if(response.message().equals("ok")){
+                                    Toast.makeText(getApplicationContext(),
+                                            "회원가입에 성공했습니다", Toast.LENGTH_LONG).show();
+                                    Intent intent=new Intent(getBaseContext(),LoginActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(getApplicationContext(),
+                                            response.message(), Toast.LENGTH_LONG).show();
+                                }
+
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<SignUpResult> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(),
+                                    "서버상태를 확인해주세요", Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+
+
+
                 }
 
             }
