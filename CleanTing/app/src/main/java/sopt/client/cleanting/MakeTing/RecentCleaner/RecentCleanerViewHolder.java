@@ -23,6 +23,5 @@ public class RecentCleanerViewHolder extends RecyclerView.ViewHolder  {
         R_CleanerImg = (ImageView)itemView.findViewById(R.id.R_cleanerimg);
         R_CleanerName = (TextView)itemView.findViewById(R.id.R_cleanername);
         R_date = (TextView)itemView.findViewById(R.id.R_date);
-        R_starrate = (ImageView)itemView.findViewById(R.id.R_starrate);
     }
 }

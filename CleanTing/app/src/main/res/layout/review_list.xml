@@ -4,6 +4,7 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:layout_marginTop="15dp"
         android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,13 +16,38 @@
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/writedate"
-            android:layout_marginLeft="30sp"
+            android:layout_marginLeft="15dp"
             android:layout_toRightOf="@+id/writername"
             android:text="2017-05-05"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
-            android:id="@+id/star_img"
+            android:id="@+id/star_img1"
+            android:layout_toLeftOf="@+id/star_img2"
+            android:src="@drawable/star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/star_img2"
+            android:layout_toLeftOf="@+id/star_img3"
+            android:src="@drawable/star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/star_img3"
+            android:layout_toLeftOf="@+id/star_img4"
+            android:src="@drawable/star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/star_img4"
+            android:layout_toLeftOf="@+id/star_img5"
+            android:src="@drawable/star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:id="@+id/star_img5"
             android:layout_alignParentRight="true"
             android:src="@drawable/star"
             android:layout_width="wrap_content"
@@ -29,6 +55,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -39,7 +66,7 @@
     </LinearLayout>
 
     <View
-        android:layout_marginTop="15sp"
+        android:layout_marginTop="11dp"
         android:alpha="0.5"
         android:layout_width="match_parent"
         android:layout_height="1.2dp"

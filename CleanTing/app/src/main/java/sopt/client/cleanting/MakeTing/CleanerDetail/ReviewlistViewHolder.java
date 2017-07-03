@@ -23,7 +23,6 @@ public class ReviewlistViewHolder extends RecyclerView.ViewHolder {
 
         writername = (TextView)itemView.findViewById(R.id.writername);
         writedate = (TextView)itemView.findViewById(R.id.writedate);
-        star_img = (ImageView)itemView.findViewById(R.id.star_img);
         writecomment = (TextView)itemView.findViewById(R.id.writecomment);
     }
 }

@@ -8,77 +8,111 @@
     tools:context="sopt.client.cleanting.MakeTing.CleanerDetail.DetailCleanerActivity">
 
     <TextView
-        android:layout_marginTop="15sp"
+        android:layout_marginTop="25sp"
         android:layout_gravity="center"
         android:textSize="25sp"
-        android:textColor="#F2D457"
+        android:textColor="#333333"
         android:text="클리너 선택"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:layout_gravity="center"
             android:src="@drawable/picture_no"
-            android:layout_width="140sp"
-            android:layout_height="140sp" />
+            android:layout_width="108dp"
+            android:layout_height="108dp" />
         <LinearLayout
             android:orientation="vertical"
-            android:layout_marginTop="15sp"
-            android:layout_marginLeft="30sp"
+            android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:text="이름 클리너"
-                android:textSize="20sp"
-                android:id="@+id/Choose_cleanername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
                     android:src="@drawable/star"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
+                <ImageView
+                    android:src="@drawable/star"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
+                <ImageView
+                    android:src="@drawable/star"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
+                <ImageView
+                    android:src="@drawable/star"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
+                <ImageView
+                    android:src="@drawable/star"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
                 <TextView
                     android:layout_marginLeft="10sp"
                     android:text="30명"
+                    android:textColor="#B3B3B3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <TextView
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:textSize="12sp"
                 android:text="활동 : "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textColor="#333333"
+                android:layout_marginTop="9dp"
+                android:textSize="12sp"
                 android:text="리뷰 : "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textColor="#333333"
+                android:layout_marginTop="9dp"
+                android:textSize="12sp"
                 android:text="경력 : "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textColor="#333333"
+                android:layout_marginTop="9dp"
+                android:textSize="12sp"
                 android:text="나이 : "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="55dp"
+        android:text="안성현 클리너"
+        android:textSize="20sp"
+        android:id="@+id/Choose_cleanername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:layout_marginTop="25dp"
         android:orientation="vertical"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TextView
-            android:layout_marginTop="20sp"
+            android:layout_gravity="center"
             android:text="리뷰"
-            android:textSize="20sp"
+            android:textColor="#333333"
+            android:textSize="17sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <View
@@ -95,9 +129,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
-            android:layout_marginLeft="30sp"
-            android:layout_marginRight="30sp"
-            android:layout_marginTop="20sp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/Review_recyclerview"
             android:layout_width="match_parent"
             android:layout_weight="0.8"

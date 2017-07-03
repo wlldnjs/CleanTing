@@ -9,8 +9,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +45,8 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
     EditText search;
     LinearLayout wrapLinear;
     LinearLayout Search_Linear;
+
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +99,17 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         SearchrecyclerView = (RecyclerView)findViewById(R.id.Search_recyclerview);
         SearchrecyclerView.setHasFixedSize(true);
         layoutManager3 = new LinearLayoutManager(this);
+
+        ArrayList<String> arrayList;
+        arrayList = new ArrayList<>();
+        arrayList.add("별점순");
+        arrayList.add("인기순");
+        arrayList.add("후기순");
+
+        ArrayAdapter adtRegion = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,arrayList);
+        spinner = (Spinner)findViewById(R.id.sort_spinner);
+        spinner.setAdapter(adtRegion);
+
 
     }
 

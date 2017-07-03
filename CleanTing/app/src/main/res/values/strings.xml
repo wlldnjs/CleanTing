@@ -147,4 +147,10 @@ Copyrights 2014인큐베이터(주) 개인정보 보호정책 | 약관
 사업자등록번호: 000-00-000000 | 통신판매신고번호 : 제 2017-서울목동-501 호
 주소: 서울특별시 양천구 목동 728-2번지 그린하임 501호 | 대표: 김진영"
     </string>
+
+    <string-array name="sortarray">
+        <item> 인기순 </item>
+        <item> 평점순 </item>
+        <item> 후기순 </item>
+    </string-array>
 </resources>

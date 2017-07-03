@@ -26,6 +26,5 @@ public class ListCleanerViewHolder extends RecyclerView.ViewHolder {
         ListCleanername = (TextView)itemView.findViewById(R.id.List_cleanername);
         ListCleanerhistory = (TextView)itemView.findViewById(R.id.List_cleanerhistory);
         ListCleanercomment = (TextView)itemView.findViewById(R.id.List_cleanercomment);
-        ListCleanerrate = (ImageView)itemView.findViewById(R.id.List_clenaerstar);
     }
 }
