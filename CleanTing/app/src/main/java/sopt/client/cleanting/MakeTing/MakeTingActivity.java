@@ -16,9 +16,15 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 public class MakeTingActivity extends AppCompatActivity implements View.OnClickListener{
@@ -33,13 +39,16 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     CalendarView calendarView;
     ScrollView warningScroll;
     boolean selectCond ,selectWindow, selectRef = false;
-
+    String requsetNum = "0";
     ImageView directimg;
+    NetworkService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_ting);
+        service = ApplicationController.getInstance().getNetworkService();
+
         date = (TextView)findViewById(R.id.date_text);
         timeStart = (TextView)findViewById(R.id.time_start_text);
         timeEnd = (TextView)findViewById(R.id.time_end_text);
@@ -204,7 +213,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                date.setText(""+(month+1)+"월 " +dayOfMonth+"일");
+                date.setText(""+year +"-" +(month+1)+"-" +dayOfMonth);
             }
         });
 
@@ -216,6 +225,50 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
+        requestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                try{
+//                Toast.makeText(MakeTingActivity.this, "왜이래", Toast.LENGTH_SHORT).show();
+                    MakeTingResultData makeTingResultData = new MakeTingResultData();
+                    makeTingResultData.userId = "6666";
+                    makeTingResultData.date = date.getText().toString();
+                    makeTingResultData.startTime = timeStart.getText().toString();
+                    makeTingResultData.endTime = timeEnd.getText().toString();
+                    makeTingResultData.price = amount.getText().toString();
+                    makeTingResultData.cleanerId = cleaner.getText().toString();
+                    if(request.getText().toString().equals("에어컨 필터청소")){
+                        requsetNum = "1";
+                    } else if(request.getText().toString().equals("창틀 청소")){
+                        requsetNum = "2";
+                    } else if(request.getText().toString().equals("냉장고 정리")){
+                        requsetNum = "3";
+                    }
+                    makeTingResultData.request = requsetNum;
+                    makeTingResultData.warning = warningEdit.getText().toString();
+
+                    Call<MakeTingResult> makeTingResultCall = service.getMakeTingResult(makeTingResultData);
+                    makeTingResultCall.enqueue(new Callback<MakeTingResult>() {
+                        @Override
+                        public void onResponse(Call<MakeTingResult> call, Response<MakeTingResult> response) {
+                            if(response.isSuccessful()){
+                                    Toast.makeText(MakeTingActivity.this, "팅 생성 완료", Toast.LENGTH_SHORT).show();
+                                    finish();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<MakeTingResult> call, Throwable t) {
+                            Toast.makeText(MakeTingActivity.this, "인터넷 연결 상태를 확인해 주세요.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+//                }catch (Exception e){
+//                    Toast.makeText(MakeTingActivity.this, "Exception 발생", Toast.LENGTH_SHORT).show();
+//                    e.printStackTrace();
+//                }
+            }
+        });
     }
 
 
