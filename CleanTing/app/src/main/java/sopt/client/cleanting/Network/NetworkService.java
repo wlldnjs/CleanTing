@@ -8,6 +8,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import sopt.client.cleanting.Alarm.AlarmOnOffResult;
 import sopt.client.cleanting.Cleanner.AddCleanerReviewData;
 import sopt.client.cleanting.Cleanner.AddCleanerReviewResult;
 import sopt.client.cleanting.Cleanner.SearchCleanerResult;
@@ -37,6 +38,9 @@ import sopt.client.cleanting.MyRequest.MyRequestTingEditEditData;
 import sopt.client.cleanting.MyRequest.MyRequestTingEditResult;
 import sopt.client.cleanting.MyRequest.RequestTingDetailResult;
 import sopt.client.cleanting.Mypage.ModifyPasswordResult;
+import sopt.client.cleanting.Mypage.ModifyUserAddressData;
+import sopt.client.cleanting.Mypage.ModifyUserAddressResult;
+import sopt.client.cleanting.Mypage.ModifyUserPhoneResult;
 import sopt.client.cleanting.Mypage.WithdrawResult;
 
 /**
@@ -146,4 +150,25 @@ public interface NetworkService {
     @POST("cleaner/review/{cleanerId}")
     Call<AddCleanerReviewResult> getAddCleanerReviewResult(@Path("cleanerId") String cleanerId, @Body AddCleanerReviewData addCleanerReviewData);
 
+    // 5-1 사용자 알람정보 조회
+    /**API 수정중*/
+
+    // 5-2 알람받기 여부 수정
+    @PUT("alarm/{userId}")
+    Call<AlarmOnOffResult> getAlarmOnOffResult(@Path("userId") String userId);
+
+    // 6-1 이용내역 조회
+    /**API 수정중*/
+
+    // 6-2 회원정보 수정(핸드폰번호)
+    @PUT("mypage/phone/{userId}")
+    Call<ModifyUserPhoneResult> getModifyUserPhoneResult(@Path("userId") String userId, @Header("phone") String phone);
+
+    // 6-3 회원정보 수정(주소)
+    @PUT("mypage/address/{userId}")
+    Call<ModifyUserAddressResult> getModifyUserAddressResult(@Path("userId") String userId, @Body ModifyUserAddressData modifyUserAddressData);
+
+    // 6-4 회원정보 수정(비밀번호)
+    @PUT("mypage/pwd/{userId}")
+    Call<ModifyPasswordResult> getModifyPasswordResult(@Path("userId") String userId, @Header("pwd") String pwd);
 }
