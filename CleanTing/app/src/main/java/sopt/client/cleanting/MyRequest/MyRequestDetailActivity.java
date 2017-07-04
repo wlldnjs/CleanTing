@@ -25,7 +25,7 @@ public class MyRequestDetailActivity extends AppCompatActivity {
     ImageView man1, man2, man3, cleanerImg, star1, star2, star3, star4, star5, callBtn,
             editBtn, cancelBtn;
     TextView manCount, starCount, name,  act, review, career, age, date, time, moreRequest, warning, total;
-    String tingId, cleanerId, userId, request, cnt, phone, area, rate;
+    String tingId, cleanerId, userId, request, cnt, phone, area, rate, cleanerImgSrc;
     NetworkService service;
     CleanerData cleanerData;
 
@@ -140,6 +140,15 @@ public class MyRequestDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ChangeMyRequestDetail.class);
+                intent.putExtra("tingId",tingId);
+                intent.putExtra("cleanerId",cleanerId);
+                intent.putExtra("userId",userId);
+                intent.putExtra("price",getIntent().getStringExtra("price"));
+                intent.putExtra("request",request);
+                intent.putExtra("date",date.getText().toString());
+                intent.putExtra("time",time.getText().toString());
+                intent.putExtra("cnt",cnt);
+                intent.putExtra("cleanerData",cleanerData);
                 startActivityForResult(intent, REQUEST_MODIFY_TING);
             }
         });

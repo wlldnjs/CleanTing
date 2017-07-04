@@ -1,10 +1,12 @@
 package sopt.client.cleanting.Cleanner;
 
+import java.io.Serializable;
+
 /**
  * Created by 김지원 on 2017-07-04.
  */
 
-public class CleanerData {
+public class CleanerData implements Serializable{
     public String cleanerId;
     public String name;
     public String phone;

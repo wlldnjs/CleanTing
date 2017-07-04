@@ -39,7 +39,7 @@ import sopt.client.cleanting.MakeTing.MakeTingRequestResultData;
 import sopt.client.cleanting.MakeTing.MakeTingResult;
 import sopt.client.cleanting.MakeTing.MakeTingResultData;
 import sopt.client.cleanting.MakeTing.SendTingLocationData;
-import sopt.client.cleanting.MyRequest.MyRequestTingEditEditData;
+import sopt.client.cleanting.MyRequest.MyRequestTingEditData;
 import sopt.client.cleanting.MyRequest.MyRequestTingEditResult;
 import sopt.client.cleanting.MyRequest.RequestTingDetailResult;
 import sopt.client.cleanting.Mypage.ModifyPasswordResult;
@@ -96,7 +96,7 @@ public interface NetworkService {
 
     // 2-4 팅 수정
     @PUT("ting/{tingId}")
-    Call<MyRequestTingEditResult> getMyRequestTingEditResult(@Path("tingId") String tingId, @Body MyRequestTingEditEditData myRequestTingEditEditData);
+    Call<MyRequestTingEditResult> getMyRequestTingEditResult(@Path("tingId") String tingId, @Body MyRequestTingEditData myRequestTingEditData);
 
     // 2-5 사용자 신청 팅 조회
     @GET("ting/register/{userId}")
