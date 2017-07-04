@@ -1,5 +1,6 @@
 package sopt.client.cleanting.Community;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -57,6 +58,8 @@ public class CommunityWriteActivity extends AppCompatActivity {
                             if(response.body().message.equals("Succeed in writing a post"))
                             {
                                 Toast.makeText(getApplicationContext(),"게시글 등록 성공",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent();
+                                setResult(RESULT_OK);
                                 finish();
                             } else {
                                 Toast.makeText(CommunityWriteActivity.this, response.body().message, Toast.LENGTH_SHORT).show();

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,6 +25,9 @@ import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
+
+import static android.app.Activity.RESULT_OK;
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 
 /**
  * Created by 김지원 on 2017-06-30.
@@ -49,6 +53,8 @@ public class CommunityFragment extends Fragment {
     FindBulletinData Data = new FindBulletinData();
     BulletinPostData PostData = new BulletinPostData();
     ArrayList<BulletinCommentData> bulletinCommentDatas = new ArrayList<>();
+
+    public static int REQUEST_COMMUNITY_WRITE = 2001;
 
     public CommunityFragment() {
     }
@@ -82,9 +88,9 @@ public class CommunityFragment extends Fragment {
         BrecyclerView.setLayoutManager(layoutManager);                           //리사이클러뷰에 레이아웃매니저를 달아준다
 
         bulletinArrayList = new ArrayList<FindAllBulletinData>();                         //사용자 정의 데이터를 갖는 arraylist
-        
-        int a =1;
-        Call<FindAllBulletinResult> findAllBulletinResultCall = service.getFindAllBulletinResult(a);
+
+        int locationnum = loginUserDatas.locationNum;
+        Call<FindAllBulletinResult> findAllBulletinResultCall = service.getFindAllBulletinResult(1);//locationnum);
         findAllBulletinResultCall.enqueue(new Callback<FindAllBulletinResult>() {
             @Override
             public void onResponse(Call<FindAllBulletinResult> call, Response<FindAllBulletinResult> response) {
@@ -152,7 +158,7 @@ public class CommunityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),CommunityWriteActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_COMMUNITY_WRITE);
             }
         });
 
@@ -195,4 +201,17 @@ public class CommunityFragment extends Fragment {
 
         }
     };
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            if(requestCode == REQUEST_COMMUNITY_WRITE){
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.detach(this);
+                ft.attach(this);
+                ft.commit();
+            }
+        }
+    }
 }
