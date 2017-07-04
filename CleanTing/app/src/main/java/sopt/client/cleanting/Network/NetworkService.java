@@ -8,6 +8,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import sopt.client.cleanting.Alarm.AlarmOnOffResult;
 import sopt.client.cleanting.Cleanner.AddCleanerReviewData;
 import sopt.client.cleanting.Cleanner.AddCleanerReviewResult;
@@ -34,6 +35,7 @@ import sopt.client.cleanting.MakeTing.MakeTingRequestResult;
 import sopt.client.cleanting.MakeTing.MakeTingRequestResultData;
 import sopt.client.cleanting.MakeTing.MakeTingResult;
 import sopt.client.cleanting.MakeTing.MakeTingResultData;
+import sopt.client.cleanting.MakeTing.SendTingLocationData;
 import sopt.client.cleanting.MyRequest.MyRequestTingEditEditData;
 import sopt.client.cleanting.MyRequest.MyRequestTingEditResult;
 import sopt.client.cleanting.MyRequest.RequestTingDetailResult;
@@ -66,7 +68,7 @@ public interface NetworkService {
     Call<FindIdResult> getFindIdResult(@Path("userId") String userId);
 
     // 1-5 비밀번호 수정
-    @PUT("members/id/{phone}")
+    @PUT("members/pwd/{phone}")
     Call<ModifyPasswordResult> getModifyPasswordResult(@Path("pwd") String pwd);
 
     // 1-6 회원 탈퇴
@@ -82,9 +84,8 @@ public interface NetworkService {
     Call<MakeTingRequestResult> getMakeTingRequestResult(@Path("tId") String tId, @Body MakeTingRequestResultData makeTingRequestResultData);
 
     // 2-3 팅 조회(지역)
-    /**API 수정중*/
-    @GET("ting/area/{userId}")
-    Call<MakeTingLocationResult> getMakeTingLocationResult(@Path("userId") String userId, @Header("order") String order);
+    @POST("ting/area/{userId}")
+    Call<MakeTingLocationResult> getMakeTingLocationResult(@Path("userId") String userId, @Body SendTingLocationData sendTingLocationData);
 
     // 2-4 팅 수정
     @PUT("ting/{tingId}")
@@ -104,8 +105,8 @@ public interface NetworkService {
     Call<EndTingResult> getCancelTingResult(@Path("tingId") String tingId, @Body EndTingData endTingData);
 
     // 3-1 전체 게시글 조회
-    @GET("posts")
-    Call<FindAllBulletinResult> getFindAllBulletinResult();
+    @GET("posts/{locationNum}")
+    Call<FindAllBulletinResult> getFindAllBulletinResult(@Query("locationNum") int locationNum);
 
     // 3-2 특정 게시글 조회
     @GET("posts/{postId}")

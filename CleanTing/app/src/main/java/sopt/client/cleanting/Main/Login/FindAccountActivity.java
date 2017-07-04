@@ -83,7 +83,7 @@ public class FindAccountActivity extends AppCompatActivity {
 
             }
         });
-        //새 비밀번호 인증번호 요청버튼
+        //새 비밀번호 인증번호 요청버튼(Toast메시지만)
         new_button_citenumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,8 +92,10 @@ public class FindAccountActivity extends AppCompatActivity {
         });
         // 새 비밀번호 찾기버튼
         new_button_find.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
 
             }
         });
