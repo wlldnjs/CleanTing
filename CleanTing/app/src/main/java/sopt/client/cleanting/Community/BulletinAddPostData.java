@@ -8,4 +8,6 @@ public class BulletinAddPostData{
     public String title;
     public String content;
     public String userId;
+    public int locationNum;
+
 }

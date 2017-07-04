@@ -82,12 +82,14 @@ public class CommunityFragment extends Fragment {
         BrecyclerView.setLayoutManager(layoutManager);                           //리사이클러뷰에 레이아웃매니저를 달아준다
 
         bulletinArrayList = new ArrayList<FindAllBulletinData>();                         //사용자 정의 데이터를 갖는 arraylist
-
-        Call<FindAllBulletinResult> findAllBulletinResultCall = service.getFindAllBulletinResult(2);
+        
+        int a =1;
+        Call<FindAllBulletinResult> findAllBulletinResultCall = service.getFindAllBulletinResult(a);
         findAllBulletinResultCall.enqueue(new Callback<FindAllBulletinResult>() {
             @Override
             public void onResponse(Call<FindAllBulletinResult> call, Response<FindAllBulletinResult> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful())
+                {
                     if(response.body().message.equals("전체게시글 조회에 성공하였습니다"))
                     {
                         Toast.makeText(getContext(),"sdf",Toast.LENGTH_SHORT).show();

@@ -58,7 +58,6 @@ public class CommunitySearchActivity extends AppCompatActivity {
         searchimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"검색하기",Toast.LENGTH_SHORT).show();
                 SearchRecyclerView.setVisibility(View.VISIBLE);
                 linearLayout.setVisibility(View.GONE);
 //                imgview.setVisibility(View.GONE);
@@ -76,15 +75,22 @@ public class CommunitySearchActivity extends AppCompatActivity {
                         if(response.isSuccessful())
                         {
                             if(response.body().message.equals("Succeed in searching a post")){
-                                Toast.makeText(getApplicationContext(),"검색 성공", Toast.LENGTH_SHORT).show();
 //                                bulletinArrayList = new ArrayList<SearchBulletinData>();
                                 bulletinArrayList = response.body().result;
-                                Toast.makeText(getApplicationContext(),bulletinArrayList.get(0).title,Toast.LENGTH_SHORT).show();
+
+                                if(bulletinArrayList.size() == 0)
+                                {
+                                    Toast.makeText(getApplicationContext(),"일치하는 것 없음",Toast.LENGTH_SHORT).show();
+                                }
 
                                 BrecyclerAdapter = new BulletinSearchRecyclerAdapter(bulletinArrayList,clickEvent);
                                 SearchRecyclerView.setAdapter(BrecyclerAdapter);
                                 SearchRecyclerView.setVisibility(View.VISIBLE);
                             }
+                        }
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(),"일치 하는거 없음",Toast.LENGTH_SHORT).show();
                         }
                     }
                     @Override

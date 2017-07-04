@@ -10,9 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import sopt.client.cleanting.Community.Reply.ReplyData;
 import sopt.client.cleanting.Community.Reply.ReplyRecyclerViewAdapter;
@@ -67,8 +65,7 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String str = inputReplyEdit.getText().toString();
-                String time = new SimpleDateFormat("yyyy/MM/dd HH:mm").format(new Date(System.currentTimeMillis()));
-                itemdata.add(0,new ReplyData(str,time));
+
                 replyRecyclerViewAdapter.notifyDataSetChanged();
                 inputReplyEdit.setText("");
                 Toast.makeText(getApplicationContext(),"댓글 등록",Toast.LENGTH_SHORT).show();
