@@ -102,7 +102,6 @@ public class MyRequestFragment extends Fragment{
                 if(response.isSuccessful()){
                     for(int i=0; i<response.body().result.size(); i++){
                         bundleList.add(getBundle(response.body().result.get(i)));
-                        Toast.makeText(context, "번들리스트 추가 완료 " +bundleList.size(), Toast.LENGTH_SHORT).show();
                     }
                     FragmentManager fm = getFragmentManager();
                     myRequestAdapter = new MyRequestAdapter(itemData,clickListener,context, fm, bundleList);

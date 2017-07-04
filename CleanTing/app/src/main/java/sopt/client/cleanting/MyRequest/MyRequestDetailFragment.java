@@ -23,6 +23,8 @@ public class MyRequestDetailFragment extends Fragment {
     TextView cleaner, date, time, memberCount;
     ImageView member1, member2, member3;
     LinearLayout layout;
+    String userId, cleanerId, tingId, price, request, warning;
+
 
     public MyRequestDetailFragment() {
     }
@@ -48,7 +50,12 @@ public class MyRequestDetailFragment extends Fragment {
         member3 = (ImageView)layout.findViewById(R.id.my_request_detail_member3);
         memberCount = (TextView)layout.findViewById(R.id.my_request_detail_member_count);
 
+        tingId = getArguments().getString("tingId");
         cleaner.setText(getArguments().getString("cleanerId"));
+        userId = getArguments().getString("userId");
+        price = getArguments().getString("price");
+        request = getArguments().getString("request");
+        warning = getArguments().getString("warning");
         date.setText(getArguments().getString("date"));
         time.setText(getArguments().getString("startTime") +"~" +getArguments().getString("endTime"));
         memberCount.setText(getArguments().getString("cnt") +"명/3명");
@@ -62,7 +69,17 @@ public class MyRequestDetailFragment extends Fragment {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, MyRequestRecruit.class);
+                Intent intent = new Intent(context, MyRequestDetailActivity.class);
+                intent.putExtra("tingId",tingId);
+                intent.putExtra("cleanerId",cleaner.getText().toString());
+                intent.putExtra("userId",userId);
+                intent.putExtra("price",price);
+                intent.putExtra("request",request);
+                intent.putExtra("warning",warning);
+                intent.putExtra("date",date.getText().toString());
+                intent.putExtra("time",time.getText().toString());
+                intent.putExtra("cnt",getArguments().getString("cnt"));
+
                 startActivity(intent);
             }
         });

@@ -11,7 +11,7 @@ public class MyRequestDetailActivity extends AppCompatActivity {
     ImageView man1, man2, man3, cleanerImg, star1, star2, star3, star4, star5, callBtn,
             editBtn, cancelBtn;
     TextView manCount, starCount, name,  act, review, career, age, date, time, moreRequest, warning, total;
-
+    String tingId, cleanerId, userId, request, cnt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,5 +42,15 @@ public class MyRequestDetailActivity extends AppCompatActivity {
         moreRequest = (TextView)findViewById(R.id.my_request_detail_request_message);
         warning = (TextView)findViewById(R.id.my_request_detail_warning_message);
         total = (TextView)findViewById(R.id.my_request_detail_total);
+
+        tingId = getIntent().getStringExtra("tingId");
+        cleanerId = getIntent().getStringExtra("cleanerId");
+        userId = getIntent().getStringExtra("userId");
+        total.setText(getIntent().getStringExtra("price"));
+        request = getIntent().getStringExtra("request");
+        warning.setText(getIntent().getStringExtra("warning"));
+        date.setText(getIntent().getStringExtra("date"));
+        time.setText(getIntent().getStringExtra("time"));
+        cnt = getIntent().getStringExtra("cnt");
     }
 }
