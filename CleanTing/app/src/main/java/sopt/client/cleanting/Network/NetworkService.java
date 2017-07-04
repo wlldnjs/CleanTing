@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -107,8 +108,7 @@ public interface NetworkService {
     Call<EndTingResult> getCompleteResult(@Path("tingId") String tingId);
 
     // 2-7 팅 취소하기
-    /**API 수정중*/
-    @DELETE("ting/{tingId}")
+    @HTTP(method = "DELETE", path = "ting/{tingId}", hasBody = true)
     Call<EndTingResult> getCancelTingResult(@Path("tingId") String tingId, @Body EndTingData endTingData);
 
     // 3-1 전체 게시글 조회

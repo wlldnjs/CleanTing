@@ -1,9 +1,13 @@
 package sopt.client.cleanting.MyRequest;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +20,8 @@ import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Cleanner.CleanerData;
 import sopt.client.cleanting.Cleanner.SearchCleanerDetailResult;
+import sopt.client.cleanting.MakeTing.EndTingData;
+import sopt.client.cleanting.MakeTing.EndTingResult;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
@@ -67,7 +73,6 @@ public class MyRequestDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<SearchCleanerDetailResult> call, Response<SearchCleanerDetailResult> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(MyRequestDetailActivity.this, "성공", Toast.LENGTH_SHORT).show();
                     cleanerData = response.body().result.cleaner;
                     age.setText("나이: " +cleanerData.age);
                     name.setText(cleanerData.name +" 클리너");
@@ -112,6 +117,7 @@ public class MyRequestDetailActivity extends AppCompatActivity {
         });
 
         tingId = getIntent().getStringExtra("tingId");
+        Toast.makeText(this, tingId, Toast.LENGTH_SHORT).show();
         userId = getIntent().getStringExtra("userId");
         total.setText(getIntent().getStringExtra("price"));
         request = getIntent().getStringExtra("request");
@@ -136,6 +142,8 @@ public class MyRequestDetailActivity extends AppCompatActivity {
             man2.setImageResource(R.drawable.man_line);
         }
 
+
+
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,6 +158,62 @@ public class MyRequestDetailActivity extends AppCompatActivity {
                 intent.putExtra("cnt",cnt);
                 intent.putExtra("cleanerData",cleanerData);
                 startActivityForResult(intent, REQUEST_MODIFY_TING);
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 다이얼로그 생성
+                LayoutInflater dialog = LayoutInflater.from(getApplicationContext());
+                final View dialogLayout = dialog.inflate(R.layout.activity_custom_dialog, null);
+                final Dialog myDialog = new Dialog(MyRequestDetailActivity.this);
+
+                // 다이얼로그 타이틀제거, 투명
+                myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+//                final TextView title = (TextView)dialogLayout.findViewById(R.id.txt_title);
+                final TextView content = (TextView)dialogLayout.findViewById(R.id.txt_content);
+                final ImageView cancelBtn = (ImageView)dialogLayout.findViewById(R.id.btn_left);
+                final ImageView okBtn = (ImageView)dialogLayout.findViewById(R.id.btn_right);
+                cancelBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        myDialog.cancel();
+                    }
+                });
+
+                okBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EndTingData endTingData = new EndTingData();
+                        endTingData.userId = "bumma";
+                        Log.d("들어간 팅아이디, endTingData",tingId+","+endTingData.userId);
+                        Call<EndTingResult> endTingResultCall = service.getCancelTingResult(tingId,endTingData);
+                        endTingResultCall.enqueue(new Callback<EndTingResult>() {
+                            @Override
+                            public void onResponse(Call<EndTingResult> call, Response<EndTingResult> response) {
+                                if(response.isSuccessful()){
+                                    Toast.makeText(MyRequestDetailActivity.this, "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                                    myDialog.dismiss();
+                                    finish();
+                                } else {
+                                    Toast.makeText(MyRequestDetailActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<EndTingResult> call, Throwable t) {
+                                Toast.makeText(MyRequestDetailActivity.this, "통신 실패.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+                content.setText("취소 하시겠습니까?");
+                myDialog.setContentView(dialogLayout);
+
+                myDialog.show();
             }
         });
     }
