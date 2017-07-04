@@ -22,6 +22,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.MakeTing.MakeTingLocationResult;
+import sopt.client.cleanting.MakeTing.MakeTingLocationResultData;
+import sopt.client.cleanting.MakeTing.SendTingLocationData;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
@@ -38,10 +41,11 @@ public class MyRequestFragment extends Fragment{
     ArrayList<Bundle> bundleList = new ArrayList<Bundle>();
     Context context;
     RecyclerView recyclerMyLocation;
-    ArrayList<MyRequestData> itemData;
+    ArrayList<MakeTingLocationResultData> itemData;
     LinearLayoutManager layoutManager;
     MyRequestAdapter myRequestAdapter;
     int selectPosition;
+    boolean firstCreate = true;
 //    FragmentTransaction ft = getFragmentManager().beginTransaction();
 
     public MyRequestFragment() {
@@ -62,15 +66,37 @@ public class MyRequestFragment extends Fragment{
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerMyLocation.setLayoutManager(layoutManager);
 
-        itemData = new ArrayList<MyRequestData>();
-        itemData.add(new MyRequestData("2017년 6월 5일 (월)","13:00~19:00","1"));
-        itemData.add(new MyRequestData("2017년 6월 6일 (화)","14:00~19:00","1"));
-        itemData.add(new MyRequestData("2017년 6월 7일 (수)","15:00~19:00","1"));
-        itemData.add(new MyRequestData("2017년 6월 8일 (목)","16:00~19:00","1"));
-        itemData.add(new MyRequestData("2017년 6월 9일 (금)","17:00~19:00","2"));
+        itemData = new ArrayList<MakeTingLocationResultData>();
+        SendTingLocationData sendTingLocationData = new SendTingLocationData();
+        sendTingLocationData.userLat = "37.5218849";
+        sendTingLocationData.userLng = "126.8513412";
+        Call<MakeTingLocationResult> makeTingLocationResultCall = service.getMakeTingLocationResult("bumma",sendTingLocationData);
+        makeTingLocationResultCall.enqueue(new Callback<MakeTingLocationResult>() {
+            @Override
+            public void onResponse(Call<MakeTingLocationResult> call, Response<MakeTingLocationResult> response) {
+                if(response.isSuccessful()){
+                    itemData = response.body().result;
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MakeTingLocationResult> call, Throwable t) {
+
+            }
+        });
+//        itemData.add(new MyRequestData("2017년 6월 5일 (월)","13:00~19:00","1"));
+//        itemData.add(new MyRequestData("2017년 6월 6일 (화)","14:00~19:00","1"));
+//        itemData.add(new MyRequestData("2017년 6월 7일 (수)","15:00~19:00","1"));
+//        itemData.add(new MyRequestData("2017년 6월 8일 (목)","16:00~19:00","1"));
+//        itemData.add(new MyRequestData("2017년 6월 9일 (금)","17:00~19:00","2"));
 
 //        bundleList.clear();
 //        bundleList = getBundleList();
+        if(firstCreate){
+            RefreshView();
+            firstCreate = false;
+        }
 
         Log.d("MyRequestFragment", "onCreateView 호출");
         return layout;
@@ -84,8 +110,7 @@ public class MyRequestFragment extends Fragment{
 //                Toast.makeText(context, "헤더입니다.", Toast.LENGTH_SHORT).show();
             } else {
 //                String temp = myRequestAdapter.itemDatas.get(temp_position-1).writer;
-                Toast.makeText(context, itemData.get(temp_position-1).day +"," +itemData.get(temp_position-1).time , Toast.LENGTH_SHORT).show();
-                MyRequestData datas = itemData.get(temp_position-1);
+                MakeTingLocationResultData datas = itemData.get(temp_position-1);
                 Intent intent = new Intent(context, MyRequestRecruit.class);
                 intent.putExtra("datas", datas);
                 selectPosition = temp_position-1;

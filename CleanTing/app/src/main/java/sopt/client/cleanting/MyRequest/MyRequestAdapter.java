@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import sopt.client.cleanting.MakeTing.MakeTingLocationResultData;
 import sopt.client.cleanting.R;
 import sopt.client.cleanting.ViewHolder.MyLocationViewHolder;
 import sopt.client.cleanting.ViewHolder.MyLocationViewHolderHeader;
@@ -25,12 +26,12 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITME = 1;
     FragmentManager fm;
-    ArrayList<MyRequestData> itemDatas;
+    ArrayList<MakeTingLocationResultData> itemDatas;
     View.OnClickListener clickListener;
     Context context;
     ArrayList<Bundle> bundleList = new ArrayList<Bundle>();
 
-    public MyRequestAdapter(ArrayList<MyRequestData> itemDatas, View.OnClickListener clickListener, Context context, FragmentManager fm, ArrayList<Bundle> bundleList){
+    public MyRequestAdapter(ArrayList<MakeTingLocationResultData> itemDatas, View.OnClickListener clickListener, Context context, FragmentManager fm, ArrayList<Bundle> bundleList){
         this.itemDatas = itemDatas;
         this.clickListener = clickListener;
         this.context = context;
@@ -68,14 +69,14 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         } else if(holder instanceof MyLocationViewHolder){
 
-            MyRequestData currentItem = itemDatas.get(position-1);
+            MakeTingLocationResultData currentItem = itemDatas.get(position-1);
             MyLocationViewHolder myLocationViewHolder = (MyLocationViewHolder)holder;
-            myLocationViewHolder.myLocationDay.setText(currentItem.day);
-            myLocationViewHolder.myLocationTime.setText(currentItem.time);
-            if(currentItem.member.equals("1")){
+            myLocationViewHolder.myLocationDay.setText(currentItem.date);
+            myLocationViewHolder.myLocationTime.setText(currentItem.startTime +"~" +currentItem.endTime);
+            if(currentItem.cnt.equals("1")){
                 myLocationViewHolder.myLocationMember3.setImageResource(R.drawable.man_line);
                 myLocationViewHolder.myLocationMember2.setImageResource(R.drawable.man_line);
-            } else if(currentItem.member.equals("2")){
+            } else if(currentItem.cnt.equals("2")){
                 myLocationViewHolder.myLocationMember3.setImageResource(R.drawable.man_line);
             }
         }

@@ -89,7 +89,7 @@ public interface NetworkService {
 
     // 2-2 팅 신청하기
     @POST("ting/{tingId}")
-    Call<MakeTingRequestResult> getMakeTingRequestResult(@Path("tId") String tId, @Body MakeTingRequestResultData makeTingRequestResultData);
+    Call<MakeTingRequestResult> getMakeTingRequestResult(@Path("tingId") String tingId, @Body MakeTingRequestResultData makeTingRequestResultData);
 
     // 2-3 팅 조회(지역)
     @POST("ting/area/{userId}")

@@ -13,4 +13,6 @@ public class MakeTingResultData{
     public String cleanerId;
     public String request;
     public String warning;
+    public String lat;
+    public String lng;
 }

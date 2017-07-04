@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -68,7 +67,7 @@ public class MyRequestDetailActivity extends AppCompatActivity {
         total = (TextView)findViewById(R.id.my_request_detail_total);
 
         cleanerId = getIntent().getStringExtra("cleanerId");
-        Call<SearchCleanerDetailResult> searchCleanerDetailResultCall = service.getSearchCleanerDetailResult("bumjin");
+        Call<SearchCleanerDetailResult> searchCleanerDetailResultCall = service.getSearchCleanerDetailResult(cleanerId);
         searchCleanerDetailResultCall.enqueue(new Callback<SearchCleanerDetailResult>() {
             @Override
             public void onResponse(Call<SearchCleanerDetailResult> call, Response<SearchCleanerDetailResult> response) {
@@ -117,7 +116,6 @@ public class MyRequestDetailActivity extends AppCompatActivity {
         });
 
         tingId = getIntent().getStringExtra("tingId");
-        Toast.makeText(this, tingId, Toast.LENGTH_SHORT).show();
         userId = getIntent().getStringExtra("userId");
         total.setText(getIntent().getStringExtra("price"));
         request = getIntent().getStringExtra("request");
@@ -136,9 +134,9 @@ public class MyRequestDetailActivity extends AppCompatActivity {
         cnt = getIntent().getStringExtra("cnt");
         manCount.setText(cnt+"명/3명");
         if(cnt.equals("2")){
-            man1.setImageResource(R.drawable.man_line);
+            man3.setImageResource(R.drawable.man_line);
         } else if(cnt.equals("1")){
-            man1.setImageResource(R.drawable.man_line);
+            man3.setImageResource(R.drawable.man_line);
             man2.setImageResource(R.drawable.man_line);
         }
 
@@ -189,7 +187,6 @@ public class MyRequestDetailActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         EndTingData endTingData = new EndTingData();
                         endTingData.userId = "bumma";
-                        Log.d("들어간 팅아이디, endTingData",tingId+","+endTingData.userId);
                         Call<EndTingResult> endTingResultCall = service.getCancelTingResult(tingId,endTingData);
                         endTingResultCall.enqueue(new Callback<EndTingResult>() {
                             @Override
