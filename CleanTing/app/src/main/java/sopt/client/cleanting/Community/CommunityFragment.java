@@ -27,7 +27,6 @@ import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 import static android.app.Activity.RESULT_OK;
-import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 
 /**
  * Created by 김지원 on 2017-06-30.
@@ -45,6 +44,8 @@ public class CommunityFragment extends Fragment {
     TextView filter_tv;
     ImageView Floatimg;
 
+    TextView Bname;
+
     private RecyclerView BrecyclerView;
     private ArrayList<FindAllBulletinData> bulletinArrayList;
     private BulletinListRecylerAdapter BrecyclerAdapter;
@@ -59,7 +60,7 @@ public class CommunityFragment extends Fragment {
     public CommunityFragment() {
     }
 
-    public void setContext(Context context){
+    public void setContext(Context context) {
         this.context = context;
     }
 
@@ -67,10 +68,12 @@ public class CommunityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         service = ApplicationController.getInstance().getNetworkService();
-        FrameLayout layout = (FrameLayout)inflater.inflate(R.layout.fragment_community,container,false);
+        FrameLayout layout = (FrameLayout) inflater.inflate(R.layout.fragment_community, container, false);
 
-        more_btn = (ImageView)layout.findViewById(R.id.more_btn);
-        frameLinear = (LinearLayout)layout.findViewById(R.id.frameLinear);
+        more_btn = (ImageView) layout.findViewById(R.id.more_btn);
+        frameLinear = (LinearLayout) layout.findViewById(R.id.frameLinear);
+
+        Bname = (TextView)layout.findViewById(R.id.bulletin_name);
 
         more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +83,7 @@ public class CommunityFragment extends Fragment {
             }
         });
 
-        BrecyclerView = (RecyclerView)layout.findViewById(R.id.BulletinRecyclerView);
+        BrecyclerView = (RecyclerView) layout.findViewById(R.id.BulletinRecyclerView);
         BrecyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
@@ -89,22 +92,37 @@ public class CommunityFragment extends Fragment {
 
         bulletinArrayList = new ArrayList<FindAllBulletinData>();                         //사용자 정의 데이터를 갖는 arraylist
 
-        int locationnum = loginUserDatas.locationNum;
+//        int locationnum = loginUserDatas.locationNum;
+
+        int locationnum = 1;
+        String bulletinname;
+        if(locationnum == 1)
+        {
+            bulletinname = "신림동 게시판";
+        }
+        else if(locationnum == 2)
+        {
+            bulletinname = "역삼동 게시판";
+        }
+        else
+        {
+            bulletinname = "그 외 게시판";
+        }
+
+        Bname.setText(bulletinname);
+
         Call<FindAllBulletinResult> findAllBulletinResultCall = service.getFindAllBulletinResult(1);//locationnum);
         findAllBulletinResultCall.enqueue(new Callback<FindAllBulletinResult>() {
             @Override
             public void onResponse(Call<FindAllBulletinResult> call, Response<FindAllBulletinResult> response) {
-                if (response.isSuccessful())
-                {
-                    if(response.body().message.equals("전체게시글 조회에 성공하였습니다"))
-                    {
-                        Toast.makeText(getContext(),"sdf",Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful()) {
+                    if (response.body().message.equals("전체게시글 조회에 성공하였습니다")) {
                         bulletinArrayList = response.body().result;
-                        BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent);
+                        BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList, clickEvent);
                         BrecyclerView.setAdapter(BrecyclerAdapter);
                     }
                 } else {
-                    Toast.makeText(getContext(),"통신 실패", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "통신 실패", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -126,7 +144,7 @@ public class CommunityFragment extends Fragment {
 //        BrecyclerAdapter = new BulletinListRecylerAdapter(bulletinArrayList,clickEvent);
 //        BrecyclerView.setAdapter(BrecyclerAdapter);
 
-        btn_remove = (LinearLayout)layout.findViewById(R.id.btn_remove);
+        btn_remove = (LinearLayout) layout.findViewById(R.id.btn_remove);
         btn_remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,78 +153,73 @@ public class CommunityFragment extends Fragment {
             }
         });
 
-        search_tv = (TextView)layout.findViewById(R.id.B_search);
+        search_tv = (TextView) layout.findViewById(R.id.B_search);
         search_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),CommunitySearchActivity.class);
+                Intent intent = new Intent(getContext(), CommunitySearchActivity.class);
                 startActivity(intent);
             }
         });
 
-        filter_tv = (TextView)layout.findViewById(R.id.B_filter);
+        filter_tv = (TextView) layout.findViewById(R.id.B_filter);
         filter_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),CommunityFilterActivity.class);
+                Intent intent = new Intent(getContext(), CommunityFilterActivity.class);
                 startActivity(intent);
             }
         });
 
-        Floatimg = (ImageView)layout.findViewById(R.id.floatimg);
+        Floatimg = (ImageView) layout.findViewById(R.id.floatimg);
         Floatimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),CommunityWriteActivity.class);
-                startActivityForResult(intent,REQUEST_COMMUNITY_WRITE);
+                Intent intent = new Intent(getContext(), CommunityWriteActivity.class);
+                startActivityForResult(intent, REQUEST_COMMUNITY_WRITE);
             }
         });
 
         return layout;
     }
+
     public View.OnClickListener clickEvent = new View.OnClickListener() {
         public void onClick(View v) {
             final int itemPosition = BrecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
-
             Call<FindBulletinResult> findbulletinresult = service.getFindBulletinResult(bulletinArrayList.get(itemPosition).postId);
             findbulletinresult.enqueue(new Callback<FindBulletinResult>() {
                 @Override
                 public void onResponse(Call<FindBulletinResult> call, Response<FindBulletinResult> response) {
-                    if(response.isSuccessful())
-                    {
-                        if(response.body().message.equals("게시물 상세조회에 성공하였습니다."))
-                        {
+                    if (response.isSuccessful()) {
+                        if (response.body().message.equals("게시물 상세조회에 성공하였습니다.")) {
                             Data = response.body().result;
                             PostData = Data.post;
                             bulletinCommentDatas = Data.comment;
 
-                            Intent intent = new Intent(context,CommunityBulletinDetailActivity.class);
-                            intent.putExtra("post",PostData);
-                            intent.putExtra("comment",bulletinCommentDatas);
+                            Intent intent = new Intent(context, CommunityBulletinDetailActivity.class);
+                            intent.putExtra("post", PostData);
+                            intent.putExtra("comment", bulletinCommentDatas);
                             startActivity(intent);
 //                            Toast.makeText(getContext(),"상세정보 성공 "+PostData.title,Toast.LENGTH_SHORT).show();
                         }
-                    }
-                    else
-                    {
-                        Toast.makeText(getContext(),"조회 실패", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "조회 실패", Toast.LENGTH_SHORT).show();
                     }
                 }
+
                 @Override
-                public void onFailure(Call<FindBulletinResult> call, Throwable t)
-                {
-                    Toast.makeText(getContext(),"통신 연결 실패", Toast.LENGTH_SHORT).show();
+                public void onFailure(Call<FindBulletinResult> call, Throwable t) {
+                    Toast.makeText(getContext(), "통신 연결 실패", Toast.LENGTH_SHORT).show();
                 }
             });
-
         }
     };
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            if(requestCode == REQUEST_COMMUNITY_WRITE){
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_COMMUNITY_WRITE) {
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.detach(this);
                 ft.attach(this);

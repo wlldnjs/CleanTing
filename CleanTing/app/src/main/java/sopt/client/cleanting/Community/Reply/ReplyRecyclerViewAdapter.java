@@ -37,7 +37,6 @@ public class ReplyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
         this.bulletinPostData = bulletinPostData;
         this.commentDatas = commentDatas;
     }
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_HEADER)
@@ -69,6 +68,7 @@ public class ReplyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
             headerViewHolder.BulletinDetailTitle.setText(bulletinPostData.title.toString());
             headerViewHolder.BulletinDetailContent.setText(bulletinPostData.content.toString());
             headerViewHolder.BulletinDetailDate.setText(bulletinPostData.date.toString());
+            headerViewHolder.BulletinDetailTime.setText(bulletinPostData.time.toString());
             headerViewHolder.BulletinDetailReplynum.setText(bulletinPostData.comment_cnt.toString());
         }
         else if(holder instanceof CBaseViewHolder)
@@ -77,10 +77,13 @@ public class ReplyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
             CBaseViewHolder baseViewHolder = (CBaseViewHolder) holder;
             baseViewHolder.ReplyContent.setText(currentitem.content);
             baseViewHolder.ReplyDate.setText(currentitem.date);
+            baseViewHolder.ReplyTime.setText(currentitem.time);
         }
     }
     @Override
     public int getItemCount() {
         return commentDatas.size() + 1 ;
     }
+
+
 }

@@ -14,6 +14,7 @@ public class BulletinViewHolder extends RecyclerView.ViewHolder {
 
     TextView BulletinTitle;
     TextView BulletinDate;
+    TextView BulletinTime;
     TextView BullentinContent;
     TextView Bullentinreply;
 
@@ -24,6 +25,6 @@ public class BulletinViewHolder extends RecyclerView.ViewHolder {
         BulletinDate = (TextView)itemView.findViewById(R.id.Bulletin_date);
         BullentinContent = (TextView)itemView.findViewById(R.id.Bulletin_content);
         Bullentinreply = (TextView)itemView.findViewById(R.id.Bulletin_reply);
-
+        BulletinTime = (TextView)itemView.findViewById(R.id.Bulletin_time);
     }
 }

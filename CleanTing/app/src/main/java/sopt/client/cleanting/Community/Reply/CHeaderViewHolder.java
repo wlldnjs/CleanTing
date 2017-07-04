@@ -16,6 +16,7 @@ public class CHeaderViewHolder extends RecyclerView.ViewHolder {
     TextView BulletinDetailDate;
     TextView BulletinDetailContent;
     TextView BulletinDetailReplynum;
+    TextView BulletinDetailTime;
 
     public CHeaderViewHolder(View itemView) {
         super(itemView);
@@ -23,6 +24,6 @@ public class CHeaderViewHolder extends RecyclerView.ViewHolder {
         BulletinDetailDate = (TextView)itemView.findViewById(R.id.BulletinDetail_date);
         BulletinDetailContent = (TextView)itemView.findViewById(R.id.BulletinDetail_content);
         BulletinDetailReplynum = (TextView)itemView.findViewById(R.id.BulletinDetail_replynum);
-
+        BulletinDetailTime = (TextView)itemView.findViewById(R.id.BulletinDetail_time);
     }
 }

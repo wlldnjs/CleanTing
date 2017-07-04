@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="22dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -25,10 +25,17 @@
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/BulletinDetail_date"
-                android:text="2015.12.24 14:00"
+                android:textSize="11sp"
+                android:layout_marginRight="3dp"
+                android:textColor="#999999"
+                android:layout_weight="0.15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/BulletinDetail_time"
                 android:textSize="11sp"
                 android:textColor="#999999"
-                android:layout_weight="0.3"
+                android:layout_weight="0.15"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
         </LinearLayout>

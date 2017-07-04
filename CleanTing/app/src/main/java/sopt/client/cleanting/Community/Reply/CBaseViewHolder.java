@@ -14,11 +14,13 @@ public class CBaseViewHolder extends RecyclerView.ViewHolder {
 
     TextView ReplyContent;
     TextView ReplyDate;
+    TextView ReplyTime;
 
     public CBaseViewHolder(View itemView) {
         super(itemView);
 
         ReplyContent = (TextView)itemView.findViewById(R.id.ReplyContent);
         ReplyDate = (TextView)itemView.findViewById(R.id.ReplyDate);
+        ReplyTime = (TextView)itemView.findViewById(R.id.ReplyTime);
     }
 }

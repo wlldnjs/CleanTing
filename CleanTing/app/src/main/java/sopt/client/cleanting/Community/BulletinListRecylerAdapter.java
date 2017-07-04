@@ -37,8 +37,16 @@ public class BulletinListRecylerAdapter extends RecyclerView.Adapter<BulletinVie
     public void onBindViewHolder(BulletinViewHolder holder, int position) {
         holder.BulletinTitle.setText(bulletinArrayList.get(position).title);
         holder.BulletinDate.setText(bulletinArrayList.get(position).date);
-        holder.BullentinContent.setText(bulletinArrayList.get(position).content);
+        if(bulletinArrayList.get(position).content.length() > 20)
+        {
+            holder.BullentinContent.setText(bulletinArrayList.get(position).content.substring(0,20).toString()+".........");
+        }
+        else
+        {
+            holder.BullentinContent.setText(bulletinArrayList.get(position).content);
+        }
         holder.Bullentinreply.setText(bulletinArrayList.get(position).comment_cnt);
+        holder.BulletinTime.setText(bulletinArrayList.get(position).time);
     }
 
     @Override

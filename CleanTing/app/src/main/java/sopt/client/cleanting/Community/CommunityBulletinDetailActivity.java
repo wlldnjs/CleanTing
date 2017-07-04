@@ -1,5 +1,6 @@
 package sopt.client.cleanting.Community;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,8 +13,15 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.Community.Reply.BulletinAddCommentData;
+import sopt.client.cleanting.Community.Reply.BulletinAddCommentResult;
 import sopt.client.cleanting.Community.Reply.ReplyData;
 import sopt.client.cleanting.Community.Reply.ReplyRecyclerViewAdapter;
+import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 public class CommunityBulletinDetailActivity extends AppCompatActivity {
@@ -26,14 +34,22 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     BulletinPostData postData;
     ArrayList<BulletinCommentData> commentDatas;
+    BulletinAddCommentData addcomment;
     EditText inputReplyEdit;
+    public static Context mContext;
+
+    ArrayList<BulletinCommentData> bulletinCommentDatas = new ArrayList<>();
+    FindBulletinData Data = new FindBulletinData();
+
+    NetworkService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_bulletin_detail);
 
-        Intent intent = getIntent();
+        mContext = this;
+        final Intent intent = getIntent();
         postData = new BulletinPostData();
         postData = (BulletinPostData)intent.getSerializableExtra("post");
         commentDatas = new ArrayList<>();
@@ -49,6 +65,8 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
+        service = ApplicationController.getInstance().getNetworkService();
+
 //        itemdata = new ArrayList<ReplyData>();
 //        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
 //        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
@@ -61,19 +79,67 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
 //        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
 //        itemdata.add(new ReplyData("오 나도 살래","2015.05. 01"));
 
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String str = inputReplyEdit.getText().toString();
-
-                replyRecyclerViewAdapter.notifyDataSetChanged();
-                inputReplyEdit.setText("");
-                Toast.makeText(getApplicationContext(),"댓글 등록",Toast.LENGTH_SHORT).show();
-            }
-        });
         replyRecyclerViewAdapter = new ReplyRecyclerViewAdapter(itemdata,getApplicationContext(),postData,commentDatas);
         recyclerView.setAdapter(replyRecyclerViewAdapter);
-        replyRecyclerViewAdapter.notifyDataSetChanged();
 
+        send.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                final String str = inputReplyEdit.getText().toString();
+
+                addcomment = new BulletinAddCommentData();
+//                addcomment.userId = loginUserDatas.userId;
+                addcomment.userId = "bumma";
+                addcomment.content = str;
+
+                final Call<BulletinAddCommentResult> bulletinAddCommentResultCall = service.getBulletinAddCommentResult(postData.postId,addcomment);
+                bulletinAddCommentResultCall.enqueue(new Callback<BulletinAddCommentResult>() {
+                    @Override
+                    public void onResponse(Call<BulletinAddCommentResult> call, Response<BulletinAddCommentResult> response) {
+                        if(response.isSuccessful())
+                        {
+                            replyRecyclerViewAdapter.notifyDataSetChanged();
+                            inputReplyEdit.setText("");
+                            Toast.makeText(getApplicationContext(),"댓글 등록",Toast.LENGTH_SHORT).show();
+                            Call<FindBulletinResult> findbulletinresult = service.getFindBulletinResult(postData.postId);
+                            findbulletinresult.enqueue(new Callback<FindBulletinResult>() {
+                                @Override
+                                public void onResponse(Call<FindBulletinResult> call, Response<FindBulletinResult> response) {
+                                    if (response.isSuccessful()) {
+                                        if (response.body().message.equals("게시물 상세조회에 성공하였습니다."))
+                                        {
+                                            Data = response.body().result;
+                                            bulletinCommentDatas = Data.comment;
+                                            postData = Data.post;
+                                            commentDatas.add(0,bulletinCommentDatas.get(0));
+                                            replyRecyclerViewAdapter = new ReplyRecyclerViewAdapter(itemdata,getApplicationContext(),postData,commentDatas);
+                                            recyclerView.setAdapter(replyRecyclerViewAdapter);
+                                            replyRecyclerViewAdapter.notifyDataSetChanged();
+                                        }
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "조회 실패", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<FindBulletinResult> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(), "통신 연결 실패", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<BulletinAddCommentResult> call, Throwable t)
+                    {
+                        Toast.makeText(getApplicationContext(),"통신상태 확인",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 }
