@@ -12,9 +12,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Main.Login.LoginActivity;
-import sopt.client.cleanting.Main.LoginUserDatas;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
+
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 
 public class LeaveActivity extends AppCompatActivity {
 
@@ -30,12 +31,6 @@ public class LeaveActivity extends AppCompatActivity {
         leave_btn = (ImageView)findViewById(R.id.leave_btn);
         service= ApplicationController.getInstance().getNetworkService();
 
-        leave_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCustomDialog.show();
-            }
-        });
 
     }
 
@@ -47,8 +42,7 @@ public class LeaveActivity extends AppCompatActivity {
 
     private View.OnClickListener rightListener = new View.OnClickListener() {//탈퇴버튼
         public void onClick(View v) {
-            LoginUserDatas loginUserDatas=new LoginUserDatas();//회원 정보 가져오기
-            Call<WithdrawResult> withdrawResultCall = service.getWithdrawResult(loginUserDatas);
+            Call<WithdrawResult> withdrawResultCall = service.getWithdrawResult(loginUserDatas.userId);
             withdrawResultCall.enqueue(new Callback<WithdrawResult>() {
                 @Override
                 public void onResponse(Call<WithdrawResult> call, Response<WithdrawResult> response) {
