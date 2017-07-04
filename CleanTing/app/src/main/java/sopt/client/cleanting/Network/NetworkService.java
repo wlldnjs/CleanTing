@@ -22,7 +22,9 @@ import sopt.client.cleanting.Community.FindAllBulletinResult;
 import sopt.client.cleanting.Community.FindBulletinResult;
 import sopt.client.cleanting.Community.Reply.BulletinAddCommentResult;
 import sopt.client.cleanting.Community.SearchBulletinResult;
+import sopt.client.cleanting.Community.SendSearchBulletinData;
 import sopt.client.cleanting.Main.Login.FindIdResult;
+import sopt.client.cleanting.Main.Login.FindPhoneNumberResult;
 import sopt.client.cleanting.Main.Login.LoginResult;
 import sopt.client.cleanting.Main.Login.SendLoginData;
 import sopt.client.cleanting.Main.SignUp.IdCheckResult;
@@ -67,11 +69,15 @@ public interface NetworkService {
     @GET("members/id/{phone}")
     Call<FindIdResult> getFindIdResult(@Path("userId") String userId);
 
-    // 1-5 비밀번호 수정
+    // 1-5 핸드폰 번호 인증
+    @PUT("members/phone/{phone}")
+    Call<FindPhoneNumberResult> getFindPhoneNumberResult(@Path("phone") String phone);
+
+    // 1-6 비밀번호 수정
     @PUT("members/pwd/{phone}")
     Call<ModifyPasswordResult> getModifyPasswordResult(@Path("pwd") String pwd);
 
-    // 1-6 회원 탈퇴
+    // 1-7 회원 탈퇴
     @DELETE("members/withdraw/{userId}")
     Call<WithdrawResult> getWithdrawResult(@Path("userId") String userId);
 
@@ -121,8 +127,8 @@ public interface NetworkService {
     Call<BulletinAddCommentResult> getBulletinAddCommentResult(@Path("postId") String postId ,@Body BulletinCommentData bulletinCommentData);
 
     // 3-5 게시판 검색
-    @GET("posts/search/{key}")
-    Call<SearchBulletinResult> getSearchBulletinResult(@Path("key") String key);
+    @POST("posts/search/{key}")
+    Call<SearchBulletinResult> getSearchBulletinResult(@Path("key") String key, @Body SendSearchBulletinData sendSearchBulletinData);
 
     // 3-6 내가 작성한 게시글만 모아보기
     @GET("posts/member/{userId}")
