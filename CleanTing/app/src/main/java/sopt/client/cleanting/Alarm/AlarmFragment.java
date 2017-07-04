@@ -64,7 +64,7 @@ public class AlarmFragment extends Fragment {
 
         Call<ReferAlarmResult> referAlarmResultCall=service.getReferAlarmResult(loginUserDatas.userId);
 
-        
+
         referAlarmResultCall.enqueue(new Callback<ReferAlarmResult>() {
             @Override
             public void onResponse(Call<ReferAlarmResult> call, Response<ReferAlarmResult> response) {

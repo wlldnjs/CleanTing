@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -16,15 +17,17 @@ import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+import static sopt.client.cleanting.R.id.changeimg;
 
 public class ChangeInfoActivity extends AppCompatActivity {
 
     private CustomDialog2 mCustomDialog2;
     ImageView changephone;
-    Button changeimg;
+    Button button_pw,button_phonenumber,button_address;
     NetworkService service;
-
+    TextView text_phonenumber;
     EditText password1,password2;
+    EditText edit_phonenumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +35,24 @@ public class ChangeInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_change_info);
         service = ApplicationController.getInstance().getNetworkService();
 
-        changephone = (ImageView)findViewById(R.id.changeimg);
-        changeimg = (Button)findViewById(R.id.change_img);
+        changephone = (ImageView)findViewById(changeimg);
+
+        button_pw = (Button)findViewById(R.id.button_pw);
+        button_phonenumber=(Button)findViewById(R.id.button_phonenumber);
+        button_address=(Button)findViewById(R.id.button_address);
+
 
         password1 = (EditText)findViewById(R.id.password1);
         password2 = (EditText)findViewById(R.id.password2);
-        changeimg.setOnClickListener(new View.OnClickListener() {       // 수정하기
+
+        text_phonenumber=(TextView)findViewById(R.id.text_phonenumber);
+
+        button_pw.setOnClickListener(new View.OnClickListener() {       // 수정하기
+
             @Override
             public void onClick(View v) {
-                if(password1.equals(password2)){
+                if(password1.getText().toString().equals(password2.getText().toString())){
+                    /*@Body로 바꾸고 수정해야함*/
                     Call<ModifyPasswordResult> modifyPasswordResultCall = service.getModifyPasswordResult(loginUserDatas.userId,password1.getText().toString());
                     modifyPasswordResultCall.enqueue(new Callback<ModifyPasswordResult>() {
                         @Override
@@ -48,7 +60,6 @@ public class ChangeInfoActivity extends AppCompatActivity {
                             if (response.isSuccessful()){
                                 if(response.body().message.equals("pwd update ok")){
                                     Toast.makeText(ChangeInfoActivity.this, "비밀번호 변경에 성공했습니다.", Toast.LENGTH_SHORT).show();
-                                    finish();
                                 }
                             } else {
                                 Toast.makeText(ChangeInfoActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
@@ -57,10 +68,47 @@ public class ChangeInfoActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<ModifyPasswordResult> call, Throwable t) {
-                            Toast.makeText(ChangeInfoActivity.this, "서버 연결 상태를 확인해주세요.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ChangeInfoActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
+                else{
+                    Toast.makeText(ChangeInfoActivity.this, "비밀번호를 다시 확인해 주세요", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        button_phonenumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Call<ModifyUserPhoneResult> modifyUserPhoneResultCall =service.getModifyUserPhoneResult(loginUserDatas.userId,text_phonenumber.getText().toString());
+
+                modifyUserPhoneResultCall.enqueue(new Callback<ModifyUserPhoneResult>() {
+                    @Override
+                    public void onResponse(Call<ModifyUserPhoneResult> call, Response<ModifyUserPhoneResult> response) {
+                        if(response.isSuccessful()){
+                            if(response.body().message.equals("phone update ok")){
+                                Toast.makeText(getApplicationContext(),"phone update ok",Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),response.body().message,Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ModifyUserPhoneResult> call, Throwable t) {
+                        Toast.makeText(ChangeInfoActivity.this, "서버 연결 상태를 확인해주세요.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
+
+        button_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
         });
@@ -73,9 +121,32 @@ public class ChangeInfoActivity extends AppCompatActivity {
     };
 
     private View.OnClickListener rightListener = new View.OnClickListener() {
+
         public void onClick(View v) {
-            Toast.makeText(getApplicationContext(),"정상적으로 변경.",
-                    Toast.LENGTH_SHORT).show();
+
+            text_phonenumber.setText(mCustomDialog2.getEdit_phonenumber().getText().toString());
+
+//            Call<ModifyUserPhoneResult> modifyUserPhoneResultCall=service.getModifyUserPhoneResult(loginUserDatas.userId,edit_phonenumber.getText().toString());
+//            modifyUserPhoneResultCall.enqueue(new Callback<ModifyUserPhoneResult>() {
+//                @Override
+//                public void onResponse(Call<ModifyUserPhoneResult> call, Response<ModifyUserPhoneResult> response) {
+//                    if(response.isSuccessful()){
+//                        if(response.body().message.equals("phone update ok")){
+//                            Toast.makeText(getApplicationContext(), "phone update ok", Toast.LENGTH_SHORT).show();
+//                        }
+//                        else{
+//                            Toast.makeText(getApplicationContext(),response.body().message,Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<ModifyUserPhoneResult> call, Throwable t) {
+//                    Toast.makeText(getApplicationContext(),"서버 연결 상태를 확인해주세요.",Toast.LENGTH_SHORT).show();
+//                }
+//            });
+
+
             mCustomDialog2.dismiss();
 
         }

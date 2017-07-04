@@ -87,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<IdCheckResult> call, Throwable t) {
                         Toast.makeText(getApplicationContext(),
-                                "서버상태를 확인해주세요", Toast.LENGTH_LONG).show();
+                               t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
 

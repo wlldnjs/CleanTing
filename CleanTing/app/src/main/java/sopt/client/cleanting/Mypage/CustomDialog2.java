@@ -5,7 +5,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import sopt.client.cleanting.R;
 
@@ -15,6 +17,12 @@ import sopt.client.cleanting.R;
 
 public class CustomDialog2 extends Dialog
 {
+    public EditText getEdit_phonenumber() {
+        return edit_phonenumber;
+    }
+
+    private EditText edit_phonenumber;
+    private ImageView aa,bb;
     private ImageView mLeftButton;
     private ImageView mRightButton;
     private View.OnClickListener mLeftClickListener;
@@ -23,14 +31,33 @@ public class CustomDialog2 extends Dialog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_custom_dialog2);
+
+        aa=(ImageView)findViewById(R.id.aa);
+        bb=(ImageView)findViewById(R.id.bb);
+        edit_phonenumber=(EditText)findViewById(R.id.edit_phonenumber);
+
 
         // 다이얼로그 외부 화면 흐리게 표현
         WindowManager.LayoutParams lpWindow = new WindowManager.LayoutParams();
         lpWindow.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        lpWindow.dimAmount = 0.8f;
+        lpWindow.dimAmount = 0.5f;
         getWindow().setAttributes(lpWindow);
 
-        setContentView(R.layout.activity_custom_dialog2);
+        aa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"인증번호를 전송했습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        bb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getContext(),"인증번호를 재전송했습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         mLeftButton = (ImageView) findViewById(R.id.btn_left);
         mRightButton = (ImageView) findViewById(R.id.btn_right);
@@ -42,8 +69,6 @@ public class CustomDialog2 extends Dialog
         } else if (mLeftClickListener != null
                 && mRightClickListener == null) {
             mLeftButton.setOnClickListener(mLeftClickListener);
-        } else {
-
         }
     }
 
