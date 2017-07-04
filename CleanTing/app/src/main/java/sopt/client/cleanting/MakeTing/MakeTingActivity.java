@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,7 +35,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     TextView date, timeStart, timeEnd, request, warning, cleaner, amount;
     EditText warningEdit;
     ImageView requestBtn, condiBtn, windowBtn, refBtn;
-    ListView listView1, listView2;
+    ListView listView1;
     ArrayList<String> timeData;
     ArrayAdapter arrayAdapter;
     CalendarView calendarView;
@@ -76,25 +78,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         selectCleaner2 = (LinearLayout) findViewById(R.id.select_cleaner_layout2);
 
         listView1 = (ListView) findViewById(R.id.select_time_list1);
-        listView2 = (ListView) findViewById(R.id.select_time_list2);
 
         timeData = new ArrayList<String>();
-        timeData.add("00:00");
-        timeData.add("00:30");
-        timeData.add("01:00");
-        timeData.add("01:30");
-        timeData.add("02:00");
-        timeData.add("02:30");
-        timeData.add("03:00");
-        timeData.add("03:30");
-        timeData.add("04:00");
-        timeData.add("04:30");
-        timeData.add("05:00");
-        timeData.add("05:30");
-        timeData.add("06:00");
-        timeData.add("06:30");
-        timeData.add("07:00");
-        timeData.add("07:30");
         timeData.add("08:00");
         timeData.add("08:30");
         timeData.add("09:00");
@@ -107,30 +92,9 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         timeData.add("12:30");
         timeData.add("13:00");
         timeData.add("13:30");
-        timeData.add("14:00");
-        timeData.add("14:30");
-        timeData.add("15:00");
-        timeData.add("15:30");
-        timeData.add("16:00");
-        timeData.add("16:30");
-        timeData.add("17:00");
-        timeData.add("17:30");
-        timeData.add("18:00");
-        timeData.add("18:30");
-        timeData.add("19:00");
-        timeData.add("19:30");
-        timeData.add("20:00");
-        timeData.add("20:30");
-        timeData.add("21:00");
-        timeData.add("21:30");
-        timeData.add("22:00");
-        timeData.add("22:30");
-        timeData.add("23:00");
-        timeData.add("23:30");
 
         arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, timeData);
         listView1.setAdapter(arrayAdapter);
-        listView2.setAdapter(arrayAdapter);
 
         selectDate1.setOnClickListener(this);
         selectTime1.setOnClickListener(this);
@@ -223,25 +187,17 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 timeStart.setText("" + parent.getItemAtPosition(position));
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+
             }
         });
         listView1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 listView1.requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });
-        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                timeEnd.setText("" + parent.getItemAtPosition(position));
-            }
-        });
-        listView2.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                listView2.requestDisallowInterceptTouchEvent(true);
                 return false;
             }
         });
@@ -265,14 +221,20 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 MakeTingResultData makeTingResultData = new MakeTingResultData();
-                makeTingResultData.userId = "6666";
+                makeTingResultData.userId = "bumma";
                 makeTingResultData.date = date.getText().toString();
                 if(makeTingResultData.date.equals("선택해 주세요")){
                     Toast.makeText(MakeTingActivity.this, "청소날짜를 선택해 주세요.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 makeTingResultData.startTime = timeStart.getText().toString();
+                if(makeTingResultData.startTime.equals("")){
+                    Toast.makeText(MakeTingActivity.this, "청소 시간을 선택해 주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 makeTingResultData.endTime = timeEnd.getText().toString();
+                String priceText = amount.getText().toString();
+                priceText.replace("원","");
                 makeTingResultData.price = amount.getText().toString();
                 makeTingResultData.cleanerId = "bumjin";
                 if (request.getText().toString().equals("에어컨 필터청소")) {
@@ -285,15 +247,25 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 makeTingResultData.request = requsetNum;
                 makeTingResultData.warning = warningEdit.getText().toString();
 
+                Log.d("입력 유저 아이디",makeTingResultData.userId);
+                Log.d("입력 날짜",makeTingResultData.date);
+                Log.d("입력 시작시간",makeTingResultData.startTime);
+                Log.d("입력 끝시간",makeTingResultData.endTime);
+                Log.d("입력 가격",makeTingResultData.price);
+                Log.d("입력 클리너 아이디",makeTingResultData.cleanerId);
+                Log.d("입력 추가요청",makeTingResultData.request);
+                Log.d("입력 경고",makeTingResultData.warning);
+
                 Call<MakeTingResult> makeTingResultCall = service.getMakeTingResult(makeTingResultData);
                 makeTingResultCall.enqueue(new Callback<MakeTingResult>() {
                     @Override
                     public void onResponse(Call<MakeTingResult> call, Response<MakeTingResult> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(MakeTingActivity.this, "팅 생성 완료", Toast.LENGTH_SHORT).show();
+
                             finish();
                         } else {
-                            Toast.makeText(MakeTingActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MakeTingActivity.this, "실패", Toast.LENGTH_SHORT).show();
                         }
                     }
 
