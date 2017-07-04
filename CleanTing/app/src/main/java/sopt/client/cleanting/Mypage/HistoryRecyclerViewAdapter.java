@@ -40,7 +40,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<MyCleanHist
         holder.cleandate_tv.setText("청소일시 : "+ historydatas.get(position).Cleandate);
         holder.cleantime_tv.setText("청소시간 : "+ historydatas.get(position).Cleantime);
 
-        holder.rate_btn.setOnClickListener(new View.OnClickListener() {
+        holder.rate_btn.setOnClickListener(new View.OnClickListener() { //평가하기 버튼
             @Override
             public void onClick(View v) {
                 String str = historydatas.get(position).Cleanername;

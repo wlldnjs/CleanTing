@@ -12,6 +12,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.Mypage.ModifyPasswordResult;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
@@ -42,9 +43,8 @@ public class FindAccountActivity extends AppCompatActivity {
         button_find=(ImageView)findViewById(R.id.button_find);
         new_button_citenumber=(ImageView)findViewById(R.id.new_button_citenumber);
         new_button_find=(ImageView)findViewById(R.id.new_button_find);
-        button_new_password=(ImageView)findViewById(R.id.button_new_password);
 
-        recreate=(ImageView)findViewById(R.id.recreate);
+        recreate=(ImageView)findViewById(R.id.button_new_password);
 
         //아이디찾기 인증번호 요청버튼
         button_request_citenumber.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,7 @@ public class FindAccountActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Call<FindIdResult> findIdResultCall=service.getFindIdResult(edit_citenumber.getText().toString());
+                Call<FindIdResult> findIdResultCall=service.getFindIdResult(edit_phonenumber.getText().toString());
 
                 findIdResultCall.enqueue(new Callback<FindIdResult>() {
                     @Override
@@ -95,7 +95,26 @@ public class FindAccountActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+            Call<FindPhoneNumberResult>findPhoneNumberResultCall = service.getFindPhoneNumberResult(new_edit_phonenumber.getText().toString());
+                findPhoneNumberResultCall.enqueue(new Callback<FindPhoneNumberResult>() {
+                    @Override
+                    public void onResponse(Call<FindPhoneNumberResult> call, Response<FindPhoneNumberResult> response) {
+                        if(response.isSuccessful()){
+                            if(response.body().message.equals("존재하는 회원입니다. 비밀번호를 변경해 주세요")){
+                                Toast.makeText(getApplicationContext(),"존재하는 회원입니다. 비밀번호를 변경해 주세요",Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(),response.body().message,Toast.LENGTH_SHORT).show();
 
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<FindPhoneNumberResult> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(),"서버상태를 확인해주세요",Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
         });
@@ -103,18 +122,36 @@ public class FindAccountActivity extends AppCompatActivity {
         recreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Call<ModifyPasswordResult> modifyPasswordResultCall=service.getModifyPasswordResult(new_password.getText().toString());
+            if(new_password==edit_confirm_password){
+                modifyPasswordResultCall.enqueue(new Callback<ModifyPasswordResult>() {
+                    @Override
+                    public void onResponse(Call<ModifyPasswordResult> call, Response<ModifyPasswordResult> response) {
+                        if(response.isSuccessful()){
+                            if(response.body().message.equals("비밀번호 변경 성공")){
+                                Toast.makeText(getApplicationContext(),"비밀번호 변경 성공",Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),response.body().message,Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<ModifyPasswordResult> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(),"서버상태를 확인해주세요",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"비밀번호를 다시 확인해주세요",Toast.LENGTH_SHORT).show();
+            }
             }
         });
 
-        button_new_password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
     }
 }
