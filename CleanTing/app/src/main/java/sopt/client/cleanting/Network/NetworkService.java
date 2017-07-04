@@ -18,9 +18,9 @@ import sopt.client.cleanting.Cleanner.SearchLocationCleanerResult;
 import sopt.client.cleanting.Cleanner.SendSearchLocationCleanerData;
 import sopt.client.cleanting.Community.BulletinAddPostData;
 import sopt.client.cleanting.Community.BulletinAddPostResult;
-import sopt.client.cleanting.Community.BulletinCommentData;
 import sopt.client.cleanting.Community.FindAllBulletinResult;
 import sopt.client.cleanting.Community.FindBulletinResult;
+import sopt.client.cleanting.Community.Reply.BulletinAddCommentData;
 import sopt.client.cleanting.Community.Reply.BulletinAddCommentResult;
 import sopt.client.cleanting.Community.SearchBulletinResult;
 import sopt.client.cleanting.Community.SendSearchBulletinData;
@@ -39,7 +39,7 @@ import sopt.client.cleanting.MakeTing.MakeTingRequestResultData;
 import sopt.client.cleanting.MakeTing.MakeTingResult;
 import sopt.client.cleanting.MakeTing.MakeTingResultData;
 import sopt.client.cleanting.MakeTing.SendTingLocationData;
-import sopt.client.cleanting.MyRequest.MyRequestTingEditEditData;
+import sopt.client.cleanting.MyRequest.MyRequestTingEditData;
 import sopt.client.cleanting.MyRequest.MyRequestTingEditResult;
 import sopt.client.cleanting.MyRequest.RequestTingDetailResult;
 import sopt.client.cleanting.Mypage.ModifyPasswordResult;
@@ -96,7 +96,7 @@ public interface NetworkService {
 
     // 2-4 팅 수정
     @PUT("ting/{tingId}")
-    Call<MyRequestTingEditResult> getMyRequestTingEditResult(@Path("tingId") String tingId, @Body MyRequestTingEditEditData myRequestTingEditEditData);
+    Call<MyRequestTingEditResult> getMyRequestTingEditResult(@Path("tingId") String tingId, @Body MyRequestTingEditData myRequestTingEditData);
 
     // 2-5 사용자 신청 팅 조회
     @GET("ting/register/{userId}")
@@ -125,7 +125,7 @@ public interface NetworkService {
 
     // 3-4 댓글 작성
     @POST("posts/{postId}")
-    Call<BulletinAddCommentResult> getBulletinAddCommentResult(@Path("postId") String postId ,@Body BulletinCommentData bulletinCommentData);
+    Call<BulletinAddCommentResult> getBulletinAddCommentResult(@Path("postId") String postId ,@Body BulletinAddCommentData bulletinAddCommentData);
 
     // 3-5 게시판 검색
     @POST("posts/search/{key}")
