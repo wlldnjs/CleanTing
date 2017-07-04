@@ -64,8 +64,12 @@ public class CommunitySearchActivity extends AppCompatActivity {
 //                imgview.setVisibility(View.GONE);
 
                 String str = search_edit.getText().toString();
+                // API바뀌면서 수정된 부분(임시데이터)
+                /**승혁 수정 요망*/
+                SendSearchBulletinData sendSearchBulletinData = new SendSearchBulletinData();
+                sendSearchBulletinData.locationNum = "1";
                 // 서버한테 보내기
-                Call<SearchBulletinResult> searchBulletinResultCall = service.getSearchBulletinResult(str);
+                Call<SearchBulletinResult> searchBulletinResultCall = service.getSearchBulletinResult(str,sendSearchBulletinData);
                 searchBulletinResultCall.enqueue(new Callback<SearchBulletinResult>() {
                     @Override
                     public void onResponse(Call<SearchBulletinResult> call, Response<SearchBulletinResult> response) {

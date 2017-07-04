@@ -88,6 +88,7 @@
                     android:src="@drawable/man"/>
             </LinearLayout>
             <TextView
+                android:id="@+id/my_request_detail_member_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1명 / 3명"

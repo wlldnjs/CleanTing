@@ -9,24 +9,26 @@
     tools:context="sopt.client.cleanting.Mypage.LeaveActivity">
 
     <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
         <TextView
             android:id="@+id/H_cleanername"
-            android:textSize="17sp"
-            android:text="클리너 이름"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="클리너 이름"
+            android:textSize="17sp" />
+
         <ImageView
-            android:layout_alignParentRight="true"
             android:id="@+id/rate_btn"
-            android:layout_marginRight="15dp"
-            android:src="@drawable/evaluation"
             android:layout_width="100dp"
-            android:layout_height="50dp" />
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/evaluation" />
     </RelativeLayout>
 
     <LinearLayout

@@ -20,10 +20,9 @@ import sopt.client.cleanting.R;
 
 public class MyRequestDetailFragment extends Fragment {
     Context context;
-    TextView cleaner, date, time;
+    TextView cleaner, date, time, memberCount;
     ImageView member1, member2, member3;
     LinearLayout layout;
-    String memberCount;
 
     public MyRequestDetailFragment() {
     }
@@ -47,17 +46,19 @@ public class MyRequestDetailFragment extends Fragment {
         member1 = (ImageView)layout.findViewById(R.id.my_request_detail_member1);
         member2 = (ImageView)layout.findViewById(R.id.my_request_detail_member2);
         member3 = (ImageView)layout.findViewById(R.id.my_request_detail_member3);
+        memberCount = (TextView)layout.findViewById(R.id.my_request_detail_member_count);
 
-        cleaner.setText(getArguments().getString("cleaner_name"));
+        cleaner.setText(getArguments().getString("cleanerId"));
         date.setText(getArguments().getString("date"));
-        time.setText(getArguments().getString("time"));
-        memberCount = getArguments().getString("member_count");
-        if(memberCount.equals("2")){
+        time.setText(getArguments().getString("startTime") +"~" +getArguments().getString("endTime"));
+        memberCount.setText(getArguments().getString("cnt") +"명/3명");
+        if(getArguments().getString("cnt").equals("2")){
             member3.setImageResource(R.drawable.man_line);
-        } else if(memberCount.equals("1")){
+        } else if(getArguments().getString("cnt").equals("1")){
             member3.setImageResource(R.drawable.man_line);
             member2.setImageResource(R.drawable.man_line);
         }
+
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

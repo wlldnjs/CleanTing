@@ -18,6 +18,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
@@ -39,6 +42,7 @@ public class MyRequestFragment extends Fragment{
     LinearLayoutManager layoutManager;
     MyRequestAdapter myRequestAdapter;
     int selectPosition;
+//    FragmentTransaction ft = getFragmentManager().beginTransaction();
 
     public MyRequestFragment() {
     }
@@ -64,12 +68,11 @@ public class MyRequestFragment extends Fragment{
         itemData.add(new MyRequestData("2017년 6월 7일 (수)","15:00~19:00","1"));
         itemData.add(new MyRequestData("2017년 6월 8일 (목)","16:00~19:00","1"));
         itemData.add(new MyRequestData("2017년 6월 9일 (금)","17:00~19:00","2"));
-        FragmentManager fm = getFragmentManager();
-        bundleList = getBundleList();
-        myRequestAdapter = new MyRequestAdapter(itemData,clickListener,context, fm, bundleList);
-        recyclerMyLocation.setAdapter(myRequestAdapter);
-        recyclerMyLocation.scrollToPosition(0);
-        Log.d("onCreateView", "호출");
+
+//        bundleList.clear();
+//        bundleList = getBundleList();
+
+        Log.d("MyRequestFragment", "onCreateView 호출");
         return layout;
     }
 
@@ -92,22 +95,55 @@ public class MyRequestFragment extends Fragment{
         }
     };
     public ArrayList<Bundle> getBundleList(){
-//        for(int i=0; i<3; i++){
-            bundleList.add(getBundle("", "테스트","테스트2","테스트3","2"));
-        bundleList.add(getBundle("", "테스트2","테스트2","테스트3","1"));
-        bundleList.add(getBundle("", "테스트3","테스트2","테스트3","3"));
-//        }
+        Call<RequestTingDetailResult> requestTingDetailResultCall = service.getRequestTingDetailResult("bumma");
+        requestTingDetailResultCall.enqueue(new Callback<RequestTingDetailResult>() {
+            @Override
+            public void onResponse(Call<RequestTingDetailResult> call, Response<RequestTingDetailResult> response) {
+                if(response.isSuccessful()){
+                    for(int i=0; i<response.body().result.size(); i++){
+                        bundleList.add(getBundle(response.body().result.get(i)));
+                        Toast.makeText(context, "번들리스트 추가 완료 " +bundleList.size(), Toast.LENGTH_SHORT).show();
+                    }
+                    FragmentManager fm = getFragmentManager();
+                    myRequestAdapter = new MyRequestAdapter(itemData,clickListener,context, fm, bundleList);
+                    recyclerMyLocation.setAdapter(myRequestAdapter);
+                    recyclerMyLocation.scrollToPosition(0);
+
+                }else {
+                    Toast.makeText(context, "통신 실패", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RequestTingDetailResult> call, Throwable t) {
+                Toast.makeText(context, "인터넷확인", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return bundleList;
     }
 
-    public Bundle getBundle(String img_url, String cleaner_name, String date, String time, String member_count){
+    public Bundle getBundle(RequestTingDetailResultData requestTingDetailResultData){
         Bundle bundle = new Bundle();
-        bundle.putString("img_url", img_url);
-        bundle.putString("cleaner_name", cleaner_name);
-        bundle.putString("date", date);
-        bundle.putString("time", time);
-        bundle.putString("member_count", member_count);
+//        bundle.putString("img_url", img_url);
+        bundle.putString("tingId", requestTingDetailResultData.tingId);
+        bundle.putString("date", requestTingDetailResultData.date);
+        bundle.putString("startTime", requestTingDetailResultData.startTime);
+        bundle.putString("endTime", requestTingDetailResultData.endTime);
+        bundle.putString("cnt", requestTingDetailResultData.cnt);
+        bundle.putString("cleanerId", requestTingDetailResultData.cleanerId);
+        bundle.putString("userId", requestTingDetailResultData.userId);
+        bundle.putString("price", requestTingDetailResultData.price);
+        bundle.putString("request", requestTingDetailResultData.request);
+        bundle.putString("warning", requestTingDetailResultData.warning);
         return bundle;
+    }
+
+    public void RefreshView(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this);
+        ft.attach(this);
+        ft.commit();
     }
 
     @Override
@@ -117,22 +153,19 @@ public class MyRequestFragment extends Fragment{
             if(requestCode == REQUEST_JOIN){
                 Toast.makeText(context, "참여 완료", Toast.LENGTH_SHORT).show();
 //            int position = this.getActivity().getIntent().getIntExtra("position",0);
-                Log.d("포지션 값",""+selectPosition);
 
-                MyRequestData getData = itemData.get(selectPosition);
-                int memeber = Integer.parseInt(getData.member);
-                Log.d("변경 전 멤버 수",""+memeber);
-                memeber++;
-                Log.d("변경 후 멤버 수",""+memeber);
-                getData.member = String.valueOf(memeber);
-                Log.d("세팅된 멤버 수",""+getData.member);
-                itemData.set(selectPosition,getData);
-                myRequestAdapter.notifyDataSetChanged();
+//                Log.d("포지션 값",""+selectPosition);
+//                MyRequestData getData = itemData.get(selectPosition);
+//                int memeber = Integer.parseInt(getData.member);
+//                Log.d("변경 전 멤버 수",""+memeber);
+//                memeber++;
+//                Log.d("변경 후 멤버 수",""+memeber);
+//                getData.member = String.valueOf(memeber);
+//                Log.d("세팅된 멤버 수",""+getData.member);
+//                itemData.set(selectPosition,getData);
+//                myRequestAdapter.notifyDataSetChanged();
 
-                final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.detach(this);
-                ft.attach(this);
-                ft.commit();
+                RefreshView();
 //                itemData.add(selectPosition,getData);
 //                itemData.remove(selectPosition+1);
 //                myRequestAdapter.notifyDataSetChanged();
@@ -148,6 +181,11 @@ public class MyRequestFragment extends Fragment{
         }
     }
 
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("MyRequestFragment", "onResume 호출");
+        bundleList.clear();
+        bundleList = getBundleList();
+    }
 }
