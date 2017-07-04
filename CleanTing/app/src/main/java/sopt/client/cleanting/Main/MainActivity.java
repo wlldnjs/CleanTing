@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int previousBtn = 1;
     public static int REQUEST_JOIN = 1000;
     public static int REQUEST_MAKETING = 1001;
+    public static int REQUEST_MODIFY_TING = 1002;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

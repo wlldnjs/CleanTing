@@ -86,8 +86,4 @@ public class MyRequestDetailFragment extends Fragment {
         return layout;
     }
 
-    public void setData(String date1, String time1){
-        date.setText(date1);
-        time.setText(time1);
-    }
 }

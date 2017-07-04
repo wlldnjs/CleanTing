@@ -66,14 +66,8 @@ public class MyRequestRecruit extends AppCompatActivity {
         commitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Log.d("받은 포지션 값", ""+position);
-//                Bundle putData = new Bundle();
-//                putData.putSerializable("position", position);
-//                intent.putExtra("position",putData);
                 Intent intent = new Intent();
-//                intent.putExtra("postion", position);
                 setResult(RESULT_OK,intent);
-//                startActivityForResult(intent,RESULT_OK);
                 finish();
             }
         });

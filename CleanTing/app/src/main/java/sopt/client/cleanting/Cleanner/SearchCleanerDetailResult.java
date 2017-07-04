@@ -5,5 +5,6 @@ package sopt.client.cleanting.Cleanner;
  */
 
 public class SearchCleanerDetailResult {
-
+    public String message;
+    public SearchCleanerDetailData result;
 }

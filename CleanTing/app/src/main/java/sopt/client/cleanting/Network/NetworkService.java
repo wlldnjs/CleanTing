@@ -11,8 +11,8 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import sopt.client.cleanting.Alarm.AlarmOnOffResult;
 import sopt.client.cleanting.Alarm.ReferAlarmResult;
-import sopt.client.cleanting.Cleanner.AddCleanerReviewData;
 import sopt.client.cleanting.Cleanner.AddCleanerReviewResult;
+import sopt.client.cleanting.Cleanner.SearchCleanerDetailResult;
 import sopt.client.cleanting.Cleanner.SearchCleanerResult;
 import sopt.client.cleanting.Cleanner.SearchLocationCleanerResult;
 import sopt.client.cleanting.Cleanner.SendSearchLocationCleanerData;
@@ -150,13 +150,12 @@ public interface NetworkService {
     Call<SearchLocationCleanerResult> getSearchLocationCleanerResult(@Path("date") String date, @Body SendSearchLocationCleanerData sendSearchLocationCleanerData);
 
     // 4-5 클리너 상세정보 조회
-//    @GET("cleaner/detail/{cleanerId}")
-//    Call<SearchCleanerDetailResult> getSearchCleanerDetailResult(@Path("cleanerId") String cleanerId);
-    /**API 수정중*/
+    @GET("cleaner/detail/{cleanerId}")
+    Call<SearchCleanerDetailResult> getSearchCleanerDetailResult(@Path("cleanerId") String cleanerId);
 
     // 4-6 클리너 리뷰작성
-    @POST("cleaner/review/{cleanerId}")
-    Call<AddCleanerReviewResult> getAddCleanerReviewResult(@Path("cleanerId") String cleanerId, @Body AddCleanerReviewData addCleanerReviewData);
+    @GET("cleaner/review/{cleanerId}")
+    Call<AddCleanerReviewResult> getAddCleanerReviewResult(@Path("cleanerId") String cleanerId);
 
     // 5-1 사용자 알람정보 조회
     @GET("/alarm/{userId}")
