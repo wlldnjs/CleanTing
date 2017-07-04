@@ -5,5 +5,5 @@ package sopt.client.cleanting.Mypage;
  */
 
 public class ModifyPasswordResult {
-    String message;
+    public String message;
 }

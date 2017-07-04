@@ -77,6 +77,7 @@ public class ChangeInfoActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"정상적으로 변경.",
                     Toast.LENGTH_SHORT).show();
             mCustomDialog2.dismiss();
+
         }
     };
 
