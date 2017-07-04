@@ -9,5 +9,9 @@ public class SignUpData{
     public String name;
     public String phone;
     public String address;
+    public String locationNum;
     public String pwd;
+    public String lat;
+    public String lng;
+
 }

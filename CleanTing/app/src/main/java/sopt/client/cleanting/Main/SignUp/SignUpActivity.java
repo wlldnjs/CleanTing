@@ -94,6 +94,14 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        button_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
         submit.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -177,6 +185,7 @@ public class SignUpActivity extends AppCompatActivity {
                     signUpData.phone=edit_phonenumber.getText().toString();
                     signUpData.address=edit_address.getText().toString();
                     signUpData.pwd=edit_password.getText().toString();
+
 
                     Call<SignUpResult> signUpResultCall = service.getSignUpResult(signUpData);
                     signUpResultCall.enqueue(new Callback<SignUpResult>() {

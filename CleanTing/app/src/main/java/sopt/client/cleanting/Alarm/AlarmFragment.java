@@ -11,9 +11,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
+
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 
 
 public class AlarmFragment extends Fragment {
@@ -56,6 +61,21 @@ public class AlarmFragment extends Fragment {
         Adapter1 = new AlarmAdapter();
         Adapter2 = new AlarmAdapter();
         Adapter3 = new AlarmAdapter();
+
+        Call<ReferAlarmResult> referAlarmResultCall=service.getReferAlarmResult(loginUserDatas.userId);
+
+        
+        referAlarmResultCall.enqueue(new Callback<ReferAlarmResult>() {
+            @Override
+            public void onResponse(Call<ReferAlarmResult> call, Response<ReferAlarmResult> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ReferAlarmResult> call, Throwable t) {
+
+            }
+        });
 
         listview1 = (ListView)layout.findViewById(R.id.listview1);
         listview1.setAdapter(Adapter1);

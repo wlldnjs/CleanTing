@@ -10,6 +10,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import sopt.client.cleanting.Alarm.AlarmOnOffResult;
+import sopt.client.cleanting.Alarm.ReferAlarmResult;
 import sopt.client.cleanting.Cleanner.AddCleanerReviewData;
 import sopt.client.cleanting.Cleanner.AddCleanerReviewResult;
 import sopt.client.cleanting.Cleanner.SearchCleanerResult;
@@ -158,7 +159,8 @@ public interface NetworkService {
     Call<AddCleanerReviewResult> getAddCleanerReviewResult(@Path("cleanerId") String cleanerId, @Body AddCleanerReviewData addCleanerReviewData);
 
     // 5-1 사용자 알람정보 조회
-    /**API 수정중*/
+    @GET("/alarm/{userId}")
+    Call<ReferAlarmResult> getReferAlarmResult(@Path("userId") String userId);
 
     // 5-2 알람받기 여부 수정
     @PUT("alarm/{userId}")
