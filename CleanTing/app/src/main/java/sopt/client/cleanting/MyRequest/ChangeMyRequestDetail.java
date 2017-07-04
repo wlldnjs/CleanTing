@@ -7,19 +7,34 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.Cleanner.CleanerData;
+import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 public class ChangeMyRequestDetail extends AppCompatActivity {
     ImageView man1, man2, man3, cleanerImg, star1, star2, star3, star4, star5, callBtn,
     cond, window, ref, commitBtn;
     TextView manCount, starCount, name,  act, review, career, age, date, time, total;
+    String tingId, cleanerId, userId, request, cnt, phone, area, rate, price;
     EditText warningEdit;
+    CleanerData cleanerData;
+    boolean selectCond, selectWindow, selectRef = false;
+    NetworkService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_my_request_detail);
+        service = ApplicationController.getInstance().getNetworkService();
+
         man1 = (ImageView)findViewById(R.id.change_my_request_detail_man1);
         man2 = (ImageView)findViewById(R.id.change_my_request_detail_man2);
         man3 = (ImageView)findViewById(R.id.change_my_request_detail_man3);
@@ -46,15 +61,163 @@ public class ChangeMyRequestDetail extends AppCompatActivity {
         time = (TextView)findViewById(R.id.change_my_request_detail_time);
         total = (TextView)findViewById(R.id.change_my_request_detail_total);
 
+        cleanerId = getIntent().getStringExtra("cleanerId");
+        tingId = getIntent().getStringExtra("tingId");
+        userId = getIntent().getStringExtra("userId");
+        price = getIntent().getStringExtra("price");
+        total.setText(price +"원");
+        request = getIntent().getStringExtra("request");
+        if(request.equals("1")){
+            cond.setImageResource(R.drawable.conditioner_yellow);
+            selectCond = true;
+        } else if(request.equals("2")){
+            window.setImageResource(R.drawable.window_yellow);
+            selectWindow = true;
+        } else if(request.equals("3")){
+            ref.setImageResource(R.drawable.refrigerator_yellow);
+            selectRef = true;
+        }
+        date.setText(getIntent().getStringExtra("date"));
+        time.setText(getIntent().getStringExtra("time"));
+        cnt = getIntent().getStringExtra("cnt");
+        manCount.setText(cnt+"명/3명");
+        if(cnt.equals("2")){
+            man1.setImageResource(R.drawable.man_line_o);
+        } else if(cnt.equals("1")){
+            man1.setImageResource(R.drawable.man_line_o);
+            man2.setImageResource(R.drawable.man_line_o);
+        }
+        cleanerData = (CleanerData)getIntent().getSerializableExtra("cleanerData");
+        Glide.with(getApplicationContext()).load(cleanerData.image).into(cleanerImg);
+        cleanerImg.setAlpha(88);
+        age.setText("나이: " +cleanerData.age);
+        name.setText(cleanerData.name +" 클리너");
+        phone = cleanerData.phone;
+        career.setText("경력: " +cleanerData.career +"개월");
+        area = cleanerData.area;
+        rate = cleanerData.rate;
+        if(rate.equals("4")){
+            star5.setImageResource(R.drawable.star_line_o);
+        } else if(rate.equals("3")){
+            star5.setImageResource(R.drawable.star_line_o);
+            star4.setImageResource(R.drawable.star_line_o);
+        } else if(rate.equals("2")){
+            star5.setImageResource(R.drawable.star_line_o);
+            star4.setImageResource(R.drawable.star_line_o);
+            star3.setImageResource(R.drawable.star_line_o);
+        } else if(rate.equals("1")){
+            star5.setImageResource(R.drawable.star_line_o);
+            star4.setImageResource(R.drawable.star_line_o);
+            star3.setImageResource(R.drawable.star_line_o);
+            star2.setImageResource(R.drawable.star_line_o);
+        } else if(rate.equals("0")){
+            star5.setImageResource(R.drawable.star_line_o);
+            star4.setImageResource(R.drawable.star_line_o);
+            star3.setImageResource(R.drawable.star_line_o);
+            star2.setImageResource(R.drawable.star_line_o);
+            star1.setImageResource(R.drawable.star_line_o);
+        }
+        starCount.setText(cleanerData.review_cnt +"명");
+        review.setText("리뷰 " +cleanerData.review_cnt +"회");
+
+        cond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectCond == false) {
+                    cond.setImageResource(R.drawable.conditioner_yellow);
+                    selectCond = true;
+                    if (selectWindow) {
+                        window.setImageResource(R.drawable.window_gray);
+                        selectWindow = false;
+                    } else if (selectRef) {
+                        ref.setImageResource(R.drawable.refrigerator_gray);
+                        selectRef = false;
+                    }
+                } else if (selectCond) {
+                    cond.setImageResource(R.drawable.conditioner_gray);
+                    selectCond = false;
+                }
+            }
+        });
+
+        window.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectWindow == false) {
+                    window.setImageResource(R.drawable.window_yellow);
+                    selectWindow = true;
+                    if (selectCond) {
+                        cond.setImageResource(R.drawable.conditioner_gray);
+                        selectCond = false;
+                    } else if (selectRef) {
+                        ref.setImageResource(R.drawable.refrigerator_gray);
+                        selectRef = false;
+                    }
+                } else if (selectWindow) {
+                    window.setImageResource(R.drawable.window_gray);
+                    selectWindow = false;
+                }
+            }
+        });
+
+        ref.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectRef == false) {
+                    ref.setImageResource(R.drawable.refrigerator_yellow);
+                    selectRef = true;
+                    if (selectCond) {
+                        cond.setImageResource(R.drawable.conditioner_gray);
+                        selectCond = false;
+                    } else if (selectWindow) {
+                        window.setImageResource(R.drawable.window_gray);
+                        selectWindow = false;
+                    }
+                } else if (selectRef) {
+                    ref.setImageResource(R.drawable.refrigerator_gray);
+                    selectRef = false;
+                }
+            }
+        });
+
         warningEdit = (EditText)findViewById(R.id.change_my_request_detail_warning);
 
         commitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                setResult(RESULT_OK);
+                if(selectCond){
+                    request = "1";
+                } else if(selectWindow){
+                    request = "2";
+                } else if(selectRef){
+                    request = "3";
+                } else {
+                    request = "0";
+                }
+                MyRequestTingEditData myRequestTingEditData = new MyRequestTingEditData();
+                myRequestTingEditData.userId = userId;
+                myRequestTingEditData.price = price;
+                myRequestTingEditData.request = request;
 
-                finish();
+                Call<MyRequestTingEditResult> myRequestTingEditResultCall = service.getMyRequestTingEditResult(tingId,myRequestTingEditData);
+                myRequestTingEditResultCall.enqueue(new Callback<MyRequestTingEditResult>() {
+                    @Override
+                    public void onResponse(Call<MyRequestTingEditResult> call, Response<MyRequestTingEditResult> response) {
+                        if(response.isSuccessful()){
+                            Intent intent = new Intent();
+                            setResult(RESULT_OK);
+                            Toast.makeText(ChangeMyRequestDetail.this,"팅 수정이 완료되었습니다." , Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(ChangeMyRequestDetail.this, "통신 실패", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<MyRequestTingEditResult> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
             }
         });
     }
