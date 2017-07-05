@@ -8,4 +8,5 @@ public class MyRequestTingEditData {
     public String userId;
     public String price;
     public String request;
+    public String warning;
 }

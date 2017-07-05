@@ -5,14 +5,16 @@ package sopt.client.cleanting.MyRequest;
  */
 
 public class RequestTingDetailResultData{
+    public String cleanerId;
     public String tingId;
     public String date;
     public String startTime;
     public String endTime;
     public String cnt;
-    public String cleanerId;
     public String userId;
     public String price;
     public String request;
     public String warning;
+    public String name;
+    public String phone;
 }

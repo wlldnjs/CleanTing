@@ -50,8 +50,9 @@ public class MyRequestDetailFragment extends Fragment {
         member3 = (ImageView)layout.findViewById(R.id.my_request_detail_member3);
         memberCount = (TextView)layout.findViewById(R.id.my_request_detail_member_count);
 
+        cleanerId = getArguments().getString("cleanerId");
         tingId = getArguments().getString("tingId");
-        cleaner.setText(getArguments().getString("cleanerId"));
+        cleaner.setText(getArguments().getString("name") +" 클리너");
         userId = getArguments().getString("userId");
         price = getArguments().getString("price");
         request = getArguments().getString("request");
@@ -71,7 +72,7 @@ public class MyRequestDetailFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(context, MyRequestDetailActivity.class);
                 intent.putExtra("tingId",tingId);
-                intent.putExtra("cleanerId",cleaner.getText().toString());
+                intent.putExtra("cleanerId",cleanerId);
                 intent.putExtra("userId",userId);
                 intent.putExtra("price",price);
                 intent.putExtra("request",request);

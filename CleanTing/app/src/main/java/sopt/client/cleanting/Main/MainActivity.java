@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import sopt.client.cleanting.Alarm.AlarmFragment;
 import sopt.client.cleanting.Community.CommunityFragment;
@@ -21,6 +22,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static int REQUEST_JOIN = 1000;
     public static int REQUEST_MAKETING = 1001;
     public static int REQUEST_MODIFY_TING = 1002;
+    public static int REQUEST_CANCEL_TING = 1003;
+
+    private long backKeyPressedTime = 0;
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +108,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 4:
                 mypageBtn.setImageResource(R.drawable.mypage_icon_g);
                 break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            toast = Toast.makeText(getApplicationContext(),"\'뒤로\'버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            this.finish();
+            toast.cancel();
         }
     }
 }

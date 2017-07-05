@@ -198,6 +198,7 @@ public class ChangeMyRequestDetail extends AppCompatActivity {
                 myRequestTingEditData.userId = userId;
                 myRequestTingEditData.price = price;
                 myRequestTingEditData.request = request;
+                myRequestTingEditData.warning = warningEdit.getText().toString();
 
                 Call<MyRequestTingEditResult> myRequestTingEditResultCall = service.getMyRequestTingEditResult(tingId,myRequestTingEditData);
                 myRequestTingEditResultCall.enqueue(new Callback<MyRequestTingEditResult>() {

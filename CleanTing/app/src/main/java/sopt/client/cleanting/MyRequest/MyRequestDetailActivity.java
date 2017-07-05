@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -25,6 +26,7 @@ import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 import static sopt.client.cleanting.Main.MainActivity.REQUEST_MODIFY_TING;
+import static sopt.client.cleanting.MyRequest.MyRequestFragment.refreshView;
 
 public class MyRequestDetailActivity extends AppCompatActivity {
     ImageView man1, man2, man3, cleanerImg, star1, star2, star3, star4, star5, callBtn,
@@ -67,6 +69,7 @@ public class MyRequestDetailActivity extends AppCompatActivity {
         total = (TextView)findViewById(R.id.my_request_detail_total);
 
         cleanerId = getIntent().getStringExtra("cleanerId");
+        Log.d("클리너 아이디!!!!!!!!!!!!!!!",cleanerId);
         Call<SearchCleanerDetailResult> searchCleanerDetailResultCall = service.getSearchCleanerDetailResult(cleanerId);
         searchCleanerDetailResultCall.enqueue(new Callback<SearchCleanerDetailResult>() {
             @Override
@@ -194,6 +197,7 @@ public class MyRequestDetailActivity extends AppCompatActivity {
                                 if(response.isSuccessful()){
                                     Toast.makeText(MyRequestDetailActivity.this, "삭제되었습니다.", Toast.LENGTH_SHORT).show();
                                     myDialog.dismiss();
+                                    refreshView = true;
                                     finish();
                                 } else {
                                     Toast.makeText(MyRequestDetailActivity.this, response.body().message, Toast.LENGTH_SHORT).show();

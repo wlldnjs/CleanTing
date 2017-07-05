@@ -45,6 +45,7 @@ public class MyRequestFragment extends Fragment{
     LinearLayoutManager layoutManager;
     MyRequestAdapter myRequestAdapter;
     int selectPosition;
+    public static boolean refreshView = true;
     boolean firstCreate = true;
 //    FragmentTransaction ft = getFragmentManager().beginTransaction();
 
@@ -93,6 +94,12 @@ public class MyRequestFragment extends Fragment{
 
 //        bundleList.clear();
 //        bundleList = getBundleList();
+//        if(refreshView){
+//            Toast.makeText(context, "메인페이지 refresh", Toast.LENGTH_SHORT).show();
+//            RefreshView();
+//            refreshView = false;
+//        }
+
         if(firstCreate){
             RefreshView();
             firstCreate = false;
@@ -160,6 +167,8 @@ public class MyRequestFragment extends Fragment{
         bundle.putString("price", requestTingDetailResultData.price);
         bundle.putString("request", requestTingDetailResultData.request);
         bundle.putString("warning", requestTingDetailResultData.warning);
+        bundle.putString("name", requestTingDetailResultData.name);
+        bundle.putString("phone", requestTingDetailResultData.phone);
         return bundle;
     }
 
@@ -174,33 +183,9 @@ public class MyRequestFragment extends Fragment{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
-            if(requestCode == REQUEST_JOIN){
+            if(requestCode == REQUEST_JOIN) {
                 Toast.makeText(context, "참여 완료", Toast.LENGTH_SHORT).show();
-//            int position = this.getActivity().getIntent().getIntExtra("position",0);
-
-//                Log.d("포지션 값",""+selectPosition);
-//                MyRequestData getData = itemData.get(selectPosition);
-//                int memeber = Integer.parseInt(getData.member);
-//                Log.d("변경 전 멤버 수",""+memeber);
-//                memeber++;
-//                Log.d("변경 후 멤버 수",""+memeber);
-//                getData.member = String.valueOf(memeber);
-//                Log.d("세팅된 멤버 수",""+getData.member);
-//                itemData.set(selectPosition,getData);
-//                myRequestAdapter.notifyDataSetChanged();
-
                 RefreshView();
-//                itemData.add(selectPosition,getData);
-//                itemData.remove(selectPosition+1);
-//                myRequestAdapter.notifyDataSetChanged();
-//                itemData.add(0,getData);
-//                ArrayList<MyRequestData> newArray = new ArrayList<MyRequestData>();
-//                newArray.addAll(itemData);
-//                itemData.removeAll(itemData);
-//                myRequestAdapter.notifyDataSetChanged();
-//                itemData.addAll(newArray);
-//                myRequestAdapter.notifyDataSetChanged();
-//                myRequestAdapter.notifyItemChanged(selectPosition);
             }
         }
     }
@@ -211,5 +196,10 @@ public class MyRequestFragment extends Fragment{
         Log.d("MyRequestFragment", "onResume 호출");
         bundleList.clear();
         bundleList = getBundleList();
+        if(refreshView){
+            Toast.makeText(context, "메인페이지 refresh", Toast.LENGTH_SHORT).show();
+            RefreshView();
+            refreshView = false;
+        }
     }
 }
