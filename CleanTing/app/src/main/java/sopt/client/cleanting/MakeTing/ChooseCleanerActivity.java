@@ -87,6 +87,8 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_cleaner);
 
+        final String inputdate = getIntent().getStringExtra("date");
+
         service = ApplicationController.getInstance().getNetworkService();
 
         SmallAdress = (TextView) findViewById(R.id.small_address);
@@ -164,7 +166,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
                         sendSearchLocationCleanerData.order = "1";
                         ListTitle.setText("별점순 클리너");
                         // date의 형식???
-                        Call<SearchLocationCleanerResult> searchLocationCleanerResult = service.getSearchLocationCleanerResult("2017-04-01", sendSearchLocationCleanerData);
+                        Call<SearchLocationCleanerResult> searchLocationCleanerResult = service.getSearchLocationCleanerResult(inputdate, sendSearchLocationCleanerData);
                         searchLocationCleanerResult.enqueue(new Callback<SearchLocationCleanerResult>() {
                             @Override
                             public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {
@@ -186,7 +188,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
                         ListTitle.setText("이력순 클리너");
                         Toast.makeText(getApplicationContext(), sendSearchLocationCleanerData.order, Toast.LENGTH_SHORT).show();
                         // date의 형식???
-                        Call<SearchLocationCleanerResult> searchLocationCleanerResult2 = service.getSearchLocationCleanerResult("2017-04-01", sendSearchLocationCleanerData);
+                        Call<SearchLocationCleanerResult> searchLocationCleanerResult2 = service.getSearchLocationCleanerResult(inputdate, sendSearchLocationCleanerData);
                         searchLocationCleanerResult2.enqueue(new Callback<SearchLocationCleanerResult>() {
                             @Override
                             public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {
@@ -208,7 +210,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
                         ListTitle.setText("리뷰순 클리너");
                         Toast.makeText(getApplicationContext(), sendSearchLocationCleanerData.order, Toast.LENGTH_SHORT).show();
                         // date의 형식???
-                        Call<SearchLocationCleanerResult> searchLocationCleanerResult3 = service.getSearchLocationCleanerResult("2017-04-01", sendSearchLocationCleanerData);
+                        Call<SearchLocationCleanerResult> searchLocationCleanerResult3 = service.getSearchLocationCleanerResult(inputdate, sendSearchLocationCleanerData);
                         searchLocationCleanerResult3.enqueue(new Callback<SearchLocationCleanerResult>() {
                             @Override
                             public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {

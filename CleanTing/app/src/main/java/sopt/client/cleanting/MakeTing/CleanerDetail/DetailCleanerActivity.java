@@ -163,7 +163,7 @@ public class DetailCleanerActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext()," 팅만들기 가서 클리너 이름 띄우기",Toast.LENGTH_SHORT).show();
+
             }
         });
 

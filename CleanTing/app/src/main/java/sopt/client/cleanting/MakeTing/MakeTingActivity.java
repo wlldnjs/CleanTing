@@ -44,6 +44,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     String requsetNum = "0";
     ImageView directimg;
     NetworkService service;
+    String putdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +113,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ChooseCleanerActivity.class);
+                intent.putExtra("date",putdate);
                 startActivity(intent);
             }
         });
@@ -223,6 +225,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 MakeTingResultData makeTingResultData = new MakeTingResultData();
                 makeTingResultData.userId = "bumma";
                 makeTingResultData.date = date.getText().toString();
+                putdate = date.getText().toString();
                 if(makeTingResultData.date.equals("선택해 주세요")){
                     Toast.makeText(MakeTingActivity.this, "청소날짜를 선택해 주세요.", Toast.LENGTH_SHORT).show();
                     return;
