@@ -49,6 +49,7 @@ import sopt.client.cleanting.Mypage.ModifyUserAddressData;
 import sopt.client.cleanting.Mypage.ModifyUserAddressResult;
 import sopt.client.cleanting.Mypage.ModifyUserPhoneResult;
 import sopt.client.cleanting.Mypage.MyhistoryResult;
+import sopt.client.cleanting.Mypage.SendAddCleanerReviewData;
 import sopt.client.cleanting.Mypage.WithdrawResult;
 
 /**
@@ -154,8 +155,8 @@ public interface NetworkService {
     Call<SearchCleanerDetailResult> getSearchCleanerDetailResult(@Path("cleanerId") String cleanerId);
 
     // 4-6 클리너 리뷰작성
-    @GET("cleaner/review/{cleanerId}")
-    Call<AddCleanerReviewResult> getAddCleanerReviewResult(@Path("cleanerId") String cleanerId);
+    @POST("cleaner/review/{cleanerId}")
+    Call<AddCleanerReviewResult> getAddCleanerReviewResult(@Path("cleanerId") String cleanerId, @Body SendAddCleanerReviewData sendAddCleanerData);
 
     // 5-1 사용자 알람정보 조회
     @GET("/alarm/{userId}")

@@ -5,6 +5,7 @@ package sopt.client.cleanting.Mypage;
  */
 
 public class MyHistoryData {
+    public String name;
     public String usageId;
     public String userId;
     public String cleanerId;

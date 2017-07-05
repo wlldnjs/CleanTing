@@ -42,7 +42,7 @@ public class DetailCleanerActivity extends AppCompatActivity {
     ImageView dstar4;
     ImageView dstar5;
 
-    ArrayList<CleanerReviewData> cleanerReviewDatas;
+    public ArrayList<CleanerReviewData> cleanerReviewDatas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,63 +63,10 @@ public class DetailCleanerActivity extends AppCompatActivity {
         dstar4 = (ImageView)findViewById(R.id.D_star4);
         dstar5 = (ImageView)findViewById(R.id.D_star5);
 
-        cleanerReviewDatas = new ArrayList<>();
-
-        String cleanerid = getIntent().getStringExtra("cleanerid");
-        Call<SearchCleanerDetailResult> searchCleanerDetailResultCall = service.getSearchCleanerDetailResult("hwang"); //cleanerid
-        searchCleanerDetailResultCall.enqueue(new Callback<SearchCleanerDetailResult>() {
-            @Override
-            public void onResponse(Call<SearchCleanerDetailResult> call, Response<SearchCleanerDetailResult> response) {
-                if(response.isSuccessful())
-                {
-                    Cname.setText(response.body().result.cleaner.name+" 클리너");
-
-                    cleanerReviewDatas = response.body().result.review;
-
-                    Creviewnum.setText("리뷰 : " + response.body().result.cleaner.review_cnt + "건");
-                    Cage.setText("나이 : " + response.body().result.cleaner.age + "세");
-                    Ccareer.setText("경력 : " + response.body().result.cleaner.career + "개월");
-                    ratenum.setText(response.body().result.cleaner.review_cnt + "명");
-                    if(response.body().result.cleaner.rate.equals("0"));
-                    {
-                        dstar1.setImageResource(R.drawable.star_line);
-                        dstar2.setImageResource(R.drawable.star_line);
-                        dstar3.setImageResource(R.drawable.star_line);
-                        dstar4.setImageResource(R.drawable.star_line);
-                        dstar5.setImageResource(R.drawable.star_line);
-                    }
-                    if(response.body().result.cleaner.rate.equals("1"))
-                    {
-                        dstar2.setImageResource(R.drawable.star_line);
-                        dstar3.setImageResource(R.drawable.star_line);
-                        dstar4.setImageResource(R.drawable.star_line);
-                        dstar5.setImageResource(R.drawable.star_line);
-                    }
-                    if(response.body().result.cleaner.rate.equals("2"))
-                    {
-                        dstar3.setImageResource(R.drawable.star_line);
-                        dstar4.setImageResource(R.drawable.star_line);
-                        dstar5.setImageResource(R.drawable.star_line);
-                    }
-                    if(response.body().result.cleaner.rate.equals("3"))
-                    {
-                        dstar4.setImageResource(R.drawable.star_line);
-                        dstar5.setImageResource(R.drawable.star_line);
-                    }
-                    if(response.body().result.cleaner.rate.equals("4"))
-                    {
-                        dstar5.setImageResource(R.drawable.star_line);
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<SearchCleanerDetailResult> call, Throwable t) {
-
-            }
-        });
-
         imageView = (ImageView)findViewById(R.id.Choose);
+
+
+        cleanerReviewDatas = new ArrayList<CleanerReviewData>();
 
         //////////////////////////////////////////////////////  리뷰 부분 ///////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////
@@ -130,8 +77,70 @@ public class DetailCleanerActivity extends AppCompatActivity {
         layoutManager4.setOrientation(LinearLayoutManager.VERTICAL);             //리니어레이아웃의 형태이면 방향은 수직
         ReviewRrecyclerView.setLayoutManager(layoutManager4);                           //리사이클러뷰에 레이아웃매니저를 달아준다
 
-        ReviewrecyclerAdapter = new ReviewRecyclerAdapter(cleanerReviewDatas);
-        ReviewRrecyclerView.setAdapter(ReviewrecyclerAdapter);
+//        Toast.makeText(this,cleanerReviewDatas.get(0).content,Toast.LENGTH_SHORT).show();
+
+        String cleanerid = getIntent().getStringExtra("cleanerid");
+        Call<SearchCleanerDetailResult> searchCleanerDetailResultCall2 = service.getSearchCleanerDetailResult("bumjin"); //cleanerid
+        searchCleanerDetailResultCall2.enqueue(new Callback<SearchCleanerDetailResult>() {
+            @Override
+            public void onResponse(Call<SearchCleanerDetailResult> call, Response<SearchCleanerDetailResult> response) {
+                if(response.isSuccessful())
+                {
+                    Cname.setText(response.body().result.cleaner.name+" 클리너");
+
+                    cleanerReviewDatas = response.body().result.review;
+
+                    Toast.makeText(getApplicationContext(),""+cleanerReviewDatas.size() +", " +response.body().result.cleaner.rate,Toast.LENGTH_SHORT).show();
+
+                    Creviewnum.setText("리뷰 : " + response.body().result.cleaner.review_cnt + "건");
+                    Cage.setText("나이 : " + response.body().result.cleaner.age + "세");
+                    Ccareer.setText("경력 : " + response.body().result.cleaner.career + "개월");
+                    ratenum.setText(response.body().result.cleaner.review_cnt + "명");
+
+                    Toast.makeText(getApplicationContext(),response.body().result.cleaner.rate,Toast.LENGTH_SHORT).show();
+
+                    if(response.body().result.cleaner.rate.equals("0"))
+                    {
+                        dstar1.setImageResource(R.drawable.star_line);
+                        dstar2.setImageResource(R.drawable.star_line);
+                        dstar3.setImageResource(R.drawable.star_line);
+                        dstar4.setImageResource(R.drawable.star_line);
+                        dstar5.setImageResource(R.drawable.star_line);
+                    }
+                    else if(response.body().result.cleaner.rate.equals("1"))
+                    {
+                        dstar2.setImageResource(R.drawable.star_line);
+                        dstar3.setImageResource(R.drawable.star_line);
+                        dstar4.setImageResource(R.drawable.star_line);
+                        dstar5.setImageResource(R.drawable.star_line);
+                    }
+                    else if(response.body().result.cleaner.rate.equals("2"))
+                    {
+                        dstar3.setImageResource(R.drawable.star_line);
+                        dstar4.setImageResource(R.drawable.star_line);
+                        dstar5.setImageResource(R.drawable.star_line);
+                    }
+                    else if(response.body().result.cleaner.rate.equals("3"))
+                    {
+                        dstar4.setImageResource(R.drawable.star_line);
+                        dstar5.setImageResource(R.drawable.star_line);
+                    }
+                    else if(response.body().result.cleaner.rate.equals("4"))
+                    {
+                        dstar5.setImageResource(R.drawable.star_line);
+                    }
+
+                    ReviewrecyclerAdapter = new ReviewRecyclerAdapter(cleanerReviewDatas);
+                    ReviewRrecyclerView.setAdapter(ReviewrecyclerAdapter);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchCleanerDetailResult> call, Throwable t) {
+
+            }
+        });
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

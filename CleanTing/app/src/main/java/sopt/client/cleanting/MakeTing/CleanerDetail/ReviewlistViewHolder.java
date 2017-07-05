@@ -33,10 +33,10 @@ public class ReviewlistViewHolder extends RecyclerView.ViewHolder {
         writecomment = (TextView)itemView.findViewById(R.id.writecomment);
 
         review_star_img1 = (ImageView)itemView.findViewById(R.id.star_img1);
-        review_star_img1 = (ImageView)itemView.findViewById(R.id.star_img2);
-        review_star_img1 = (ImageView)itemView.findViewById(R.id.star_img3);
-        review_star_img1 = (ImageView)itemView.findViewById(R.id.star_img4);
-        review_star_img1 = (ImageView)itemView.findViewById(R.id.star_img5);
+        review_star_img2 = (ImageView)itemView.findViewById(R.id.star_img2);
+        review_star_img3 = (ImageView)itemView.findViewById(R.id.star_img3);
+        review_star_img4 = (ImageView)itemView.findViewById(R.id.star_img4);
+        review_star_img5 = (ImageView)itemView.findViewById(R.id.star_img5);
 
     }
 }
