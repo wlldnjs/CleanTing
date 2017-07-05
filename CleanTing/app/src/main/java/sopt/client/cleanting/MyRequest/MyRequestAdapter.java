@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import sopt.client.cleanting.MakeTing.MakeTingLocationResultData;
@@ -79,6 +81,7 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             } else if(currentItem.cnt.equals("2")){
                 myLocationViewHolder.myLocationMember3.setImageResource(R.drawable.man_line);
             }
+            Glide.with(context).load(itemDatas.get(position-1).image).into(myLocationViewHolder.myLocationImg);
         }
     }
 

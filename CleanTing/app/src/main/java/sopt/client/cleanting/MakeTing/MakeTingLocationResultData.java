@@ -14,4 +14,5 @@ public class MakeTingLocationResultData implements Serializable{
     public String cnt;
     public String cleanerId;
     public String distance;
+    public String image;
 }

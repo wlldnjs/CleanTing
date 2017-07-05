@@ -1,7 +1,9 @@
 package sopt.client.cleanting.MyRequest;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +38,11 @@ public class MyRequestDetailActivity extends AppCompatActivity {
     String tingId, cleanerId, userId, request, cnt, phone, area, rate, cleanerImgSrc;
     NetworkService service;
     CleanerData cleanerData;
+
+    @Override    //  글씨체 적용
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +77,14 @@ public class MyRequestDetailActivity extends AppCompatActivity {
         total1 = (TextView)findViewById(R.id.my_request_detail_total1);
         total2 = (TextView)findViewById(R.id.my_request_detail_total2);
         total3 = (TextView)findViewById(R.id.my_request_detail_total3);
+
+        callBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tel = "tel:" + cleanerData.phone;
+                startActivity(new Intent("android.intent.action.DIAL", Uri.parse(tel)));
+            }
+        });
 
         cleanerId = getIntent().getStringExtra("cleanerId");
         Log.d("클리너 아이디!!!!!!!!!!!!!!!",cleanerId);
