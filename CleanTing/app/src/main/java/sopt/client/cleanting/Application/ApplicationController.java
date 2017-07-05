@@ -2,6 +2,8 @@ package sopt.client.cleanting.Application;
 
 import android.app.Application;
 
+import com.tsengvn.typekit.Typekit;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import sopt.client.cleanting.Network.NetworkService;
@@ -24,6 +26,14 @@ public class ApplicationController extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Typekit.getInstance()
+                .addNormal(Typekit.createFromAsset(this,"gabia_napjakBlock.ttf"))
+                .addCustom1(Typekit.createFromAsset(this,"NanumBarunGothic.ttf"))
+                .addCustom2(Typekit.createFromAsset(this,"NanumMyeongjo.ttc"))
+                .addCustom3(Typekit.createFromAsset(this,"NanumMyeongjoExtraBold.ttf"))
+                .addCustom4(Typekit.createFromAsset(this,"NanumSquareR.ttf"))
+                .addCustom5(Typekit.createFromAsset(this,"gabia_napjakBlock.ttf"));
+
         ApplicationController.instance = this;
 
 //        buildService();       //통신소스 완료 후 주석풀자.
