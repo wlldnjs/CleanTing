@@ -62,6 +62,7 @@
         <activity android:name=".Mypage.ChangeInfoActivity" />
         <activity android:name=".MakeTing.ChooseCleanerActivity" />
         <activity android:name=".MakeTing.CleanerDetail.DetailCleanerActivity" />
+        <activity android:name=".Main.SignUp.SearchAddressActivity"></activity>
         <activity android:name=".MyRequest.MoreViewClean"></activity>
     </application>
 
