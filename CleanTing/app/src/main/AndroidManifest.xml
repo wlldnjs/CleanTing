@@ -13,21 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Main.MainActivity">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-        <activity android:name=".Main.Login.LoginActivity" />
-        <activity android:name=".Main.SignUp.SignUpActivity" />
-        <activity android:name=".Main.SplashActivity" >
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
+            -->
+        </activity>
+        <activity android:name=".Main.Login.LoginActivity" />
+        <activity android:name=".Main.SignUp.SignUpActivity" />
+        <activity android:name=".Main.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MyRequest.MyRequestDetailActivity" />
         <activity android:name=".MyRequest.MyRequestRecruit" />
         <activity android:name=".Main.SignUp.AgreementActivity" />
@@ -58,7 +61,8 @@
         <activity android:name=".Community.CommunityBulletinDetailActivity" />
         <activity android:name=".Mypage.ChangeInfoActivity" />
         <activity android:name=".MakeTing.ChooseCleanerActivity" />
-        <activity android:name=".MakeTing.CleanerDetail.DetailCleanerActivity"></activity>
+        <activity android:name=".MakeTing.CleanerDetail.DetailCleanerActivity" />
+        <activity android:name=".MyRequest.MoreViewClean"></activity>
     </application>
 
 </manifest>
