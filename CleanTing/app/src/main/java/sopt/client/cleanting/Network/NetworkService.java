@@ -67,7 +67,7 @@ public interface NetworkService {
     Call<IdCheckResult> getIdCheckResult(@Path("id") String id);
 
     // 1-3 로그인
-    @POST("members")
+    @POST("members/login")
     Call<LoginResult> getLoginResult(@Body SendLoginData sendLoginData);
 
     // 1-4 아이디 찾기

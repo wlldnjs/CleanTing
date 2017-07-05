@@ -7,4 +7,5 @@ package sopt.client.cleanting.Main.Login;
 public class SendLoginData{
     public String userId;
     public String pwd;
+    public String deviceToken;
 }

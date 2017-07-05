@@ -44,19 +44,19 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        service= ApplicationController.getInstance().getNetworkService();
+        service = ApplicationController.getInstance().getNetworkService();
 
-        Signup_img = (ImageView)findViewById(R.id.Signup_img);
-        Login_btn = (ImageView)findViewById(R.id.Login_btn);
-        edit_id = (EditText)findViewById(R.id.edit_id);
-        edit_password = (EditText)findViewById(R.id.edit_password);
+        Signup_img = (ImageView) findViewById(R.id.Signup_img);
+        Login_btn = (ImageView) findViewById(R.id.Login_btn);
+        edit_id = (EditText) findViewById(R.id.edit_id);
+        edit_password = (EditText) findViewById(R.id.edit_password);
         Findpassword_img = (ImageView) findViewById(R.id.Findpassword_tv);
-        checkBox = (CheckBox)findViewById(R.id.checkbox) ;
+        checkBox = (CheckBox) findViewById(R.id.checkbox);
 
         Findpassword_img.setOnClickListener(new View.OnClickListener() {// 계정찾기 페이지로 넘어 감
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),FindAccountActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FindAccountActivity.class);
                 startActivity(intent);
             }
         });
@@ -75,39 +75,33 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (edit_id.getText().toString().replace(" ", "").equals("") || edit_password.getText().toString().replace(" ", "").equals("") )
-                {
-                    Toast.makeText(getApplicationContext()," 아이디 혹은 비밀번호를 입력하세요 ",Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    SendLoginData sendLoginData=new SendLoginData();
-                    sendLoginData.userId=edit_id.getText().toString();
-                    sendLoginData.pwd=edit_password.getText().toString();
+                if (edit_id.getText().toString().replace(" ", "").equals("") || edit_password.getText().toString().replace(" ", "").equals("")) {
+                    Toast.makeText(getApplicationContext(), " 아이디 혹은 비밀번호를 입력하세요 ", Toast.LENGTH_SHORT).show();
+                } else {
+                    SendLoginData sendLoginData = new SendLoginData();
+                    sendLoginData.userId = edit_id.getText().toString();
+                    sendLoginData.pwd = edit_password.getText().toString();
 
-                    Call<LoginResult> loginResultCall=service.getLoginResult(sendLoginData);
+                    Call<LoginResult> loginResultCall = service.getLoginResult(sendLoginData);
                     loginResultCall.enqueue(new Callback<LoginResult>() {
                         @Override
                         public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
-                            if(response.isSuccessful()){
-                                if(response.body().message.equals("ok")){
-                                    loginUserDatas.token =  response.body().token;
-                                    loginUserDatas.userId = response.body().userInfo.userId;
-                                    loginUserDatas.name= response.body().userInfo.name;
-                                    loginUserDatas.phone = response.body().userInfo.phone;
-                                    loginUserDatas.address = response.body().userInfo.address;
-                                    loginUserDatas.lat = response.body().userInfo.lat;
-                                    loginUserDatas.lng = response.body().userInfo.lng;
-                                    loginUserDatas.locationNum = response.body().userInfo.locationNum;
-                                    loginUserDatas.push = response.body().userInfo.push;
+                            if (response.isSuccessful()) {
+                                loginUserDatas.token = response.body().token;
+                                loginUserDatas.userId = response.body().userInfo.userId;
+                                loginUserDatas.name = response.body().userInfo.name;
+                                loginUserDatas.phone = response.body().userInfo.phone;
+                                loginUserDatas.address = response.body().userInfo.address;
+                                loginUserDatas.lat = response.body().userInfo.lat;
+                                loginUserDatas.lng = response.body().userInfo.lng;
+                                loginUserDatas.locationNum = response.body().userInfo.locationNum;
+                                loginUserDatas.push = response.body().userInfo.push;
 
-                                    Intent intent = new Intent(getApplication(),MainActivity.class);
-                                    startActivity(intent);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
 
-                                } else {
-                                    Toast.makeText(LoginActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
-                                }
-
+                            } else {
+                                Toast.makeText(LoginActivity.this, "아이디, 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -119,16 +113,10 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
 
-
-                    String temp_id = edit_id.getText().toString();
-                    String temp_password = edit_password.getText().toString();
-                    Toast.makeText(getApplicationContext(),"id : "+temp_id + "\n"+ "pass : "+temp_password, Toast.LENGTH_SHORT).show();
-
                     // 아이디 비번 검사
 
                     //  keep me log in 체크
-                    if(checkBox.isChecked())
-                    {
+                    if (checkBox.isChecked()) {
                         // login 유지 코드
                     }
                     edit_id.setText("");

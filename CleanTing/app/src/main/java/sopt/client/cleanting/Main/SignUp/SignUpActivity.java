@@ -188,10 +188,10 @@ public class SignUpActivity extends AppCompatActivity {
                     signUpData.userId = edit_id.getText().toString();
                     signUpData.name = edit_name.getText().toString();
                     signUpData.phone = edit_phonenumber.getText().toString();
-                    signUpData.address = address1.getText().toString() +" " +edit_address.getText().toString();
-                    if(signUpData.address.contains("신림")){
+                    signUpData.address = address1.getText().toString() + " " + edit_address.getText().toString();
+                    if (signUpData.address.contains("신림")) {
                         locationNum = "1";
-                    } else if(signUpData.address.contains("역삼")){
+                    } else if (signUpData.address.contains("역삼")) {
                         locationNum = "2";
                     } else {
                         locationNum = "3";
@@ -206,16 +206,15 @@ public class SignUpActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<SignUpResult> call, Response<SignUpResult> response) {
                             if (response.isSuccessful()) {
-                                if (response.body().message.equals("ok")) {
-                                    Toast.makeText(getApplicationContext(),
-                                            "회원가입에 성공했습니다", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(),
+                                        "회원가입에 성공했습니다", Toast.LENGTH_LONG).show();
 //                                    Intent intent=new Intent(getBaseContext(),LoginActivity.class);
 //                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(getApplicationContext(),
-                                            response.body().message, Toast.LENGTH_LONG).show();
-                                }
+                                finish();
+
+                            } else {
+                                Toast.makeText(getApplicationContext(),
+                                        response.body().message, Toast.LENGTH_LONG).show();
 
                             }
                         }
