@@ -22,12 +22,13 @@ import sopt.client.cleanting.R;
 public class ChangeMyRequestDetail extends AppCompatActivity {
     ImageView man1, man2, man3, cleanerImg, star1, star2, star3, star4, star5, callBtn,
     cond, window, ref, commitBtn;
-    TextView manCount, starCount, name,  act, review, career, age, date, time, total;
+    TextView manCount, starCount, name,  act, review, career, age, date, time, total1,total2,total3;
     String tingId, cleanerId, userId, request, cnt, phone, area, rate, price;
     EditText warningEdit;
     CleanerData cleanerData;
     boolean selectCond, selectWindow, selectRef = false;
     NetworkService service;
+    TextView moreview_clean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +60,25 @@ public class ChangeMyRequestDetail extends AppCompatActivity {
         age = (TextView)findViewById(R.id.change_my_request_detail_age);
         date = (TextView)findViewById(R.id.change_my_request_detail_date);
         time = (TextView)findViewById(R.id.change_my_request_detail_time);
-        total = (TextView)findViewById(R.id.change_my_request_detail_total);
+        total1 = (TextView)findViewById(R.id.change_my_request_detail_total1);
+        total2 = (TextView)findViewById(R.id.change_my_request_detail_total2);
+        total3 = (TextView)findViewById(R.id.change_my_request_detail_total3);
+
+        moreview_clean=(TextView)findViewById(R.id.moreview_clean);
+
+        moreview_clean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MoreViewClean.class);
+                startActivity(intent);
+            }
+        });
 
         cleanerId = getIntent().getStringExtra("cleanerId");
         tingId = getIntent().getStringExtra("tingId");
         userId = getIntent().getStringExtra("userId");
         price = getIntent().getStringExtra("price");
-        total.setText(price +"원");
+        total1.setText(price +"원");
         request = getIntent().getStringExtra("request");
         if(request.equals("1")){
             cond.setImageResource(R.drawable.conditioner_yellow);

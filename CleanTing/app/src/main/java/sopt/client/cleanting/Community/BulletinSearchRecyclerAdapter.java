@@ -35,8 +35,17 @@ public class BulletinSearchRecyclerAdapter extends RecyclerView.Adapter<Bulletin
     public void onBindViewHolder(BulletinViewHolder holder, int position) {
         holder.BulletinTitle.setText(SearchbulletinArrayList.get(position).title);
         holder.BulletinDate.setText(SearchbulletinArrayList.get(position).date);
-        holder.BullentinContent.setText(SearchbulletinArrayList.get(position).content);
+
+        if(SearchbulletinArrayList.get(position).content.length() > 20)
+        {
+            holder.BullentinContent.setText(SearchbulletinArrayList.get(position).content.substring(0,20).toString()+".........");
+        }
+        else
+        {
+            holder.BullentinContent.setText(SearchbulletinArrayList.get(position).content);
+        }
         holder.Bullentinreply.setText(SearchbulletinArrayList.get(position).comment_cnt);
+        holder.BulletinTime.setText(SearchbulletinArrayList.get(position).time);
     }
 
     @Override

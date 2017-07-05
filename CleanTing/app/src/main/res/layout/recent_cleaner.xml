@@ -9,8 +9,8 @@
     <ImageView
         android:src="@drawable/cleaner_circle"
         android:id="@+id/R_cleanerimg"
-        android:layout_width="70dp"
-        android:layout_height="70dp" />
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
     <TextView
         android:layout_marginTop="6dp"
         android:text="박청소"
@@ -34,27 +34,27 @@
         <ImageView
             android:src="@drawable/star"
             android:id="@+id/R_starrate1"
-            android:layout_width="15dp"
-            android:layout_height="15dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
         <ImageView
             android:src="@drawable/star"
             android:id="@+id/R_starrate2"
-            android:layout_width="15dp"
-            android:layout_height="15dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
         <ImageView
             android:src="@drawable/star"
             android:id="@+id/R_starrate3"
-            android:layout_width="15dp"
-            android:layout_height="15dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
         <ImageView
             android:src="@drawable/star"
             android:id="@+id/R_starrate4"
-            android:layout_width="15dp"
-            android:layout_height="15dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
         <ImageView
             android:src="@drawable/star"
             android:id="@+id/R_starrate5"
-            android:layout_width="15dp"
-            android:layout_height="15dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
     </LinearLayout>
 </LinearLayout>

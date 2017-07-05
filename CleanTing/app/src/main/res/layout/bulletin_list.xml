@@ -11,38 +11,35 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
+        <RelativeLayout
             android:layout_gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
            <TextView
+               android:layout_alignParentLeft="true"
                android:textStyle="bold"
                android:text="휴지 공동 구매 하실분"
                android:id="@+id/Bulletin_title"
                android:textSize="17sp"
                android:textColor="#333333"
-               android:layout_weight="0.7"
-               android:layout_width="0dp"
+               android:layout_width="wrap_content"
                android:layout_height="wrap_content" />
-
             <TextView
+                android:layout_toLeftOf="@+id/Bulletin_time"
                 android:id="@+id/Bulletin_date"
                 android:textSize="11dp"
-                android:layout_marginRight="4dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0.15" />
-
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
             <TextView
+                android:layout_alignParentRight="true"
                 android:textSize="11dp"
                 android:id="@+id/Bulletin_time"
                 android:layout_gravity="center"
-                android:layout_weight="0.15"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <TextView
             android:textSize="15sp"

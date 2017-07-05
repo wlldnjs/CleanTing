@@ -25,6 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
         <ImageView
+            android:id="@+id/C_search_img"
             android:layout_gravity="center"
             android:src="@drawable/search_button"
             android:layout_weight="0.2"

@@ -26,7 +26,7 @@ import sopt.client.cleanting.R;
 public class MyRequestRecruit extends AppCompatActivity {
     ImageView man1, man2, man3, cleanerImg, star1, star2, star3, star4, star5,
             cond, window, ref, commitBtn;
-    TextView manCount, starCount, name,  act, review, career, age, date, time, total;
+    TextView manCount, starCount, name,  act, review, career, age, date, time, total1,total2,total3,my_request_recruit_moreview;
     EditText warningEdit;
     MakeTingLocationResultData datas;
     String cleanerId, tingId, phone, area, rate, request;
@@ -40,6 +40,16 @@ public class MyRequestRecruit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_request_recruit);
         service = ApplicationController.getInstance().getNetworkService();
+
+        my_request_recruit_moreview =(TextView)findViewById(R.id.my_request_recruit_moreview);
+
+        my_request_recruit_moreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MoreViewClean.class);
+                startActivity(intent);
+            }
+        });
 
         datas = (MakeTingLocationResultData)getIntent().getSerializableExtra("datas");
         cleanerId = datas.cleanerId;
@@ -68,7 +78,9 @@ public class MyRequestRecruit extends AppCompatActivity {
         age = (TextView)findViewById(R.id.my_request_recruit_age);
         date = (TextView)findViewById(R.id.my_request_recruit_date);
         time = (TextView)findViewById(R.id.my_request_recruit_time);
-        total = (TextView)findViewById(R.id.my_request_recruit_total);
+        total1 = (TextView)findViewById(R.id.my_request_recruit_total1);
+        total2 = (TextView)findViewById(R.id.my_request_recruit_total2);
+        total3 = (TextView)findViewById(R.id.my_request_recruit_total3);
 
         warningEdit = (EditText)findViewById(R.id.my_request_recruit_warning);
 

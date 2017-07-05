@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/Detail_cleaner_img"
             android:layout_gravity="center"
             android:src="@drawable/picture_no"
             android:layout_width="108dp"

@@ -9,6 +9,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -133,6 +135,7 @@ public class RatingActivity extends AppCompatActivity {
             public void onResponse(Call<SearchCleanerDetailResult> call, Response<SearchCleanerDetailResult> response) {
                 if(response.isSuccessful())
                 {
+                    Glide.with(getApplicationContext()).load(response.body().result.cleaner.image).into(cleaner_picture);
                     Rate_cleanername.setText(response.body().result.cleaner.name + " 클리너");
                     Rate_reviewnumber.setText("리뷰 : "+response.body().result.cleaner.review_cnt +"건");
                     Rate_career.setText("경력 : "+response.body().result.cleaner.career +"개월");

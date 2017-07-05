@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Cleanner.CleanerReviewData;
 import sopt.client.cleanting.Cleanner.SearchCleanerData;
+import sopt.client.cleanting.Cleanner.SearchCleanerResult;
 import sopt.client.cleanting.Cleanner.SearchLocationCleanerData;
 import sopt.client.cleanting.Cleanner.SearchLocationCleanerResult;
 import sopt.client.cleanting.Cleanner.SendSearchLocationCleanerData;
@@ -78,25 +80,32 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
 
     NetworkService service;
 
+    ImageView c_search_img;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_cleaner);
 
+        final String inputdate = getIntent().getStringExtra("date");
+
         service = ApplicationController.getInstance().getNetworkService();
 
-        SmallAdress = (TextView)findViewById(R.id.small_address);
+        SmallAdress = (TextView) findViewById(R.id.small_address);
 //        if(loginUserDatas.locationNum == 1)
 //        {
 //            SmallAdress.setText("신림동");
 //        }
         SmallAdress.setText("신림동");
-        ListTitle = (TextView)findViewById(R.id.listtitle);
+        ListTitle = (TextView) findViewById(R.id.listtitle);
 
 
-        search = (EditText)findViewById(R.id.search_edit);
-        wrapLinear = (LinearLayout)findViewById(R.id.wrapLinear);
-        Search_Linear = (LinearLayout)findViewById(R.id.Search_Linear);
+        search = (EditText) findViewById(R.id.search_edit);
+        wrapLinear = (LinearLayout) findViewById(R.id.wrapLinear);
+        Search_Linear = (LinearLayout) findViewById(R.id.Search_Linear);
+
+        c_search_img = (ImageView) findViewById(R.id.C_search_img);
+
 
         search.setOnEditorActionListener(this);
         search.addTextChangedListener(textWatcherInput);
@@ -109,15 +118,15 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         RrecyclerView.setLayoutManager(layoutManager);                           //리사이클러뷰에 레이아웃매니저를 달아준다
 
         Rcleaners = new ArrayList<RecentCleanerDataArray>();                         //사용자 정의 데이터를 갖는 arraylist
+        searchCleanerDataArrayList1 = new ArrayList<SearchCleanerData>();
 
         Call<RecentCleanerResult> recentCleanerResultCall = service.getRecentCleanerResult("bumma");
         recentCleanerResultCall.enqueue(new Callback<RecentCleanerResult>() {
             @Override
             public void onResponse(Call<RecentCleanerResult> call, Response<RecentCleanerResult> response) {
-                if(response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
                     Rcleaners = response.body().result;
-                    RrecyclerAdapter = new RecentRecyclerAdapter(Rcleaners,clickEvent);
+                    RrecyclerAdapter = new RecentRecyclerAdapter(getApplicationContext(), Rcleaners, clickEvent);
                     RrecyclerView.setAdapter(RrecyclerAdapter);
                 }
             }
@@ -129,7 +138,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         });
 
 
-        LrecyclerView = (RecyclerView)findViewById(R.id.Cleanerlist_recyclerview);
+        LrecyclerView = (RecyclerView) findViewById(R.id.Cleanerlist_recyclerview);
         LrecyclerView.setHasFixedSize(true);
         layoutManager2 = new LinearLayoutManager(this);
         layoutManager2.setOrientation(LinearLayoutManager.VERTICAL);             //리니어레이아웃의 형태이면 방향은 수직
@@ -140,8 +149,8 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         arrayList.add("별점순");
         arrayList.add("이력순");
         arrayList.add("리뷰순");
-        ArrayAdapter adtRegion = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,arrayList);
-        spinner = (Spinner)findViewById(R.id.sort_spinner);
+        ArrayAdapter adtRegion = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arrayList);
+        spinner = (Spinner) findViewById(R.id.sort_spinner);
         spinner.setAdapter(adtRegion);
 
         sendSearchLocationCleanerData = new SendSearchLocationCleanerData();
@@ -151,46 +160,41 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-                switch (position)
-                {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
                     case 0:
                         sendSearchLocationCleanerData.order = "1";
                         ListTitle.setText("별점순 클리너");
                         // date의 형식???
-                            Call<SearchLocationCleanerResult> searchLocationCleanerResult = service.getSearchLocationCleanerResult("2017-04-01",sendSearchLocationCleanerData);
-                            searchLocationCleanerResult.enqueue(new Callback<SearchLocationCleanerResult>() {
-                                @Override
-                                public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {
-                                    if(response.isSuccessful())
-                                    {
-                                        Lcleaners = response.body().result;
-                                        Toast.makeText(getApplicationContext(),Lcleaners.get(0).cleanerId,Toast.LENGTH_SHORT).show();
-                                        ListRecyclerAdapter2 = new SearchRecyclerAdapter(Lcleaners,clickEvent);
-                                        LrecyclerView.setAdapter(ListRecyclerAdapter2);
-                                    }
+                        Call<SearchLocationCleanerResult> searchLocationCleanerResult = service.getSearchLocationCleanerResult(inputdate, sendSearchLocationCleanerData);
+                        searchLocationCleanerResult.enqueue(new Callback<SearchLocationCleanerResult>() {
+                            @Override
+                            public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {
+                                if (response.isSuccessful()) {
+                                    Lcleaners = response.body().result;
+                                    ListRecyclerAdapter2 = new SearchRecyclerAdapter(getApplicationContext(), Lcleaners, clickEvent2);
+                                    LrecyclerView.setAdapter(ListRecyclerAdapter2);
                                 }
+                            }
 
-                                @Override
-                                public void onFailure(Call<SearchLocationCleanerResult> call, Throwable t) {
+                            @Override
+                            public void onFailure(Call<SearchLocationCleanerResult> call, Throwable t) {
 
-                                }
-                            });
+                            }
+                        });
                         break;
                     case 1:
                         sendSearchLocationCleanerData.order = "2";
                         ListTitle.setText("이력순 클리너");
-                        Toast.makeText(getApplicationContext(),sendSearchLocationCleanerData.order,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), sendSearchLocationCleanerData.order, Toast.LENGTH_SHORT).show();
                         // date의 형식???
-                        Call<SearchLocationCleanerResult> searchLocationCleanerResult2 = service.getSearchLocationCleanerResult("2017-04-01",sendSearchLocationCleanerData);
+                        Call<SearchLocationCleanerResult> searchLocationCleanerResult2 = service.getSearchLocationCleanerResult(inputdate, sendSearchLocationCleanerData);
                         searchLocationCleanerResult2.enqueue(new Callback<SearchLocationCleanerResult>() {
                             @Override
                             public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {
-                                if(response.isSuccessful())
-                                {
+                                if (response.isSuccessful()) {
                                     Lcleaners = response.body().result;
-                                    ListRecyclerAdapter2 = new SearchRecyclerAdapter(Lcleaners,clickEvent);
+                                    ListRecyclerAdapter2 = new SearchRecyclerAdapter(getApplicationContext(), Lcleaners, clickEvent2);
                                     LrecyclerView.setAdapter(ListRecyclerAdapter2);
                                 }
                             }
@@ -204,16 +208,15 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
                     case 2:
                         sendSearchLocationCleanerData.order = "3";
                         ListTitle.setText("리뷰순 클리너");
-                        Toast.makeText(getApplicationContext(),sendSearchLocationCleanerData.order,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), sendSearchLocationCleanerData.order, Toast.LENGTH_SHORT).show();
                         // date의 형식???
-                        Call<SearchLocationCleanerResult> searchLocationCleanerResult3 = service.getSearchLocationCleanerResult("2017-04-01",sendSearchLocationCleanerData);
+                        Call<SearchLocationCleanerResult> searchLocationCleanerResult3 = service.getSearchLocationCleanerResult(inputdate, sendSearchLocationCleanerData);
                         searchLocationCleanerResult3.enqueue(new Callback<SearchLocationCleanerResult>() {
                             @Override
                             public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {
-                                if(response.isSuccessful())
-                                {
+                                if (response.isSuccessful()) {
                                     Lcleaners = response.body().result;
-                                    ListRecyclerAdapter2 = new SearchRecyclerAdapter(Lcleaners,clickEvent);
+                                    ListRecyclerAdapter2 = new SearchRecyclerAdapter(getApplicationContext(), Lcleaners, clickEvent2);
                                     LrecyclerView.setAdapter(ListRecyclerAdapter2);
                                 }
                             }
@@ -226,6 +229,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
                         break;
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 sendSearchLocationCleanerData.order = "1";
@@ -245,11 +249,9 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         });
 
 
-
-        SearchrecyclerView = (RecyclerView)findViewById(R.id.Search_recyclerview);
+        SearchrecyclerView = (RecyclerView) findViewById(R.id.Search_recyclerview);
         SearchrecyclerView.setHasFixedSize(true);
         layoutManager3 = new LinearLayoutManager(this);
-
 
     }
 
@@ -257,8 +259,31 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         public void onClick(View v) {
             final int itemPosition = RrecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
 
-            Intent intent = new Intent(getApplicationContext(),DetailCleanerActivity.class);
-            intent.putExtra("cleanerid",Rcleaners.get(itemPosition).cleanerId);
+            Intent intent = new Intent(getApplicationContext(), DetailCleanerActivity.class);
+            intent.putExtra("cleanerid", Rcleaners.get(itemPosition).cleanerId);
+            startActivity(intent);
+
+//            Toast.makeText(getApplicationContext(), itemPosition + "번 리스트 클릭!!", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    public View.OnClickListener clickEvent2 = new View.OnClickListener() {
+        public void onClick(View v) {
+            final int itemPosition = RrecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
+
+            Intent intent = new Intent(getApplicationContext(), DetailCleanerActivity.class);
+            intent.putExtra("cleanerid", Lcleaners.get(itemPosition).cleanerId);
+            startActivity(intent);
+
+//            Toast.makeText(getApplicationContext(), itemPosition + "번 리스트 클릭!!", Toast.LENGTH_SHORT).show();
+        }
+    };
+    public View.OnClickListener clickEvent3 = new View.OnClickListener() {
+        public void onClick(View v) {
+            final int itemPosition = RrecyclerView.getChildPosition(v);           //position 을 지원하지 않는다 따라서 직접 얻어와야함
+
+            Intent intent = new Intent(getApplicationContext(), DetailCleanerActivity.class);
+            intent.putExtra("cleanerid", searchCleanerDataArrayList1.get(itemPosition).cleanerId);
             startActivity(intent);
 
 //            Toast.makeText(getApplicationContext(), itemPosition + "번 리스트 클릭!!", Toast.LENGTH_SHORT).show();
@@ -268,14 +293,11 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
-        switch(v.getId())
-        {
-            case R.id.search_edit:
-            {
-                Toast.makeText(getApplicationContext(),"df",Toast.LENGTH_SHORT).show();
+        switch (v.getId()) {
+            case R.id.search_edit: {
+                Toast.makeText(getApplicationContext(), "df", Toast.LENGTH_SHORT).show();
 
-                if(event.getAction() == KeyEvent.ACTION_DOWN)
-                {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
 
                 }
                 break;
@@ -292,41 +314,35 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
             // TODO Auto-generated method stub
             wrapLinear.setVisibility(View.INVISIBLE);
             Search_Linear.setVisibility(View.VISIBLE);
-            String str = s.toString();
+            final String str = s.toString();
 
-//            Call<SearchCleanerResult> searchCleanerResultCall  = service.getSearchCleanerResult(str);
-//            searchCleanerResultCall.enqueue(new Callback<SearchCleanerResult>() {
-//                @Override
-//                public void onResponse(Call<SearchCleanerResult> call, Response<SearchCleanerResult> response) {
-//                    if(response.isSuccessful())
-//                    {
-//                         searchCleanerDataArrayList1 = new ArrayList<SearchCleanerData>();
-//                         searchCleanerDataArrayList1 = response.body().result;
-//                    }
-//                    else
-//                    {
-//
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Call<SearchCleanerResult> call, Throwable t) {
-//
-//                }
-//            });
+            c_search_img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-//            ArrayList<ListCleanerData> arrayList;
-//            arrayList = new ArrayList<>();
-//            ListCleanerData listCleaner;
-//            listCleaner = new ListCleanerData(str,"10","20");
-//            arrayList.add(listCleaner);
+                    Call<SearchCleanerResult> searchCleanerResultCall = service.getSearchCleanerResult(str);
+                    searchCleanerResultCall.enqueue(new Callback<SearchCleanerResult>() {
+                        @Override
+                        public void onResponse(Call<SearchCleanerResult> call, Response<SearchCleanerResult> response) {
+                            if (response.isSuccessful()) {
+                                searchCleanerDataArrayList1 = response.body().result;
+                                layoutManager3.setOrientation(LinearLayoutManager.VERTICAL);
+                                SearchrecyclerView.setLayoutManager(layoutManager3);
+                                SearchrecyclerAdapter = new ListCleanerRecyclerAdapter(getApplicationContext(), searchCleanerDataArrayList1, clickEvent3);
+                                SearchrecyclerView.setAdapter(SearchrecyclerAdapter);
+                            } else {
 
-            layoutManager3.setOrientation(LinearLayoutManager.VERTICAL);
-            SearchrecyclerView.setLayoutManager(layoutManager3);
-            SearchrecyclerAdapter = new ListCleanerRecyclerAdapter(searchCleanerDataArrayList1,clickEvent);
-            SearchrecyclerView.setAdapter(SearchrecyclerAdapter);
-            if(s.toString().equals(""))
-            {
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<SearchCleanerResult> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(),"통신 실패",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });
+            if (s.toString().equals("")) {
                 Search_Linear.setVisibility(View.GONE);
                 wrapLinear.setVisibility(View.VISIBLE);
             }
@@ -368,11 +384,10 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
 
             layoutManager3.setOrientation(LinearLayoutManager.VERTICAL);
             SearchrecyclerView.setLayoutManager(layoutManager3);
-            SearchrecyclerAdapter = new ListCleanerRecyclerAdapter(searchCleanerDataArrayList2,clickEvent);
+            SearchrecyclerAdapter = new ListCleanerRecyclerAdapter(getApplicationContext(), searchCleanerDataArrayList2, clickEvent3);
             SearchrecyclerView.setAdapter(SearchrecyclerAdapter);
 
-            if(s.toString().equals(""))
-            {
+            if (s.toString().equals("")) {
                 Search_Linear.setVisibility(View.GONE);
                 wrapLinear.setVisibility(View.VISIBLE);
             }
@@ -412,11 +427,10 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
 //            });
             layoutManager3.setOrientation(LinearLayoutManager.VERTICAL);
             SearchrecyclerView.setLayoutManager(layoutManager3);
-            SearchrecyclerAdapter = new ListCleanerRecyclerAdapter(searchCleanerDataArrayList3,clickEvent);
+            SearchrecyclerAdapter = new ListCleanerRecyclerAdapter(getApplicationContext(), searchCleanerDataArrayList3, clickEvent3);
             SearchrecyclerView.setAdapter(SearchrecyclerAdapter);
 
-            if(s.toString().equals(""))
-            {
+            if (s.toString().equals("")) {
                 Search_Linear.setVisibility(View.GONE);
                 wrapLinear.setVisibility(View.VISIBLE);
             }

@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -42,6 +44,8 @@ public class DetailCleanerActivity extends AppCompatActivity {
     ImageView dstar4;
     ImageView dstar5;
 
+    ImageView detail_cleaner_img;
+
     public ArrayList<CleanerReviewData> cleanerReviewDatas;
 
     @Override
@@ -65,6 +69,8 @@ public class DetailCleanerActivity extends AppCompatActivity {
 
         imageView = (ImageView)findViewById(R.id.Choose);
 
+        detail_cleaner_img = (ImageView)findViewById(R.id.Detail_cleaner_img);
+
 
         cleanerReviewDatas = new ArrayList<CleanerReviewData>();
 
@@ -80,7 +86,7 @@ public class DetailCleanerActivity extends AppCompatActivity {
 //        Toast.makeText(this,cleanerReviewDatas.get(0).content,Toast.LENGTH_SHORT).show();
 
         String cleanerid = getIntent().getStringExtra("cleanerid");
-        Call<SearchCleanerDetailResult> searchCleanerDetailResultCall2 = service.getSearchCleanerDetailResult("bumjin"); //cleanerid
+        Call<SearchCleanerDetailResult> searchCleanerDetailResultCall2 = service.getSearchCleanerDetailResult(cleanerid); //cleanerid
         searchCleanerDetailResultCall2.enqueue(new Callback<SearchCleanerDetailResult>() {
             @Override
             public void onResponse(Call<SearchCleanerDetailResult> call, Response<SearchCleanerDetailResult> response) {
@@ -88,6 +94,7 @@ public class DetailCleanerActivity extends AppCompatActivity {
                 {
                     Cname.setText(response.body().result.cleaner.name+" 클리너");
 
+                    Glide.with(getApplicationContext()).load(response.body().result.cleaner.image).into(detail_cleaner_img);
                     cleanerReviewDatas = response.body().result.review;
 
                     Toast.makeText(getApplicationContext(),""+cleanerReviewDatas.size() +", " +response.body().result.cleaner.rate,Toast.LENGTH_SHORT).show();
@@ -99,7 +106,18 @@ public class DetailCleanerActivity extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(),response.body().result.cleaner.rate,Toast.LENGTH_SHORT).show();
 
-                    if(response.body().result.cleaner.rate.equals("0"))
+                    int a = Integer.parseInt(response.body().result.cleaner.rate);
+                    int b = Integer.parseInt(response.body().result.cleaner.review_cnt);
+                    int result = 0;
+                    if(b == 0)
+                    {
+                      result = 0;
+                    }
+                    else {
+                        result = Math.round(a/b);
+                    }
+
+                    if(result == 0)
                     {
                         dstar1.setImageResource(R.drawable.star_line);
                         dstar2.setImageResource(R.drawable.star_line);
@@ -107,25 +125,25 @@ public class DetailCleanerActivity extends AppCompatActivity {
                         dstar4.setImageResource(R.drawable.star_line);
                         dstar5.setImageResource(R.drawable.star_line);
                     }
-                    else if(response.body().result.cleaner.rate.equals("1"))
+                    else if(result == 1)
                     {
                         dstar2.setImageResource(R.drawable.star_line);
                         dstar3.setImageResource(R.drawable.star_line);
                         dstar4.setImageResource(R.drawable.star_line);
                         dstar5.setImageResource(R.drawable.star_line);
                     }
-                    else if(response.body().result.cleaner.rate.equals("2"))
+                    else if(result == 2)
                     {
                         dstar3.setImageResource(R.drawable.star_line);
                         dstar4.setImageResource(R.drawable.star_line);
                         dstar5.setImageResource(R.drawable.star_line);
                     }
-                    else if(response.body().result.cleaner.rate.equals("3"))
+                    else if(result == 3)
                     {
                         dstar4.setImageResource(R.drawable.star_line);
                         dstar5.setImageResource(R.drawable.star_line);
                     }
-                    else if(response.body().result.cleaner.rate.equals("4"))
+                    else if(result == 4)
                     {
                         dstar5.setImageResource(R.drawable.star_line);
                     }
@@ -145,7 +163,7 @@ public class DetailCleanerActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext()," 팅만들기 가서 클리너 이름 띄우기",Toast.LENGTH_SHORT).show();
+
             }
         });
 

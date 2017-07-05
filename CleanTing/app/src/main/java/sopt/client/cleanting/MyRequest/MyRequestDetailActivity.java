@@ -31,7 +31,7 @@ import static sopt.client.cleanting.MyRequest.MyRequestFragment.refreshView;
 public class MyRequestDetailActivity extends AppCompatActivity {
     ImageView man1, man2, man3, cleanerImg, star1, star2, star3, star4, star5, callBtn,
             editBtn, cancelBtn;
-    TextView manCount, starCount, name,  act, review, career, age, date, time, moreRequest, warning, total;
+    TextView manCount, starCount, name,  act, review, career, age, date, time, moreRequest, warning, total1,total2,total3;
     String tingId, cleanerId, userId, request, cnt, phone, area, rate, cleanerImgSrc;
     NetworkService service;
     CleanerData cleanerData;
@@ -66,7 +66,9 @@ public class MyRequestDetailActivity extends AppCompatActivity {
         time = (TextView)findViewById(R.id.my_request_detail_time);
         moreRequest = (TextView)findViewById(R.id.my_request_detail_request_message);
         warning = (TextView)findViewById(R.id.my_request_detail_warning_message);
-        total = (TextView)findViewById(R.id.my_request_detail_total);
+        total1 = (TextView)findViewById(R.id.my_request_detail_total1);
+        total2 = (TextView)findViewById(R.id.my_request_detail_total2);
+        total3 = (TextView)findViewById(R.id.my_request_detail_total3);
 
         cleanerId = getIntent().getStringExtra("cleanerId");
         Log.d("클리너 아이디!!!!!!!!!!!!!!!",cleanerId);
@@ -120,7 +122,7 @@ public class MyRequestDetailActivity extends AppCompatActivity {
 
         tingId = getIntent().getStringExtra("tingId");
         userId = getIntent().getStringExtra("userId");
-        total.setText(getIntent().getStringExtra("price"));
+        total1.setText(getIntent().getStringExtra("price"));
         request = getIntent().getStringExtra("request");
         if(request.equals("0")){
             moreRequest.setText("추가사항 없음");
