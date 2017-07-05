@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import sopt.client.cleanting.Cleanner.CleanerReviewData;
 import sopt.client.cleanting.R;
 
 /**
@@ -15,9 +16,9 @@ import sopt.client.cleanting.R;
 
 public class ReviewRecyclerAdapter extends RecyclerView.Adapter<ReviewlistViewHolder> {
 
-    ArrayList<ReviewItem> reviews;
+    ArrayList<CleanerReviewData> reviews;
 
-    public ReviewRecyclerAdapter(ArrayList<ReviewItem> itemdatas) {
+    public ReviewRecyclerAdapter(ArrayList<CleanerReviewData> itemdatas) {
         this.reviews = itemdatas;
     }
 
@@ -32,9 +33,41 @@ public class ReviewRecyclerAdapter extends RecyclerView.Adapter<ReviewlistViewHo
     @Override
     public void onBindViewHolder(ReviewlistViewHolder holder, int position) {
 
-        holder.writername.setText(reviews.get(position).getWritername());             // 클리너 이름
-        holder.writedate.setText(reviews.get(position).getWritedate());
-        holder.writecomment.setText(reviews.get(position).getWritecomment());
+        holder.writername.setText(reviews.get(position).userId);             // userid
+        holder.writedate.setText(reviews.get(position).date);
+        holder.writecomment.setText(reviews.get(position).content);
+
+        if(reviews.get(position).rating.equals("0"))
+        {
+            holder.review_star_img1.setImageResource(R.drawable.star_line);
+            holder.review_star_img2.setImageResource(R.drawable.star_line);
+            holder.review_star_img3.setImageResource(R.drawable.star_line);
+            holder.review_star_img4.setImageResource(R.drawable.star_line);
+            holder.review_star_img5.setImageResource(R.drawable.star_line);
+        }
+        if(reviews.get(position).rating.equals("1"))
+        {
+            holder.review_star_img2.setImageResource(R.drawable.star_line);
+            holder.review_star_img3.setImageResource(R.drawable.star_line);
+            holder.review_star_img4.setImageResource(R.drawable.star_line);
+            holder.review_star_img5.setImageResource(R.drawable.star_line);
+        }
+        if(reviews.get(position).rating.equals("2"))
+        {
+
+            holder.review_star_img3.setImageResource(R.drawable.star_line);
+            holder.review_star_img4.setImageResource(R.drawable.star_line);
+            holder.review_star_img5.setImageResource(R.drawable.star_line);
+        }
+        if(reviews.get(position).rating.equals("3"))
+        {
+            holder.review_star_img4.setImageResource(R.drawable.star_line);
+            holder.review_star_img5.setImageResource(R.drawable.star_line);
+        }
+        if(reviews.get(position).rating.equals("4"))
+        {
+            holder.review_star_img5.setImageResource(R.drawable.star_line);
+        }
     }
     @Override
     public int getItemCount() {

@@ -16,9 +16,9 @@ import sopt.client.cleanting.R;
 public class RecentRecyclerAdapter extends RecyclerView.Adapter<RecentCleanerViewHolder> {
 
     private final View.OnClickListener clickListener;
-    ArrayList<RecentCleanerData> Rcleaners;
+    ArrayList<RecentCleanerDataArray> Rcleaners;
 
-    public RecentRecyclerAdapter(ArrayList<RecentCleanerData> itemdatas,View.OnClickListener clickListener) {
+    public RecentRecyclerAdapter(ArrayList<RecentCleanerDataArray> itemdatas,View.OnClickListener clickListener) {
         this.clickListener = clickListener;
         this.Rcleaners = itemdatas;
     }
@@ -37,10 +37,39 @@ public class RecentRecyclerAdapter extends RecyclerView.Adapter<RecentCleanerVie
     public void onBindViewHolder(RecentCleanerViewHolder holder, int position) {
 
         //        holder.R_CleanerImg.setImageResource(0);                  // 클리너 사진
-        holder.R_CleanerName.setText(Rcleaners.get(position).getR_name());             // 클리너 이름
-        holder.R_date.setText(Rcleaners.get(position).getR_date());
-//        holder.R_starrate.setImageResource(0);   // 클리너 별점
+        holder.R_CleanerName.setText(Rcleaners.get(position).name);             // 클리너 이름
+        holder.R_date.setText(Rcleaners.get(position).date);
 
+        if(Rcleaners.get(position).rate.equals("0"))
+        {
+            holder.R_star5.setImageResource(R.drawable.star_line);   // 클리너 별점
+            holder.R_star4.setImageResource(R.drawable.star_line);
+            holder.R_star3.setImageResource(R.drawable.star_line);
+            holder.R_star2.setImageResource(R.drawable.star_line);
+            holder.R_star1.setImageResource(R.drawable.star_line);
+        }
+        if(Rcleaners.get(position).rate.equals("1"))
+        {
+            holder.R_star5.setImageResource(R.drawable.star_line);   // 클리너 별점
+            holder.R_star4.setImageResource(R.drawable.star_line);
+            holder.R_star3.setImageResource(R.drawable.star_line);
+            holder.R_star2.setImageResource(R.drawable.star_line);
+        }
+        if(Rcleaners.get(position).rate.equals("2"))
+        {
+            holder.R_star5.setImageResource(R.drawable.star_line);   // 클리너 별점
+            holder.R_star4.setImageResource(R.drawable.star_line);
+            holder.R_star3.setImageResource(R.drawable.star_line);
+        }
+        if(Rcleaners.get(position).rate.equals("3"))
+        {
+            holder.R_star5.setImageResource(R.drawable.star_line);   // 클리너 별점
+            holder.R_star4.setImageResource(R.drawable.star_line);
+        }
+        if(Rcleaners.get(position).rate.equals("4"))
+        {
+            holder.R_star5.setImageResource(R.drawable.star_line);   // 클리너 별점
+        }
     }
 
     @Override

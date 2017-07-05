@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import sopt.client.cleanting.Cleanner.SearchCleanerData;
 import sopt.client.cleanting.R;
 
 /**
@@ -16,9 +17,9 @@ import sopt.client.cleanting.R;
 public class ListCleanerRecyclerAdapter  extends RecyclerView.Adapter<ListCleanerViewHolder> {
 
     private final View.OnClickListener clickListener;
-    ArrayList<ListCleanerData> Lcleaners;
+    ArrayList<SearchCleanerData> Lcleaners;
 
-    public ListCleanerRecyclerAdapter(ArrayList<ListCleanerData> itemdatas,View.OnClickListener clickListener) {
+    public ListCleanerRecyclerAdapter(ArrayList<SearchCleanerData> itemdatas, View.OnClickListener clickListener) {
         this.clickListener = clickListener;
         this.Lcleaners = itemdatas;
     }
@@ -35,9 +36,9 @@ public class ListCleanerRecyclerAdapter  extends RecyclerView.Adapter<ListCleane
 
     @Override
     public void onBindViewHolder(ListCleanerViewHolder holder, int position) {
-        holder.ListCleanername.setText(Lcleaners.get(position).getListCleanername());             // 클리너 이름
-        holder.ListCleanerhistory.setText("청소 이력 : "+ Lcleaners.get(position).getListCleanerhistory());
-        holder.ListCleanercomment.setText("후기 : "+ Lcleaners.get(position).getListCleanercomment());
+        holder.ListCleanername.setText(Lcleaners.get(position).name);             // 클리너 이름
+        holder.ListCleanerhistory.setText("청소 이력 : "+ Lcleaners.get(position).career);
+        holder.ListCleanercomment.setText("후기 : "+ Lcleaners.get(position).review_cnt);
     }
 
     @Override

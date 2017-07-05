@@ -14,10 +14,14 @@ import sopt.client.cleanting.R;
 public class ListCleanerViewHolder extends RecyclerView.ViewHolder {
 
     ImageView ListCleanerimg;
-    TextView ListCleanername;
-    TextView ListCleanerhistory;
-    TextView ListCleanercomment;
-    ImageView ListCleanerrate;
+    public TextView ListCleanername;
+    public TextView ListCleanerhistory;
+    public TextView ListCleanercomment;
+    public ImageView ListCleanerrate1;
+    public ImageView ListCleanerrate2;
+    public ImageView ListCleanerrate3;
+    public ImageView ListCleanerrate4;
+    public ImageView ListCleanerrate5;
 
     public ListCleanerViewHolder(View itemView) {
         super(itemView);
@@ -26,5 +30,11 @@ public class ListCleanerViewHolder extends RecyclerView.ViewHolder {
         ListCleanername = (TextView)itemView.findViewById(R.id.List_cleanername);
         ListCleanerhistory = (TextView)itemView.findViewById(R.id.List_cleanerhistory);
         ListCleanercomment = (TextView)itemView.findViewById(R.id.List_cleanercomment);
+
+        ListCleanerrate1 = (ImageView)itemView.findViewById(R.id.List_clenaerstar1);
+        ListCleanerrate2 = (ImageView)itemView.findViewById(R.id.List_clenaerstar2);
+        ListCleanerrate3 = (ImageView)itemView.findViewById(R.id.List_clenaerstar3);
+        ListCleanerrate4 = (ImageView)itemView.findViewById(R.id.List_clenaerstar4);
+        ListCleanerrate5 = (ImageView)itemView.findViewById(R.id.List_clenaerstar5);
     }
 }

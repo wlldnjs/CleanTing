@@ -39,6 +39,7 @@ import sopt.client.cleanting.MakeTing.MakeTingRequestResult;
 import sopt.client.cleanting.MakeTing.MakeTingRequestResultData;
 import sopt.client.cleanting.MakeTing.MakeTingResult;
 import sopt.client.cleanting.MakeTing.MakeTingResultData;
+import sopt.client.cleanting.MakeTing.RecentCleaner.RecentCleanerResult;
 import sopt.client.cleanting.MakeTing.SendTingLocationData;
 import sopt.client.cleanting.MyRequest.MyRequestTingEditData;
 import sopt.client.cleanting.MyRequest.MyRequestTingEditResult;
@@ -144,6 +145,8 @@ public interface NetworkService {
 
     // 4-3 최근 이용 클리너(최신순)
     /**API 수정중*/
+    @GET("cleaner/lately/{userId}")
+    Call<RecentCleanerResult> getRecentCleanerResult(@Path("userId") String key);
 
     // 4-4 지역별 클리너(별점순/이력순/후기순)
     @POST("cleaner/{date}")

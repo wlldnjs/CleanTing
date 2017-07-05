@@ -36,40 +36,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:id="@+id/D_star1"
                     android:src="@drawable/star"
                     android:layout_width="18dp"
                     android:layout_height="18dp" />
                 <ImageView
+                    android:id="@+id/D_star2"
                     android:src="@drawable/star"
                     android:layout_width="18dp"
                     android:layout_height="18dp" />
                 <ImageView
+                    android:id="@+id/D_star3"
                     android:src="@drawable/star"
                     android:layout_width="18dp"
                     android:layout_height="18dp" />
                 <ImageView
+                    android:id="@+id/D_star4"
                     android:src="@drawable/star"
                     android:layout_width="18dp"
                     android:layout_height="18dp" />
                 <ImageView
+                    android:id="@+id/D_star5"
                     android:src="@drawable/star"
                     android:layout_width="18dp"
                     android:layout_height="18dp" />
                 <TextView
+                    android:id="@+id/rateNum"
                     android:layout_marginLeft="10sp"
-                    android:text="30명"
                     android:textColor="#B3B3B3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <TextView
-                android:textColor="#333333"
-                android:layout_marginTop="8dp"
-                android:textSize="12sp"
-                android:text="활동 : "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
+                android:id="@+id/review_tv"
                 android:textColor="#333333"
                 android:layout_marginTop="9dp"
                 android:textSize="12sp"
@@ -77,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/career_tv"
                 android:textColor="#333333"
                 android:layout_marginTop="9dp"
                 android:textSize="12sp"
@@ -84,6 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/age_tv"
                 android:textColor="#333333"
                 android:layout_marginTop="9dp"
                 android:textSize="12sp"
@@ -94,10 +95,10 @@
     </LinearLayout>
     <TextView
         android:layout_marginTop="14dp"
-        android:layout_marginLeft="55dp"
+        android:layout_marginLeft="35dp"
         android:text="안성현 클리너"
         android:textSize="20sp"
-        android:id="@+id/Choose_cleanername"
+        android:id="@+id/cleanername_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

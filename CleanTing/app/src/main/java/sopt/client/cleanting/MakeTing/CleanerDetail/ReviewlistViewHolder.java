@@ -15,8 +15,15 @@ public class ReviewlistViewHolder extends RecyclerView.ViewHolder {
 
     TextView writername;
     TextView writedate;
-    ImageView star_img;
     TextView writecomment;
+
+    ImageView review_star_img1;
+    ImageView review_star_img2;
+    ImageView review_star_img3;
+    ImageView review_star_img4;
+    ImageView review_star_img5;
+
+
 
     public ReviewlistViewHolder(View itemView) {
         super(itemView);
@@ -24,5 +31,12 @@ public class ReviewlistViewHolder extends RecyclerView.ViewHolder {
         writername = (TextView)itemView.findViewById(R.id.writername);
         writedate = (TextView)itemView.findViewById(R.id.writedate);
         writecomment = (TextView)itemView.findViewById(R.id.writecomment);
+
+        review_star_img1 = (ImageView)itemView.findViewById(R.id.star_img1);
+        review_star_img1 = (ImageView)itemView.findViewById(R.id.star_img2);
+        review_star_img1 = (ImageView)itemView.findViewById(R.id.star_img3);
+        review_star_img1 = (ImageView)itemView.findViewById(R.id.star_img4);
+        review_star_img1 = (ImageView)itemView.findViewById(R.id.star_img5);
+
     }
 }

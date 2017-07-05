@@ -10,8 +10,8 @@
 
         <ImageView
             android:id="@+id/List_cleanerimg"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:src="@drawable/picture_no" />
 
         <TextView
@@ -24,9 +24,10 @@
             android:layout_toRightOf="@+id/List_cleanerimg"
             android:text="name"
             android:textColor="#333333"
-            android:textSize="14sp" />
+            android:textSize="15sp" />
 
         <RelativeLayout
+            android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -40,41 +41,41 @@
                 android:layout_height="wrap_content"
                 android:text="청소 이력 : "
                 android:textColor="#333333"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
             <ImageView
                 android:layout_toLeftOf="@+id/List_clenaerstar2"
                 android:id="@+id/List_clenaerstar1"
-                android:layout_width="wrap_content"
-                android:layout_height="30sp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_marginLeft="10sp"
                 android:src="@drawable/star" />
             <ImageView
                 android:layout_toLeftOf="@+id/List_clenaerstar3"
                 android:id="@+id/List_clenaerstar2"
-                android:layout_width="wrap_content"
-                android:layout_height="30sp"
-                android:layout_marginLeft="5dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="3dp"
                 android:src="@drawable/star" />
             <ImageView
                 android:layout_toLeftOf="@+id/List_clenaerstar4"
                 android:id="@+id/List_clenaerstar3"
-                android:layout_width="wrap_content"
-                android:layout_height="30sp"
-                android:layout_marginLeft="5dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="3dp"
                 android:src="@drawable/star" />
             <ImageView
                 android:layout_toLeftOf="@+id/List_clenaerstar5"
                 android:id="@+id/List_clenaerstar4"
-                android:layout_width="wrap_content"
-                android:layout_height="30sp"
-                android:layout_marginLeft="5dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="3dp"
                 android:src="@drawable/star" />
             <ImageView
                 android:layout_alignParentRight="true"
                 android:id="@+id/List_clenaerstar5"
-                android:layout_width="wrap_content"
-                android:layout_height="30sp"
-                android:layout_marginLeft="5dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="3dp"
                 android:src="@drawable/star" />
         </RelativeLayout>
 
@@ -88,7 +89,7 @@
             android:text="후기: "
             android:layout_marginBottom="5dp"
             android:textColor="#333333"
-            android:textSize="11sp" />
+            android:textSize="12sp" />
 
     </RelativeLayout>
 
