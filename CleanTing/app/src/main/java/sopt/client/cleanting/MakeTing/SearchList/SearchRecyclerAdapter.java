@@ -1,9 +1,12 @@
 package sopt.client.cleanting.MakeTing.SearchList;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -18,11 +21,13 @@ import sopt.client.cleanting.R;
 public class SearchRecyclerAdapter extends RecyclerView.Adapter<ListCleanerViewHolder> {
 
     private final View.OnClickListener clickListener;
-    ArrayList<SearchLocationCleanerData> Lcleaners;
+    private final ArrayList<SearchLocationCleanerData> Lcleaners;
+    Context context;
 
-    public SearchRecyclerAdapter(ArrayList<SearchLocationCleanerData> itemdatas,View.OnClickListener clickListener) {
+    public SearchRecyclerAdapter(Context context,ArrayList<SearchLocationCleanerData> itemdatas,View.OnClickListener clickListener) {
         this.clickListener = clickListener;
         this.Lcleaners = itemdatas;
+        this.context = context;
     }
 
     @Override
@@ -37,11 +42,24 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<ListCleanerViewH
 
     @Override
     public void onBindViewHolder(ListCleanerViewHolder holder, int position) {
+
+        Glide.with(context).load(Lcleaners.get(position).image).into(holder.ListCleanerimg);
+
         holder.ListCleanername.setText(Lcleaners.get(position).name+" 클리너");             // 클리너 이름
         holder.ListCleanerhistory.setText("청소 경력 : "+ Lcleaners.get(position).career + "개월");
         holder.ListCleanercomment.setText("후기 : "+ Lcleaners.get(position).review_cnt);
 
-        if(Lcleaners.get(position).rate.equals("0"))
+        int a = Integer.parseInt(Lcleaners.get(position).rate);
+        int b = Integer.parseInt(Lcleaners.get(position).review_cnt);
+        int result = 0;
+        if(b !=0 )
+        {
+            result = Math.round(a / b);
+        }
+        else
+            result = 0;
+
+        if(result == 0)
         {
             holder.ListCleanerrate1.setImageResource(R.drawable.star_line);
             holder.ListCleanerrate2.setImageResource(R.drawable.star_line);
@@ -49,25 +67,25 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<ListCleanerViewH
             holder.ListCleanerrate4.setImageResource(R.drawable.star_line);
             holder.ListCleanerrate5.setImageResource(R.drawable.star_line);
         }
-        if(Lcleaners.get(position).rate.equals("1"))
+        if(result == 1)
         {
             holder.ListCleanerrate2.setImageResource(R.drawable.star_line);
             holder.ListCleanerrate3.setImageResource(R.drawable.star_line);
             holder.ListCleanerrate4.setImageResource(R.drawable.star_line);
             holder.ListCleanerrate5.setImageResource(R.drawable.star_line);
         }
-        if(Lcleaners.get(position).rate.equals("2"))
+        if(result == 2)
         {
             holder.ListCleanerrate3.setImageResource(R.drawable.star_line);
             holder.ListCleanerrate4.setImageResource(R.drawable.star_line);
             holder.ListCleanerrate5.setImageResource(R.drawable.star_line);
         }
-        if(Lcleaners.get(position).rate.equals("3"))
+        if(result == 3)
         {
             holder.ListCleanerrate4.setImageResource(R.drawable.star_line);
             holder.ListCleanerrate5.setImageResource(R.drawable.star_line);
         }
-        if(Lcleaners.get(position).rate.equals("4"))
+        if(result == 4)
         {
             holder.ListCleanerrate5.setImageResource(R.drawable.star_line);
         }

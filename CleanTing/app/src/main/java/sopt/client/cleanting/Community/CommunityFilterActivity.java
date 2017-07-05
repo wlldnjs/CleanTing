@@ -52,7 +52,6 @@ public class CommunityFilterActivity extends AppCompatActivity {
             {
                 if(response.isSuccessful())
                 {
-                    Toast.makeText(getApplicationContext(),"ㅁㄹㄴㅇㄹㄴ",Toast.LENGTH_SHORT).show();
                     bulletinArrayList = response.body().result;
                     SrecyclerAdapter = new BulletinSearchRecyclerAdapter(bulletinArrayList, clickEvent2);
                     CFrecyclerView.setAdapter(SrecyclerAdapter);

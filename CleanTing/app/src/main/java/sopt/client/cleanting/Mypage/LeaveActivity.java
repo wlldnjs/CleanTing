@@ -15,8 +15,6 @@ import sopt.client.cleanting.Main.Login.LoginActivity;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
-import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
-
 public class LeaveActivity extends AppCompatActivity {
 
     ImageView leave_btn;
@@ -42,7 +40,7 @@ public class LeaveActivity extends AppCompatActivity {
 
     private View.OnClickListener rightListener = new View.OnClickListener() {//탈퇴버튼
         public void onClick(View v) {
-            Call<WithdrawResult> withdrawResultCall = service.getWithdrawResult(loginUserDatas.userId);
+            Call<WithdrawResult> withdrawResultCall = service.getWithdrawResult("minsu");//loginUserDatas.userId
             withdrawResultCall.enqueue(new Callback<WithdrawResult>() {
                 @Override
                 public void onResponse(Call<WithdrawResult> call, Response<WithdrawResult> response) {

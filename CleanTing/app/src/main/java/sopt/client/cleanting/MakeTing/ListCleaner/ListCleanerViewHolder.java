@@ -13,7 +13,7 @@ import sopt.client.cleanting.R;
 
 public class ListCleanerViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView ListCleanerimg;
+    public ImageView ListCleanerimg;
     public TextView ListCleanername;
     public TextView ListCleanerhistory;
     public TextView ListCleanercomment;
