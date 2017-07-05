@@ -12,5 +12,6 @@ public class LoginUserDatas {
     public String address;
     public String lat;
     public String lng;
-    public int locationNum;
+    public String locationNum;
+    public String push;
 }

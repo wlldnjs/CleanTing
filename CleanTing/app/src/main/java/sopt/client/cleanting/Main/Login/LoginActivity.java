@@ -76,7 +76,6 @@ public class LoginActivity extends AppCompatActivity {
                     sendLoginData.pwd=edit_password.getText().toString();
 
                     Call<LoginResult> loginResultCall=service.getLoginResult(sendLoginData);
-
                     loginResultCall.enqueue(new Callback<LoginResult>() {
                         @Override
                         public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
@@ -87,8 +86,10 @@ public class LoginActivity extends AppCompatActivity {
                                     loginUserDatas.name= response.body().userInfo.name;
                                     loginUserDatas.phone = response.body().userInfo.phone;
                                     loginUserDatas.address = response.body().userInfo.address;
-//                                    loginUserDatas.lat=response.body().userInfo.lat;
-//                                    loginUserDatas.lng=response.body().userInfo.lng;
+                                    loginUserDatas.lat = response.body().userInfo.lat;
+                                    loginUserDatas.lng = response.body().userInfo.lng;
+                                    loginUserDatas.locationNum = response.body().userInfo.locationNum;
+                                    loginUserDatas.push = response.body().userInfo.push;
 
                                     Intent intent = new Intent(getApplication(),MainActivity.class);
                                     startActivity(intent);
