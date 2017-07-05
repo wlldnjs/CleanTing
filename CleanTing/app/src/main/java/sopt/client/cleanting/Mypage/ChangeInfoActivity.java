@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,30 +53,72 @@ public class ChangeInfoActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(password1.getText().toString().equals(password2.getText().toString())){
+            if(Pattern.matches("^[a-zA-Z0-9]*$",password1.getText().toString())){
+                if(password1.getText().toString().length()>=4 && password1.getText().toString().length()<=20){
+                    if(password1.getText().toString().equals(password2.getText().toString())){
                     /*@Body로 바꾸고 수정해야함*/
-                    Call<ModifyPasswordResult> modifyPasswordResultCall = service.getModifyPasswordResult(loginUserDatas.userId,password1.getText().toString());
-                    modifyPasswordResultCall.enqueue(new Callback<ModifyPasswordResult>() {
-                        @Override
-                        public void onResponse(Call<ModifyPasswordResult> call, Response<ModifyPasswordResult> response) {
-                            if (response.isSuccessful()){
-                                if(response.body().message.equals("pwd update ok")){
-                                    Toast.makeText(ChangeInfoActivity.this, "비밀번호 변경에 성공했습니다.", Toast.LENGTH_SHORT).show();
+                        Call<ModifyPasswordResult> modifyPasswordResultCall = service.getModifyPasswordResult(loginUserDatas.userId,password1.getText().toString());
+                        modifyPasswordResultCall.enqueue(new Callback<ModifyPasswordResult>() {
+                            @Override
+                            public void onResponse(Call<ModifyPasswordResult> call, Response<ModifyPasswordResult> response) {
+                                if (response.isSuccessful()){
+                                    if(response.body().message.equals("pwd update ok")){
+                                        Toast.makeText(ChangeInfoActivity.this, "비밀번호 변경에 성공했습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(ChangeInfoActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                                 }
-                            } else {
-                                Toast.makeText(ChangeInfoActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                             }
-                        }
 
-                        @Override
-                        public void onFailure(Call<ModifyPasswordResult> call, Throwable t) {
-                            Toast.makeText(ChangeInfoActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(Call<ModifyPasswordResult> call, Throwable t) {
+                                Toast.makeText(ChangeInfoActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                    else{
+                        Toast.makeText(ChangeInfoActivity.this, "비밀번호를 다시 확인해 주세요", Toast.LENGTH_SHORT).show();
+                        password2.requestFocus();
+                        return;
+                    }
                 }
                 else{
-                    Toast.makeText(ChangeInfoActivity.this, "비밀번호를 다시 확인해 주세요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"패스워드를 4~20자리로 입력해주세요",Toast.LENGTH_SHORT).show();
+                    password1.requestFocus();
+                    return;
                 }
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"비밀번호를 영문과 숫자로만 입력해주세요.",Toast.LENGTH_SHORT).show();
+                password1.requestFocus();
+                return;
+            }
+//                if(password1.getText().toString().equals(password2.getText().toString())){
+//                    /*@Body로 바꾸고 수정해야함*/
+//                    Call<ModifyPasswordResult> modifyPasswordResultCall = service.getModifyPasswordResult(loginUserDatas.userId,password1.getText().toString());
+//                    modifyPasswordResultCall.enqueue(new Callback<ModifyPasswordResult>() {
+//                        @Override
+//                        public void onResponse(Call<ModifyPasswordResult> call, Response<ModifyPasswordResult> response) {
+//                            if (response.isSuccessful()){
+//                                if(response.body().message.equals("pwd update ok")){
+//                                    Toast.makeText(ChangeInfoActivity.this, "비밀번호 변경에 성공했습니다.", Toast.LENGTH_SHORT).show();
+//                                }
+//                            } else {
+//                                Toast.makeText(ChangeInfoActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<ModifyPasswordResult> call, Throwable t) {
+//                            Toast.makeText(ChangeInfoActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//                }
+//                else{
+//                    Toast.makeText(ChangeInfoActivity.this, "비밀번호를 다시 확인해 주세요", Toast.LENGTH_SHORT).show();
+//                    password2.requestFocus();
+//                    return;
+//                }
 
             }
         });

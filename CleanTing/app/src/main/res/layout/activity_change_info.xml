@@ -147,6 +147,13 @@
             android:text="비밀번호"
             android:textColor="#333333"
             android:textSize="17sp" />
+        <TextView
+            android:textSize="13sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="(4~20자리로 숫자와 영문으로 입력해주세요)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <EditText
             android:inputType="textPassword"
             android:id="@+id/password1"

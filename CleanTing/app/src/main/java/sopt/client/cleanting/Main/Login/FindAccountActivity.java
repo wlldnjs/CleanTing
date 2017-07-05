@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -123,32 +125,49 @@ public class FindAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Call<ModifyPasswordResult> modifyPasswordResultCall=service.getModifyPasswordResult(new_password.getText().toString());
-            if(new_password==edit_confirm_password){
-                modifyPasswordResultCall.enqueue(new Callback<ModifyPasswordResult>() {
-                    @Override
-                    public void onResponse(Call<ModifyPasswordResult> call, Response<ModifyPasswordResult> response) {
-                        if(response.isSuccessful()){
-                            if(response.body().message.equals("비밀번호 변경 성공")){
-                                Toast.makeText(getApplicationContext(),"비밀번호 변경 성공",Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else{
-                                Toast.makeText(getApplicationContext(),response.body().message,Toast.LENGTH_SHORT).show();
-                            }
+                if(Pattern.matches("^[a-zA-Z0-9]*$",new_password.getText().toString())){
+                    if(new_password.getText().toString().length()>=4 && new_password.getText().toString().length()<=20){
+
+                        if(new_password==edit_confirm_password){
+                            modifyPasswordResultCall.enqueue(new Callback<ModifyPasswordResult>() {
+                                @Override
+                                public void onResponse(Call<ModifyPasswordResult> call, Response<ModifyPasswordResult> response) {
+                                    if(response.isSuccessful()){
+                                        if(response.body().message.equals("비밀번호 변경 성공")){
+                                            Toast.makeText(getApplicationContext(),"비밀번호 변경 성공",Toast.LENGTH_SHORT).show();
+                                            Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else{
+                                            Toast.makeText(getApplicationContext(),response.body().message,Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<ModifyPasswordResult> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(),"서버상태를 확인해주세요",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),"비밀번호를 다시 확인해주세요",Toast.LENGTH_SHORT).show();
                         }
                     }
-
-                    @Override
-                    public void onFailure(Call<ModifyPasswordResult> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(),"서버상태를 확인해주세요",Toast.LENGTH_SHORT).show();
+                    else{
+                        Toast.makeText(getApplicationContext(),"비밀번호를 4~20자리로 입력해주세요",Toast.LENGTH_SHORT).show();
+                        new_password.requestFocus();
+                        return;
                     }
-                });
-            }
-            else{
-                Toast.makeText(getApplicationContext(),"비밀번호를 다시 확인해주세요",Toast.LENGTH_SHORT).show();
-            }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"비밀번호를 영문과 숫자로만 입력해주세요",Toast.LENGTH_SHORT).show();
+                    new_password.requestFocus();
+                    return;
+                }
+
+
             }
         });
 

@@ -19,6 +19,8 @@ import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+
 
 public class AlarmFragment extends Fragment {
     private static final String[]  LIST_MENU ={"List1","List2","List3"} ;
@@ -65,7 +67,7 @@ public class AlarmFragment extends Fragment {
         listview2 = (ListView)layout.findViewById(R.id.listview2);
         listview3=(ListView)layout.findViewById(R.id.listview3);
 
-        Call<ReferAlarmResult> referAlarmResultCall=service.getReferAlarmResult("bumma");
+        Call<ReferAlarmResult> referAlarmResultCall=service.getReferAlarmResult(loginUserDatas.userId);
 
 
 
