@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,8 +18,6 @@ import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
-
-import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 
 
 public class AlarmFragment extends Fragment {
@@ -62,37 +61,53 @@ public class AlarmFragment extends Fragment {
         Adapter2 = new AlarmAdapter();
         Adapter3 = new AlarmAdapter();
 
-        Call<ReferAlarmResult> referAlarmResultCall=service.getReferAlarmResult(loginUserDatas.userId);
+        listview1 = (ListView)layout.findViewById(R.id.listview1);
+        listview2 = (ListView)layout.findViewById(R.id.listview2);
+        listview3=(ListView)layout.findViewById(R.id.listview3);
+
+        Call<ReferAlarmResult> referAlarmResultCall=service.getReferAlarmResult("bumma");
+
 
 
         referAlarmResultCall.enqueue(new Callback<ReferAlarmResult>() {
             @Override
             public void onResponse(Call<ReferAlarmResult> call, Response<ReferAlarmResult> response) {
+                if(response.isSuccessful()){
+                    if(response.body().message.equals("alarm query ok")){
 
+                        String flag = response.body().ret.get(0).tingId;//flag에 처음 받은 tingId 저장(groupA)
+                        String flag2 = response.body().ret.get(1).tingId;//groupB
+
+                        for(int i=0;i<response.body().ret.size();i++){
+                            if(response.body().ret.get(i).tingId.equals(flag)){
+                                Adapter1.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+                                listview1.setAdapter(Adapter1);
+                            }
+                            else if(response.body().ret.get(i).tingId.equals(flag2)){
+                                Adapter2.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+                                listview2.setAdapter(Adapter2);
+                            }
+                            else{
+                                Adapter3.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+                                listview3.setAdapter(Adapter3);
+                            }
+                        }
+
+                    }
+                    else{
+                        Toast.makeText(getContext(),response.body().message,Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
 
             @Override
             public void onFailure(Call<ReferAlarmResult> call, Throwable t) {
+                Toast.makeText(getContext(),"서버 연결 상태를 확인해주세요.",Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        listview1 = (ListView)layout.findViewById(R.id.listview1);
-        listview1.setAdapter(Adapter1);
-        Adapter1.addItem("김진영님이 집을 나갔습니다.","11:00PM");
-        Adapter1.addItem("김진영님이 다시 들어왔습니다.","12:35PM");
-        Adapter1.addItem("김진영님이 가출했습니다.","13:35PM");
 
-        listview2=(ListView)layout.findViewById(R.id.listview2);
-        listview2.setAdapter(Adapter2);
-        Adapter2.addItem("잘있어라","13:50PM");
-        Adapter2.addItem("세상아","15:50PM");
-
-        listview3=(ListView)layout.findViewById(R.id.listview3);
-        listview3.setAdapter(Adapter3);
-        Adapter3.addItem("나","11:00PM");
-        Adapter3.addItem("휴가좀","16:23PM");
-        Adapter3.addItem("다녀올게","09:00AM");
 
 
         ////////////////클릭하면 색깔바뀌게 하는 기능////////////////////////

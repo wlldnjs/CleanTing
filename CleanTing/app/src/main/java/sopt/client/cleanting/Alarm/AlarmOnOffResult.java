@@ -6,4 +6,5 @@ package sopt.client.cleanting.Alarm;
 
 public class AlarmOnOffResult {
     public String message;
+
 }
