@@ -38,8 +38,5 @@ public class RatingActivity extends AppCompatActivity {
         inputCommentEdit=(EditText)findViewById(R.id.inputCommentEdit);
 
 
-
-
-
     }
 }

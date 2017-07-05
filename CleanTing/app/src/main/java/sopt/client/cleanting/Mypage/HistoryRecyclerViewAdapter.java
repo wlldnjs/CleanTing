@@ -17,9 +17,9 @@ import sopt.client.cleanting.ViewHolder.MyCleanHistoryViewHolder;
 
 public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<MyCleanHistoryViewHolder> {
 
-    ArrayList<Historydata> historydatas;
+    ArrayList<MyHistoryData> historydatas;
 
-    public HistoryRecyclerViewAdapter(ArrayList<Historydata> itemdatas)
+    public HistoryRecyclerViewAdapter(ArrayList<MyHistoryData> itemdatas)
     {
         this.historydatas = itemdatas;
     }
@@ -36,14 +36,14 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<MyCleanHist
     @Override
     public void onBindViewHolder(final MyCleanHistoryViewHolder holder, final int position)
     {
-        holder.cleanername_tv.setText(historydatas.get(position).Cleanername);
-        holder.cleandate_tv.setText("청소일시 : "+ historydatas.get(position).Cleandate);
-        holder.cleantime_tv.setText("청소시간 : "+ historydatas.get(position).Cleantime);
+        holder.cleanername_tv.setText(historydatas.get(position).cleanerId + "클리너");
+        holder.cleandate_tv.setText("청소일시 : "+ historydatas.get(position).date);
+        holder.cleantime_tv.setText("청소시간 : "+ historydatas.get(position).startTime +" ~ " + historydatas.get(position).endTime);
 
         holder.rate_btn.setOnClickListener(new View.OnClickListener() { //평가하기 버튼
             @Override
             public void onClick(View v) {
-                String str = historydatas.get(position).Cleanername;
+                String str = historydatas.get(position).cleanerId;
                 Intent intent = new Intent(v.getContext(),RatingActivity.class);
                 intent.putExtra(str,"name");
                 v.getContext().startActivity(intent);

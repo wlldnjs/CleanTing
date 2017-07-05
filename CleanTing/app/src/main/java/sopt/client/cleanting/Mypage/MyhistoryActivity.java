@@ -7,19 +7,28 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 public class MyhistoryActivity extends AppCompatActivity {
 
     private RecyclerView historyrecyclerView;
-    private ArrayList<Historydata> historydatas;
+    private ArrayList<MyHistoryData> historydatas;
     private HistoryRecyclerViewAdapter historyrecyclerAdapter;
     private LinearLayoutManager layoutManager;
+
+    NetworkService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myhistory);
+
+        service = ApplicationController.getInstance().getNetworkService();
 
         historyrecyclerView = (RecyclerView)findViewById(R.id.HistoryRecyclerview);
         historyrecyclerView.setHasFixedSize(true);
@@ -28,16 +37,22 @@ public class MyhistoryActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);             //리니어레이아웃의 형태이면 방향은 수직
         historyrecyclerView.setLayoutManager(layoutManager);
 
-        historydatas = new ArrayList<Historydata>();                         //사용자 정의 데이터를 갖는 arraylist
-        historydatas.add(new Historydata("박클리너1","2017.06.28","9:00 - 17:00"));
-        historydatas.add(new Historydata("박클리너2","2017.06.28","9:00 - 17:00"));
-        historydatas.add(new Historydata("박클리너3","2017.06.28","9:00 - 17:00"));
-        historydatas.add(new Historydata("박클리너3","2017.06.28","9:00 - 17:00"));
-        historydatas.add(new Historydata("박클리너3","2017.06.28","9:00 - 17:00"));
-        historydatas.add(new Historydata("박클리너3","2017.06.28","9:00 - 17:00"));
-        historydatas.add(new Historydata("박클리너3","2017.06.28","9:00 - 17:00"));
-        historydatas.add(new Historydata("박클리너3","2017.06.28","9:00 - 17:00"));
-        historyrecyclerAdapter = new HistoryRecyclerViewAdapter(historydatas);
-        historyrecyclerView.setAdapter(historyrecyclerAdapter);
+        Call<MyhistoryResult> myhistoryResultCall = service.getMyHistoryResult("bumma");
+        myhistoryResultCall.enqueue(new Callback<MyhistoryResult>() {
+            @Override
+            public void onResponse(Call<MyhistoryResult> call, Response<MyhistoryResult> response) {
+                if(response.isSuccessful())
+                {
+                    historydatas = response.body().ret;
+                    historyrecyclerAdapter = new HistoryRecyclerViewAdapter(historydatas);
+                    historyrecyclerView.setAdapter(historyrecyclerAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MyhistoryResult> call, Throwable t) {
+
+            }
+        });
     }
 }

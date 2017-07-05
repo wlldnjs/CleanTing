@@ -16,9 +16,11 @@
         android:paddingLeft="10dp">
 
         <TextView
+            android:layout_centerVertical="true"
             android:id="@+id/H_cleanername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#333333"
             android:text="클리너 이름"
             android:textSize="17sp" />
 

@@ -48,6 +48,7 @@ import sopt.client.cleanting.Mypage.ModifyPasswordResult;
 import sopt.client.cleanting.Mypage.ModifyUserAddressData;
 import sopt.client.cleanting.Mypage.ModifyUserAddressResult;
 import sopt.client.cleanting.Mypage.ModifyUserPhoneResult;
+import sopt.client.cleanting.Mypage.MyhistoryResult;
 import sopt.client.cleanting.Mypage.WithdrawResult;
 
 /**
@@ -170,6 +171,8 @@ public interface NetworkService {
 
     // 6-1 이용내역 조회
     /**API 수정중*/
+    @GET("mypage/usage/{userId}")
+    Call<MyhistoryResult> getMyHistoryResult(@Path("userId") String userId);
 
     // 6-2 회원정보 수정(핸드폰번호)
     @PUT("mypage/phone/{userId}")
