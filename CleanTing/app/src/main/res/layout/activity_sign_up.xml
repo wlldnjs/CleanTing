@@ -16,12 +16,8 @@
         android:orientation="horizontal"
         android:id="@+id/layout_signup"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <ImageView
-            android:src="@drawable/back"
-            android:id="@+id/before"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:layout_height="50dp">
+
 <RelativeLayout
     android:gravity="center"
     android:layout_width="match_parent"
@@ -236,28 +232,31 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_weight="1"
+        android:layout_marginBottom="13dp"
         android:id="@+id/layout_goto_login"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
         <TextView
-            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_weight="1"
-            android:textSize="11dp"
             android:text="이미 클린팅 회원인가요?"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
             android:textColor="@android:color/black"
-            android:layout_alignParentRight="true"
-            android:text="로그인 하러가기"
-            android:layout_weight="1"
+            android:textSize="13sp" />
+
+        <TextView
             android:id="@+id/to_login"
-            android:src="@drawable/go_login"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1"
+            android:src="@drawable/go_login"
+            android:text="로그인 하러가기"
+            android:textColor="@android:color/black" />
     </RelativeLayout>
 </LinearLayout>
 

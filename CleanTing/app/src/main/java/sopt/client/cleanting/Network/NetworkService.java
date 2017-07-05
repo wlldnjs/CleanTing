@@ -71,7 +71,7 @@ public interface NetworkService {
 
     // 1-4 아이디 찾기
     @GET("members/id/{phone}")
-    Call<FindIdResult> getFindIdResult(@Path("userId") String userId);
+    Call<FindIdResult> getFindIdResult(@Path("phone") String phone);
 
     // 1-5 핸드폰 번호 인증
     @PUT("members/phone/{phone}")
@@ -80,10 +80,6 @@ public interface NetworkService {
     // 1-6 비밀번호 수정
     @PUT("members/pwd/{phone}")
     Call<ModifyPasswordResult> getModifyPasswordResult(@Path("pwd") String pwd);
-
-    // 1-7 회원 탈퇴
-    @DELETE("members/withdraw/{userId}")
-    Call<WithdrawResult> getWithdrawResult(@Path("userId") String userId);
 
     // 2-1 팅 생성하기
     @POST("ting")
@@ -185,4 +181,9 @@ public interface NetworkService {
     // 6-4 회원정보 수정(비밀번호)
     @PUT("mypage/pwd/{userId}")
     Call<ModifyPasswordResult> getModifyPasswordResult(@Path("userId") String userId, @Header("pwd") String pwd);
+
+    // 6-5 회원 탈퇴
+    @DELETE("mypage/withdraw/{userId}")
+    Call<WithdrawResult> getWithdrawResult(@Path("userId") String userId);
+
 }

@@ -3,7 +3,6 @@ package sopt.client.cleanting.Mypage;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +24,7 @@ public class ChangeInfoActivity extends AppCompatActivity {
 
     private CustomDialog2 mCustomDialog2;
     ImageView changephone;
-    Button button_pw,button_phonenumber,button_address;
+    ImageView button_pw,button_phonenumber,button_address;
     NetworkService service;
     TextView text_phonenumber;
     EditText password1,password2;
@@ -39,9 +38,9 @@ public class ChangeInfoActivity extends AppCompatActivity {
 
         changephone = (ImageView)findViewById(changeimg);
 
-        button_pw = (Button)findViewById(R.id.button_pw);
-        button_phonenumber=(Button)findViewById(R.id.button_phonenumber);
-        button_address=(Button)findViewById(R.id.button_address);
+        button_pw = (ImageView) findViewById(R.id.button_pw);
+        button_phonenumber=(ImageView)findViewById(R.id.button_phonenumber);
+        button_address=(ImageView)findViewById(R.id.button_address);
 
 
         password1 = (EditText)findViewById(R.id.password1);

@@ -6,5 +6,5 @@ package sopt.client.cleanting.Main.Login;
 
 public class FindIdResult {
     public String message;
-    public String result;
+    public FindData result;
 }

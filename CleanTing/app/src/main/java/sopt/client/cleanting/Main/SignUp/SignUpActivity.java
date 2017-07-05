@@ -38,7 +38,6 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         service = ApplicationController.getInstance().getNetworkService();
 
-        before=(ImageView)findViewById(R.id.before);
         button_cite=(ImageView) findViewById(R.id.button_cite);
         button_confirm=(ImageView)findViewById(R.id.button_confirm);
         button_address=(ImageView)findViewById(R.id.button_address);
@@ -94,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        button_address.setOnClickListener(new View.OnClickListener() {
+        button_address.setOnClickListener(new View.OnClickListener() {  //주소 검색 버튼
             @Override
             public void onClick(View v) {
 
@@ -221,14 +220,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        before.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(getBaseContext(),LoginActivity.class);
 
-                startActivity(intent);
-            }
-        });
 
 
 

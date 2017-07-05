@@ -26,7 +26,7 @@
         <EditText
             android:id="@+id/edit_phonenumber"
             android:hint="핸드폰 번호"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/button_request_citenumber"
@@ -41,7 +41,7 @@
         <EditText
             android:hint="인증번호"
             android:id="@+id/edit_citenumber"
-            android:layout_width="310dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/button_find"
@@ -65,7 +65,7 @@
         <EditText
             android:id="@+id/new_edit_phonenumber"
             android:hint="핸드폰 번호"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/new_button_citenumber"
@@ -80,7 +80,7 @@
         <EditText
             android:hint="인증번호"
             android:id="@+id/new_edit_citenumber"
-            android:layout_width="310dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/new_button_find"

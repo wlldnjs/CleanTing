@@ -43,6 +43,14 @@ public class LoginActivity extends AppCompatActivity {
         Findpassword_img = (ImageView) findViewById(R.id.Findpassword_tv);
         checkBox = (CheckBox)findViewById(R.id.checkbox) ;
 
+        Findpassword_img.setOnClickListener(new View.OnClickListener() {// 계정찾기 페이지로 넘어 감
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),FindAccountActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         Signup_img.setOnClickListener(new View.OnClickListener() {
             @Override

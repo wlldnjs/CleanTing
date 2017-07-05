@@ -8,12 +8,12 @@
     tools:context="sopt.client.cleanting.Mypage.ChangeInfoActivity">
 
     <LinearLayout
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical">
 
         <TextView
@@ -46,54 +46,56 @@
             android:orientation="horizontal">
 
             <TextView
-                android:textSize="15sp"
-                android:textColor="#333333"
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="휴대폰"
-                android:id="@+id/textView2" />
+                android:textColor="#333333"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/text_phonenumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#333333"
-                android:textSize="13sp"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@+id/changeimg"
-                android:text="010. 8548. 2268" />
+                android:text="010. 8548. 2268"
+                android:textColor="#333333"
+                android:textSize="13sp" />
 
             <ImageView
-                android:onClick="changeDialog"
                 android:id="@+id/changeimg"
                 android:layout_width="50dp"
                 android:layout_height="22dp"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/change"
-                android:layout_alignTop="@+id/textView2" />
+                android:layout_alignTop="@+id/textView2"
+                android:onClick="changeDialog"
+                android:src="@drawable/change" />
         </RelativeLayout>
+
         <View
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="35dp"
             android:layout_width="match_parent"
             android:layout_height="1.2dp"
             android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="9dp"
             android:alpha="0.5"
             android:background="#000000" />
-        <Button
+
+        <ImageView
             android:id="@+id/button_phonenumber"
-        android:text="핸드폰 번호 수정하기"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="35dp"
-        android:gravity="center"
-        android:src="@drawable/edit"
-        android:layout_width="250dp"
-        android:layout_height="37dp"
-        />
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:src="@drawable/change_phone"
+             />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,44 +103,48 @@
             android:layout_marginRight="35dp"
             android:layout_marginTop="34dp"
             android:orientation="horizontal">
+
             <TextView
-                android:textSize="15dp"
-                android:textColor="#333333"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="주소" />
+                android:text="주소"
+                android:textColor="#333333"
+                android:textSize="15dp" />
+
             <EditText
-                android:background="@null"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#333333"
-                android:textSize="13sp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:text="서울 특별시 노원구 공릉동 103-2002번지" />
+                android:background="@null"
+                android:text="서울 특별시 노원구 공릉동 103-2002번지"
+                android:textColor="#333333"
+                android:textSize="13sp" />
         </RelativeLayout>
+
         <View
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="35dp"
             android:layout_width="match_parent"
             android:layout_height="1.2dp"
             android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="35dp"
             android:layout_marginTop="9dp"
             android:alpha="0.5"
             android:background="#000000" />
-        <Button
+
+        <ImageView
             android:id="@+id/button_address"
-            android:text="주소 수정하기"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="35dp"
-            android:gravity="center"
-            android:src="@drawable/edit"
             android:layout_width="250dp"
             android:layout_height="37dp"
-            />
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:src="@drawable/change_adress"
+            android:text="주소 수정하기" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -147,61 +153,65 @@
             android:text="비밀번호"
             android:textColor="#333333"
             android:textSize="17sp" />
+
         <TextView
-            android:textSize="13sp"
-            android:textColor="@android:color/holo_red_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="(4~20자리로 숫자와 영문으로 입력해주세요)"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="13sp" />
+
         <EditText
-            android:inputType="textPassword"
             android:id="@+id/password1"
-            android:background="@null"
-            android:layout_marginTop="40dp"
-            android:hint="새 비밀번호"
-            android:layout_marginRight="35dp"
-            android:layout_marginLeft="35dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <View
-            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
+            android:layout_marginTop="40dp"
+            android:background="@null"
+            android:hint="새 비밀번호"
+            android:inputType="textPassword" />
+
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="35dp"
             android:alpha="0.5"
             android:background="#000000" />
 
         <EditText
-            android:inputType="textPassword"
-
             android:id="@+id/password2"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="34dp"
             android:background="@null"
-            android:hint="새 비밀번호 확인" />
+            android:hint="새 비밀번호 확인"
+            android:inputType="textPassword" />
 
         <View
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="35dp"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="35dp"
             android:alpha="0.5"
             android:background="#000000" />
-        <Button
+
+        <ImageView
             android:id="@+id/button_pw"
-            android:text="비밀번호 수정하기"
-          android:src="@drawable/edit"
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:layout_gravity="center"
             android:layout_marginBottom="26dp"
             android:layout_marginTop="50dp"
-            android:layout_gravity="center"
-            android:layout_width="250dp"
-            android:layout_height="37dp" />
+            android:src="@drawable/change_password"
+            android:text="비밀번호 수정하기" />
     </LinearLayout>
 
 </LinearLayout>
