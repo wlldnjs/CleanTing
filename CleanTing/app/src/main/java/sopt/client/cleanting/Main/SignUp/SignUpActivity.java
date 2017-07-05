@@ -23,7 +23,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
-import sopt.client.cleanting.Main.Login.LoginActivity;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
@@ -127,59 +126,45 @@ public class SignUpActivity extends AppCompatActivity {
                 id = edit_id.getText().toString();
                 confirm_password = edit_confirm_password.getText().toString();
 
-                information = name + " " + phonenumber + " " + password + " " + address;
-
                 //유효성검사
                 if (edit_name.length() == 0) {
                     Toast.makeText(getApplicationContext(), "이름 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_name.requestFocus();
                     return;
-                }
-                if (edit_id.length() == 0) {
+                }else if (edit_id.length() == 0) {
                     Toast.makeText(getApplicationContext(), "아이디를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_id.requestFocus();
                     return;
-                }
-
-                if (edit_phonenumber.length() == 0) {
+                }else if (edit_phonenumber.length() == 0) {
                     Toast.makeText(getApplicationContext(), "핸드폰 번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_phonenumber.requestFocus();
                     return;
-                }
-                if (edit_password.length() < 4 && edit_password.length() > 20) {
+                }else if (edit_password.length() < 4 && edit_password.length() > 20) {
                     Toast.makeText(getApplicationContext(), "비밀번호를 4~20자리로 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_password.requestFocus();
                     return;
-                }
-                if (edit_citenumber.length() == 0) {
-                    Toast.makeText(getApplicationContext(), "인증번호를 입력해주세요", Toast.LENGTH_SHORT).show();
-
-                }
-                if (address.equals("")) {
+//                }else if (edit_citenumber.length() == 0) {
+//                    Toast.makeText(getApplicationContext(), "인증번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+//                    return;
+                }else if (address.equals("")) {
                     Toast.makeText(getApplicationContext(), "주소를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_address.requestFocus();
                     return;
-                }
-                if (!Pattern.matches("^[가-힣]*$", name)) {
+                }else if (!Pattern.matches("^[가-힣]*$", name)) {
                     Toast.makeText(getApplicationContext(), "이름을 한글로 입력해주세요.", Toast.LENGTH_SHORT).show();
-                }
-
-                if (!Pattern.matches("^[a-zA-Z0-9]*$$", id)) {
+                    return;
+                }else if (!Pattern.matches("^[a-zA-Z0-9]*$$", id)) {
                     Toast.makeText(getApplicationContext(), "아이디를 영문과 숫자로만 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_name.requestFocus();
                     return;
-                }
-                if (!Pattern.matches("^[a-zA-Z0-9]*$", password)) {
+                }else if (!Pattern.matches("^[a-zA-Z0-9]*$", password)) {
                     Toast.makeText(getApplicationContext(), "비밀번호를 영문과 숫자로만 입력해주세요.", Toast.LENGTH_SHORT).show();
                     edit_password.requestFocus();
                     return;
-                }
-                if (checkbox.isChecked() == false) {
+                }else if (checkbox.isChecked() == false) {
                     Toast.makeText(getApplicationContext(), "위 약관에 동의해주세요", Toast.LENGTH_SHORT).show();
                     return;
-                }
-
-                if (!password.equals(confirm_password)) {
+                }else if (!password.equals(confirm_password)) {
                     Toast.makeText(getApplicationContext(), "비밀번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
@@ -233,8 +218,6 @@ public class SignUpActivity extends AppCompatActivity {
         to_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
