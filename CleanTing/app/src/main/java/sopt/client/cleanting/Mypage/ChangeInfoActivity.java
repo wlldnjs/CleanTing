@@ -1,5 +1,6 @@
 package sopt.client.cleanting.Mypage;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.util.regex.Pattern;
 
@@ -29,6 +32,11 @@ public class ChangeInfoActivity extends AppCompatActivity {
     TextView text_phonenumber;
     EditText password1,password2;
     EditText edit_phonenumber;
+
+    @Override    //  글씨체 적용
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

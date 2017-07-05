@@ -1,5 +1,6 @@
 package sopt.client.cleanting.Community;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.util.ArrayList;
 
@@ -29,6 +32,11 @@ public class CommunityFilterActivity extends AppCompatActivity {
     FindBulletinData Data = new FindBulletinData();
     BulletinPostData PostData = new BulletinPostData();
     ArrayList<BulletinCommentData> bulletinCommentDatas = new ArrayList<>();
+
+    @Override    //  글씨체 적용
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

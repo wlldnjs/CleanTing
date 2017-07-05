@@ -1,5 +1,6 @@
 package sopt.client.cleanting.MakeTing;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -45,6 +48,11 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     ImageView directimg;
     NetworkService service;
     String putdate;
+
+    @Override    //  글씨체 적용
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

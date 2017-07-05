@@ -1,5 +1,6 @@
 package sopt.client.cleanting.Mypage;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,6 +46,12 @@ public class RatingActivity extends AppCompatActivity {
     ImageView Rate_complete_btn;
     EditText inputCommentEdit;
     SendAddCleanerReviewData sendAddCleanerData;
+
+    @Override    //  글씨체 적용
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,6 +172,7 @@ public class RatingActivity extends AppCompatActivity {
                         if(response.isSuccessful())
                         {
                             Toast.makeText(getApplicationContext(),"리뷰 등록 성공",Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     }
                     @Override
