@@ -6,20 +6,28 @@
     android:layout_height="match_parent"
     tools:context="sopt.client.cleanting.Main.SplashActivity">
 
+        <ImageView
+            android:id="@+id/house"
+            android:src="@drawable/ggiipp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp" />
+        <ImageView
+            android:id="@+id/water"
+            android:src="@drawable/ppallae"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_alignTop="@+id/house"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="81dp" />
+
     <ImageView
-        android:id="@+id/house"
-        android:src="@drawable/ggiipp"
+        android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:layout_width="130dp"
-        android:layout_height="130dp" />
-    <ImageView
-        android:id="@+id/water"
-        android:src="@drawable/ppallae"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
-        android:layout_alignTop="@+id/house"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="81dp" />
+        android:layout_below="@+id/house"
+        android:src="@drawable/splash_bottom_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
