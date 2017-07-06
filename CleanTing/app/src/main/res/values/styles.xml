@@ -12,9 +12,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#cccccc</item>
         <item name="colorAccent">#333333</item>
-        <item name="colorControlNormal">#ffffff</item>
+        <item name="colorControlNormal">#333333</item>
     </style>
 
     <style name="RatingBar" parent="Theme.AppCompat">

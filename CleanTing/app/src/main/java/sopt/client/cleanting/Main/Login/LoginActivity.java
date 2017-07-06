@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import retrofit2.Call;
@@ -81,6 +83,9 @@ public class LoginActivity extends AppCompatActivity {
                     SendLoginData sendLoginData = new SendLoginData();
                     sendLoginData.userId = edit_id.getText().toString();
                     sendLoginData.pwd = edit_password.getText().toString();
+                    String token = FirebaseInstanceId.getInstance().getToken();
+                    sendLoginData.deviceToken = token;
+                    Log.d("FCM_Token", token);
 
                     Call<LoginResult> loginResultCall = service.getLoginResult(sendLoginData);
                     loginResultCall.enqueue(new Callback<LoginResult>() {
