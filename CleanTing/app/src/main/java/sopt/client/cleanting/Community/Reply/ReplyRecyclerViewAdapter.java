@@ -32,6 +32,8 @@ public class ReplyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
         this.bulletinPostData = bulletinPostData;
         this.commentDatas = commentDatas;
     }
+
+
     public ReplyRecyclerViewAdapter(Context context,BulletinPostData bulletinPostData,ArrayList<BulletinCommentData> commentDatas) {
         this.context = context;
         this.bulletinPostData = bulletinPostData;

@@ -18,6 +18,7 @@ public class BulletinSearchRecyclerAdapter extends RecyclerView.Adapter<Bulletin
     ArrayList<SearchBulletinData> SearchbulletinArrayList;
     private final View.OnClickListener clickListener;
 
+
     public BulletinSearchRecyclerAdapter(ArrayList<SearchBulletinData> itemdatas,View.OnClickListener clickListener) {
         this.clickListener = clickListener;
         this.SearchbulletinArrayList = itemdatas;

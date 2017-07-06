@@ -26,13 +26,13 @@
                             android:id="@+id/bulletin_name"
                             android:layout_centerVertical="true"
                             android:text="신림동 게시판"
-                            android:textSize="25sp"
+                            android:textSize="20dp"
                             android:layout_centerInParent="true"
                             android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <ImageView
-                            android:layout_marginRight="30dp"
+                            android:layout_marginRight="19dp"
                             android:layout_centerVertical="true"
                             android:layout_alignParentRight="true"
                             android:layout_gravity="center"
@@ -43,7 +43,7 @@
                     </RelativeLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1.2dp"
+                        android:layout_height="0.7dp"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="18sp"
                         android:alpha="0.5"
@@ -61,7 +61,6 @@
                     android:visibility="invisible"
                     android:id="@+id/frameLinear"
                     android:layout_marginTop="25dp"
-                    android:layout_marginRight="15dp"
                     android:layout_gravity="right"
                     android:gravity="right"
                     android:orientation="vertical"
@@ -72,20 +71,20 @@
                         android:gravity="center"
                         android:text="검색"
                         android:textSize="18dp"
-                        android:layout_width="180dp"
+                        android:layout_width="175dp"
                         android:layout_height="50dp" />
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.8dp"
+                        android:layout_height="1.2dp"
                         android:layout_centerInParent="true"
-                        android:alpha="0.1"
-                        android:background="#333333" />
+                        android:alpha="0.4"
+                        android:background="#808080" />
                     <TextView
                         android:id="@+id/B_filter"
                         android:textSize="18dp"
                         android:gravity="center"
                         android:text="내 글 모아보기"
-                        android:layout_width="180dp"
+                        android:layout_width="175dp"
                         android:layout_height="50dp" />
                 </LinearLayout>
             </FrameLayout>

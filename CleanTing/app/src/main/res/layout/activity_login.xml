@@ -173,26 +173,28 @@
     </LinearLayout>
 
     <LinearLayout
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
         <ImageView
-            android:src="@drawable/keep_me"
             android:layout_width="100dp"
-            android:layout_height="30dp" />
+            android:layout_height="30dp"
+            android:src="@drawable/keep_me" />
+
         <CheckBox
-            android:background="@drawable/checkbox"
+            android:buttonTint="#333333"
             android:id="@+id/checkbox"
-            android:textColor="#ffffff"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
+
         <ImageView
             android:layout_marginTop="52dp"
             android:layout_gravity="center"

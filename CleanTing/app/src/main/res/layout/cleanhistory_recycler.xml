@@ -6,7 +6,7 @@
     android:layout_marginTop="15dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="sopt.client.cleanting.Mypage.LeaveActivity">
+    tools:context="sopt.client.cleanting.Mypage.MyhistoryActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,10 +26,9 @@
 
         <ImageView
             android:id="@+id/rate_btn"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
             android:src="@drawable/evaluation" />
     </RelativeLayout>
 
@@ -55,10 +54,9 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1.2dp"
+        android:layout_height="0.7dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
-        android:alpha="0.5"
-        android:background="#000000" />
+        android:background="#AEA5A5" />
 
 </LinearLayout>

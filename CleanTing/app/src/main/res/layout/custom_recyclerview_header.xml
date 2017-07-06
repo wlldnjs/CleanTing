@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_custom_list_view"
     android:layout_height="wrap_content">
 
@@ -16,13 +18,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                app:font="Normal"
                 android:id="@+id/BulletinDetail_titile"
                 android:textColor="#333333"
-                android:text="휴지 공동 구매 하실분"
                 android:textSize="20sp"
                 android:layout_weight="0.7"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="MissingPrefix" />
             <TextView
                 android:id="@+id/BulletinDetail_date"
                 android:textSize="11sp"
@@ -55,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="60dp">
             <ImageView
                 android:src="@drawable/comment_icon"
                 android:layout_centerVertical="true"

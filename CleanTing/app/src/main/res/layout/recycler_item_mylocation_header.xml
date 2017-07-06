@@ -48,6 +48,7 @@
             android:textColor="#333333"/>
 
         <TextView
+            android:textColor="#333333"
             android:id="@+id/my_location_sort"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -71,11 +72,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:textColor="#333333"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="청소 일시"/>
             <TextView
+                android:textColor="#333333"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
