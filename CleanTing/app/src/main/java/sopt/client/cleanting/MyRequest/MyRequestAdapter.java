@@ -75,6 +75,7 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             MyLocationViewHolder myLocationViewHolder = (MyLocationViewHolder)holder;
             myLocationViewHolder.myLocationDay.setText(currentItem.date);
             myLocationViewHolder.myLocationTime.setText(currentItem.startTime +"~" +currentItem.endTime);
+            Toast.makeText(context, currentItem.image, Toast.LENGTH_SHORT).show();
             if(currentItem.cnt.equals("1")){
                 myLocationViewHolder.myLocationMember3.setImageResource(R.drawable.man_line);
                 myLocationViewHolder.myLocationMember2.setImageResource(R.drawable.man_line);

@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import sopt.client.cleanting.R;
 
 /**
@@ -21,9 +23,9 @@ import sopt.client.cleanting.R;
 public class MyRequestDetailFragment extends Fragment {
     Context context;
     TextView cleaner, date, time, memberCount;
-    ImageView member1, member2, member3;
+    ImageView member1, member2, member3, cleanerImg;
     LinearLayout layout;
-    String userId, cleanerId, tingId, price, request, warning;
+    String userId, cleanerId, tingId, price, request, warning, image;
 
 
     public MyRequestDetailFragment() {
@@ -49,6 +51,7 @@ public class MyRequestDetailFragment extends Fragment {
         member2 = (ImageView)layout.findViewById(R.id.my_request_detail_member2);
         member3 = (ImageView)layout.findViewById(R.id.my_request_detail_member3);
         memberCount = (TextView)layout.findViewById(R.id.my_request_detail_member_count);
+        cleanerImg = (ImageView)layout.findViewById(R.id.my_request_cleaner_img);
 
         cleanerId = getArguments().getString("cleanerId");
         tingId = getArguments().getString("tingId");
@@ -58,6 +61,8 @@ public class MyRequestDetailFragment extends Fragment {
         request = getArguments().getString("request");
         warning = getArguments().getString("warning");
         date.setText(getArguments().getString("date"));
+        image = getArguments().getString("cleanerImg");
+        Glide.with(context).load(image).into(cleanerImg);
         time.setText(getArguments().getString("startTime") +"~" +getArguments().getString("endTime"));
         memberCount.setText(getArguments().getString("cnt") +"명/3명");
         if(getArguments().getString("cnt").equals("2")){

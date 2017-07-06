@@ -222,6 +222,7 @@ public class MyRequestFragment extends Fragment{
         bundle.putString("warning", requestTingDetailResultData.warning);
         bundle.putString("name", requestTingDetailResultData.name);
         bundle.putString("phone", requestTingDetailResultData.phone);
+        bundle.putString("cleanerImg", requestTingDetailResultData.image);
         return bundle;
     }
 

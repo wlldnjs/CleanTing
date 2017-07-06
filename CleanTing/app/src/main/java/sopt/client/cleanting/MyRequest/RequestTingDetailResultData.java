@@ -17,4 +17,5 @@ public class RequestTingDetailResultData{
     public String warning;
     public String name;
     public String phone;
+    public String image;
 }
