@@ -43,6 +43,8 @@ import sopt.client.cleanting.MakeTing.SearchList.SearchRecyclerAdapter;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+
 public class ChooseCleanerActivity extends AppCompatActivity implements TextView.OnEditorActionListener {
 
     TextView SmallAdress;
@@ -128,7 +130,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         Rcleaners = new ArrayList<RecentCleanerDataArray>();                         //사용자 정의 데이터를 갖는 arraylist
         searchCleanerDataArrayList1 = new ArrayList<SearchCleanerData>();
 
-        Call<RecentCleanerResult> recentCleanerResultCall = service.getRecentCleanerResult("bumma");
+        Call<RecentCleanerResult> recentCleanerResultCall = service.getRecentCleanerResult(loginUserDatas.userId);
         recentCleanerResultCall.enqueue(new Callback<RecentCleanerResult>() {
             @Override
             public void onResponse(Call<RecentCleanerResult> call, Response<RecentCleanerResult> response) {
@@ -162,9 +164,9 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         spinner.setAdapter(adtRegion);
 
         sendSearchLocationCleanerData = new SendSearchLocationCleanerData();
-        sendSearchLocationCleanerData.userId = "bumma"; //loginUserDatas.userId;
-        sendSearchLocationCleanerData.userLat = "37.501284"; //loginUserDatas.lat;
-        sendSearchLocationCleanerData.userLng = "127.034018"; //loginUserDatas.lng;
+        sendSearchLocationCleanerData.userId = loginUserDatas.userId;
+        sendSearchLocationCleanerData.userLat = loginUserDatas.lat;
+        sendSearchLocationCleanerData.userLng = loginUserDatas.lng;
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

@@ -41,7 +41,7 @@ public class InstanceIDListenerService extends FirebaseInstanceIdService{
 
         //request
         Request request = new Request.Builder()
-                .url("http://서버주소/fcm/register.php")
+                .url("http://52.79.221.92:3000/fcm/register.php")
                 .post(body)
                 .build();
 

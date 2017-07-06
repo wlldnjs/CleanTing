@@ -24,6 +24,8 @@ import sopt.client.cleanting.Community.Reply.ReplyRecyclerViewAdapter;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+
 public class CommunityBulletinDetailActivity extends AppCompatActivity {
 
     ImageView send;
@@ -90,7 +92,7 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
 
                 addcomment = new BulletinAddCommentData();
 //                addcomment.userId = loginUserDatas.userId;
-                addcomment.userId = "bumma";
+                addcomment.userId = loginUserDatas.userId;
                 addcomment.content = str;
 
                 final Call<BulletinAddCommentResult> bulletinAddCommentResultCall = service.getBulletinAddCommentResult(postData.postId,addcomment);

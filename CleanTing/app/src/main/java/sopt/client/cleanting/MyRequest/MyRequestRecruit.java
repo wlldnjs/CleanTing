@@ -23,6 +23,8 @@ import sopt.client.cleanting.MakeTing.MakeTingRequestResultData;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+
 public class MyRequestRecruit extends AppCompatActivity {
     ImageView man1, man2, man3, cleanerImg, star1, star2, star3, star4, star5,
             cond, window, ref, commitBtn;
@@ -216,7 +218,7 @@ public class MyRequestRecruit extends AppCompatActivity {
                     request = "0";
                 }
                 MakeTingRequestResultData makeTingRequestResultData = new MakeTingRequestResultData();
-                makeTingRequestResultData.userId = "bumma";
+                makeTingRequestResultData.userId = loginUserDatas.userId;
                 makeTingRequestResultData.request = request;
                 makeTingRequestResultData.warning = warningEdit.getText().toString();
                 makeTingRequestResultData.price = "30000";

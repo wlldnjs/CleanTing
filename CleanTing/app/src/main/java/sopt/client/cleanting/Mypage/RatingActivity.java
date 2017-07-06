@@ -22,6 +22,8 @@ import sopt.client.cleanting.Cleanner.SearchCleanerDetailResult;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+
 public class RatingActivity extends AppCompatActivity {
 
     //이름 id값이랑 같게 씀!
@@ -163,7 +165,7 @@ public class RatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sendAddCleanerData.content = inputCommentEdits.getText().toString();
-                sendAddCleanerData.userId = "bumma";
+                sendAddCleanerData.userId = loginUserDatas.userId;
                 sendAddCleanerData.rating = ratingnum;
                 Call<AddCleanerReviewResult> addCleanerReviewResultCall = service.getAddCleanerReviewResult(cleanerId,sendAddCleanerData);
                 addCleanerReviewResultCall.enqueue(new Callback<AddCleanerReviewResult>() {

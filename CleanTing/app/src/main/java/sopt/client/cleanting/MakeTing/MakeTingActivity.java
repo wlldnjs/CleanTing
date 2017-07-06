@@ -32,6 +32,8 @@ import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+
 public class MakeTingActivity extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout selectDate1, selectTime1, selectRequest1, selectWorning1, selectCleaner1;
     LinearLayout selectDate2, selectTime2, selectRequest2, selectWorning2, selectCleaner2;
@@ -231,7 +233,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 MakeTingResultData makeTingResultData = new MakeTingResultData();
-                makeTingResultData.userId = "bumma";
+                makeTingResultData.userId = loginUserDatas.userId;
                 makeTingResultData.date = date.getText().toString();
                 putdate = date.getText().toString();
                 if(makeTingResultData.date.equals("선택해 주세요")){

@@ -29,6 +29,7 @@ import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 import static android.app.Activity.RESULT_OK;
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 import static sopt.client.cleanting.Main.MainActivity.REQUEST_JOIN;
 
 /**
@@ -71,7 +72,7 @@ public class MyRequestFragment extends Fragment{
         SendTingLocationData sendTingLocationData = new SendTingLocationData();
         sendTingLocationData.userLat = "37.5218849";
         sendTingLocationData.userLng = "126.8513412";
-        Call<MakeTingLocationResult> makeTingLocationResultCall = service.getMakeTingLocationResult("bumma",sendTingLocationData);
+        Call<MakeTingLocationResult> makeTingLocationResultCall = service.getMakeTingLocationResult(loginUserDatas.userId,sendTingLocationData);
         makeTingLocationResultCall.enqueue(new Callback<MakeTingLocationResult>() {
             @Override
             public void onResponse(Call<MakeTingLocationResult> call, Response<MakeTingLocationResult> response) {
@@ -127,7 +128,7 @@ public class MyRequestFragment extends Fragment{
         }
     };
     public ArrayList<Bundle> getBundleList(){
-        Call<RequestTingDetailResult> requestTingDetailResultCall = service.getRequestTingDetailResult("bumma");
+        Call<RequestTingDetailResult> requestTingDetailResultCall = service.getRequestTingDetailResult(loginUserDatas.userId);
         requestTingDetailResultCall.enqueue(new Callback<RequestTingDetailResult>() {
             @Override
             public void onResponse(Call<RequestTingDetailResult> call, Response<RequestTingDetailResult> response) {

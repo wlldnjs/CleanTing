@@ -28,6 +28,7 @@ import sopt.client.cleanting.MakeTing.EndTingResult;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 import static sopt.client.cleanting.Main.MainActivity.REQUEST_MODIFY_TING;
 import static sopt.client.cleanting.MyRequest.MyRequestFragment.refreshView;
 
@@ -207,7 +208,7 @@ public class MyRequestDetailActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         EndTingData endTingData = new EndTingData();
-                        endTingData.userId = "bumma";
+                        endTingData.userId = loginUserDatas.userId;
                         Call<EndTingResult> endTingResultCall = service.getCancelTingResult(tingId,endTingData);
                         endTingResultCall.enqueue(new Callback<EndTingResult>() {
                             @Override

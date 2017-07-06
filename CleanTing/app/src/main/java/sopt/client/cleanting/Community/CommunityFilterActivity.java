@@ -20,6 +20,8 @@ import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+
 public class CommunityFilterActivity extends AppCompatActivity {
 
     private RecyclerView CFrecyclerView;
@@ -53,7 +55,7 @@ public class CommunityFilterActivity extends AppCompatActivity {
         CFrecyclerView.setLayoutManager(layoutManager2);
 
         bulletinArrayList = new ArrayList<SearchBulletinData>();                         //사용자 정의 데이터를 갖는 arraylist
-        Call<SearchBulletinResult> searchBulletinResultCall = service.getSearchMyBulletinResult("bumma");
+        Call<SearchBulletinResult> searchBulletinResultCall = service.getSearchMyBulletinResult(loginUserDatas.userId);
         searchBulletinResultCall.enqueue(new Callback<SearchBulletinResult>() {
             @Override
             public void onResponse(Call<SearchBulletinResult> call, Response<SearchBulletinResult> response)

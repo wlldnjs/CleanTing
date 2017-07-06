@@ -17,6 +17,8 @@ import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+
 public class MyhistoryActivity extends AppCompatActivity {
 
     private RecyclerView historyrecyclerView;
@@ -45,7 +47,7 @@ public class MyhistoryActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);             //리니어레이아웃의 형태이면 방향은 수직
         historyrecyclerView.setLayoutManager(layoutManager);
 
-        Call<MyhistoryResult> myhistoryResultCall = service.getMyHistoryResult("bumma");
+        Call<MyhistoryResult> myhistoryResultCall = service.getMyHistoryResult(loginUserDatas.userId);
         myhistoryResultCall.enqueue(new Callback<MyhistoryResult>() {
             @Override
             public void onResponse(Call<MyhistoryResult> call, Response<MyhistoryResult> response) {

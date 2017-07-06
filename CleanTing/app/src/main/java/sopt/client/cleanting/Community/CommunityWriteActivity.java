@@ -15,6 +15,8 @@ import sopt.client.cleanting.Application.ApplicationController;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+
 public class CommunityWriteActivity extends AppCompatActivity {
 
     EditText BulletinInputTitle;
@@ -39,7 +41,7 @@ public class CommunityWriteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String Btitle = BulletinInputTitle.getText().toString();
                 String Bcontent = BulletinInputContent.getText().toString();
-                String Buserid = "bumma";
+                String Buserid = loginUserDatas.userId;
                 //   서버한테 데이터 보내기
                 BulletinAddPostData bulletinAddPostData = new BulletinAddPostData();
 //                bulletinAddPostData = new BulletinAddPostData();
