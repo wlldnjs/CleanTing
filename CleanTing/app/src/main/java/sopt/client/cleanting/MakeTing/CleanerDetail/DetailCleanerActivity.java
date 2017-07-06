@@ -1,5 +1,6 @@
 package sopt.client.cleanting.MakeTing.CleanerDetail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -45,6 +45,7 @@ public class DetailCleanerActivity extends AppCompatActivity {
     ImageView dstar5;
 
     ImageView detail_cleaner_img;
+    String cleanerid;
 
     public ArrayList<CleanerReviewData> cleanerReviewDatas;
 
@@ -85,7 +86,7 @@ public class DetailCleanerActivity extends AppCompatActivity {
 
 //        Toast.makeText(this,cleanerReviewDatas.get(0).content,Toast.LENGTH_SHORT).show();
 
-        String cleanerid = getIntent().getStringExtra("cleanerid");
+        cleanerid = getIntent().getStringExtra("cleanerid");
         try {
             if(getIntent().getStringExtra("review").equals("ok")){
                 imageView.setVisibility(View.GONE);
@@ -93,7 +94,6 @@ public class DetailCleanerActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-        Toast.makeText(DetailCleanerActivity.this, cleanerid, Toast.LENGTH_SHORT).show();
         Call<SearchCleanerDetailResult> searchCleanerDetailResultCall2 = service.getSearchCleanerDetailResult(cleanerid); //cleanerid
         searchCleanerDetailResultCall2.enqueue(new Callback<SearchCleanerDetailResult>() {
             @Override
@@ -105,14 +105,10 @@ public class DetailCleanerActivity extends AppCompatActivity {
                     Glide.with(getApplicationContext()).load(response.body().result.cleaner.image).into(detail_cleaner_img);
                     cleanerReviewDatas = response.body().result.review;
 
-                    Toast.makeText(getApplicationContext(),""+cleanerReviewDatas.size() +", " +response.body().result.cleaner.rate,Toast.LENGTH_SHORT).show();
-
                     Creviewnum.setText("리뷰 : " + response.body().result.cleaner.review_cnt + "건");
                     Cage.setText("나이 : " + response.body().result.cleaner.age + "세");
                     Ccareer.setText("경력 : " + response.body().result.cleaner.career + "개월");
                     ratenum.setText(response.body().result.cleaner.review_cnt + "명");
-
-                    Toast.makeText(getApplicationContext(),response.body().result.cleaner.rate,Toast.LENGTH_SHORT).show();
 
                     int a = Integer.parseInt(response.body().result.cleaner.rate);
                     int b = Integer.parseInt(response.body().result.cleaner.review_cnt);
@@ -171,7 +167,10 @@ public class DetailCleanerActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent();
+                intent.putExtra("cleanerId", cleanerid);
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
 

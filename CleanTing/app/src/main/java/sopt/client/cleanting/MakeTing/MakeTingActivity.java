@@ -1,5 +1,4 @@
 package sopt.client.cleanting.MakeTing;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -132,7 +131,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         timeData.add("13:00");
         timeData.add("13:30");
 
-        arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, timeData);
+        arrayAdapter = new ArrayAdapter(getApplicationContext(),R.layout.timelist, timeData);
+
         listView1.setAdapter(arrayAdapter);
 
         selectDate1.setOnClickListener(this);
@@ -246,7 +246,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 date.setText("" + year + "-" + (month + 1) + "-" + dayOfMonth);
-
+                putdate = date.getText().toString();
                 SendSearchLocationCleanerData sendSearchLocationCleanerData = new SendSearchLocationCleanerData();
                 sendSearchLocationCleanerData.userId = loginUserDatas.userId;
                 sendSearchLocationCleanerData.order = "1";
@@ -433,8 +433,9 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
+            Toast.makeText(this, getIntent().getStringExtra("cleanerId"), Toast.LENGTH_SHORT).show();
             if(requestCode == REQUEST_SELECT_CLEANER){
-                cleanerId = getIntent().getStringExtra("cleanerId");
+                cleanerId = data.getStringExtra("cleanerId");
                 refreshCleaner();
             }
         }
@@ -451,8 +452,12 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                     Glide.with(getApplicationContext()).load(response.body().result.cleaner.image).into(cleanerImg);
                     String rate = response.body().result.cleaner.rate;
                     String cnt = response.body().result.cleaner.review_cnt;
-                    int rating = Integer.parseInt(rate)/Integer.parseInt(cnt);
-                    if(rating <= 0.5){
+                    int rating = 0;
+                    if(!rate.equals("0") && !cnt.equals("0")){
+                        rating = Integer.parseInt(rate)/Integer.parseInt(cnt);
+                    }
+
+                    if(rating <= 1){
                         star2.setImageResource(R.drawable.star_line);
                         star3.setImageResource(R.drawable.star_line);
                         star4.setImageResource(R.drawable.star_line);

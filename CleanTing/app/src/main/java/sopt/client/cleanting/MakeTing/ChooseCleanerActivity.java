@@ -281,7 +281,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
 
             Intent intent = new Intent(getApplicationContext(), DetailCleanerActivity.class);
             intent.putExtra("cleanerid", Rcleaners.get(itemPosition).cleanerId);
-            startActivity(intent);
+            startActivityForResult(intent,5005);
 
 //            Toast.makeText(getApplicationContext(), itemPosition + "번 리스트 클릭!!", Toast.LENGTH_SHORT).show();
         }
@@ -293,7 +293,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
 
             Intent intent = new Intent(getApplicationContext(), DetailCleanerActivity.class);
             intent.putExtra("cleanerid", Lcleaners.get(itemPosition).cleanerId);
-            startActivity(intent);
+            startActivityForResult(intent,5005);
 
 //            Toast.makeText(getApplicationContext(), itemPosition + "번 리스트 클릭!!", Toast.LENGTH_SHORT).show();
         }
@@ -304,7 +304,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
 
             Intent intent = new Intent(getApplicationContext(), DetailCleanerActivity.class);
             intent.putExtra("cleanerid", searchCleanerDataArrayList1.get(itemPosition).cleanerId);
-            startActivity(intent);
+            startActivityForResult(intent,5005);
 
 //            Toast.makeText(getApplicationContext(), itemPosition + "번 리스트 클릭!!", Toast.LENGTH_SHORT).show();
         }
@@ -461,9 +461,11 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
-            Intent intent = new Intent();
-            intent.putExtra("cleanerId", );
-            setResult(RESULT_OK);
+                Toast.makeText(ChooseCleanerActivity.this, "requsetCode 5005," +data.getStringExtra("cleanerId"), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.putExtra("cleanerId", data.getStringExtra("cleanerId"));
+                setResult(RESULT_OK,intent);
+                finish();
         }
     }
 
