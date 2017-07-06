@@ -1,6 +1,7 @@
 package sopt.client.cleanting.Community.Reply;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,11 @@ public class ReplyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
             headerViewHolder.BulletinDetailDate.setText(bulletinPostData.date.toString());
             headerViewHolder.BulletinDetailTime.setText(bulletinPostData.time.toString());
             headerViewHolder.BulletinDetailReplynum.setText(bulletinPostData.comment_cnt.toString());
+
+            Typeface typeFace2 = Typeface.createFromAsset(context.getAssets(),"NanumSquareR.ttf");
+            headerViewHolder.BulletinDetailTitle.setTypeface(typeFace2);
+            headerViewHolder.BulletinDetailContent.setTypeface(typeFace2);
+            headerViewHolder.BulletinDetailReplynum.setTypeface(typeFace2);
         }
         else if(holder instanceof CBaseViewHolder)
         {

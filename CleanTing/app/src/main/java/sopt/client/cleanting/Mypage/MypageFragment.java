@@ -19,6 +19,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import sopt.client.cleanting.Alarm.AlarmOnOffResult;
 import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.Main.Login.LoginActivity;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
@@ -111,12 +112,10 @@ public class MypageFragment extends Fragment{
         Logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ///////////////////
-                //////             로그 아웃 코드
-                ////////////////////
-
                 Toast.makeText(getContext(),"로그아웃",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getContext(),LoginActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(i);
             }
         });
 

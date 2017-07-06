@@ -48,9 +48,8 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-
             <EditText
-
+                android:background="@null"
                 android:text="010-2222-2222"
                 android:id="@+id/text_phonenumber"
                 android:layout_width="wrap_content"

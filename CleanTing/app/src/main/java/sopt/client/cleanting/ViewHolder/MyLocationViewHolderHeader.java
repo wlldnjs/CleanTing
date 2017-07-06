@@ -14,9 +14,16 @@ import sopt.client.cleanting.R;
 public class MyLocationViewHolderHeader extends RecyclerView.ViewHolder{
     public TextView myLocationBtn;
     public static ViewPager viewPager;
+
+    public TextView tv18;
+    public  TextView tv28;
+
     public MyLocationViewHolderHeader(View itemView) {
         super(itemView);
         myLocationBtn = (TextView)itemView.findViewById(R.id.my_location_sort);
         viewPager = (ViewPager)itemView.findViewById(R.id.my_request_view_pager);
+
+        tv18 = (TextView)itemView.findViewById(R.id.textview18);
+        tv28 = (TextView)itemView.findViewById(R.id.textview28);
     }
 }

@@ -24,6 +24,5 @@ public class MyLocationViewHolder extends RecyclerView.ViewHolder{
         myLocationMember2 = (ImageView)itemView.findViewById(R.id.my_location_man2);
         myLocationMember3 = (ImageView)itemView.findViewById(R.id.my_location_man3);
 
-
     }
 }

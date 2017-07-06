@@ -1,12 +1,14 @@
 package sopt.client.cleanting.Main.Login;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.regex.Pattern;
@@ -27,6 +29,9 @@ public class FindAccountActivity extends AppCompatActivity {
     EditText new_password,edit_confirm_password;
     ImageView button_request_citenumber,button_find,new_button_citenumber,new_button_find,button_new_password;
     ImageView recreate;
+
+    TextView et1,et2,et3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +53,15 @@ public class FindAccountActivity extends AppCompatActivity {
         new_button_find=(ImageView)findViewById(R.id.new_button_find);
 
         recreate=(ImageView)findViewById(R.id.button_new_password);
+
+        et1 = (TextView)findViewById(R.id.et1);
+        et2 = (TextView)findViewById(R.id.et2);
+        et3 = (TextView)findViewById(R.id.et3);
+
+        Typeface typeFace = Typeface.createFromAsset(getAssets(),"Helvetica_.ttf");
+        et1.setTypeface(typeFace);
+        et2.setTypeface(typeFace);
+        et3.setTypeface(typeFace);
 
         //아이디찾기 인증번호 요청버튼
         button_request_citenumber.setOnClickListener(new View.OnClickListener() {
