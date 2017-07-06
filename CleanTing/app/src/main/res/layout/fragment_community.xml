@@ -92,7 +92,7 @@
 
         <ImageView
             android:layout_marginRight="19dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="80dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:src="@drawable/write_icon"

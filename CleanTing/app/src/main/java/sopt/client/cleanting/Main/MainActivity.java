@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.tsengvn.typekit.TypekitContextWrapper;
@@ -16,11 +17,12 @@ import sopt.client.cleanting.Mypage.MypageFragment;
 import sopt.client.cleanting.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    ImageView myRequestBtn, makeTingBtn, alarmBtn, mypageBtn;
+    public ImageView myRequestBtn, makeTingBtn, alarmBtn, mypageBtn;
     MyRequestFragment myRequestFragment;
     CommunityFragment communityFragment;
     AlarmFragment alarmFragment;
     MypageFragment mypageFragment;
+    public LinearLayout linearLayoutTab;
     int previousBtn = 1;
     public static int REQUEST_JOIN = 1000;
     public static int REQUEST_MAKETING = 1001;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         makeTingBtn = (ImageView)findViewById(R.id.make_ting_btn);
         alarmBtn = (ImageView)findViewById(R.id.alarm_btn);
         mypageBtn = (ImageView)findViewById(R.id.mypage_btn);
+        linearLayoutTab = (LinearLayout)findViewById(R.id.main_tab_layout);
 
         myRequestFragment = new MyRequestFragment();
         communityFragment = new CommunityFragment();

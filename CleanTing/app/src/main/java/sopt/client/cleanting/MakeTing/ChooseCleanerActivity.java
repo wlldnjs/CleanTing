@@ -102,11 +102,18 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         service = ApplicationController.getInstance().getNetworkService();
 
         SmallAdress = (TextView) findViewById(R.id.small_address);
-//        if(loginUserDatas.locationNum == 1)
-//        {
-//            SmallAdress.setText("신림동");
-//        }
-        SmallAdress.setText("신림동");
+        if(loginUserDatas.locationNum.equals("1"))
+        {
+            SmallAdress.setText("신림동");
+        }
+        if(loginUserDatas.locationNum.equals("2"))
+        {
+            SmallAdress.setText("역삼동");
+        }
+        if(loginUserDatas.locationNum.equals("3"))
+        {
+            SmallAdress.setText("그 외 지역");
+        }
         ListTitle = (TextView) findViewById(R.id.listtitle);
 
 

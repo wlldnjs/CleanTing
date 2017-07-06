@@ -126,4 +126,5 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
     }
+
 }
