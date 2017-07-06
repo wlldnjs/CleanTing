@@ -82,10 +82,10 @@ public class SignUpActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             if (response.body().message.equals("사용가능한 아이디 입니다.")) {
                                 Toast.makeText(getApplicationContext(),
-                                        "사용 가능한 아이디입니다.", Toast.LENGTH_LONG).show();
+                                        "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getApplicationContext(),
-                                        response.body().message, Toast.LENGTH_LONG).show();
+                                        "이미 있는 아이디입니다.", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -93,8 +93,8 @@ public class SignUpActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<IdCheckResult> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(),
-                                t.getMessage(), Toast.LENGTH_LONG).show();
+
+                               Toast.makeText(getApplicationContext(),"서버상태를 확인해주세요",Toast.LENGTH_SHORT).show();
                     }
                 });
 

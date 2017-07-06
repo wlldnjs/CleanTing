@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="sopt.client.cleanting.Mypage.ChangeInfoActivity">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
+            android:layout_marginTop="44dp"
             android:gravity="center"
             android:text="회원 정보 수정"
             android:textColor="#333333"
@@ -29,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="40dp"
             android:text="기본정보"
             android:textColor="#333333"
@@ -61,7 +64,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@+id/changeimg"
-                android:text="010. 8548. 2268"
                 android:textColor="#333333"
                 android:textSize="13sp" />
 
@@ -86,23 +88,24 @@
             android:background="#000000" />
 
         <ImageView
+            android:layout_gravity="center"
             android:id="@+id/button_phonenumber"
             android:layout_width="250dp"
             android:layout_height="37dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="35dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="23dp"
             android:gravity="center"
-            android:src="@drawable/change_phone"
-             />
+            android:src="@drawable/buttonsujung"
+            />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
-            android:layout_marginTop="34dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="65dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -111,6 +114,11 @@
                 android:text="주소"
                 android:textColor="#333333"
                 android:textSize="15dp" />
+            <ImageView
+                android:layout_marginTop="23dp"
+                android:src="@drawable/search_adress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -118,11 +126,12 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="23dp"
                 android:background="@null"
                 android:text="서울 특별시 노원구 공릉동 103-2002번지"
                 android:textColor="#333333"
                 android:textSize="13sp" />
-        </RelativeLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -135,31 +144,33 @@
             android:background="#000000" />
 
         <ImageView
+            android:layout_gravity="center"
             android:id="@+id/button_address"
             android:layout_width="250dp"
             android:layout_height="37dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="35dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="23dp"
             android:gravity="center"
-            android:src="@drawable/change_adress"
+            android:src="@drawable/buttonsujung"
             android:text="주소 수정하기" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="34dp"
-            android:text="비밀번호"
+            android:layout_marginTop="65dp"
+            android:text="비밀번호변경"
             android:textColor="#333333"
             android:textSize="17sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="23dp"
             android:text="(4~20자리로 숫자와 영문으로 입력해주세요)"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="#777777"
             android:textSize="13sp" />
 
         <EditText
@@ -168,7 +179,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="57dp"
             android:background="@null"
             android:hint="새 비밀번호"
             android:inputType="textPassword" />
@@ -189,7 +200,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
-            android:layout_marginTop="34dp"
+            android:layout_marginTop="43dp"
             android:background="@null"
             android:hint="새 비밀번호 확인"
             android:inputType="textPassword" />
@@ -210,8 +221,10 @@
             android:layout_gravity="center"
             android:layout_marginBottom="26dp"
             android:layout_marginTop="50dp"
-            android:src="@drawable/change_password"
+            android:src="@drawable/buttonsujung"
             android:text="비밀번호 수정하기" />
     </LinearLayout>
+
+</ScrollView>
 
 </LinearLayout>
