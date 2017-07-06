@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -17,12 +17,12 @@
         android:layout_height="wrap_content">
         <TextView
             android:text="탈퇴하기"
-            android:textSize="25sp"
+            android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:textSize="25sp"
+            android:textSize="17dp"
             android:textColor="#333333"
             android:text="서비스를 탈퇴하시겠습니까?"
             android:layout_gravity="left"
@@ -31,23 +31,26 @@
             android:layout_height="wrap_content" />
         
         <TextView
-            android:alpha="0.7"
+            android:textColor="#999999"
             android:layout_marginTop="60dp"
             android:layout_gravity="left"
-            android:textSize="20sp"
+            android:textSize="15dp"
             android:text="탈퇴하시면 고객의 정보가 삭제되고\n복구 할 수 없습니다."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-        <ImageView
-            android:onClick="onclick_leave"
-            android:id="@+id/leave_btn"
-            android:background="@drawable/withdrawal"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="194dp"
-            android:layout_width="232dp"
-            android:layout_height="40dp" />
     </LinearLayout>
 
-</LinearLayout>
+    <ImageView
+        android:layout_marginBottom="44dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="onclick_leave"
+        android:id="@+id/leave_btn"
+        android:background="@drawable/taltuae"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="194dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

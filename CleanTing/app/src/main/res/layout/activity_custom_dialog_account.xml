@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="340dp"
-        android:layout_height="370dp"
+        android:layout_height="335dp"
         android:background="#FFFFFF"
         android:orientation="vertical">
 
@@ -199,6 +199,9 @@
             android:layout_marginTop="18dp">
 
             <EditText
+                android:textSize="15dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="3dp"
                 android:inputType="number"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
@@ -223,7 +226,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="36dp"
+                android:layout_marginRight="42dp"
                 android:text="* *"
                 android:textSize="18dp" />
         </RelativeLayout>
@@ -251,7 +254,7 @@
         <ImageView
             android:id="@+id/mRegister"
             android:layout_width="165dp"
-            android:layout_height="28dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="24dp"

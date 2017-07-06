@@ -8,9 +8,9 @@
     tools:context="sopt.client.cleanting.MakeTing.CleanerDetail.DetailCleanerActivity">
 
     <TextView
-        android:layout_marginTop="25sp"
+        android:layout_marginTop="25dp"
         android:layout_gravity="center"
-        android:textSize="25sp"
+        android:textSize="20dp"
         android:textColor="#333333"
         android:text="클리너 선택"
         android:layout_width="wrap_content"
@@ -71,24 +71,24 @@
             <TextView
                 android:id="@+id/review_tv"
                 android:textColor="#333333"
-                android:layout_marginTop="9dp"
-                android:textSize="12sp"
+                android:layout_marginTop="11dp"
+                android:textSize="14dp"
                 android:text="리뷰 : "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/career_tv"
                 android:textColor="#333333"
-                android:layout_marginTop="9dp"
-                android:textSize="12sp"
+                android:layout_marginTop="11dp"
+                android:textSize="14dp"
                 android:text="경력 : "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/age_tv"
                 android:textColor="#333333"
-                android:layout_marginTop="9dp"
-                android:textSize="12sp"
+                android:layout_marginTop="11dp"
+                android:textSize="14dp"
                 android:text="나이 : "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -96,9 +96,9 @@
     </LinearLayout>
     <TextView
         android:layout_marginTop="14dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="45dp"
         android:text="안성현 클리너"
-        android:textSize="20sp"
+        android:textSize="15dp"
         android:id="@+id/cleanername_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -114,7 +114,7 @@
             android:layout_gravity="center"
             android:text="리뷰"
             android:textColor="#333333"
-            android:textSize="17sp"
+            android:textSize="17dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <View

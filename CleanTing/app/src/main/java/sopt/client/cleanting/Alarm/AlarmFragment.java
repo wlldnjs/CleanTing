@@ -105,14 +105,18 @@ public class AlarmFragment extends Fragment {
                             }
                             for(int i=0;i<listDatas1.size();i++){
                                 Adapter1.addItem(listDatas1.get(i).content,listDatas1.get(i).time);
+                                listview1.setAdapter(Adapter1);
+
                             }
                             for(int i=0;i<listDatas2.size();i++){
                                 Adapter2.addItem(listDatas2.get(i).content,listDatas2.get(i).time);
                                 groupB.setVisibility(View.VISIBLE);
+                                listview2.setAdapter(Adapter2);
                             }
                             for(int i=0;i<listDatas3.size();i++){
                                 Adapter3.addItem(listDatas3.get(i).content,listDatas3.get(i).time);
                                 groupC.setVisibility(View.VISIBLE);
+                                listview3.setAdapter(Adapter3);
                             }
 
                             //Adapter1.addItem();
