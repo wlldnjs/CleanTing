@@ -20,6 +20,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.util.ArrayList;
@@ -29,10 +30,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.Cleanner.SearchCleanerDetailResult;
+import sopt.client.cleanting.Cleanner.SearchLocationCleanerData;
+import sopt.client.cleanting.Cleanner.SearchLocationCleanerResult;
+import sopt.client.cleanting.Cleanner.SendSearchLocationCleanerData;
+import sopt.client.cleanting.MakeTing.CleanerDetail.DetailCleanerActivity;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+import static sopt.client.cleanting.Main.MainActivity.REQUEST_SELECT_CLEANER;
 
 public class MakeTingActivity extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout selectDate1, selectTime1, selectRequest1, selectWorning1, selectCleaner1;
@@ -50,7 +57,9 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     ImageView directimg;
     NetworkService service;
     String putdate;
-
+    ImageView star1, star2, star3, star4, star5, cleanerImg;
+    TextView cleanText, cleanerName, ratingCnt, activity, review, career, age, commentBtn, location;
+    String cleanerId;
     @Override    //  글씨체 적용
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
@@ -69,6 +78,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         warning = (TextView) findViewById(R.id.warning_text);
         cleaner = (TextView) findViewById(R.id.cleaner_text);
         amount = (TextView) findViewById(R.id.total_text);
+        location = (TextView) findViewById(R.id.make_ting_location);
+        location.setText(loginUserDatas.address);
 
         warningScroll = (ScrollView) findViewById(R.id.warning_scroll);
 
@@ -87,6 +98,23 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         selectRequest2 = (LinearLayout) findViewById(R.id.select_request_layout2);
         selectWorning2 = (LinearLayout) findViewById(R.id.select_warning_layout2);
         selectCleaner2 = (LinearLayout) findViewById(R.id.select_cleaner_layout2);
+
+        // 클리너 정보
+        star1 = (ImageView)findViewById(R.id.make_ting_star1);
+        star2 = (ImageView)findViewById(R.id.make_ting_star2);
+        star3 = (ImageView)findViewById(R.id.make_ting_star3);
+        star4 = (ImageView)findViewById(R.id.make_ting_star4);
+        star5 = (ImageView)findViewById(R.id.make_ting_star5);
+        cleanerImg = (ImageView)findViewById(R.id.make_ting_cleaner_img);
+
+        cleanText = (TextView)findViewById(R.id.cleaner_text);
+        cleanerName = (TextView)findViewById(R.id.make_ting_cleaner_name);
+        ratingCnt = (TextView)findViewById(R.id.make_ting_rate_count);
+        activity = (TextView)findViewById(R.id.make_ting_actity);
+        review = (TextView)findViewById(R.id.make_ting_review);
+        career = (TextView)findViewById(R.id.make_ting_career);
+        age = (TextView)findViewById(R.id.make_ting_age);
+        commentBtn = (TextView)findViewById(R.id.make_ting_cleaner_comment);
 
         listView1 = (ListView) findViewById(R.id.select_time_list1);
 
@@ -123,8 +151,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ChooseCleanerActivity.class);
-                intent.putExtra("date",putdate);
-                startActivity(intent);
+                intent.putExtra("date",date.getText().toString());
+                startActivityForResult(intent,REQUEST_SELECT_CLEANER);
             }
         });
 
@@ -218,6 +246,74 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 date.setText("" + year + "-" + (month + 1) + "-" + dayOfMonth);
+
+                SendSearchLocationCleanerData sendSearchLocationCleanerData = new SendSearchLocationCleanerData();
+                sendSearchLocationCleanerData.userId = loginUserDatas.userId;
+                sendSearchLocationCleanerData.order = "1";
+                sendSearchLocationCleanerData.userLat = loginUserDatas.lat;
+                sendSearchLocationCleanerData.userLng = loginUserDatas.lng;
+                Call<SearchLocationCleanerResult> searchLocationCleanerResultCall = service.getSearchLocationCleanerResult(date.getText().toString(),sendSearchLocationCleanerData);
+                searchLocationCleanerResultCall.enqueue(new Callback<SearchLocationCleanerResult>() {
+                    @Override
+                    public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {
+                        if(response.isSuccessful()){
+                            if(response.body().result == null){
+                                Toast.makeText(MakeTingActivity.this, "현 지역 클리너가 없습니다.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                SearchLocationCleanerData cleanerData = response.body().result.get(0);
+                                cleanerId = cleanerData.cleanerId;
+                                Toast.makeText(MakeTingActivity.this, cleanerData.cleanerId, Toast.LENGTH_SHORT).show();
+                                String rate = cleanerData.rate;
+                                String cnt = cleanerData.review_cnt;
+                                int rating = Integer.parseInt(rate)/Integer.parseInt(cnt);
+                                if(rating <= 0.5){
+                                    star2.setImageResource(R.drawable.star_line);
+                                    star3.setImageResource(R.drawable.star_line);
+                                    star4.setImageResource(R.drawable.star_line);
+                                    star5.setImageResource(R.drawable.star_line);
+                                } else if(rating <=1.5){
+                                    star3.setImageResource(R.drawable.star_line);
+                                    star4.setImageResource(R.drawable.star_line);
+                                    star5.setImageResource(R.drawable.star_line);
+                                } else if (rating <=2.5){
+                                    star3.setImageResource(R.drawable.star_line);
+                                    star4.setImageResource(R.drawable.star_line);
+                                    star5.setImageResource(R.drawable.star_line);
+                                } else if (rating <= 3.5){
+                                    star4.setImageResource(R.drawable.star_line);
+                                    star5.setImageResource(R.drawable.star_line);
+                                } else if(rating <= 4.5){
+                                    star5.setImageResource(R.drawable.star_line);
+                                }
+                                Glide.with(getApplicationContext()).load(cleanerData.image).into(cleanerImg);
+                                cleanText.setText(cleanerData.name +" 클리너");
+                                cleanerName.setText(cleanerData.name +" 클리너");
+                                ratingCnt.setText(cleanerData.review_cnt +"명");
+                                activity.setText("경력 : " +cleanerData.review_cnt+"건");
+                                review.setText("리뷰 : "+cleanerData.review_cnt +"회");
+                                career.setText("경력 : "+cleanerData.career +"개월");
+                                age.setText("나이 : " +cleanerData.age);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<SearchLocationCleanerResult> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
+
+        commentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cleanerId != null){
+                    Intent intent = new Intent(MakeTingActivity.this, DetailCleanerActivity.class);
+                    intent.putExtra("cleanerid", cleanerId);
+                    intent.putExtra("review","ok");
+                    startActivity(intent);
+                }
             }
         });
 
@@ -235,7 +331,6 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 MakeTingResultData makeTingResultData = new MakeTingResultData();
                 makeTingResultData.userId = loginUserDatas.userId;
                 makeTingResultData.date = date.getText().toString();
-                putdate = date.getText().toString();
                 if(makeTingResultData.date.equals("선택해 주세요")){
                     Toast.makeText(MakeTingActivity.this, "청소날짜를 선택해 주세요.", Toast.LENGTH_SHORT).show();
                     return;
@@ -275,7 +370,6 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                     public void onResponse(Call<MakeTingResult> call, Response<MakeTingResult> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(MakeTingActivity.this, "팅 생성 완료", Toast.LENGTH_SHORT).show();
-
                             finish();
                         } else {
                             Toast.makeText(MakeTingActivity.this, "실패", Toast.LENGTH_SHORT).show();
@@ -333,5 +427,66 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 }
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            if(requestCode == REQUEST_SELECT_CLEANER){
+                cleanerId = getIntent().getStringExtra("cleanerId");
+                refreshCleaner();
+            }
+        }
+    }
+
+    private void refreshCleaner(){
+        Call<SearchCleanerDetailResult> searchCleanerDetailResultCall = service.getSearchCleanerDetailResult(cleanerId);
+        searchCleanerDetailResultCall.enqueue(new Callback<SearchCleanerDetailResult>() {
+            @Override
+            public void onResponse(Call<SearchCleanerDetailResult> call, Response<SearchCleanerDetailResult> response) {
+                if(response.isSuccessful()){
+                    cleanText.setText(response.body().result.cleaner.name);
+                    cleanerName.setText(response.body().result.cleaner.name);
+                    Glide.with(getApplicationContext()).load(response.body().result.cleaner.image).into(cleanerImg);
+                    String rate = response.body().result.cleaner.rate;
+                    String cnt = response.body().result.cleaner.review_cnt;
+                    int rating = Integer.parseInt(rate)/Integer.parseInt(cnt);
+                    if(rating <= 0.5){
+                        star2.setImageResource(R.drawable.star_line);
+                        star3.setImageResource(R.drawable.star_line);
+                        star4.setImageResource(R.drawable.star_line);
+                        star5.setImageResource(R.drawable.star_line);
+                    } else if(rating <=1.5){
+                        star3.setImageResource(R.drawable.star_line);
+                        star4.setImageResource(R.drawable.star_line);
+                        star5.setImageResource(R.drawable.star_line);
+                    } else if (rating <=2.5){
+                        star3.setImageResource(R.drawable.star_line);
+                        star4.setImageResource(R.drawable.star_line);
+                        star5.setImageResource(R.drawable.star_line);
+                    } else if (rating <= 3.5){
+                        star4.setImageResource(R.drawable.star_line);
+                        star5.setImageResource(R.drawable.star_line);
+                    } else if(rating <= 4.5){
+                        star5.setImageResource(R.drawable.star_line);
+                    }
+                    Glide.with(getApplicationContext()).load(response.body().result.cleaner.image).into(cleanerImg);
+                    cleanText.setText(response.body().result.cleaner.name +" 클리너");
+                    cleanerName.setText(response.body().result.cleaner.name +" 클리너");
+                    ratingCnt.setText(response.body().result.cleaner.review_cnt +"명");
+                    activity.setText("경력 : " +response.body().result.cleaner.review_cnt+"건");
+                    review.setText("리뷰 : "+response.body().result.cleaner.review_cnt +"회");
+                    career.setText("경력 : "+response.body().result.cleaner.career +"개월");
+                    age.setText("나이 : " +response.body().result.cleaner.age);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchCleanerDetailResult> call, Throwable t) {
+
+            }
+        });
     }
 }

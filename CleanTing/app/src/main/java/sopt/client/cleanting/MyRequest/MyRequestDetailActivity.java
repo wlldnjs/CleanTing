@@ -209,6 +209,7 @@ public class MyRequestDetailActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         EndTingData endTingData = new EndTingData();
                         endTingData.userId = loginUserDatas.userId;
+                        endTingData.userName = loginUserDatas.name;
                         Call<EndTingResult> endTingResultCall = service.getCancelTingResult(tingId,endTingData);
                         endTingResultCall.enqueue(new Callback<EndTingResult>() {
                             @Override

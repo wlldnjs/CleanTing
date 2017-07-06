@@ -457,4 +457,14 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
 
         }
     };
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            Intent intent = new Intent();
+            intent.putExtra("cleanerId", );
+            setResult(RESULT_OK);
+        }
+    }
+
 }

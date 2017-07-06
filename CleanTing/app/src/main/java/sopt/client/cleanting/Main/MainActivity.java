@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static int REQUEST_MAKETING = 1001;
     public static int REQUEST_MODIFY_TING = 1002;
     public static int REQUEST_CANCEL_TING = 1003;
+    public static int REQUEST_SELECT_CLEANER = 1004;
 
     private long backKeyPressedTime = 0;
     private Toast toast;

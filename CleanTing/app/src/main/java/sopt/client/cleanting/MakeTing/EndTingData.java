@@ -6,4 +6,5 @@ package sopt.client.cleanting.MakeTing;
 
 public class EndTingData{
     public String userId;
+    public String userName;
 }

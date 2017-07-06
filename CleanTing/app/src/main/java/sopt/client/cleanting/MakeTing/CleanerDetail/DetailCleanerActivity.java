@@ -86,6 +86,14 @@ public class DetailCleanerActivity extends AppCompatActivity {
 //        Toast.makeText(this,cleanerReviewDatas.get(0).content,Toast.LENGTH_SHORT).show();
 
         String cleanerid = getIntent().getStringExtra("cleanerid");
+        try {
+            if(getIntent().getStringExtra("review").equals("ok")){
+                imageView.setVisibility(View.GONE);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Toast.makeText(DetailCleanerActivity.this, cleanerid, Toast.LENGTH_SHORT).show();
         Call<SearchCleanerDetailResult> searchCleanerDetailResultCall2 = service.getSearchCleanerDetailResult(cleanerid); //cleanerid
         searchCleanerDetailResultCall2.enqueue(new Callback<SearchCleanerDetailResult>() {
             @Override
