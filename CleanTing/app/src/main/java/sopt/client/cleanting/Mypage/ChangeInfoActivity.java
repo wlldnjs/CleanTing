@@ -20,7 +20,6 @@ import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
-import static sopt.client.cleanting.R.id.changeimg;
 
 public class ChangeInfoActivity extends AppCompatActivity {
 
@@ -43,7 +42,6 @@ public class ChangeInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_change_info);
         service = ApplicationController.getInstance().getNetworkService();
 
-        changephone = (ImageView)findViewById(changeimg);
 
         button_pw = (ImageView) findViewById(R.id.button_pw);
         button_phonenumber=(ImageView)findViewById(R.id.button_phonenumber);
