@@ -98,6 +98,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         setContentView(R.layout.activity_choose_cleaner);
 
         final String inputdate = getIntent().getStringExtra("date");
+        Toast.makeText(getApplicationContext(),"tlqkf date : "+ inputdate,Toast.LENGTH_SHORT).show();
 
         service = ApplicationController.getInstance().getNetworkService();
 
@@ -187,10 +188,12 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
                         searchLocationCleanerResult.enqueue(new Callback<SearchLocationCleanerResult>() {
                             @Override
                             public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {
-                                if (response.isSuccessful()) {
+                                if (response.isSuccessful())
+                                {
                                     Lcleaners = response.body().result;
                                     ListRecyclerAdapter2 = new SearchRecyclerAdapter(getApplicationContext(), Lcleaners, clickEvent2);
                                     LrecyclerView.setAdapter(ListRecyclerAdapter2);
+                                    ListRecyclerAdapter2.notifyDataSetChanged();
                                 }
                             }
 
@@ -203,7 +206,6 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
                     case 1:
                         sendSearchLocationCleanerData.order = "2";
                         ListTitle.setText("이력순 클리너");
-                        Toast.makeText(getApplicationContext(), sendSearchLocationCleanerData.order, Toast.LENGTH_SHORT).show();
                         // date의 형식???
                         Call<SearchLocationCleanerResult> searchLocationCleanerResult2 = service.getSearchLocationCleanerResult(inputdate, sendSearchLocationCleanerData);
                         searchLocationCleanerResult2.enqueue(new Callback<SearchLocationCleanerResult>() {
@@ -213,6 +215,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
                                     Lcleaners = response.body().result;
                                     ListRecyclerAdapter2 = new SearchRecyclerAdapter(getApplicationContext(), Lcleaners, clickEvent2);
                                     LrecyclerView.setAdapter(ListRecyclerAdapter2);
+                                    ListRecyclerAdapter2.notifyDataSetChanged();
                                 }
                             }
 
@@ -225,7 +228,6 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
                     case 2:
                         sendSearchLocationCleanerData.order = "3";
                         ListTitle.setText("리뷰순 클리너");
-                        Toast.makeText(getApplicationContext(), sendSearchLocationCleanerData.order, Toast.LENGTH_SHORT).show();
                         // date의 형식???
                         Call<SearchLocationCleanerResult> searchLocationCleanerResult3 = service.getSearchLocationCleanerResult(inputdate, sendSearchLocationCleanerData);
                         searchLocationCleanerResult3.enqueue(new Callback<SearchLocationCleanerResult>() {
@@ -235,6 +237,7 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
                                     Lcleaners = response.body().result;
                                     ListRecyclerAdapter2 = new SearchRecyclerAdapter(getApplicationContext(), Lcleaners, clickEvent2);
                                     LrecyclerView.setAdapter(ListRecyclerAdapter2);
+                                    ListRecyclerAdapter2.notifyDataSetChanged();
                                 }
                             }
 

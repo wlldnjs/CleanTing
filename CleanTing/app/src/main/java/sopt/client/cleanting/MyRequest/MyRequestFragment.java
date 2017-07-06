@@ -250,7 +250,6 @@ public class MyRequestFragment extends Fragment{
         bundleList.clear();
         bundleList = getBundleList();
         if(refreshView){
-            Toast.makeText(context, "메인페이지 refresh", Toast.LENGTH_SHORT).show();
             RefreshView();
             refreshView = false;
         }

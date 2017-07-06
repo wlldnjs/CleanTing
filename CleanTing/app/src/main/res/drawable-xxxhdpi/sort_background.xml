@@ -10,7 +10,7 @@
                 </shape>
             </item>
             <!-- 회살표를 넣기위해-->
-            <item android:left="65dp" android:top="2dp" android:right="5dp" android:bottom="2dp">
+            <item android:left="65dp" android:top="2dp" android:right="10dp" android:bottom="2dp">
                 <bitmap android:src="@drawable/spinner_down_arrow" android:gravity="center_vertical|right" />
             </item>
         </layer-list>
