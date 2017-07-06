@@ -75,10 +75,6 @@ public class CommunityWriteActivity extends AppCompatActivity {
                                 Toast.makeText(CommunityWriteActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                             }
                         }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(),"dkfjgldkf",Toast.LENGTH_SHORT);
-                        }
                     }
                     @Override
                     public void onFailure(Call<BulletinAddPostResult> call, Throwable t) {
