@@ -55,7 +55,6 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     String requsetNum = "0";
     ImageView directimg;
     NetworkService service;
-    String putdate;
     ImageView star1, star2, star3, star4, star5, cleanerImg;
     TextView cleanText, cleanerName, ratingCnt, activity, review, career, age, commentBtn, location;
     String cleanerId;
@@ -246,7 +245,6 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 date.setText("" + year + "-" + (month + 1) + "-" + dayOfMonth);
-                putdate = date.getText().toString();
                 SendSearchLocationCleanerData sendSearchLocationCleanerData = new SendSearchLocationCleanerData();
                 sendSearchLocationCleanerData.userId = loginUserDatas.userId;
                 sendSearchLocationCleanerData.order = "1";
