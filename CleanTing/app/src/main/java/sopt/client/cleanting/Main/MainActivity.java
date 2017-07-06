@@ -3,10 +3,12 @@ package sopt.client.cleanting.Main;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import sopt.client.cleanting.Alarm.AlarmFragment;
@@ -62,8 +64,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, myRequestFragment).commit();
 
-//        FirebaseMessaging.getInstance().subscribeToTopic("cleanting");
-//        FirebaseInstanceId.getInstance().getToken();
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.d("FCM_Token", token);
+
     }
 
     @Override

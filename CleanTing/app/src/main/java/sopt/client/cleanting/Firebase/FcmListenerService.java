@@ -8,7 +8,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import sopt.client.cleanting.Main.MainActivity;
@@ -18,16 +17,17 @@ import sopt.client.cleanting.R;
  * Created by 김지원 on 2017-06-30.
  */
 
-public class FcmListenerService extends FirebaseMessagingService{
+public class FcmListenerService extends com.google.firebase.messaging.FirebaseMessagingService{
+    private static final String TAG = "FirebaseMsgService";
+
+    // [START receive_message]
     @Override
-    public void onMessageReceived(RemoteMessage message) {
-//        String from = message.getFrom();
-//        Map<String, String> data = message.getData();
-//        String title = data.get("title");
-//        String msg = data.get("message");
-        // 전달 받은 정보로 뭔가를 하면 된다.
-        sendNotification(message.getData().get("message"));
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+
+        //추가한것
+        sendNotification(remoteMessage.getData().get("message"));
     }
+
     private void sendNotification(String messageBody) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -36,7 +36,7 @@ public class FcmListenerService extends FirebaseMessagingService{
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.push_img)
                 .setContentTitle("FCM Push Test")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
