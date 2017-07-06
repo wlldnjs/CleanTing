@@ -98,8 +98,6 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
         setContentView(R.layout.activity_choose_cleaner);
 
         final String inputdate = getIntent().getStringExtra("date");
-        Toast.makeText(getApplicationContext(),"tlqkf date : "+ inputdate,Toast.LENGTH_SHORT).show();
-
         service = ApplicationController.getInstance().getNetworkService();
 
         SmallAdress = (TextView) findViewById(R.id.small_address);
@@ -315,8 +313,6 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
 
         switch (v.getId()) {
             case R.id.search_edit: {
-                Toast.makeText(getApplicationContext(), "df", Toast.LENGTH_SHORT).show();
-
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
 
                 }
@@ -461,7 +457,6 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
-                Toast.makeText(ChooseCleanerActivity.this, "requsetCode 5005," +data.getStringExtra("cleanerId"), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent();
                 intent.putExtra("cleanerId", data.getStringExtra("cleanerId"));
                 setResult(RESULT_OK,intent);
