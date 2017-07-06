@@ -108,9 +108,11 @@ public class AlarmFragment extends Fragment {
                             }
                             for(int i=0;i<listDatas2.size();i++){
                                 Adapter2.addItem(listDatas2.get(i).content,listDatas2.get(i).time);
+                                groupB.setVisibility(View.VISIBLE);
                             }
                             for(int i=0;i<listDatas3.size();i++){
                                 Adapter3.addItem(listDatas3.get(i).content,listDatas3.get(i).time);
+                                groupC.setVisibility(View.VISIBLE);
                             }
 
                             //Adapter1.addItem();
