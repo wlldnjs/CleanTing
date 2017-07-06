@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.tsengvn.typekit.TypekitContextWrapper;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -44,6 +46,11 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
     FindBulletinData Data = new FindBulletinData();
 
     NetworkService service;
+
+    @Override    //  글씨체 적용
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

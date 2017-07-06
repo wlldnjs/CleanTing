@@ -74,6 +74,7 @@
             <TextView
                 android:id="@+id/BulletinDetail_replynum"
                 android:text="25"
+                android:textColor="#333333"
                 android:layout_marginLeft="5dp"
                 android:textSize="17sp"
                 android:layout_toRightOf="@+id/C_comment"

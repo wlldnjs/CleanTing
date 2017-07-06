@@ -1,5 +1,6 @@
 package sopt.client.cleanting.Community;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,6 +27,11 @@ public class CommunityWriteActivity extends AppCompatActivity {
     ImageView BulletinInputComplete;
 
     NetworkService service;
+
+    @Override    //  글씨체 적용
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
