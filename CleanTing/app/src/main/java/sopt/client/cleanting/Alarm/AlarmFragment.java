@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -82,27 +84,90 @@ public class AlarmFragment extends Fragment {
                 if(response.body().ret.size()!=0){
                     if(response.isSuccessful()){
                         if(response.body().message.equals("alarm query ok")){
+                            ArrayList<ReferAlarmData> referAlarmDatas = response.body().ret;
+                            ArrayList<ListData> listDatas1 = new ArrayList<ListData>();
+                            ArrayList<ListData> listDatas2 = new ArrayList<ListData>();
+                            ArrayList<ListData> listDatas3 = new ArrayList<ListData>();
+                            int count = 0; //데이터가 변경이 없을경우
+                            String tingId = referAlarmDatas.get(0).tingId;
+                            for(int i=0;i<referAlarmDatas.size();i++){
+                                if(!tingId.equals(referAlarmDatas.get(i).tingId)) count++;
+                                tingId = referAlarmDatas.get(i).tingId;
 
-                            String flag = response.body().ret.get(0).tingId;//flag에 처음 받은 tingId 저장(groupA)
-                            String flag2 = response.body().ret.get(1).tingId;//groupB
-                            String flag3= response.body().ret.get(2).tingId;//groupC
+                                if(count ==0){
+                                    listDatas1.add(new ListData(referAlarmDatas.get(i).content,referAlarmDatas.get(i).time));
+                                }else if(count == 1){
+                                    listDatas2.add(new ListData(referAlarmDatas.get(i).content,referAlarmDatas.get(i).time));
+                                }else{
+                                    listDatas3.add(new ListData(referAlarmDatas.get(i).content,referAlarmDatas.get(i).time));
+                                }
+
+                            }
+                            for(int i=0;i<listDatas1.size();i++){
+                                Adapter1.addItem(listDatas1.get(i).content,listDatas1.get(i).time);
+                            }
+                            for(int i=0;i<listDatas2.size();i++){
+                                Adapter2.addItem(listDatas2.get(i).content,listDatas2.get(i).time);
+                            }
+                            for(int i=0;i<listDatas3.size();i++){
+                                Adapter3.addItem(listDatas3.get(i).content,listDatas3.get(i).time);
+                            }
+
+                            //Adapter1.addItem();
+/*                          Adapter2.addItem(response.body().ret.get(temp).content,response.body().ret.get(temp).time);
+
+                            String [] index = new String[3];
+                            index[0]=response.body().ret.get(0).tingId;
+                            String tmp=index[0];
 
                             for(int i=0;i<response.body().ret.size();i++){
-                                if(response.body().ret.get(i).tingId.equals(flag)){
-                                    Adapter1.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
-                                    listview1.setAdapter(Adapter1);
-                                }
-                                else if(response.body().ret.get(i).tingId.equals(flag2)){
-                                    groupB.setVisibility(View.VISIBLE);
-                                    Adapter2.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
-                                    listview2.setAdapter(Adapter2);
-                                }
-                                else if(response.body().ret.get(i).tingId.equals(flag3)){
-                                    groupC.setVisibility(View.VISIBLE);
-                                    Adapter3.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
-                                    listview3.setAdapter(Adapter3);
-                                }
+                               if(tmp!=response.body().ret.get(i).tingId){
+                                   index[i]=response.body().ret.get(i).tingId;
+                               }
                             }
+
+                            for(int i=0;i<response.body().ret.size();i++){
+                                int temp=i+1;
+                                for(int j=i+1;j<response.body().ret.size();j++){
+                                    if(index[i]!=index[j]){
+                                        groupB.setVisibility(View.VISIBLE);
+                                        Adapter2.addItem(response.body().ret.get(temp).content,response.body().ret.get(temp).time);
+                                        listview2.setAdapter(Adapter2);
+                                        i++;
+                                        break;
+                                    }
+                                    else{
+                                        temp++;
+                                    }
+                                }
+
+                            }*/
+//
+//                            String flag = response.body().ret.get(0).tingId;//flag에 처음 받은 tingId 저장(groupA)
+//                            String flag2 = response.body().ret.get(1).tingId;//groupB
+//                            String flag3= response.body().ret.get(2).tingId;//groupC
+//
+//                            for(int i=0;i<response.body().ret.size();i++){
+//                                if(response.body().ret.get(i).tingId.equals(flag)){
+//                                    Adapter1.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+//                                    listview1.setAdapter(Adapter1);
+//                                }
+//                                else if(flag!=flag2){
+//                                    if(response.body().ret.get(i).tingId.equals(flag2)){
+//                                        groupB.setVisibility(View.VISIBLE);
+//                                        Adapter2.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+//                                        listview2.setAdapter(Adapter2);
+//                                    }//
+//                                }
+//                                else if(flag2!=flag3){
+//                                         if(response.body().ret.get(i).tingId.equals(flag3)){
+//                                        groupC.setVisibility(View.VISIBLE);
+//                                        Adapter3.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+//                                        listview3.setAdapter(Adapter3);
+//                                    }//
+//                                }
+//
+//                            }
 
                         }
                         else{
@@ -204,9 +269,17 @@ public class AlarmFragment extends Fragment {
 
         return layout;
     }
+    class ListData{
+        public String content;
+        public String time;
 
-
-
+        public ListData(String content, String time) {
+            this.content = content;
+            this.time = time;
+        }
     }
+
+
+}
 
 
