@@ -30,6 +30,7 @@ public class AlarmFragment extends Fragment {
     ListView listview1,listview2,listview3;
     RelativeLayout groupA,groupB,groupC;
     LinearLayout groupA_item,groupB_item,groupC_item;
+//    TextView group1,group2,group3;
     AlarmAdapter Adapter1,Adapter2,Adapter3;
     static int flag_a=0;
     static int flag_b,flag_c=1;
@@ -66,6 +67,10 @@ public class AlarmFragment extends Fragment {
         listview1 = (ListView)layout.findViewById(R.id.listview1);
         listview2 = (ListView)layout.findViewById(R.id.listview2);
         listview3=(ListView)layout.findViewById(R.id.listview3);
+//
+//        group1=(TextView)layout.findViewById(R.id.group1);
+//        group2=(TextView)layout.findViewById(R.id.group2);
+//        group3=(TextView)layout.findViewById(R.id.group3);
 
         Call<ReferAlarmResult> referAlarmResultCall=service.getReferAlarmResult(loginUserDatas.userId);
 
@@ -80,6 +85,7 @@ public class AlarmFragment extends Fragment {
 
                             String flag = response.body().ret.get(0).tingId;//flag에 처음 받은 tingId 저장(groupA)
                             String flag2 = response.body().ret.get(1).tingId;//groupB
+                            String flag3= response.body().ret.get(2).tingId;//groupC
 
                             for(int i=0;i<response.body().ret.size();i++){
                                 if(response.body().ret.get(i).tingId.equals(flag)){
@@ -91,7 +97,7 @@ public class AlarmFragment extends Fragment {
                                     Adapter2.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
                                     listview2.setAdapter(Adapter2);
                                 }
-                                else{
+                                else if(response.body().ret.get(i).tingId.equals(flag3)){
                                     groupC.setVisibility(View.VISIBLE);
                                     Adapter3.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
                                     listview3.setAdapter(Adapter3);
