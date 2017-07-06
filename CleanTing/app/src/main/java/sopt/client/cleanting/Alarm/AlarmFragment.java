@@ -70,36 +70,70 @@ public class AlarmFragment extends Fragment {
         Call<ReferAlarmResult> referAlarmResultCall=service.getReferAlarmResult(loginUserDatas.userId);
 
 
-
         referAlarmResultCall.enqueue(new Callback<ReferAlarmResult>() {
             @Override
             public void onResponse(Call<ReferAlarmResult> call, Response<ReferAlarmResult> response) {
-                if(response.isSuccessful()){
-                    if(response.body().message.equals("alarm query ok")){
 
-                        String flag = response.body().ret.get(0).tingId;//flag에 처음 받은 tingId 저장(groupA)
-                        String flag2 = response.body().ret.get(1).tingId;//groupB
+                if(response.body().ret.size()!=0){
+                    if(response.isSuccessful()){
+                        if(response.body().message.equals("alarm query ok")){
 
-                        for(int i=0;i<response.body().ret.size();i++){
-                            if(response.body().ret.get(i).tingId.equals(flag)){
-                                Adapter1.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
-                                listview1.setAdapter(Adapter1);
+                            String flag = response.body().ret.get(0).tingId;//flag에 처음 받은 tingId 저장(groupA)
+                            String flag2 = response.body().ret.get(1).tingId;//groupB
+
+                            for(int i=0;i<response.body().ret.size();i++){
+                                if(response.body().ret.get(i).tingId.equals(flag)){
+                                    Adapter1.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+                                    listview1.setAdapter(Adapter1);
+                                }
+                                else if(response.body().ret.get(i).tingId.equals(flag2)){
+                                    groupB.setVisibility(View.VISIBLE);
+                                    Adapter2.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+                                    listview2.setAdapter(Adapter2);
+                                }
+                                else{
+                                    groupC.setVisibility(View.VISIBLE);
+                                    Adapter3.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+                                    listview3.setAdapter(Adapter3);
+                                }
                             }
-                            else if(response.body().ret.get(i).tingId.equals(flag2)){
-                                Adapter2.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
-                                listview2.setAdapter(Adapter2);
-                            }
-                            else{
-                                Adapter3.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
-                                listview3.setAdapter(Adapter3);
-                            }
+
                         }
-
+                        else{
+                            Toast.makeText(getContext(),response.body().message,Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else{
-                        Toast.makeText(getContext(),response.body().message,Toast.LENGTH_SHORT).show();
-                    }
+                }else{
+                    Toast.makeText(getContext(),"알람이 존재하지 않습니다.",Toast.LENGTH_SHORT).show();
                 }
+
+
+//                if(response.isSuccessful()){
+//                    if(response.body().message.equals("alarm query ok")){
+//
+//                        String flag = response.body().ret.get(0).tingId;//flag에 처음 받은 tingId 저장(groupA)
+//                        String flag2 = response.body().ret.get(1).tingId;//groupB
+//
+//                        for(int i=0;i<response.body().ret.size();i++){
+//                            if(response.body().ret.get(i).tingId.equals(flag)){
+//                                Adapter1.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+//                                listview1.setAdapter(Adapter1);
+//                            }
+//                            else if(response.body().ret.get(i).tingId.equals(flag2)){
+//                                Adapter2.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+//                                listview2.setAdapter(Adapter2);
+//                            }
+//                            else{
+//                                Adapter3.addItem(response.body().ret.get(i).content,response.body().ret.get(i).time);
+//                                listview3.setAdapter(Adapter3);
+//                            }
+//                        }
+//
+//                    }
+//                    else{
+//                        Toast.makeText(getContext(),response.body().message,Toast.LENGTH_SHORT).show();
+//                    }
+//                }
             }
 
             @Override
