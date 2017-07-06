@@ -40,6 +40,7 @@ import sopt.client.cleanting.R;
 
 import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 import static sopt.client.cleanting.Main.MainActivity.REQUEST_SELECT_CLEANER;
+import static sopt.client.cleanting.R.layout.timelist;
 
 public class MakeTingActivity extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout selectDate1, selectTime1, selectRequest1, selectWorning1, selectCleaner1;
@@ -132,7 +133,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         timeData.add("13:00");
         timeData.add("13:30");
 
-        arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, timeData);
+        arrayAdapter = new ArrayAdapter(getApplicationContext(),R.layout.timelist, timeData);
         listView1.setAdapter(arrayAdapter);
 
         selectDate1.setOnClickListener(this);
@@ -246,7 +247,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 date.setText("" + year + "-" + (month + 1) + "-" + dayOfMonth);
-
+                putdate = date.getText().toString();
                 SendSearchLocationCleanerData sendSearchLocationCleanerData = new SendSearchLocationCleanerData();
                 sendSearchLocationCleanerData.userId = loginUserDatas.userId;
                 sendSearchLocationCleanerData.order = "1";
