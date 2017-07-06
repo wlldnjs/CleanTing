@@ -1,6 +1,7 @@
 package sopt.client.cleanting.MyRequest;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -60,14 +60,12 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if(holder instanceof MyLocationViewHolderHeader){
             final MyLocationViewHolderHeader myLocationViewHolderHeader = (MyLocationViewHolderHeader)holder;
-            myLocationViewHolderHeader.myLocationBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, "정렬방식 선택", Toast.LENGTH_SHORT).show();
-                }
-            });
             MyLocationViewHolderHeader.viewPager.setAdapter(new pagerAdapter (fm));
             MyLocationViewHolderHeader.viewPager.setCurrentItem(0);
+
+            Typeface typeFace = Typeface.createFromAsset(context.getAssets(),"NanumSquareR.ttf");
+            myLocationViewHolderHeader.tv18.setTypeface(typeFace);
+            myLocationViewHolderHeader.tv28.setTypeface(typeFace);
 
         } else if(holder instanceof MyLocationViewHolder){
 
@@ -75,7 +73,6 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             MyLocationViewHolder myLocationViewHolder = (MyLocationViewHolder)holder;
             myLocationViewHolder.myLocationDay.setText(currentItem.date);
             myLocationViewHolder.myLocationTime.setText(currentItem.startTime +"~" +currentItem.endTime);
-            Toast.makeText(context, currentItem.image, Toast.LENGTH_SHORT).show();
             if(currentItem.cnt.equals("1")){
                 myLocationViewHolder.myLocationMember3.setImageResource(R.drawable.man_line);
                 myLocationViewHolder.myLocationMember2.setImageResource(R.drawable.man_line);
