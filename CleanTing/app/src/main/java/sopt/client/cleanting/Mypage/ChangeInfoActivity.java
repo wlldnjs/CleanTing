@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tsengvn.typekit.TypekitContextWrapper;
@@ -29,7 +28,7 @@ public class ChangeInfoActivity extends AppCompatActivity {
     ImageView changephone;
     ImageView button_pw,button_phonenumber,button_address;
     NetworkService service;
-    TextView text_phonenumber;
+   EditText edittext_phonenumber;
     EditText password1,password2;
     EditText edit_phonenumber;
 
@@ -54,7 +53,7 @@ public class ChangeInfoActivity extends AppCompatActivity {
         password1 = (EditText)findViewById(R.id.password1);
         password2 = (EditText)findViewById(R.id.password2);
 
-        text_phonenumber=(TextView)findViewById(R.id.text_phonenumber);
+        edittext_phonenumber=(EditText) findViewById(R.id.text_phonenumber);
 
         button_pw.setOnClickListener(new View.OnClickListener() {       // 수정하기
 
@@ -133,7 +132,7 @@ public class ChangeInfoActivity extends AppCompatActivity {
         button_phonenumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<ModifyUserPhoneResult> modifyUserPhoneResultCall =service.getModifyUserPhoneResult(loginUserDatas.userId,text_phonenumber.getText().toString());
+                Call<ModifyUserPhoneResult> modifyUserPhoneResultCall =service.getModifyUserPhoneResult(loginUserDatas.userId,edittext_phonenumber.getText().toString());
 
                 modifyUserPhoneResultCall.enqueue(new Callback<ModifyUserPhoneResult>() {
                     @Override
@@ -141,6 +140,7 @@ public class ChangeInfoActivity extends AppCompatActivity {
                         if(response.isSuccessful()){
                             if(response.body().message.equals("phone update ok")){
                                 Toast.makeText(getApplicationContext(),"phone update ok",Toast.LENGTH_SHORT).show();
+
                             }
                             else{
                                 Toast.makeText(getApplicationContext(),response.body().message,Toast.LENGTH_SHORT).show();
@@ -165,49 +165,49 @@ public class ChangeInfoActivity extends AppCompatActivity {
         });
 
     }
-    private View.OnClickListener leftListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            mCustomDialog2.dismiss();
-        }
-    };
+//    private View.OnClickListener leftListener = new View.OnClickListener() {
+//        public void onClick(View v) {
+//            mCustomDialog2.dismiss();
+//        }
+////    };
 
-    private View.OnClickListener rightListener = new View.OnClickListener() {
-
-        public void onClick(View v) {
-
-            text_phonenumber.setText(mCustomDialog2.getEdit_phonenumber().getText().toString());
-
-//            Call<ModifyUserPhoneResult> modifyUserPhoneResultCall=service.getModifyUserPhoneResult(loginUserDatas.userId,edit_phonenumber.getText().toString());
-//            modifyUserPhoneResultCall.enqueue(new Callback<ModifyUserPhoneResult>() {
-//                @Override
-//                public void onResponse(Call<ModifyUserPhoneResult> call, Response<ModifyUserPhoneResult> response) {
-//                    if(response.isSuccessful()){
-//                        if(response.body().message.equals("phone update ok")){
-//                            Toast.makeText(getApplicationContext(), "phone update ok", Toast.LENGTH_SHORT).show();
-//                        }
-//                        else{
-//                            Toast.makeText(getApplicationContext(),response.body().message,Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                }
+//    private View.OnClickListener rightListener = new View.OnClickListener() {
 //
-//                @Override
-//                public void onFailure(Call<ModifyUserPhoneResult> call, Throwable t) {
-//                    Toast.makeText(getApplicationContext(),"서버 연결 상태를 확인해주세요.",Toast.LENGTH_SHORT).show();
-//                }
-//            });
-
-
-            mCustomDialog2.dismiss();
-
-        }
-    };
-
-    public void changeDialog(View view)
-    {
-        mCustomDialog2 = new CustomDialog2(this,
-                leftListener, // 왼쪽 버튼 이벤트
-                rightListener); // 오른쪽 버튼 이벤트
-        mCustomDialog2.show();
-    }
+//        public void onClick(View v) {
+//
+//            text_phonenumber.setText(mCustomDialog2.getEdit_phonenumber().getText().toString());
+//
+////            Call<ModifyUserPhoneResult> modifyUserPhoneResultCall=service.getModifyUserPhoneResult(loginUserDatas.userId,edit_phonenumber.getText().toString());
+////            modifyUserPhoneResultCall.enqueue(new Callback<ModifyUserPhoneResult>() {
+////                @Override
+////                public void onResponse(Call<ModifyUserPhoneResult> call, Response<ModifyUserPhoneResult> response) {
+////                    if(response.isSuccessful()){
+////                        if(response.body().message.equals("phone update ok")){
+////                            Toast.makeText(getApplicationContext(), "phone update ok", Toast.LENGTH_SHORT).show();
+////                        }
+////                        else{
+////                            Toast.makeText(getApplicationContext(),response.body().message,Toast.LENGTH_SHORT).show();
+////                        }
+////                    }
+////                }
+////
+////                @Override
+////                public void onFailure(Call<ModifyUserPhoneResult> call, Throwable t) {
+////                    Toast.makeText(getApplicationContext(),"서버 연결 상태를 확인해주세요.",Toast.LENGTH_SHORT).show();
+////                }
+////            });
+//
+//
+//            mCustomDialog2.dismiss();
+//
+//        }
+//    };
+//
+//    public void changeDialog(View view)
+//    {
+//        mCustomDialog2 = new CustomDialog2(this,
+//                leftListener, // 왼쪽 버튼 이벤트
+//                rightListener); // 오른쪽 버튼 이벤트
+//        mCustomDialog2.show();
+//    }
 }
