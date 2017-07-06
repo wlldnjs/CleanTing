@@ -1,5 +1,6 @@
 package sopt.client.cleanting.Main;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 
 import com.tsengvn.typekit.TypekitContextWrapper;
 
+import java.util.ArrayList;
+
 import sopt.client.cleanting.Alarm.AlarmFragment;
 import sopt.client.cleanting.Community.CommunityFragment;
 import sopt.client.cleanting.MyRequest.MyRequestFragment;
@@ -17,6 +20,8 @@ import sopt.client.cleanting.Mypage.MypageFragment;
 import sopt.client.cleanting.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    public static ArrayList<Activity> activityArrayList = new ArrayList<Activity>();
+
     public ImageView myRequestBtn, makeTingBtn, alarmBtn, mypageBtn;
     MyRequestFragment myRequestFragment;
     CommunityFragment communityFragment;
@@ -42,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(activityArrayList.size() == 0){
+            activityArrayList.add(this);
+        }
 
         myRequestBtn = (ImageView)findViewById(R.id.my_request_btn);
         makeTingBtn = (ImageView)findViewById(R.id.make_ting_btn);
