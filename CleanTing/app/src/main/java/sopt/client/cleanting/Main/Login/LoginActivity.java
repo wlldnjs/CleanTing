@@ -34,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox checkBox;
     NetworkService service;
 
+    String loginId, loginPwd;
+
     public static LoginUserDatas loginUserDatas = new LoginUserDatas();
 
     @Override    //  글씨체 적용
@@ -55,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         Findpassword_img = (ImageView) findViewById(R.id.Findpassword_tv);
         checkBox = (CheckBox) findViewById(R.id.checkbox);
 
+
         Findpassword_img.setOnClickListener(new View.OnClickListener() {// 계정찾기 페이지로 넘어 감
             @Override
             public void onClick(View v) {
@@ -72,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         Login_btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -384,10 +384,11 @@
                         android:textSize="15sp"
                         android:textColor="#333333"/>
                     <LinearLayout
-                        android:layout_marginTop="15dp"
-                        android:layout_width="108dp"
-                        android:layout_height="108dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_width="98dp"
+                        android:layout_height="98dp"
                         android:background="@drawable/rectangle_gray_box">
+
                         <ImageView
                             android:id="@+id/make_ting_cleaner_img"
                             android:layout_width="match_parent"

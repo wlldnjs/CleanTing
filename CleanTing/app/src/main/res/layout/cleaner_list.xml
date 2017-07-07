@@ -42,6 +42,23 @@
                 android:text="청소 이력 : "
                 android:textColor="#333333"
                 android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_toRightOf="@+id/List_cleanerimg"
+            android:layout_alignBottom="@+id/List_cleanerimg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/List_cleanercomment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:text="후기: "
+                android:layout_marginBottom="5dp"
+                android:textColor="#333333"
+                android:textSize="12sp" />
             <ImageView
                 android:layout_toLeftOf="@+id/List_clenaerstar2"
                 android:id="@+id/List_clenaerstar1"
@@ -76,20 +93,10 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_marginLeft="3dp"
+                android:layout_marginRight="27dp"
                 android:src="@drawable/star" />
-        </RelativeLayout>
 
-        <TextView
-            android:layout_toRightOf="@+id/List_cleanerimg"
-            android:layout_alignBottom="@+id/List_cleanerimg"
-            android:id="@+id/List_cleanercomment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="14dp"
-            android:text="후기: "
-            android:layout_marginBottom="5dp"
-            android:textColor="#333333"
-            android:textSize="12sp" />
+        </RelativeLayout>
 
     </RelativeLayout>
 
