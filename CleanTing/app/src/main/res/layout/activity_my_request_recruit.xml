@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context="sopt.client.cleanting.MyRequest.MyRequestRecruit">
     <LinearLayout
+        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -19,9 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-
             android:text="내 지역 모집현황"
-            android:textColor="#333333"
+            android:textColor="#5D5D5D"
             android:textSize="20sp" />
     </LinearLayout>
 

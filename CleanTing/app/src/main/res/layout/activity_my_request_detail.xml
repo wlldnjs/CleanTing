@@ -6,6 +6,7 @@
     android:orientation="vertical"
     tools:context="sopt.client.cleanting.MyRequest.MyRequestDetailActivity">
     <LinearLayout
+        android:layout_marginTop="25dp"
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -18,9 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-
             android:text="나의 신청현황"
-            android:textColor="#333333"
+            android:textColor="#5D5D5D"
             android:textSize="20sp" />
     </LinearLayout>
 

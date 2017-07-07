@@ -10,8 +10,8 @@
         android:layout_height="80dp">
 
         <TextView
-            android:textColor="@android:color/black"
-            android:textSize="25dp"
+            android:textColor="#5D5D5D"
+            android:textSize="20sp"
             android:text="알림"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

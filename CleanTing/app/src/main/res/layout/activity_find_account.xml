@@ -15,10 +15,11 @@
         android:orientation="vertical">
         <TextView
             android:id="@+id/et1"
-            android:layout_marginTop="37dp"
+            android:layout_marginTop="25dp"
             android:gravity="center"
             android:text="Find ID / Password"
-            android:textSize="25dp"
+            android:textSize="20sp"
+            android:textColor="#5D5D5D"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
@@ -27,7 +28,7 @@
             android:layout_marginTop="45dp"
             android:textColor="@android:color/black"
             android:text="Find ID"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="29dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <LinearLayout
@@ -67,7 +68,7 @@
             android:id="@+id/et3"
             android:layout_marginTop="45dp"
             android:textColor="@android:color/black"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="29dp"
             android:textSize="15dp"
             android:text="New Password"
             android:layout_width="match_parent"
