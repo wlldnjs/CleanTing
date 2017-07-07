@@ -74,12 +74,13 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Call<IdCheckResult> checkResultCall = service.getIdCheckResult(edit_id.getText().toString());
-
                 checkResultCall.enqueue(new Callback<IdCheckResult>() {
                     @Override
                     public void onResponse(Call<IdCheckResult> call, Response<IdCheckResult> response) {
-                        if (response.isSuccessful()) {
-                            if (response.body().message.equals("사용가능한 아이디 입니다.")) {
+                        if (response.isSuccessful())
+                        {
+                            if (response.body().message.equals("사용가능한 아이디 입니다."))
+                            {
                                 Toast.makeText(getApplicationContext(),
                                         "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
                             } else {

@@ -1,6 +1,7 @@
 package sopt.client.cleanting.Alarm;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class AlarmFragment extends Fragment {
     ListView listview1,listview2,listview3;
     RelativeLayout groupA,groupB,groupC;
     LinearLayout groupA_item,groupB_item,groupC_item;
-//    TextView group1,group2,group3;
+    TextView group1,group2,group3;
     AlarmAdapter Adapter1,Adapter2,Adapter3;
     static int flag_a=0;
     static int flag_b,flag_c=1;
@@ -70,13 +72,16 @@ public class AlarmFragment extends Fragment {
         listview2 = (ListView)layout.findViewById(R.id.listview2);
         listview3=(ListView)layout.findViewById(R.id.listview3);
 //
-//        group1=(TextView)layout.findViewById(R.id.group1);
-//        group2=(TextView)layout.findViewById(R.id.group2);
-//        group3=(TextView)layout.findViewById(R.id.group3);
+        group1=(TextView)layout.findViewById(R.id.group1);
+        group2=(TextView)layout.findViewById(R.id.group2);
+        group3=(TextView)layout.findViewById(R.id.group3);
+
+        Typeface typeFace = Typeface.createFromAsset(context.getAssets(),"Helvetica_.ttf");
+        group1.setTypeface(typeFace);
+        group2.setTypeface(typeFace);
+        group3.setTypeface(typeFace);
 
         Call<ReferAlarmResult> referAlarmResultCall=service.getReferAlarmResult(loginUserDatas.userId);
-
-
         referAlarmResultCall.enqueue(new Callback<ReferAlarmResult>() {
             @Override
             public void onResponse(Call<ReferAlarmResult> call, Response<ReferAlarmResult> response) {

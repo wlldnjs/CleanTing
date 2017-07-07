@@ -237,6 +237,7 @@ public class MyRequestRecruit extends AppCompatActivity {
                 }
                 MakeTingRequestResultData makeTingRequestResultData = new MakeTingRequestResultData();
                 makeTingRequestResultData.userId = loginUserDatas.userId;
+                makeTingRequestResultData.userName = loginUserDatas.name;
                 makeTingRequestResultData.request = request;
                 makeTingRequestResultData.warning = warningEdit.getText().toString();
                 makeTingRequestResultData.price = "30000";

@@ -9,4 +9,5 @@ public class MakeTingRequestResultData{
     public String price;
     public String request;
     public String warning;
+    public String userName;
 }
