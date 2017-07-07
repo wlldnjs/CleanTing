@@ -1,4 +1,5 @@
 package sopt.client.cleanting.MakeTing;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.EditText;
@@ -37,6 +37,7 @@ import sopt.client.cleanting.MakeTing.CleanerDetail.DetailCleanerActivity;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static java.lang.Integer.parseInt;
 import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 import static sopt.client.cleanting.Main.MainActivity.REQUEST_SELECT_CLEANER;
 
@@ -58,6 +59,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     ImageView star1, star2, star3, star4, star5, cleanerImg;
     TextView cleanText, cleanerName, ratingCnt, activity, review, career, age, commentBtn, location;
     String cleanerId;
+
+    TextView time1TextView, time2TextView, time3TextView,time4TextView,time5TextView,time6TextView,time7TextView,time8TextView,time9TextView,time10TextView;
     @Override    //  글씨체 적용
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
@@ -117,7 +120,146 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         age = (TextView)findViewById(R.id.make_ting_age);
         commentBtn = (TextView)findViewById(R.id.make_ting_cleaner_comment);
 
-        listView1 = (ListView) findViewById(R.id.select_time_list1);
+        time1TextView = (TextView)findViewById(R.id.time_text_1);
+        time2TextView = (TextView)findViewById(R.id.time_text_2);
+        time3TextView = (TextView)findViewById(R.id.time_text_3);
+        time4TextView = (TextView)findViewById(R.id.time_text_4);
+        time5TextView = (TextView)findViewById(R.id.time_text_5);
+        time6TextView = (TextView)findViewById(R.id.time_text_6);
+        time7TextView = (TextView)findViewById(R.id.time_text_7);
+        time8TextView = (TextView)findViewById(R.id.time_text_8);
+        time9TextView = (TextView)findViewById(R.id.time_text_9);
+        time10TextView = (TextView)findViewById(R.id.time_text_10);
+
+        time1TextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeStart.setText(time1TextView.getText().toString());
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
+
+            }
+        });
+        time2TextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeStart.setText(time2TextView.getText().toString());
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
+
+            }
+        });
+        time3TextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeStart.setText(time3TextView.getText().toString());
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
+            }
+        });
+        time4TextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeStart.setText(time4TextView.getText().toString());
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
+            }
+        });
+        time5TextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeStart.setText(time5TextView.getText().toString());
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
+            }
+        });
+        time6TextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeStart.setText(time6TextView.getText().toString());
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
+            }
+        });
+        time7TextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeStart.setText(time7TextView.getText().toString());
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
+            }
+        });
+        time8TextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeStart.setText(time8TextView.getText().toString());
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
+            }
+        });
+
+        time9TextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeStart.setText(time9TextView.getText().toString());
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        time10TextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeStart.setText(time10TextView.getText().toString());
+                StringTokenizer st1 = new StringTokenizer(timeStart.getText().toString(),":");
+                int startTimeFront = Integer.parseInt(st1.nextToken())+8;
+                String startTimeEnd = st1.nextToken();
+                timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        //수정중
+        /*listView1 = (ListView) findViewById(R.id.select_time_list1);
 
         timeData = new ArrayList<String>();
         timeData.add("08:00");
@@ -136,7 +278,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         arrayAdapter = new ArrayAdapter(getApplicationContext(),R.layout.timelist, timeData);
 
         listView1.setAdapter(arrayAdapter);
-
+*/
         selectDate1.setOnClickListener(this);
         selectTime1.setOnClickListener(this);
         selectRequest1.setOnClickListener(this);
@@ -249,6 +391,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         });
 
 
+        //수정중
+        /*
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -268,7 +412,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 listView1.requestDisallowInterceptTouchEvent(true);
                 return false;
             }
-        });
+        });*/
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -286,7 +430,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {
                         if(response.isSuccessful()){
-                            if(response.body().result == null){
+                            if(response.body().result.size()==0){
                                 Toast.makeText(MakeTingActivity.this, "현 지역 클리너가 없습니다.", Toast.LENGTH_SHORT).show();
                             } else {
                                 SearchLocationCleanerData cleanerData = response.body().result.get(0);
@@ -294,7 +438,9 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                                 Toast.makeText(MakeTingActivity.this, cleanerData.cleanerId, Toast.LENGTH_SHORT).show();
                                 String rate = cleanerData.rate;
                                 String cnt = cleanerData.review_cnt;
-                                int rating = Integer.parseInt(rate)/Integer.parseInt(cnt);
+                                int rating ;
+                                if(parseInt(cnt)==0)rating =0;
+                                rating = parseInt(rate)/ parseInt(cnt);
                                 if(rating <= 0.5){
                                     star2.setImageResource(R.drawable.star_line);
                                     star3.setImageResource(R.drawable.star_line);
@@ -483,7 +629,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                     String cnt = response.body().result.cleaner.review_cnt;
                     int rating = 0;
                     if(!rate.equals("0") && !cnt.equals("0")){
-                        rating = Integer.parseInt(rate)/Integer.parseInt(cnt);
+                        rating = parseInt(rate)/ parseInt(cnt);
                     }
 
                     if(rating <= 1){
