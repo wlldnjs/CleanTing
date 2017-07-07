@@ -177,4 +177,7 @@ Copyrights 2014인큐베이터(주) 개인정보 보호정책 | 약관
         <item> 평점순 </item>
         <item> 후기순 </item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

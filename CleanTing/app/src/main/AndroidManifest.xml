@@ -5,9 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.DIAL_PHONE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".Application.ApplicationController"
@@ -15,10 +14,13 @@
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/app_icon"
-        android:supportsRtl="true"
         android:screenOrientation="portrait"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Main.MainActivity" android:screenOrientation="portrait">
+        <activity
+            android:name=".Main.MainActivity"
+            android:screenOrientation="portrait">
+
             <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,28 +29,52 @@
             </intent-filter>
             -->
         </activity>
-        <activity android:name=".Main.Login.LoginActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Main.SignUp.SignUpActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Main.SplashActivity" android:screenOrientation="portrait">
+        <activity
+            android:name=".Main.Login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Main.SignUp.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Main.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyRequest.MyRequestDetailActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MyRequest.MyRequestRecruit" android:screenOrientation="portrait"/>
-        <activity android:name=".Main.SignUp.AgreementActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Main.SignUp.InformationActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Mypage.LeaveActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Mypage.MyhistoryActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Mypage.RatingActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MyRequest.MyRequestDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyRequest.MyRequestRecruit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Main.SignUp.AgreementActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Main.SignUp.InformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Mypage.LeaveActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Mypage.MyhistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Mypage.RatingActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MakeTing.MakeTingActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Main.Login.FindAccountActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MyRequest.ChangeMyRequestDetail" android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Main.Login.FindAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyRequest.ChangeMyRequestDetail"
+            android:screenOrientation="portrait" />
 
         <service android:name=".Firebase.FcmListenerService">
             <intent-filter>
@@ -61,15 +87,34 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Community.CommunitySearchActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Community.CommunityFilterActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Community.CommunityWriteActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Community.CommunityBulletinDetailActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Mypage.ChangeInfoActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MakeTing.ChooseCleanerActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MakeTing.CleanerDetail.DetailCleanerActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Main.SignUp.SearchAddressActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MyRequest.MoreViewClean" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Community.CommunitySearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Community.CommunityFilterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Community.CommunityWriteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Community.CommunityBulletinDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Mypage.ChangeInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MakeTing.ChooseCleanerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MakeTing.CleanerDetail.DetailCleanerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Main.SignUp.SearchAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyRequest.MoreViewClean"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Tutorials.TutorialMainActivity"></activity>
     </application>
 
 </manifest>
