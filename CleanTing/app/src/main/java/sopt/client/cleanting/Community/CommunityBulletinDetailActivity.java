@@ -99,7 +99,6 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
 
                 addcomment = new BulletinAddCommentData();
                 addcomment.userId = loginUserDatas.userId;
-                addcomment.userId = loginUserDatas.userId;
                 addcomment.userName = loginUserDatas.name;
                 addcomment.content = str;
 
@@ -112,6 +111,7 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
                             replyRecyclerViewAdapter.notifyDataSetChanged();
                             inputReplyEdit.setText("");
                             Toast.makeText(getApplicationContext(),"댓글 등록",Toast.LENGTH_SHORT).show();
+
                             Call<FindBulletinResult> findbulletinresult = service.getFindBulletinResult(postData.postId);
                             findbulletinresult.enqueue(new Callback<FindBulletinResult>() {
                                 @Override
@@ -122,6 +122,7 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
                                             Data = response.body().result;
                                             bulletinCommentDatas = Data.comment;
                                             postData = Data.post;
+                                            //Toast.makeText(getApplicationContext(),bulletinCommentDatas.get(0).content,Toast.LENGTH_SHORT).show();
                                             commentDatas.add(0,bulletinCommentDatas.get(0));
                                             replyRecyclerViewAdapter = new ReplyRecyclerViewAdapter(itemdata,getApplicationContext(),postData,commentDatas);
                                             recyclerView.setAdapter(replyRecyclerViewAdapter);
@@ -131,7 +132,6 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "조회 실패", Toast.LENGTH_SHORT).show();
                                     }
                                 }
-
                                 @Override
                                 public void onFailure(Call<FindBulletinResult> call, Throwable t) {
                                     Toast.makeText(getApplicationContext(), "통신 연결 실패", Toast.LENGTH_SHORT).show();
@@ -140,7 +140,6 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
                         }
                         else
                         {
-
                         }
                     }
                     @Override
