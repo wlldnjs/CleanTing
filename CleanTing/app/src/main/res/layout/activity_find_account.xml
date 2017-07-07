@@ -41,7 +41,7 @@
                 android:background="@null"
                 android:textSize="13dp"
                 android:id="@+id/edit_phonenumber"
-                android:hint="핸드폰 번호"
+                android:hint="핸드폰 번호(-포함하여 입력해 주세요)"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content" />
             <ImageView
@@ -88,7 +88,7 @@
                 android:background="@null"
                 android:textSize="13dp"
                 android:id="@+id/new_edit_phonenumber"
-                android:hint="핸드폰 번호"
+                android:hint="핸드폰 번호(-포함하여 입력해 주세요)"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content" />
             <ImageView

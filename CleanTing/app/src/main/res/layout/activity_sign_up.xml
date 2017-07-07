@@ -88,7 +88,6 @@
                         android:id="@+id/edit_id"
                         android:layout_width="220dp"
                         android:layout_height="35dp"
-                        android:layout_marginTop="15dp"
                         android:hint="아이디를 입력하세요"
                         android:textSize="13dp"
                         android:singleLine="true"/>
@@ -160,10 +159,9 @@
                         android:id="@+id/edit_phonenumber"
                         android:layout_width="220dp"
                         android:layout_height="35dp"
-                        android:hint="'-'없이 핸드폰번호 입력"
+                        android:hint="핸드폰 번호 ('-'포함)"
                         android:textSize="13dp"
-                        android:singleLine="true"
-                        android:inputType="number"/>
+                        android:singleLine="true"/>
 
                     <ImageView
                         android:id="@+id/button_cite"
