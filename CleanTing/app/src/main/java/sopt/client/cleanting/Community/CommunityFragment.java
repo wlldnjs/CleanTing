@@ -29,6 +29,7 @@ import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 import static android.app.Activity.RESULT_OK;
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 
 /**
  * Created by 김지원 on 2017-06-30.
@@ -143,7 +144,7 @@ public class CommunityFragment extends Fragment {
                 return false;
             }
         });
-        int locationnum = 1;
+        int locationnum = Integer.parseInt(loginUserDatas.locationNum);
         String bulletinname;
         if(locationnum == 1)
         {
