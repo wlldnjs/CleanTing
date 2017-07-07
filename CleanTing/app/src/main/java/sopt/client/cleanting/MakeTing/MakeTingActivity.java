@@ -174,6 +174,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                     selectCond = false;
                     request.setText("추가사항 없음");
                 }
+                selectRequest2.setVisibility(View.GONE);
+                selectWorning2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -196,6 +198,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                     selectWindow = false;
                     request.setText("추가사항 없음");
                 }
+                selectRequest2.setVisibility(View.GONE);
+                selectWorning2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -218,6 +222,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                     selectRef = false;
                     request.setText("추가사항 없음");
                 }
+                selectRequest2.setVisibility(View.GONE);
+                selectWorning2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -230,6 +236,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 int startTimeFront = Integer.parseInt(st1.nextToken())+8;
                 String startTimeEnd = st1.nextToken();
                 timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
 
             }
         });
@@ -251,6 +259,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 sendSearchLocationCleanerData.userLat = loginUserDatas.lat;
                 sendSearchLocationCleanerData.userLng = loginUserDatas.lng;
                 Call<SearchLocationCleanerResult> searchLocationCleanerResultCall = service.getSearchLocationCleanerResult(date.getText().toString(),sendSearchLocationCleanerData);
+                selectDate2.setVisibility(View.GONE);
+                selectTime2.setVisibility(View.VISIBLE);
                 searchLocationCleanerResultCall.enqueue(new Callback<SearchLocationCleanerResult>() {
                     @Override
                     public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {

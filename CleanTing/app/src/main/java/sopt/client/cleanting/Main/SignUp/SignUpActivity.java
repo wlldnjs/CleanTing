@@ -29,7 +29,7 @@ import sopt.client.cleanting.R;
 public class SignUpActivity extends AppCompatActivity {
 
 
-    ImageView before, button_cite, button_confirm, button_address;
+    ImageView before, button_cite, button_address;
     ImageView submit;
     EditText edit_name, edit_phonenumber, edit_citenumber, edit_password, edit_address, edit_id, edit_confirm_password;
     TextView agreement, information, approval, address1;
@@ -47,7 +47,6 @@ public class SignUpActivity extends AppCompatActivity {
         service = ApplicationController.getInstance().getNetworkService();
 
         button_cite = (ImageView) findViewById(R.id.button_cite);
-        button_confirm = (ImageView) findViewById(R.id.button_confirm);
         button_address = (ImageView) findViewById(R.id.button_address);
 
         submit = (ImageView) findViewById(R.id.submit);
