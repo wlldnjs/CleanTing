@@ -48,7 +48,7 @@ public class MyRequestDetailFragmentEmpty extends Fragment {
             }
         });
 
-        refreshView = false;
+        refreshView = true;
         return layout;
     }
 }

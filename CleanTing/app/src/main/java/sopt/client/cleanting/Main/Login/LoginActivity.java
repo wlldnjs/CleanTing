@@ -164,16 +164,19 @@ public class LoginActivity extends AppCompatActivity {
                                     editor.commit();
                                     Toast.makeText(LoginActivity.this, "자동로그인이 설정되었습니다.", Toast.LENGTH_SHORT).show();
                                 }
-                                loginUserDatas.token = response.body().token;
-                                loginUserDatas.userId = response.body().userInfo.userId;
-                                loginUserDatas.name = response.body().userInfo.name;
-                                loginUserDatas.phone = response.body().userInfo.phone;
-                                loginUserDatas.address = response.body().userInfo.address;
-                                loginUserDatas.lat = response.body().userInfo.lat;
-                                loginUserDatas.lng = response.body().userInfo.lng;
-                                loginUserDatas.locationNum = response.body().userInfo.locationNum;
-                                loginUserDatas.push = response.body().userInfo.push;
-
+                                try {
+                                    loginUserDatas.token = response.body().token;
+                                    loginUserDatas.userId = response.body().userInfo.userId;
+                                    loginUserDatas.name = response.body().userInfo.name;
+                                    loginUserDatas.phone = response.body().userInfo.phone;
+                                    loginUserDatas.address = response.body().userInfo.address;
+                                    loginUserDatas.lat = response.body().userInfo.lat;
+                                    loginUserDatas.lng = response.body().userInfo.lng;
+                                    loginUserDatas.locationNum = response.body().userInfo.locationNum;
+                                    loginUserDatas.push = response.body().userInfo.push;
+                                } catch (Exception e){
+                                    e.printStackTrace();
+                                }
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();

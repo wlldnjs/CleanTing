@@ -533,6 +533,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 }
                 makeTingResultData.request = requsetNum;
                 makeTingResultData.warning = warningEdit.getText().toString();
+                makeTingResultData.lat = loginUserDatas.lat;
+                makeTingResultData.lng = loginUserDatas.lng;
 
                 Log.d("입력 유저 아이디",makeTingResultData.userId);
                 Log.d("입력 날짜",makeTingResultData.date);

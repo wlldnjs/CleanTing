@@ -46,6 +46,7 @@ public class MyRequestDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         layout = (LinearLayout) inflater.inflate(R.layout.viewpager_my_request_detail,container,false);
+        refreshView = true;
         cleaner = (TextView)layout.findViewById(R.id.my_request_detail_cleaner);
         date = (TextView)layout.findViewById(R.id.my_request_detail_date1);
         time = (TextView)layout.findViewById(R.id.my_request_detail_time1);
@@ -91,8 +92,6 @@ public class MyRequestDetailFragment extends Fragment {
                 startActivityForResult(intent,3000);
             }
         });
-
-        refreshView = true;
 
         return layout;
     }
