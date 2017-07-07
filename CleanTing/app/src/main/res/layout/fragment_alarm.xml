@@ -7,13 +7,15 @@
     <RelativeLayout
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="80dp">
+
         <TextView
             android:textColor="@android:color/black"
             android:textSize="25dp"
             android:text="알림"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
     </RelativeLayout>
     <RelativeLayout
         android:background="@drawable/yellow_box"
@@ -26,7 +28,7 @@
             android:id="@+id/group1"
             android:textColor="@android:color/black"
             android:textSize="20dp"
-            android:text="GROUP A"
+            android:text="TING A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true" />
@@ -60,7 +62,7 @@
             android:id="@+id/group2"
             android:textColor="@android:color/black"
             android:textSize="20dp"
-            android:text="GROUP B"
+            android:text="TING B"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true" />
@@ -95,7 +97,7 @@
             android:id="@+id/group3"
             android:textColor="@android:color/black"
             android:textSize="20dp"
-            android:text="GROUP C"
+            android:text="TING C"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true" />
