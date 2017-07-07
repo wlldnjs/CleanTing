@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:maxLength="12"
                     android:hint="제목"
                     android:paddingBottom="10dp"
                     android:id="@+id/Bulletin_input_titile"
