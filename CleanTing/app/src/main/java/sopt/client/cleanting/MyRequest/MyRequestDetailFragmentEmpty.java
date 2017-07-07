@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import sopt.client.cleanting.MakeTing.MakeTingActivity;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.MyRequest.MyRequestFragment.refreshView;
+
 /**
  * Created by 김지원 on 2017-07-01.
  */
@@ -45,6 +47,8 @@ public class MyRequestDetailFragmentEmpty extends Fragment {
                 startActivity(new Intent(context, MakeTingActivity.class));
             }
         });
+
+        refreshView = false;
         return layout;
     }
 }

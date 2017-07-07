@@ -37,7 +37,6 @@ import sopt.client.cleanting.MakeTing.CleanerDetail.DetailCleanerActivity;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
-import static android.R.attr.rating;
 import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 import static sopt.client.cleanting.Main.MainActivity.REQUEST_SELECT_CLEANER;
 
@@ -293,6 +292,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                                 SearchLocationCleanerData cleanerData = response.body().result.get(0);
                                 cleanerId = cleanerData.cleanerId;
                                 Toast.makeText(MakeTingActivity.this, cleanerData.cleanerId, Toast.LENGTH_SHORT).show();
+
                                 String rate = cleanerData.rate;
                                 String cnt = cleanerData.review_cnt;
                                 int rating = 0;

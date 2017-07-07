@@ -55,9 +55,7 @@ public class MyRequestFragment extends Fragment{
     int selectPosition;
     boolean motionFlag;
     ////////////////////////////////
-    boolean refreshView = false;
-//    boolean firstCreate = true;
-//    FragmentTransaction ft = getFragmentManager().beginTransaction();
+    public static boolean refreshView = false;
 
     public MyRequestFragment() {
     }
@@ -160,23 +158,11 @@ public class MyRequestFragment extends Fragment{
                 return false;
             }
         });
-//        itemData.add(new MyRequestData("2017년 6월 5일 (월)","13:00~19:00","1"));
-//        itemData.add(new MyRequestData("2017년 6월 6일 (화)","14:00~19:00","1"));
-//        itemData.add(new MyRequestData("2017년 6월 7일 (수)","15:00~19:00","1"));
-//        itemData.add(new MyRequestData("2017년 6월 8일 (목)","16:00~19:00","1"));
-//        itemData.add(new MyRequestData("2017년 6월 9일 (금)","17:00~19:00","2"));
 
-//        bundleList.clear();
-//        bundleList = getBundleList();
-        if(refreshView){
-            refreshView = false;
-//            Toast.makeText(context, "메인페이지 refresh", Toast.LENGTH_SHORT).show();
-            RefreshView();
-        }
-
-//        if(firstCreate){
+//        if(refreshView){
+//            refreshView = false;
+////            Toast.makeText(context, "메인페이지 refresh", Toast.LENGTH_SHORT).show();
 //            RefreshView();
-//            firstCreate = false;
 //        }
 
         Log.d("MyRequestFragment", "onCreateView 호출");
@@ -248,8 +234,8 @@ public class MyRequestFragment extends Fragment{
 
     public void RefreshView(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.detach(this);
-        ft.attach(this);
+        ft.detach(MyRequestFragment.this);
+        ft.attach(MyRequestFragment.this);
         ft.commit();
         Toast.makeText(context, "view 새로고침", Toast.LENGTH_SHORT).show();
     }
@@ -262,6 +248,7 @@ public class MyRequestFragment extends Fragment{
                 Toast.makeText(context, "참여 완료", Toast.LENGTH_SHORT).show();
 //                RefreshView();
             }
+//            RefreshView();
         }
     }
 
@@ -269,17 +256,26 @@ public class MyRequestFragment extends Fragment{
     public void onResume() {
         super.onResume();
         Log.d("MyRequestFragment", "onResume 호출");
-//        bundleList.clear();
-//        bundleList = getBundleList();
+        if(refreshView){
+            refreshView = false;
+            RefreshView();
+        }
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.attach(MyRequestFragment.this);
+//        ft.commit();
 //        if(refreshView){
 //            RefreshView();
-//            refreshView = false;
 //        }
     }
 
     @Override
     public void onPause() {
-        super.onPause();
-        refreshView = true;
+        super.onPause();;
+//        Log.d("MyRequestFragment", "onPause 호출 , ");
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.detach(MyRequestFragment.this);
+//        ft.commit();
+//        refreshView = true;
+//        refreshView = true;
     }
 }

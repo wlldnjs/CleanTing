@@ -37,7 +37,7 @@ public class FcmListenerService extends com.google.firebase.messaging.FirebaseMe
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.push_img)
-                .setContentTitle("FCM Push Test")
+//                .setContentTitle("FCM Push Test")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
