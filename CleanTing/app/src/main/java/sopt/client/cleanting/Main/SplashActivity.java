@@ -8,8 +8,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import sopt.client.cleanting.Main.Login.LoginActivity;
 import sopt.client.cleanting.R;
-import sopt.client.cleanting.Tutorials.TutorialMainActivity;
 
 public class SplashActivity extends AppCompatActivity {
     private final int SPLASH_DISPLAY_LENGTH = 3000;
@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent mainIntent = new Intent(SplashActivity.this,TutorialMainActivity.class);
+                Intent mainIntent = new Intent(SplashActivity.this,LoginActivity.class);
                 SplashActivity.this.startActivity(mainIntent);
                 SplashActivity.this.finish();
             }

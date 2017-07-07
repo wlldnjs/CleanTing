@@ -114,7 +114,9 @@
         <activity
             android:name=".MyRequest.MoreViewClean"
             android:screenOrientation="portrait" />
-        <activity android:name=".Tutorials.TutorialMainActivity"></activity>
+        <activity
+            android:name=".Tutorials.TutorialMainActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
