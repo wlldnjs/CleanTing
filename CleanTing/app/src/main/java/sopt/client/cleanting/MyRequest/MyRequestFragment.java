@@ -238,7 +238,7 @@ public class MyRequestFragment extends Fragment{
         ft.detach(MyRequestFragment.this);
         ft.attach(MyRequestFragment.this);
         ft.commit();
-        Toast.makeText(context, "view 새로고침", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "view 새로고침", Toast.LENGTH_SHORT).show();
     }
 
     @Override

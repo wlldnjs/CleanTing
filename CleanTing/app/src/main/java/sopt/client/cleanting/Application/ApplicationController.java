@@ -17,7 +17,7 @@ public class ApplicationController extends Application {
     public static ApplicationController getInstance(){
         return instance;
     }
-    private static String baseUrl = "http://52.79.221.92:3000";
+    private static String baseUrl = "";
     private NetworkService networkService;
     public NetworkService getNetworkService(){
         return networkService;
@@ -35,7 +35,7 @@ public class ApplicationController extends Application {
 
         ApplicationController.instance = this;
 
-        buildService();       //통신소스 완료 후 주석풀자.
+//        buildService();       //통신소스 완료 후 주석풀자.
     }
 
     public void buildService(){
