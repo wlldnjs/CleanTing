@@ -100,6 +100,7 @@ public class CommunityBulletinDetailActivity extends AppCompatActivity {
                 addcomment = new BulletinAddCommentData();
 //                addcomment.userId = loginUserDatas.userId;
                 addcomment.userId = loginUserDatas.userId;
+                addcomment.userName = loginUserDatas.name;
                 addcomment.content = str;
 
                 final Call<BulletinAddCommentResult> bulletinAddCommentResultCall = service.getBulletinAddCommentResult(postData.postId,addcomment);

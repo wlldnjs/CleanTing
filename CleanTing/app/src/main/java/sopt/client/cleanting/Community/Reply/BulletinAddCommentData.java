@@ -7,4 +7,5 @@ package sopt.client.cleanting.Community.Reply;
 public class BulletinAddCommentData{
     public String userId;
     public String content;
+    public String userName;
 }
