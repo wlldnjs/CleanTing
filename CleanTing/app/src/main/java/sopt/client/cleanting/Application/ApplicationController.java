@@ -27,12 +27,11 @@ public class ApplicationController extends Application {
     public void onCreate() {
         super.onCreate();
         Typekit.getInstance()
-                .addNormal(Typekit.createFromAsset(this,"gabia_napjakBlock.ttf"))
+                .addNormal(Typekit.createFromAsset(this,"NanumSquareR.ttf"))
                 .addCustom1(Typekit.createFromAsset(this,"NanumBarunGothic.ttf"))
                 .addCustom2(Typekit.createFromAsset(this,"NanumMyeongjo.ttc"))
                 .addCustom3(Typekit.createFromAsset(this,"NanumMyeongjoExtraBold.ttf"))
-                .addCustom4(Typekit.createFromAsset(this,"NanumSquareR.ttf"))
-                .addCustom5(Typekit.createFromAsset(this,"gabia_napjakBlock.ttf"));
+                .addCustom4(Typekit.createFromAsset(this,"NanumSquareR.ttf"));
 
         ApplicationController.instance = this;
 
