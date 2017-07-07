@@ -20,7 +20,6 @@ public class MyLocationViewHolderHeader extends RecyclerView.ViewHolder{
 
     public MyLocationViewHolderHeader(View itemView) {
         super(itemView);
-        myLocationBtn = (TextView)itemView.findViewById(R.id.my_location_sort);
         viewPager = (ViewPager)itemView.findViewById(R.id.my_request_view_pager);
 
         tv18 = (TextView)itemView.findViewById(R.id.textview18);
