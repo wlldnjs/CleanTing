@@ -1,21 +1,25 @@
 package sopt.client.cleanting.Mypage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tsengvn.typekit.TypekitContextWrapper;
 
+import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.Main.SignUp.SearchAddressActivity;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
@@ -30,6 +34,16 @@ public class ChangeInfoActivity extends AppCompatActivity {
    EditText edittext_phonenumber;
     EditText password1,password2;
     EditText edit_phonenumber;
+    TextView address_edit_tv;
+
+    ImageView cab;
+
+    String finalData;
+    String data1;
+
+    ModifyUserAddressData modifyUserAddressData;
+
+    private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
 
     @Override    //  글씨체 적용
     protected void attachBaseContext(Context newBase) {
@@ -46,12 +60,21 @@ public class ChangeInfoActivity extends AppCompatActivity {
         button_pw = (ImageView) findViewById(R.id.button_pw);
         button_phonenumber=(ImageView)findViewById(R.id.button_phonenumber);
         button_address=(ImageView)findViewById(R.id.button_address);
-
-
         password1 = (EditText)findViewById(R.id.password1);
         password2 = (EditText)findViewById(R.id.password2);
-
         edittext_phonenumber=(EditText) findViewById(R.id.text_phonenumber);
+
+        address_edit_tv = (TextView)findViewById(R.id.address_edit_tv);
+
+        cab = (ImageView)findViewById(R.id.search_chage_address_btn);
+
+        cab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ChangeInfoActivity.this, SearchAddressActivity.class);
+                startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
+            }
+        });
 
         button_pw.setOnClickListener(new View.OnClickListener() {       // 수정하기
 
@@ -123,7 +146,6 @@ public class ChangeInfoActivity extends AppCompatActivity {
 //                    password2.requestFocus();
 //                    return;
 //                }
-
             }
         });
 
@@ -145,20 +167,40 @@ public class ChangeInfoActivity extends AppCompatActivity {
                             }
                         }
                     }
-
                     @Override
                     public void onFailure(Call<ModifyUserPhoneResult> call, Throwable t) {
                         Toast.makeText(ChangeInfoActivity.this, "서버 연결 상태를 확인해주세요.", Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
         });
-
         button_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                modifyUserAddressData = new ModifyUserAddressData();
+                modifyUserAddressData.address = data1;
+                modifyUserAddressData.locationNum = loginUserDatas.locationNum;
+                Call<ModifyUserAddressResult> modifyUserAddressResultCall = service.getModifyUserAddressResult(loginUserDatas.userId,modifyUserAddressData);
+                modifyUserAddressResultCall.enqueue(new Callback<ModifyUserAddressResult>() {
+                    @Override
+                    public void onResponse(Call<ModifyUserAddressResult> call, Response<ModifyUserAddressResult> response) {
+                        if(response.isSuccessful())
+                        {
+                            if(response.body().message.equals("address update ok")) {
+                                Toast.makeText(getApplicationContext(), "주소 변경 완료", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else
+                        {
+                            Toast.makeText(getApplicationContext()," "+response.body().message, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<ModifyUserAddressResult> call, Throwable t) {
+
+                    }
+                });
             }
         });
 
@@ -208,4 +250,30 @@ public class ChangeInfoActivity extends AppCompatActivity {
 //                rightListener); // 오른쪽 버튼 이벤트
 //        mCustomDialog2.show();
 //    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        switch (requestCode) {
+
+            case SEARCH_ADDRESS_ACTIVITY:
+
+                if (resultCode == RESULT_OK) {
+
+                    String data = intent.getExtras().getString("data");
+                    if (data != null) {
+                        StringTokenizer st1 = new StringTokenizer(data, ",");
+                        st1.nextToken();
+                        data1 = st1.nextToken();
+                        StringTokenizer st2 = new StringTokenizer(data1, "(");
+                        finalData = st2.nextToken();
+                        address_edit_tv.setText(data1);
+                    }
+                }
+                break;
+
+        }
+    }
+
 }

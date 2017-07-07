@@ -6,4 +6,5 @@ package sopt.client.cleanting.Mypage;
 
 public class ModifyUserAddressData {
     public String address;
+    public String locationNum;
 }
