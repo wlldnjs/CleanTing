@@ -13,10 +13,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
-                android:layout_marginBottom="41dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="41dp"
                 android:layout_marginTop="25dp"
                 android:orientation="vertical">
 
@@ -38,30 +39,33 @@
                     android:layout_marginTop="40dp"
                     android:text="기본정보"
                     android:textColor="#333333"
-                    android:textSize="17dp" />
+                    android:textSize="17sp" />
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="35dp"
                     android:layout_marginTop="40dp">
 
                     <TextView
+                        android:id="@+id/text_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
+                        android:layout_marginTop="16dp"
                         android:text="휴대폰"
-                        android:textSize="17dp" />
+                        android:textSize="17sp" />
 
                     <EditText
                         android:id="@+id/text_phonenumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_alignBottom="@+id/button_phonenumber"
+                        android:layout_marginEnd="15dp"
                         android:layout_marginRight="15dp"
                         android:layout_toLeftOf="@+id/button_phonenumber"
+                        android:layout_toStartOf="@+id/button_phonenumber"
                         android:background="@null"
                         android:hint="010-1234-5678"
                         android:textColor="#95989A"
@@ -72,6 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/buttonsujung"></ImageView>
                 </RelativeLayout>
 
@@ -81,8 +86,8 @@
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="35dp"
-                    android:layout_marginTop="9dp"
-                    android:background="#808080" />
+                    android:layout_marginTop="3dp"
+                    android:background="#95989A" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -98,10 +103,10 @@
                         android:layout_centerVertical="true"
                         android:text="주소"
                         android:textColor="#333333"
-                        android:textSize="15dp" />
+                        android:textSize="17sp" />
 
                     <ImageView
-                        android:id="@+id/search_chage_address_btn"
+                        android:id="@+id/new_adress_search"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -114,7 +119,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="23dp"
+                        android:layout_marginTop="25dp"
                         android:background="@null"
                         android:text="서울 특별시 노원구 공릉동 103-2002번지"
                         android:textColor="#95989A"
@@ -128,7 +133,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="35dp"
                     android:layout_marginTop="9dp"
-                    android:background="#808080" />
+                    android:background="#95989A" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -138,15 +143,15 @@
                     android:layout_marginTop="8dp">
 
                     <EditText
-                        android:textColor="#95989A"
-                        android:textSize="13dp"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
+                        android:layout_marginTop="25dp"
                         android:background="@null"
-                        android:hint="상세 주소를 입력하세요" />
+                        android:hint="상세 주소를 입력하세요"
+                        android:textColor="#95989A"
+                        android:textSize="13sp" />
 
                     <ImageView
                         android:id="@+id/button_address"
@@ -162,20 +167,40 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_centerInParent="true"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="35dp"
-                    android:layout_marginTop="8dp"
-                    android:background="#808080" />
+                    android:background="#95989A" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:layout_marginTop="65dp"
+                    android:layout_marginTop="26dp"
                     android:text="비밀번호변경"
                     android:textColor="#333333"
                     android:textSize="17sp" />
+
+
+                <EditText
+                    android:id="@+id/password1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginTop="27dp"
+                    android:background="@null"
+                    android:hint="새 비밀번호"
+                    android:inputType="textPassword"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#95989A" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -186,55 +211,46 @@
                     android:textColor="#777777"
                     android:textSize="13sp" />
 
-                <EditText
-                    android:id="@+id/password1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp"
-                    android:layout_marginTop="57dp"
-                    android:background="@null"
-                    android:hint="새 비밀번호"
-                    android:inputType="textPassword" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="35dp"
-                    android:background="#808080" />
-
-                <EditText
-                    android:id="@+id/password2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp"
-                    android:layout_marginTop="43dp"
-                    android:background="@null"
-                    android:hint="새 비밀번호 확인"
-                    android:inputType="textPassword" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="35dp"
-                    android:background="#808080" />
                 <RelativeLayout
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="35dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_marginRight="35dp">
+
+                    <EditText
+                        android:id="@+id/password2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="35dp"
+                        android:background="@null"
+                        android:hint="새 비밀번호 확인"
+                        android:inputType="textPassword"
+                        android:textColor="#95989A"
+                        android:textSize="13sp" />
+
                     <ImageView
-                        android:layout_alignParentRight="true"
                         android:id="@+id/button_pw"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/buttonsujung"/>
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/buttonsujung" />
+
                 </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#95989A" />
+
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

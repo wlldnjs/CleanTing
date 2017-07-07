@@ -438,26 +438,27 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                                 Toast.makeText(MakeTingActivity.this, cleanerData.cleanerId, Toast.LENGTH_SHORT).show();
                                 String rate = cleanerData.rate;
                                 String cnt = cleanerData.review_cnt;
-                                int rating ;
-                                if(parseInt(cnt)==0)rating =0;
-                                rating = parseInt(rate)/ parseInt(cnt);
-                                if(rating <= 0.5){
+                                int rating = 0;
+                                if(Integer.parseInt(rate) !=0 && Integer.parseInt(cnt) !=0) {
+                                    rating = Integer.parseInt(rate) / Integer.parseInt(cnt);
+                                }
+                                if(rating <= 1){
                                     star2.setImageResource(R.drawable.star_line);
                                     star3.setImageResource(R.drawable.star_line);
                                     star4.setImageResource(R.drawable.star_line);
                                     star5.setImageResource(R.drawable.star_line);
-                                } else if(rating <=1.5){
+                                } else if(rating <=2){
                                     star3.setImageResource(R.drawable.star_line);
                                     star4.setImageResource(R.drawable.star_line);
                                     star5.setImageResource(R.drawable.star_line);
-                                } else if (rating <=2.5){
+                                } else if (rating <=3){
                                     star3.setImageResource(R.drawable.star_line);
                                     star4.setImageResource(R.drawable.star_line);
                                     star5.setImageResource(R.drawable.star_line);
-                                } else if (rating <= 3.5){
+                                } else if (rating <= 4){
                                     star4.setImageResource(R.drawable.star_line);
                                     star5.setImageResource(R.drawable.star_line);
-                                } else if(rating <= 4.5){
+                                } else if(rating <= 5){
                                     star5.setImageResource(R.drawable.star_line);
                                 }
                                 Glide.with(getApplicationContext()).load(cleanerData.image).into(cleanerImg);
