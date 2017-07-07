@@ -78,8 +78,8 @@ public class MyRequestFragment extends Fragment{
 
         itemData = new ArrayList<MakeTingLocationResultData>();
         SendTingLocationData sendTingLocationData = new SendTingLocationData();
-        sendTingLocationData.userLat = "37.5218849";
-        sendTingLocationData.userLng = "126.8513412";
+        sendTingLocationData.userLat = loginUserDatas.lat;
+        sendTingLocationData.userLng = loginUserDatas.lng;
         Call<MakeTingLocationResult> makeTingLocationResultCall = service.getMakeTingLocationResult(loginUserDatas.userId,sendTingLocationData);
         makeTingLocationResultCall.enqueue(new Callback<MakeTingLocationResult>() {
             @Override

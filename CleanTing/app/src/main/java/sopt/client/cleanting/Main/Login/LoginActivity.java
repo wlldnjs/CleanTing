@@ -25,6 +25,7 @@ import sopt.client.cleanting.Main.MainActivity;
 import sopt.client.cleanting.Main.SignUp.SignUpActivity;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
+import sopt.client.cleanting.Tutorials.TutorialMainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     NetworkService service;
 
     String loginId, loginPwd;
+    boolean turorial = true;
 
     public static LoginUserDatas loginUserDatas = new LoginUserDatas();
 
@@ -65,7 +67,6 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = loginData.edit();
                 editor.clear();
                 editor.commit();
-                Toast.makeText(LoginActivity.this, "로그인데이터 삭제 완료", Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -106,6 +107,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
             });
+        } else {  // 튜토리얼 보이기
+            if(turorial) {
+                turorial = false;
+                Intent intent = new Intent(LoginActivity.this, TutorialMainActivity.class);
+                startActivity(intent);
+            }
         }
 
 

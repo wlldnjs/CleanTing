@@ -10,12 +10,13 @@ import sopt.client.cleanting.R;
 public class TutorialMainActivity extends AppCompatActivity {
 
     ViewPager vp;
-
+//    public static Activity activity = new Activity();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial_main);
 
+//        activity = this;
 
         vp = (ViewPager)findViewById(R.id.vp);
         vp.setAdapter(new pagerAdapter(getSupportFragmentManager()));

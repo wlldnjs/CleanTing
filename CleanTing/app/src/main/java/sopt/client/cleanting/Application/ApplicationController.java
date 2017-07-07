@@ -17,7 +17,7 @@ public class ApplicationController extends Application {
     public static ApplicationController getInstance(){
         return instance;
     }
-    private static String baseUrl = "";
+    private static String baseUrl = "http://52.79.221.92:3000";
     private NetworkService networkService;
     public NetworkService getNetworkService(){
         return networkService;
@@ -27,16 +27,15 @@ public class ApplicationController extends Application {
     public void onCreate() {
         super.onCreate();
         Typekit.getInstance()
-                .addNormal(Typekit.createFromAsset(this,"gabia_napjakBlock.ttf"))
+                .addNormal(Typekit.createFromAsset(this,"NanumSquareR.ttf"))
                 .addCustom1(Typekit.createFromAsset(this,"NanumBarunGothic.ttf"))
                 .addCustom2(Typekit.createFromAsset(this,"NanumMyeongjo.ttc"))
                 .addCustom3(Typekit.createFromAsset(this,"NanumMyeongjoExtraBold.ttf"))
-                .addCustom4(Typekit.createFromAsset(this,"NanumSquareR.ttf"))
-                .addCustom5(Typekit.createFromAsset(this,"gabia_napjakBlock.ttf"));
+                .addCustom4(Typekit.createFromAsset(this,"NanumSquareR.ttf"));
 
         ApplicationController.instance = this;
 
-//        buildService();       //통신소스 완료 후 주석풀자.
+        buildService();       //통신소스 완료 후 주석풀자.
     }
 
     public void buildService(){
