@@ -253,7 +253,9 @@ public class ChangeMyRequestDetail extends AppCompatActivity {
                     public void onResponse(Call<MyRequestTingEditResult> call, Response<MyRequestTingEditResult> response) {
                         if(response.isSuccessful()){
                             Intent intent = new Intent();
-                            setResult(RESULT_OK);
+                            intent.putExtra("request", request);
+                            intent.putExtra("warning", warningEdit.getText().toString());
+                            setResult(RESULT_OK, intent);
                             Toast.makeText(ChangeMyRequestDetail.this,"팅 수정이 완료되었습니다." , Toast.LENGTH_SHORT).show();
                             finish();
                         } else {

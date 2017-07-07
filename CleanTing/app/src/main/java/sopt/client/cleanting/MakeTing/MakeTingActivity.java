@@ -40,6 +40,7 @@ import sopt.client.cleanting.R;
 import static java.lang.Integer.parseInt;
 import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 import static sopt.client.cleanting.Main.MainActivity.REQUEST_SELECT_CLEANER;
+import static sopt.client.cleanting.MyRequest.MyRequestFragment.refreshView;
 
 public class MakeTingActivity extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout selectDate1, selectTime1, selectRequest1, selectWorning1, selectCleaner1;
@@ -72,6 +73,7 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_make_ting);
         service = ApplicationController.getInstance().getNetworkService();
 
+        refreshView = true;
         date = (TextView) findViewById(R.id.date_text);
         timeStart = (TextView) findViewById(R.id.time_start_text);
         timeEnd = (TextView) findViewById(R.id.time_end_text);

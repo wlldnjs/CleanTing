@@ -91,6 +91,7 @@ public class MyRequestFragment extends Fragment{
                         @Override
                         public void onResponse(Call<RequestTingDetailResult> call, Response<RequestTingDetailResult> response) {
                             if(response.isSuccessful()){
+                                bundleList.clear();
                                 for(int i=0; i<response.body().result.size(); i++){
                                     bundleList.add(getBundle(response.body().result.get(i)));
                                 }
@@ -246,7 +247,7 @@ public class MyRequestFragment extends Fragment{
         if(resultCode == RESULT_OK){
             if(requestCode == REQUEST_JOIN) {
                 Toast.makeText(context, "참여 완료", Toast.LENGTH_SHORT).show();
-//                RefreshView();
+                RefreshView();
             }
 //            RefreshView();
         }
@@ -261,7 +262,8 @@ public class MyRequestFragment extends Fragment{
             RefreshView();
         }
 //        FragmentTransaction ft = getFragmentManager().beginTransaction();
-//        ft.attach(MyRequestFragment.this);
+//        ft.detach(this);
+//        ft.attach(this);
 //        ft.commit();
 //        if(refreshView){
 //            RefreshView();
@@ -270,8 +272,8 @@ public class MyRequestFragment extends Fragment{
 
     @Override
     public void onPause() {
-        super.onPause();;
-//        Log.d("MyRequestFragment", "onPause 호출 , ");
+        super.onPause();
+        Log.d("MyRequestFragment", "onPause 호출 , ");
 //        FragmentTransaction ft = getFragmentManager().beginTransaction();
 //        ft.detach(MyRequestFragment.this);
 //        ft.commit();
