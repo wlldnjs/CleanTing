@@ -225,8 +225,8 @@
 
             <ImageView
                 android:id="@+id/rate_complete_btn"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginBottom="26dp"
+                android:layout_marginTop="36dp"
                 android:src="@drawable/clear_button"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"

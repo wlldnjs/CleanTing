@@ -7,10 +7,10 @@
     tools:context="sopt.client.cleanting.MakeTing.MakeTingActivity">
 
     <TextView
-        android:layout_marginTop="25dp"
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="25dp"
         android:gravity="center"
         android:text="팅 만들기"
         android:textColor="#5D5D5D"

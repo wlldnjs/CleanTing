@@ -38,6 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@null"
+                android:textSize="13dp"
                 android:id="@+id/edit_phonenumber"
                 android:hint="핸드폰 번호"
                 android:layout_width="250dp"
@@ -53,6 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@null"
+                android:textSize="13dp"
                 android:hint="인증번호"
                 android:id="@+id/edit_citenumber"
                 android:layout_width="250dp"
@@ -81,6 +85,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@null"
+                android:textSize="13dp"
                 android:id="@+id/new_edit_phonenumber"
                 android:hint="핸드폰 번호"
                 android:layout_width="250dp"
@@ -96,6 +102,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
+                android:background="@null"
+                android:textSize="13dp"
                 android:hint="인증번호"
                 android:id="@+id/new_edit_citenumber"
                 android:layout_width="250dp"
@@ -108,6 +116,8 @@
         </LinearLayout>
 
         <EditText
+            android:background="@null"
+            android:textSize="13dp"
             android:layout_gravity="center"
             android:layout_marginTop="45dp"
             android:id="@+id/new_password"
@@ -115,6 +125,9 @@
             android:layout_width="340dp"
             android:layout_height="wrap_content" />
         <EditText
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:textSize="13dp"
             android:layout_gravity="center"
             android:id="@+id/edit_confirm_password"
             android:hint="새 비밀번호 확인"

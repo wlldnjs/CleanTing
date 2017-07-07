@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:orientation="vertical" >
@@ -29,24 +29,22 @@
         <LinearLayout
             android:layout_marginBottom="15dp"
             android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="horizontal" >
                 <ImageView
+                    android:layout_marginLeft="30dp"
                     android:id="@+id/btn_left"
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/cancel_popup" />
                 <ImageView
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
                     android:id="@+id/btn_right"
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ok_popup"/>
             </LinearLayout>

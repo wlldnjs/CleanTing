@@ -461,7 +461,7 @@
                     android:layout_weight="5"
                     android:text="1명"
                     android:textColor="#333333"
-                    android:textSize="17dp"/>
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/change_my_request_detail_total1"
                     android:layout_width="0dp"
@@ -470,7 +470,7 @@
                     android:text="45,000원"
                     android:gravity="right"
                     android:textColor="#333333"
-                    android:textSize="17dp"/>
+                    android:textSize="15dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -485,7 +485,7 @@
                     android:layout_weight="5"
                     android:text="2명"
                     android:textColor="#333333"
-                    android:textSize="17dp"/>
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/change_my_request_detail_total2"
                     android:layout_width="0dp"
@@ -494,7 +494,7 @@
                     android:text="40,000원"
                     android:gravity="right"
                     android:textColor="#333333"
-                    android:textSize="17dp"/>
+                    android:textSize="15dp"/>
             </LinearLayout>
 
 
@@ -510,7 +510,7 @@
                     android:layout_weight="5"
                     android:text="3명"
                     android:textColor="#333333"
-                    android:textSize="17dp"/>
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/change_my_request_detail_total3"
                     android:layout_width="0dp"
@@ -519,14 +519,14 @@
                     android:text="32,500원"
                     android:gravity="right"
                     android:textColor="#333333"
-                    android:textSize="17dp"/>
+                    android:textSize="15dp"/>
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/change_my_request_detail_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/clear_button"
+                android:src="@drawable/participate"
                 android:layout_marginBottom="40dp"/>
         </LinearLayout>
     </ScrollView>

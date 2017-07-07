@@ -61,6 +61,7 @@
                     android:textSize="17sp" />
 
                 <EditText
+                    android:background="@null"
                     android:id="@+id/edit_name"
                     android:layout_width="310dp"
                     android:layout_height="35dp"
@@ -83,6 +84,7 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:background="@null"
                         android:id="@+id/edit_id"
                         android:layout_width="220dp"
                         android:layout_height="35dp"
@@ -108,6 +110,7 @@
                     android:textSize="17dp" />
 
                 <EditText
+                    android:background="@null"
                     android:id="@+id/edit_password"
                     android:layout_width="310dp"
                     android:layout_height="35dp"
@@ -127,6 +130,7 @@
                     android:textSize="17dp" />
 
                 <EditText
+                    android:background="@null"
                     android:id="@+id/edit_confirm_password"
                     android:layout_width="310dp"
                     android:layout_height="35dp"
@@ -152,6 +156,7 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:background="@null"
                         android:id="@+id/edit_phonenumber"
                         android:layout_width="220dp"
                         android:layout_height="35dp"
@@ -190,6 +195,7 @@
                     android:textSize="14sp" />
 
                 <EditText
+                    android:background="@null"
                     android:layout_marginTop="5dp"
                     android:id="@+id/edit_address"
                     android:layout_width="310dp"
