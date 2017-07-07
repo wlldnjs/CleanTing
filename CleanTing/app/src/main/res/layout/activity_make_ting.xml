@@ -145,20 +145,136 @@
             <LinearLayout
                 android:id="@+id/select_time_layout2"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:visibility="gone">
-                <LinearLayout
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_marginTop="49dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <ListView
-                        android:id="@+id/select_time_list1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="40dp"
-                        android:divider="#ffffff"></ListView>
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/time_text_1"
+                        android:layout_marginLeft="90dp"
+                        android:text="8:00"
+                        android:textSize="20sp"
+                        android:textColor="#95989A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/time_text_2"
+                        android:layout_toRightOf="@+id/time_text_1"
+                        android:layout_marginLeft="128dp"
+                        android:text="11:00"
+                        android:textSize="20sp"
+                        android:textColor="#95989A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_marginTop="23dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/time_text_3"
+                        android:layout_marginLeft="90dp"
+                        android:text="8:30"
+                        android:textSize="20sp"
+                        android:textColor="#95989A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/time_text_4"
+                        android:layout_toRightOf="@+id/time_text_3"
+                        android:layout_marginLeft="128dp"
+                        android:text="11:30"
+                        android:textSize="20sp"
+                        android:textColor="#95989A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="23dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/time_text_5"
+                        android:layout_marginLeft="90dp"
+                        android:text="9:00"
+                        android:textSize="20sp"
+                        android:textColor="#95989A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/time_text_6"
+                        android:layout_toRightOf="@+id/time_text_5"
+                        android:layout_marginLeft="128dp"
+                        android:text="12:00"
+                        android:textSize="20sp"
+                        android:textColor="#95989A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="23dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/time_text_7"
+                        android:layout_marginLeft="90dp"
+                        android:text="9:30"
+                        android:textSize="20sp"
+                        android:textColor="#95989A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/time_text_8"
+                        android:layout_toRightOf="@+id/time_text_7"
+                        android:layout_marginLeft="128dp"
+                        android:text="12:30"
+                        android:textSize="20sp"
+                        android:textColor="#95989A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_marginTop="23dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="44dp">
+                    <TextView
+                        android:id="@+id/time_text_9"
+                        android:layout_marginLeft="78.5dp"
+                        android:text="10:00"
+                        android:textSize="20sp"
+                        android:textColor="#95989A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/time_text_10"
+                        android:layout_toRightOf="@+id/time_text_9"
+                        android:layout_marginLeft="128dp"
+                        android:text="13:00"
+                        android:textSize="20sp"
+                        android:textColor="#95989A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
             </LinearLayout>
+            <!--<ListView
+                       android:id="@+id/select_time_list1"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:layout_marginLeft="40dp"
+                       android:divider="#ffffff"></ListView>
+               -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
