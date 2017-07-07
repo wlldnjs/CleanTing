@@ -210,7 +210,7 @@
 
                 <EditText
                     android:layout_marginTop="15dp"
-                    android:backgroundTint="#DCDCDC"
+                    android:backgroundTint="#eeeeee"
                     android:alpha="20"
                     android:background="@drawable/comment_background"
                     android:id="@+id/review_content_edtit"
