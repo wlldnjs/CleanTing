@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.MyRequest.MyRequestFragment.refreshView;
+
 /**
  * Created by 김지원 on 2017-06-28.
  */
@@ -86,9 +88,12 @@ public class MyRequestDetailFragment extends Fragment {
                 intent.putExtra("time",time.getText().toString());
                 intent.putExtra("cnt",getArguments().getString("cnt"));
 
-                startActivity(intent);
+                startActivityForResult(intent,3000);
             }
         });
+
+        refreshView = true;
+
         return layout;
     }
 

@@ -55,9 +55,7 @@ public class MyRequestFragment extends Fragment{
     int selectPosition;
     boolean motionFlag;
     ////////////////////////////////
-    public static boolean refreshView = true;
-    boolean firstCreate = true;
-//    FragmentTransaction ft = getFragmentManager().beginTransaction();
+    public static boolean refreshView = false;
 
     public MyRequestFragment() {
     }
@@ -88,6 +86,27 @@ public class MyRequestFragment extends Fragment{
             public void onResponse(Call<MakeTingLocationResult> call, Response<MakeTingLocationResult> response) {
                 if(response.isSuccessful()){
                     itemData = response.body().result;
+                    Call<RequestTingDetailResult> requestTingDetailResultCall = service.getRequestTingDetailResult(loginUserDatas.userId);
+                    requestTingDetailResultCall.enqueue(new Callback<RequestTingDetailResult>() {
+                        @Override
+                        public void onResponse(Call<RequestTingDetailResult> call, Response<RequestTingDetailResult> response) {
+                            if(response.isSuccessful()){
+                                for(int i=0; i<response.body().result.size(); i++){
+                                    bundleList.add(getBundle(response.body().result.get(i)));
+                                }
+                                FragmentManager fm = getFragmentManager();
+                                myRequestAdapter = new MyRequestAdapter(itemData,clickListener,context, fm, bundleList);
+                                recyclerMyLocation.setAdapter(myRequestAdapter);
+                                recyclerMyLocation.scrollToPosition(0);
+                            }else {
+                                Toast.makeText(context, "통신 실패", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<RequestTingDetailResult> call, Throwable t) {
+                            Toast.makeText(context, "인터넷확인", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
                 }
             }
@@ -139,23 +158,11 @@ public class MyRequestFragment extends Fragment{
                 return false;
             }
         });
-//        itemData.add(new MyRequestData("2017년 6월 5일 (월)","13:00~19:00","1"));
-//        itemData.add(new MyRequestData("2017년 6월 6일 (화)","14:00~19:00","1"));
-//        itemData.add(new MyRequestData("2017년 6월 7일 (수)","15:00~19:00","1"));
-//        itemData.add(new MyRequestData("2017년 6월 8일 (목)","16:00~19:00","1"));
-//        itemData.add(new MyRequestData("2017년 6월 9일 (금)","17:00~19:00","2"));
 
-//        bundleList.clear();
-//        bundleList = getBundleList();
 //        if(refreshView){
-//            Toast.makeText(context, "메인페이지 refresh", Toast.LENGTH_SHORT).show();
-//            RefreshView();
 //            refreshView = false;
-//        }
-
-//        if(firstCreate){
+////            Toast.makeText(context, "메인페이지 refresh", Toast.LENGTH_SHORT).show();
 //            RefreshView();
-//            firstCreate = false;
 //        }
 
         Log.d("MyRequestFragment", "onCreateView 호출");
@@ -174,7 +181,6 @@ public class MyRequestFragment extends Fragment{
                 Intent intent = new Intent(context, MyRequestRecruit.class);
                 intent.putExtra("datas", datas);
                 selectPosition = temp_position-1;
-//                intent.putExtra("position", temp_position-1);
                 startActivityForResult(intent,REQUEST_JOIN);
             }
         }
@@ -228,9 +234,10 @@ public class MyRequestFragment extends Fragment{
 
     public void RefreshView(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.detach(this);
-        ft.attach(this);
+        ft.detach(MyRequestFragment.this);
+        ft.attach(MyRequestFragment.this);
         ft.commit();
+        Toast.makeText(context, "view 새로고침", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -239,8 +246,9 @@ public class MyRequestFragment extends Fragment{
         if(resultCode == RESULT_OK){
             if(requestCode == REQUEST_JOIN) {
                 Toast.makeText(context, "참여 완료", Toast.LENGTH_SHORT).show();
-                RefreshView();
+//                RefreshView();
             }
+//            RefreshView();
         }
     }
 
@@ -248,11 +256,26 @@ public class MyRequestFragment extends Fragment{
     public void onResume() {
         super.onResume();
         Log.d("MyRequestFragment", "onResume 호출");
-        bundleList.clear();
-        bundleList = getBundleList();
         if(refreshView){
-            RefreshView();
             refreshView = false;
+            RefreshView();
         }
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.attach(MyRequestFragment.this);
+//        ft.commit();
+//        if(refreshView){
+//            RefreshView();
+//        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();;
+//        Log.d("MyRequestFragment", "onPause 호출 , ");
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.detach(MyRequestFragment.this);
+//        ft.commit();
+//        refreshView = true;
+//        refreshView = true;
     }
 }

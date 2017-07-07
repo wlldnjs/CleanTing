@@ -30,7 +30,6 @@ import sopt.client.cleanting.R;
 
 import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
 import static sopt.client.cleanting.Main.MainActivity.REQUEST_MODIFY_TING;
-import static sopt.client.cleanting.MyRequest.MyRequestFragment.refreshView;
 
 public class MyRequestDetailActivity extends AppCompatActivity {
     ImageView man1, man2, man3, cleanerImg, star1, star2, star3, star4, star5, callBtn,
@@ -226,7 +225,6 @@ public class MyRequestDetailActivity extends AppCompatActivity {
                                 if(response.isSuccessful()){
                                     Toast.makeText(MyRequestDetailActivity.this, "삭제되었습니다.", Toast.LENGTH_SHORT).show();
                                     myDialog.dismiss();
-                                    refreshView = true;
                                     finish();
                                 } else {
                                     Toast.makeText(MyRequestDetailActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
@@ -248,11 +246,4 @@ public class MyRequestDetailActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            finish();
-        }
-    }
 }

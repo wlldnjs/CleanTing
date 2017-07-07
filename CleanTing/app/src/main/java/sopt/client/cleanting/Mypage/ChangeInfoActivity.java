@@ -66,7 +66,7 @@ public class ChangeInfoActivity extends AppCompatActivity {
 
         address_edit_tv = (TextView)findViewById(R.id.address_edit_tv);
 
-        cab = (ImageView)findViewById(R.id.search_chage_address_btn);
+        cab = (ImageView)findViewById(R.id.new_adress_search);
 
         cab.setOnClickListener(new View.OnClickListener() {
             @Override
