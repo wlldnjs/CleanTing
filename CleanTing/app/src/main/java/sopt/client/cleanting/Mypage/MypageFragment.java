@@ -115,6 +115,9 @@ public class MypageFragment extends Fragment{
             public void onClick(View v) {
                 Toast.makeText(getContext(),"로그아웃",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(context,LoginActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("logout","0");
+                i.putExtra("logout",bundle);
                 startActivity(i);
                 activityArrayList.get(0).finish();
                 activityArrayList.clear();

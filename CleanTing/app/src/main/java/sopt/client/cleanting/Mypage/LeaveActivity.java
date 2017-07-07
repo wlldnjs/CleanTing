@@ -1,7 +1,9 @@
 package sopt.client.cleanting.Mypage;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -64,6 +66,10 @@ public class LeaveActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"정상적으로 탈퇴 되었습니다.",
                                     Toast.LENGTH_SHORT).show();
                             mCustomDialog.dismiss();
+                            SharedPreferences loginData = getSharedPreferences("loginData", Activity.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = loginData.edit();
+                            editor.clear();
+                            editor.commit();
                             Intent intent = new Intent(LeaveActivity.this, LoginActivity.class);
                             for(int i=0; i<activityArrayList.size(); i++){
                                 activityArrayList.get(i).finish();

@@ -38,7 +38,7 @@ public class MyRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         this.clickListener = clickListener;
         this.context = context;
         this.fm = fm;
-        if(this.bundleList.size() != 0) {
+        if(this.bundleList.size() <= 1) {
             this.bundleList = bundleList;
         }
     }

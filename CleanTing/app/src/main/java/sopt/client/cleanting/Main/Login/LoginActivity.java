@@ -1,7 +1,9 @@
 package sopt.client.cleanting.Main.Login;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -56,6 +58,55 @@ public class LoginActivity extends AppCompatActivity {
         edit_password = (EditText) findViewById(R.id.edit_password);
         Findpassword_img = (ImageView) findViewById(R.id.Findpassword_tv);
         checkBox = (CheckBox) findViewById(R.id.checkbox);
+        try {
+            Bundle bundle = getIntent().getBundleExtra("logout");
+            if (bundle.getString("logout").equals("0")) {
+                SharedPreferences loginData = getSharedPreferences("loginData", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = loginData.edit();
+                editor.clear();
+                editor.commit();
+                Toast.makeText(LoginActivity.this, "로그인데이터 삭제 완료", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        SharedPreferences loginData = getSharedPreferences("loginData", Activity.MODE_PRIVATE);
+        loginId = loginData.getString("id","");
+        loginPwd = loginData.getString("pw","");
+        if(!loginId.equals("") && !loginPwd.equals("")){
+            SendLoginData sendLoginData = new SendLoginData();
+            sendLoginData.userId = loginId;
+            sendLoginData.pwd = loginPwd;
+            String token = FirebaseInstanceId.getInstance().getToken();
+            sendLoginData.deviceToken = token;
+            Log.d("FCM_Token", token);
+            Call<LoginResult> loginResultCall = service.getLoginResult(sendLoginData);
+            loginResultCall.enqueue(new Callback<LoginResult>() {
+                @Override
+                public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                    if(response.isSuccessful()){
+                        loginUserDatas.token = response.body().token;
+                        loginUserDatas.userId = response.body().userInfo.userId;
+                        loginUserDatas.name = response.body().userInfo.name;
+                        loginUserDatas.phone = response.body().userInfo.phone;
+                        loginUserDatas.address = response.body().userInfo.address;
+                        loginUserDatas.lat = response.body().userInfo.lat;
+                        loginUserDatas.lng = response.body().userInfo.lng;
+                        loginUserDatas.locationNum = response.body().userInfo.locationNum;
+                        loginUserDatas.push = response.body().userInfo.push;
+
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LoginResult> call, Throwable t) {
+
+                }
+            });
+        }
 
 
         Findpassword_img.setOnClickListener(new View.OnClickListener() {// 계정찾기 페이지로 넘어 감
@@ -83,6 +134,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (edit_id.getText().toString().replace(" ", "").equals("") || edit_password.getText().toString().replace(" ", "").equals("")) {
                     Toast.makeText(getApplicationContext(), " 아이디 혹은 비밀번호를 입력하세요 ", Toast.LENGTH_SHORT).show();
+                    edit_id.setText("");
+                    edit_password.setText("");
                 } else {
                     SendLoginData sendLoginData = new SendLoginData();
                     sendLoginData.userId = edit_id.getText().toString();
@@ -96,6 +149,14 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                             if (response.isSuccessful()) {
+                                if(checkBox.isChecked()){
+                                    SharedPreferences loginData = getSharedPreferences("loginData",Activity.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = loginData.edit();
+                                    editor.putString("id", edit_id.getText().toString());
+                                    editor.putString("pw", edit_password.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(LoginActivity.this, "자동로그인이 설정되었습니다.", Toast.LENGTH_SHORT).show();
+                                }
                                 loginUserDatas.token = response.body().token;
                                 loginUserDatas.userId = response.body().userInfo.userId;
                                 loginUserDatas.name = response.body().userInfo.name;
@@ -122,16 +183,6 @@ public class LoginActivity extends AppCompatActivity {
                                     "서버상태를 확인해주세요", Toast.LENGTH_LONG).show();
                         }
                     });
-
-                    // 아이디 비번 검사
-
-                    //  keep me log in 체크
-                    if (checkBox.isChecked()) {
-                        // login 유지 코드
-                    }
-                    edit_id.setText("");
-                    edit_password.setText("");
-
                 }
             }
         });

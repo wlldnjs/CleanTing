@@ -153,10 +153,10 @@ public class MyRequestFragment extends Fragment{
 //            refreshView = false;
 //        }
 
-        if(firstCreate){
-            RefreshView();
-            firstCreate = false;
-        }
+//        if(firstCreate){
+//            RefreshView();
+//            firstCreate = false;
+//        }
 
         Log.d("MyRequestFragment", "onCreateView 호출");
         return layout;
