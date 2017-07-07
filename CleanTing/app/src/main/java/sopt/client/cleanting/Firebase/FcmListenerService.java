@@ -11,7 +11,6 @@ import android.support.v4.app.NotificationCompat;
 import com.google.firebase.messaging.RemoteMessage;
 
 import sopt.client.cleanting.Main.MainActivity;
-import sopt.client.cleanting.R;
 
 /**
  * Created by 김지원 on 2017-06-30.
@@ -36,7 +35,7 @@ public class FcmListenerService extends com.google.firebase.messaging.FirebaseMe
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.push_img)
+//                .setSmallIcon(R.drawable.push_img)
 //                .setContentTitle("FCM Push Test")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
