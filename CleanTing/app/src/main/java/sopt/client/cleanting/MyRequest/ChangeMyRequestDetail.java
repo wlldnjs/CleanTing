@@ -94,7 +94,7 @@ public class ChangeMyRequestDetail extends AppCompatActivity {
         tingId = getIntent().getStringExtra("tingId");
         userId = getIntent().getStringExtra("userId");
         price = getIntent().getStringExtra("price");
-        total1.setText(price +"원");
+//        total1.setText(price +"원");
         request = getIntent().getStringExtra("request");
         if(request.equals("1")){
             cond.setImageResource(R.drawable.conditioner_yellow);
@@ -162,9 +162,15 @@ public class ChangeMyRequestDetail extends AppCompatActivity {
                         ref.setImageResource(R.drawable.refrigerator_gray);
                         selectRef = false;
                     }
+                    total1.setText("50,000원");
+                    total2.setText("45,000원");
+                    total3.setText("37,000원");
                 } else if (selectCond) {
                     cond.setImageResource(R.drawable.conditioner_gray);
                     selectCond = false;
+                    total1.setText("45,000원");
+                    total2.setText("40,000원");
+                    total3.setText("32,500원");
                 }
             }
         });
@@ -182,9 +188,15 @@ public class ChangeMyRequestDetail extends AppCompatActivity {
                         ref.setImageResource(R.drawable.refrigerator_gray);
                         selectRef = false;
                     }
+                    total1.setText("50,000원");
+                    total2.setText("45,000원");
+                    total3.setText("37,000원");
                 } else if (selectWindow) {
                     window.setImageResource(R.drawable.window_gray);
                     selectWindow = false;
+                    total1.setText("45,000원");
+                    total2.setText("40,000원");
+                    total3.setText("32,500원");
                 }
             }
         });
@@ -202,9 +214,15 @@ public class ChangeMyRequestDetail extends AppCompatActivity {
                         window.setImageResource(R.drawable.window_gray);
                         selectWindow = false;
                     }
+                    total1.setText("50,000원");
+                    total2.setText("45,000원");
+                    total3.setText("37,000원");
                 } else if (selectRef) {
                     ref.setImageResource(R.drawable.refrigerator_gray);
                     selectRef = false;
+                    total1.setText("45,000원");
+                    total2.setText("40,000원");
+                    total3.setText("32,500원");
                 }
             }
         });
