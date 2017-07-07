@@ -24,6 +24,7 @@ import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
 import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+import static sopt.client.cleanting.Main.MainActivity.activityArrayList;
 
 /**
  * Created by 김지원 on 2017-06-25.
@@ -113,9 +114,10 @@ public class MypageFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"로그아웃",Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getContext(),LoginActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                Intent i = new Intent(context,LoginActivity.class);
                 startActivity(i);
+                activityArrayList.get(0).finish();
+                activityArrayList.clear();
             }
         });
 

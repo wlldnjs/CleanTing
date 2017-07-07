@@ -43,7 +43,7 @@ import static sopt.client.cleanting.Main.MainActivity.REQUEST_SELECT_CLEANER;
 public class MakeTingActivity extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout selectDate1, selectTime1, selectRequest1, selectWorning1, selectCleaner1;
     LinearLayout selectDate2, selectTime2, selectRequest2, selectWorning2, selectCleaner2;
-    TextView date, timeStart, timeEnd, request, warning, cleaner, amount;
+    TextView date, timeStart, timeEnd, request, warning, cleaner, price1, price2, price3;
     EditText warningEdit;
     ImageView requestBtn, condiBtn, windowBtn, refBtn;
     ListView listView1;
@@ -75,7 +75,10 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
         request = (TextView) findViewById(R.id.request_text);
         warning = (TextView) findViewById(R.id.warning_text);
         cleaner = (TextView) findViewById(R.id.cleaner_text);
-        amount = (TextView) findViewById(R.id.total_text);
+        price1 = (TextView) findViewById(R.id.total_text1);
+        price2 = (TextView) findViewById(R.id.total_text2);
+        price3 = (TextView) findViewById(R.id.total_text3);
+
         location = (TextView) findViewById(R.id.make_ting_location);
         location.setText(loginUserDatas.address);
 
@@ -169,11 +172,19 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                         selectRef = false;
                     }
                     request.setText("에어컨 필터청소");
+                    price1.setText("50,000원");
+                    price2.setText("45,000원");
+                    price3.setText("37,000원");
                 } else if (selectCond) {
                     condiBtn.setImageResource(R.drawable.conditioner_gray);
                     selectCond = false;
                     request.setText("추가사항 없음");
+                    price1.setText("45,000원");
+                    price2.setText("40,000원");
+                    price3.setText("32,500원");
                 }
+                selectRequest2.setVisibility(View.GONE);
+                selectWorning2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -191,11 +202,19 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                         selectRef = false;
                     }
                     request.setText("창틀 청소");
+                    price1.setText("50,000원");
+                    price2.setText("45,000원");
+                    price3.setText("37,000원");
                 } else if (selectWindow) {
                     windowBtn.setImageResource(R.drawable.window_gray);
                     selectWindow = false;
                     request.setText("추가사항 없음");
+                    price1.setText("45,000원");
+                    price2.setText("40,000원");
+                    price3.setText("32,500원");
                 }
+                selectRequest2.setVisibility(View.GONE);
+                selectWorning2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -213,11 +232,19 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                         selectWindow = false;
                     }
                     request.setText("냉장고 정리");
+                    price1.setText("50,000원");
+                    price2.setText("45,000원");
+                    price3.setText("37,000원");
                 } else if (selectRef) {
                     refBtn.setImageResource(R.drawable.refrigerator_gray);
                     selectRef = false;
                     request.setText("추가사항 없음");
+                    price1.setText("45,000원");
+                    price2.setText("40,000원");
+                    price3.setText("32,500원");
                 }
+                selectRequest2.setVisibility(View.GONE);
+                selectWorning2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -230,6 +257,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 int startTimeFront = Integer.parseInt(st1.nextToken())+8;
                 String startTimeEnd = st1.nextToken();
                 timeEnd.setText(""+startTimeFront+":"+startTimeEnd);
+                selectTime2.setVisibility(View.GONE);
+                selectRequest2.setVisibility(View.VISIBLE);
 
             }
         });
@@ -251,6 +280,8 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                 sendSearchLocationCleanerData.userLat = loginUserDatas.lat;
                 sendSearchLocationCleanerData.userLng = loginUserDatas.lng;
                 Call<SearchLocationCleanerResult> searchLocationCleanerResultCall = service.getSearchLocationCleanerResult(date.getText().toString(),sendSearchLocationCleanerData);
+                selectDate2.setVisibility(View.GONE);
+                selectTime2.setVisibility(View.VISIBLE);
                 searchLocationCleanerResultCall.enqueue(new Callback<SearchLocationCleanerResult>() {
                     @Override
                     public void onResponse(Call<SearchLocationCleanerResult> call, Response<SearchLocationCleanerResult> response) {
@@ -339,10 +370,10 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }
                 makeTingResultData.endTime = timeEnd.getText().toString();
-                String priceText = amount.getText().toString();
-                priceText.replace("원","");
-                makeTingResultData.price = amount.getText().toString();
-                makeTingResultData.cleanerId = "bumjin";
+//                String priceText = amount.getText().toString();
+//                priceText.replace("원","");
+                makeTingResultData.price = "45000";
+                makeTingResultData.cleanerId = cleanerId;
                 if (request.getText().toString().equals("에어컨 필터청소")) {
                     requsetNum = "1";
                 } else if (request.getText().toString().equals("창틀 청소")) {

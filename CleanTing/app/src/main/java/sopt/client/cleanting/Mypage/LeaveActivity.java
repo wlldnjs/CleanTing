@@ -18,6 +18,9 @@ import sopt.client.cleanting.Main.Login.LoginActivity;
 import sopt.client.cleanting.Network.NetworkService;
 import sopt.client.cleanting.R;
 
+import static sopt.client.cleanting.Main.Login.LoginActivity.loginUserDatas;
+import static sopt.client.cleanting.Main.MainActivity.activityArrayList;
+
 public class LeaveActivity extends AppCompatActivity {
 
     ImageView leave_btn;
@@ -33,6 +36,9 @@ public class LeaveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leave);
+        if(activityArrayList.size() == 1){
+            activityArrayList.add(this);
+        }
 
         leave_btn = (ImageView)findViewById(R.id.leave_btn);
         service= ApplicationController.getInstance().getNetworkService();
@@ -48,7 +54,7 @@ public class LeaveActivity extends AppCompatActivity {
 
     private View.OnClickListener rightListener = new View.OnClickListener() {//탈퇴버튼
         public void onClick(View v) {
-            Call<WithdrawResult> withdrawResultCall = service.getWithdrawResult("minsu");//loginUserDatas.userId
+            Call<WithdrawResult> withdrawResultCall = service.getWithdrawResult(loginUserDatas.userId);//loginUserDatas.userId
             withdrawResultCall.enqueue(new Callback<WithdrawResult>() {
                 @Override
                 public void onResponse(Call<WithdrawResult> call, Response<WithdrawResult> response) {
@@ -58,7 +64,11 @@ public class LeaveActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"정상적으로 탈퇴 되었습니다.",
                                     Toast.LENGTH_SHORT).show();
                             mCustomDialog.dismiss();
-                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            Intent intent = new Intent(LeaveActivity.this, LoginActivity.class);
+                            for(int i=0; i<activityArrayList.size(); i++){
+                                activityArrayList.get(i).finish();
+                            }
+                            activityArrayList.clear();
                             startActivity(intent);
                         }
                         else{

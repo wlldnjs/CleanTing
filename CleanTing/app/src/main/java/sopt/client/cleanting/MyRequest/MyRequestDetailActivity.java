@@ -139,16 +139,25 @@ public class MyRequestDetailActivity extends AppCompatActivity {
 
         tingId = getIntent().getStringExtra("tingId");
         userId = getIntent().getStringExtra("userId");
-        total1.setText(getIntent().getStringExtra("price"));
+//        total1.setText(getIntent().getStringExtra("price"));
         request = getIntent().getStringExtra("request");
         if(request.equals("0")){
             moreRequest.setText("추가사항 없음");
         } else if(request.equals("1")){
             moreRequest.setText("에어컨 필터 청소");
+            total1.setText("50,000원");
+            total2.setText("45,000원");
+            total3.setText("37,000원");
         } else if(request.equals("2")){
             moreRequest.setText("창틀 청소");
+            total1.setText("50,000원");
+            total2.setText("45,000원");
+            total3.setText("37,000원");
         } else if(request.equals("3")){
             moreRequest.setText("냉장고 정리");
+            total1.setText("50,000원");
+            total2.setText("45,000원");
+            total3.setText("37,000원");
         }
         warning.setText(getIntent().getStringExtra("warning"));
         date.setText(getIntent().getStringExtra("date"));

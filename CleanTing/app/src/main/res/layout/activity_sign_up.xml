@@ -65,7 +65,8 @@
                     android:layout_width="310dp"
                     android:layout_height="35dp"
                     android:hint="이름을 입력하세요"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"
+                    android:singleLine="true"/>
 
                 <TextView
                     android:id="@+id/id"
@@ -87,7 +88,8 @@
                         android:layout_height="35dp"
                         android:layout_marginTop="15dp"
                         android:hint="아이디를 입력하세요"
-                        android:textSize="13dp" />
+                        android:textSize="13dp"
+                        android:singleLine="true"/>
 
                     <ImageView
                         android:id="@+id/doublecheck"
@@ -112,7 +114,8 @@
                     android:layout_marginTop="15dp"
                     android:hint="비밀번호 4~20자리로 입력하세요"
                     android:inputType="textPassword"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"
+                    android:singleLine="true"/>
 
                 <TextView
                     android:id="@+id/confirm_password"
@@ -130,7 +133,8 @@
                     android:layout_marginTop="15dp"
                     android:hint="비밀번호를 다시 확인해주세요"
                     android:inputType="textPassword"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"
+                    android:singleLine="true"/>
 
                 <TextView
                     android:id="@+id/phonenumber"
@@ -152,33 +156,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:hint="'-'없이 핸드폰번호 입력"
-                        android:textSize="13dp" />
+                        android:textSize="13dp"
+                        android:singleLine="true"
+                        android:inputType="number"/>
 
                     <ImageView
                         android:id="@+id/button_cite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/confirm_b" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layout_citenumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/edit_citenumber"
-                        android:layout_width="220dp"
-                        android:layout_height="35dp"
-                        android:hint="인증번호"
-                        android:textSize="13dp" />
-
-                    <ImageView
-                        android:id="@+id/button_confirm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/check_b" />
                 </LinearLayout>
 
                 <TextView
@@ -209,7 +195,8 @@
                     android:layout_width="310dp"
                     android:layout_height="35dp"
                     android:hint="세부주소"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"
+                    android:singleLine="true"/>
 
                 <LinearLayout
                     android:layout_marginTop="25dp"
