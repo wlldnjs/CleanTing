@@ -45,6 +45,10 @@ public class FcmListenerService extends com.google.firebase.messaging.FirebaseMe
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        try {
+            notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        } catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
     }
 }

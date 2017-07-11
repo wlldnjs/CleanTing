@@ -94,6 +94,7 @@
                         android:layout_centerInParent="true"
                         android:layout_weight="0.3"
                         android:switchMinWidth="40dp"
+                        android:checked="true"
                         android:text=""
                         android:textOff=""
                         android:textOn=""

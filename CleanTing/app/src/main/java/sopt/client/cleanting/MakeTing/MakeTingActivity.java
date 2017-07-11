@@ -437,7 +437,6 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
                             } else {
                                 SearchLocationCleanerData cleanerData = response.body().result.get(0);
                                 cleanerId = cleanerData.cleanerId;
-                                Toast.makeText(MakeTingActivity.this, cleanerData.cleanerId, Toast.LENGTH_SHORT).show();
 
                                 String rate = cleanerData.rate;
                                 String cnt = cleanerData.review_cnt;
@@ -614,7 +613,6 @@ public class MakeTingActivity extends AppCompatActivity implements View.OnClickL
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
-            Toast.makeText(this, getIntent().getStringExtra("cleanerId"), Toast.LENGTH_SHORT).show();
             if(requestCode == REQUEST_SELECT_CLEANER){
                 cleanerId = data.getStringExtra("cleanerId");
                 refreshCleaner();

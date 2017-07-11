@@ -13,6 +13,7 @@ import retrofit2.http.Query;
 import sopt.client.cleanting.Alarm.AlarmOnOffResult;
 import sopt.client.cleanting.Alarm.ReferAlarmResult;
 import sopt.client.cleanting.Cleanner.AddCleanerReviewResult;
+import sopt.client.cleanting.Cleanner.CleanerDateData;
 import sopt.client.cleanting.Cleanner.SearchCleanerDetailResult;
 import sopt.client.cleanting.Cleanner.SearchCleanerResult;
 import sopt.client.cleanting.Cleanner.SearchLocationCleanerResult;
@@ -187,4 +188,7 @@ public interface NetworkService {
     @DELETE("mypage/withdraw/{userId}")
     Call<WithdrawResult> getWithdrawResult(@Path("userId") String userId);
 
+    // 새거
+    @POST("lately/{userId}")
+    Call<RecentCleanerResult> getRecentCleanerResultNew(@Path("userId") String key, @Body CleanerDateData cleanerDateData);
 }

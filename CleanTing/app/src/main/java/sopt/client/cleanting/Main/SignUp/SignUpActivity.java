@@ -53,7 +53,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         edit_name = (EditText) findViewById(R.id.edit_name);
         edit_phonenumber = (EditText) findViewById(R.id.edit_phonenumber);
-        edit_citenumber = (EditText) findViewById(R.id.edit_citenumber);
         edit_password = (EditText) findViewById(R.id.edit_password);
         edit_address = (EditText) findViewById(R.id.edit_address);
         edit_id = (EditText) findViewById(R.id.edit_id);

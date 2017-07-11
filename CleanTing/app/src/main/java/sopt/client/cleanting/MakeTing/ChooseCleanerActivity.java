@@ -27,6 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sopt.client.cleanting.Application.ApplicationController;
+import sopt.client.cleanting.Cleanner.CleanerDateData;
 import sopt.client.cleanting.Cleanner.CleanerReviewData;
 import sopt.client.cleanting.Cleanner.SearchCleanerData;
 import sopt.client.cleanting.Cleanner.SearchCleanerResult;
@@ -135,8 +136,10 @@ public class ChooseCleanerActivity extends AppCompatActivity implements TextView
 
         Rcleaners = new ArrayList<RecentCleanerDataArray>();                         //사용자 정의 데이터를 갖는 arraylist
         searchCleanerDataArrayList1 = new ArrayList<SearchCleanerData>();
+        CleanerDateData cleanerDateData = new CleanerDateData();
+        cleanerDateData.date = inputdate;
 
-        Call<RecentCleanerResult> recentCleanerResultCall = service.getRecentCleanerResult(loginUserDatas.userId);
+        Call<RecentCleanerResult> recentCleanerResultCall = service.getRecentCleanerResultNew(loginUserDatas.userId, cleanerDateData);
         recentCleanerResultCall.enqueue(new Callback<RecentCleanerResult>() {
             @Override
             public void onResponse(Call<RecentCleanerResult> call, Response<RecentCleanerResult> response) {
